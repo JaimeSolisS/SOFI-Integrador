@@ -1,0 +1,41 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskRequestAdministrator.RequestViewModel
+<div id="mo_RequestView" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="align-content:center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">@Resources.HR.Kiosk.lbl_RequestViewer</h1>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="panel-body">
+                        <div class="row" style="margin-bottom:2%">
+                            <div class="col-sm-3"><b>@Resources.HR.Kiosk.lbl_Requester</b></div>
+                            <div class="col-sm-3">@Model.Employee</div>
+                            <div class="col-sm-3"><b>@Resources.MFG.OperationRecords.lbl_Shift</b></div>
+                            <div class="col-sm-3">@Model.Shift</div>
+                        </div>
+                        <div class="row" style="margin-bottom:2%">
+                            <div class="col-sm-3"><b>@Resources.HR.Kiosk.lbl_Department</b></div>
+                            <div class="col-sm-3">@Model.Department</div>
+                            <div class="col-sm-3"><b>@Resources.HR.Kiosk.lbl_RequestStatus</b></div>
+                            <div class="col-sm-3">@Model.Status</div>
+                        </div>
+                        <div class="row" style="margin-bottom:2%">
+                            <div class="col-sm-3"><b>@Resources.HR.Kiosk.lbl_RequestType</b></div>
+                            <div class="col-sm-3">@Model.Type</div>
+                            <div class="col-sm-3"><b>@Resources.HR.Kiosk.lbl_OpenRequestDate</b></div>
+                            <div class="col-sm-3">@Model.OpenDateFormatted</div>
+                        </div>
+                        <div class="row" style="margin-bottom:2%">
+                            <div class="col-sm-3"><b>@Resources.HR.Kiosk.lbl_Description</b></div>
+                            <div class="col-sm-9">@Model.Description</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_CloseSinglePublicRequestView">@Resources.Common.btn_Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,146 @@
+﻿@model WebSite.Areas.Production.Models.Defects.IndexViewModel
+
+<!-- START CONTENT FRAME -->
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.Defects.lbl_ViewHeaderTag</h2>
+        </div>
+        <div class="pull-right">
+            <button id="btn_AddDefect" class="btn btn-success add-defect-details" title="@Resources.Defects.tt_AddDefect" data-defectid="0" data-defect-name="" t><span class="fa fa-plus-circle"> @Resources.Defects.lbl_AddDefectDetailsTag</span></button>
+        </div>
+    </div>
+
+    <!-- START CONTENT FRAME RIGHT -->
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Common.lbl_Filters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_ProductionProcess">@Resources.Defects.lbl_ProcessProductionTag</label>
+                            <div class="input">
+                                <select id="ddl_ProductionProcess" name="ddl_ProductionProcess" class="form-control select" data-live-search="true">
+                                    @foreach (var process in Model.ProductionProcessList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 @Model.ClassProcessLine" id="div_ContainerControlProductionLine">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_ProductionLine">@Resources.Defects.lbl_ProcessLineTag</label>
+                            <div class="input">
+                                <select id="ddl_ProductionLine" name="ddl_ProductionLine" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var line in Model.UserProcessesLine)
+                                    {
+                                        <option value="@line.Value">@line.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_VA">@Resources.Defects.lbl_VATag</label>
+                            <div class="input">
+                                <select id="ddl_VA" name="ddl_VA" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var process in Model.VAList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_Design">@Resources.Defects.lbl_DesignTag</label>
+                            <div class="input">
+                                <select id="ddl_Design" name="ddl_Design" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var process in Model.DesignList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_Shift">@Resources.MoldScrap.lbl_ShiftTag</label>
+                            <div class="input">
+                                <select id="ddl_Shift" name="ddl_Shift" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var process in Model.ShiftList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*List Main Defects*@
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div id="div_boxDefectInfo">
+                    @Html.Partial("_DefectTable", Model.DefectsList)
+                </div>
+            </div>
+        </div>*
+
+    </div>
+</div>
+
+@*Modals*@
+<div id="div_MPE" class="hidden">
+
+</div>
+<div id="div_MsgText" class="hidden">
+    <span id="lbl_MsgDeleteDefectDetailTag">@Resources.Defects.lbl_MsgDeleteDetailItemTag</span>
+    <span id="lbl_TitleDeleteDefectDetailTag">@Resources.Common.lbl_Warning</span>
+    <span id="lbl_DeleteButtonTag">@Resources.Common.btnDeleteTag</span>
+    <span id="lbl_CancelButtonTag">@Resources.Common.btnCancel</span>
+
+    <span id="lbl_MsgDeleteDefectTag">@Resources.Defects.lbl_MsgDeleteDefectTag</span>
+</div>
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    
+    <script src="~/Scripts/Production/Defects/Index.js?v20190322" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var LangResources = {
+                chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                chsn_SelectMultipleOption: "@Resources.Common.chsn_SelectMultipleOption",
+                chsn_NoResults: "@Resources.Common.chsn_NoResults",
+                ntf_SelectWarehouse: "@Resources.Catalog.ntf_SelectWarehouse",
+                ntf_SelectVendor: "@Resources.Catalog.ntf_SelectVendor",
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

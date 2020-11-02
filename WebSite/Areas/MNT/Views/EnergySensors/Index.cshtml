@@ -1,0 +1,122 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergySensors.EnergySensorsTableViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.MNT.EnergySensors.lbl_Title</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn btn-success" title="@Resources.MNT.EnergySensors.btn_NewSensor" href="@Url.Action("New","EnergySensors")">
+                <span class="fa fa-plus-circle"></span> 
+                @Resources.MNT.EnergySensors.btn_NewSensor
+            </a>
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div class="content-frame-body-all">
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">
+                        @Resources.Common.lbl_Filters
+                    </h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.MNT.EnergySensors.lbl_Family</label>
+                                <div class="input">
+                                    @Html.ListBox("ddl_Families", Model.FamiliesList, new { @class = "form-control selectpicker", multiple = "multiple" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.MNT.EnergySensors.lbl_SensorName</label>
+                                <div class="input">
+                                    <select id="ddl_SensorNames" class="form-control selectpicker" data-live-search="true">
+                                        @foreach (var item in Model.SensorNamesList)
+                                        {
+                                            <option>@item</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.MNT.EnergySensors.lbl_Use</label>
+                                <div class="input">
+                                    @Html.ListBox("ddl_Uses", Model.UsesList, new { @class = "form-control selectpicker", multiple = "multiple" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                    <button class="btn btn-info btn-pretty" id="btn_search">@Resources.Common.btn_Search</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="div_EnergySensorsDataPanel">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div id="div_Tbl_EnergySensors">
+                        @Html.Partial("_Tbl_EnergySensors", Model.EnergySensorsList)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div id="div_Mo_CopyEnergySensor">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/jquery/jquery-ui.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/MNT/EnergySensors/Index.js?v20190823" charset="utf-8"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var LangResources = {
+                lbl_NewFamilySensor: '@Resources.MNT.EnergySensors.lbl_NewFamilySensor',
+
+                lbl_SelectFamily: '@Resources.MNT.EnergySensors.lbl_SelectFamily',
+                lbl_NewFamily: '@Resources.MNT.EnergySensors.lbl_NewFamily',
+                lbl_SelectUse: '@Resources.MNT.EnergySensors.lbl_SelectUse',
+                lbl_NewUse: '@Resources.MNT.EnergySensors.lbl_NewUse',
+                lbl_SelectName: '@Resources.MNT.EnergySensors.lbl_SelectName',
+                lbl_NewName: '@Resources.MNT.EnergySensors.lbl_NewName',
+                msg_SensorCopied: '@Resources.MNT.EnergySensors.msg_SensorCopied',
+                msg_SensorDeleted: '@Resources.MNT.EnergySensors.msg_SensorDeleted',
+                msg_DeleteConfirmationEnergySensor: '@Resources.MNT.EnergySensors.msg_DeleteConfirmationEnergySensor'
+
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

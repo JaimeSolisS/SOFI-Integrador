@@ -1,0 +1,42 @@
+﻿@model List<Core.Entities.Catalog>
+<div class="uic-wrapper no-touch">
+    <ul>
+        <li>
+            <ul class="cards-wrapper" style="height:450px;">
+                <li class="card card-front card-front-defects active">
+                    <div class="col-sm-12">
+                        <h1>@Resources.MFG.DemoldDefects.lbl_DefectType</h1>
+                        <div class="btn-group btn-group-toggle col-sm-12" data-toggle="buttons" >
+                            @foreach (var defect in Model)
+                            {
+                                <button id="@defect.CatalogDetailID" class="btn-info btn-pretty btn-lg catdefectsyoption btn-generic col-sm-6"><span>@defect.Param1</span></button>                                
+                            }
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="card card-middle card-middle-defects">
+                    <div class="row" style="text-align:center">
+                        <div class="row" style="text-align:center">
+                            <div class="col-sm-12">
+                                <h1>@Resources.MFG.DemoldDefects.lbl_Defect</h1>
+                                <div class="btn-group btn-group-toggle" id="defects_container" data-toggle="buttons" style="text-align:center;width:100%;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <nav>
+                <ul>
+                    <li><a class="btn-back" id="btn-back-defects"><i class="fa fa-arrow-left"></i></a></li>
+                    <li style="display:none"><a class="btn-next" id="btn-next-defects">@Resources.Common.dtatbl_sNext <i class="fa fa-arrow-right"></i></a></li>
+                </ul>
+            </nav>
+
+        </li>
+    </ul>
+</div>

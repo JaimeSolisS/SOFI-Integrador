@@ -1,0 +1,26 @@
+﻿@model string
+<div id="mo_NewCompany" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" style="z-index:10; width:100%;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" style="color:white">@Resources.SG.SecurityGuard.lbl_AddCompany</h1>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txtCompanyName">@Resources.SG.SecurityGuard.lbl_Company</label>
+                        <div class="input">
+                            @Html.TextBox("txtCompanyName", "", new { @class = "input-xl width-100p", autocomplete = "off" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer text-center">
+            <button class="btn btn-danger fsize-25 h-7vh dimiss-modal" data-modalid="mo_NewCompany">@Resources.Common.btnCancel</button>
+            <button id="btnSaveNewCompany" class="btn btn-success btn_footer">
+                @Resources.Common.btn_Save
+            </button>
+        </div>
+    </div>
+</div>

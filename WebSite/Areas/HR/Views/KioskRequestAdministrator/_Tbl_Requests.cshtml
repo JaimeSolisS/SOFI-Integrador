@@ -1,0 +1,94 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskRequestAdministrator.IndexViewModel
+<div class="panel-body">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped datatable" id="table_Requests">
+        <thead>
+            <tr class="font-size-sm">
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;"></th>
+                @if (Convert.ToBoolean(!(Model.OnlyRead)))
+                {
+                    <th style="width:5%; text-align:center;background-color: #0088ce !important;color: whitesmoke !important;">@Html.CheckBox("chk_all_requests", false, new { @class = "chk_all_requests" })</th>
+                }
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;">@Resources.HR.Kiosk.lbl_RequestNumber</th>
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;">@Resources.HR.Kiosk.lbl_Type</th>
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;">@Resources.HR.Kiosk.lbl_Department</th>
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;">@Resources.MFG.OperationRecords.lbl_Shift</th>
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;">@Resources.HR.Kiosk.lbl_Requester</th>
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;">@Resources.HR.Kiosk.lbl_Description</th>
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;">@Resources.HR.Kiosk.lbl_Responsible</th>
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;">@Resources.HR.Kiosk.lbl_RequestStatus</th>
+                <th style="background-color: #0088ce !important;color: whitesmoke !important;">@Resources.Common.lbl_Update</th>
+                @if (Convert.ToBoolean(!(Model.OnlyRead)))
+                {
+                    <th style="width:30px; text-align:center;background-color: #0088ce !important;color: whitesmoke !important;">@Resources.Common.lbl_Options</th>
+                }
+            </tr>
+        </thead>
+        <tbody class="sortable">
+            @foreach (var item in Model.RequestsList)
+            {
+                <tr class="request_row" data-departmentid="@item.DepartmentID" data-shiftid="@item.ShiftID" data-requesttypeid="@item.RequestTypeID" data-requestid="@item.RequestID" data-requestnumber="@item.RequestNumber">
+                    <td class="details-control" width="3%"></td>
+                    @if (Convert.ToBoolean(!(Model.OnlyRead)))
+                    {
+                        <td style="width:5%; text-align:center">@Html.CheckBox(String.Concat("chk_all_request_", item.RequestID), false, new { @class = "chk_all_request icheckbox_minimal-grey preserve-settings SuggestionFilters", data_requestid = item.RequestID, type = "checkbox", data_requestnumber = item.RequestNumber })</td>
+                    }
+                    <td class="text-left">
+                        <span class="tag-serial">@item.RequestNumber</span> <br />
+                        <b>@Resources.Common.lbl_Facility :</b> @item.FacilityName
+                    </td>
+                    <td>@item.RequestTypeName</td>
+                    <td>@item.DepartmentName</td>
+                    <td>@item.ShiftDescription</td>
+                    <td>
+                        <b>@Resources.Common.lbl_By</b>:  @item.RequestedName <br />
+                        <b>@Resources.Common.lbl_On</b>:  @item.DateAddedFormat <br />
+                    </td>
+                    <td>@item.Description</td>
+                    <td>@item.ResponsibleName</td>
+                    <td class="tag-serial" style="color:steelblue">@item.RequestStatusName</td>
+                    <td>
+                        <b>@Resources.Common.lbl_On :</b>@item.DateLastMaintFormat <br />
+                        <b>@Resources.Common.lbl_By :</b>@item.UserFullName
+                    </td>
+                    @if (Convert.ToBoolean(!(Model.OnlyRead)))
+                    {
+                        <td class="text-center">
+                            @switch (item.StatusValueID.ToLower())
+                            {
+                                case "open":
+                                    if (item.AllowAssing == "1")
+                                    {
+                                        <button type="button" data-requestid="@item.RequestID" class="btn btn-success btn_TblAssignResponsible" style="background-color:darkgray" title="@Resources.HR.Kiosk.btn_Assign"><span class="fa fa-user"></span></button>
+                                    }
+                                    if (item.AllowCancel == "1")
+                                    {
+                                        <button type="button" data-requestid="@item.RequestID" class="btn btn-danger btn_TblCancelRequest" title="@Resources.Common.btnCancel"><span class="fa fa-ban"></span></button>
+                                    }
+                                    break;
+                                case "assigned":
+                                    <button type="button" data-requestid="@item.RequestID" class="btn btn-warning btn_TblRejectRequest" title="@Resources.HR.Kiosk.btn_RejectRequest"><span class="glyphicon glyphicon-remove"></span></button>
+                                    if (item.AllowMarkDone == "1")
+                                    {
+                                        <button type="button" data-requestid="@item.RequestID" class="btn btn-success btn_TblMarkDoneRequest" title="@Resources.HR.Kiosk.bth_MarkDone"><span class="glyphicon glyphicon-ok"></span></button>
+                                    }
+                                    break;
+                                case "markdone":
+                                    if (item.AllowReOpen == "1")
+                                    {
+                                        <button type="button" data-requestid="@item.RequestID" class="btn btn-info btn_TblReOpen" style="background-color:blue" title="@Resources.HR.Kiosk.btn_ReOpen"><span class="fa fa-reply"></span></button>
+                                    }
+                                    if (item.AllowMarkDone == "1")
+                                    {
+                                        <button type="button" data-requestid="@item.RequestID" class="btn btn-info btn_TblClose" title="@Resources.HR.Kiosk.btn_CloseRequest"><span class="glyphicon glyphicon-remove"></span></button>
+                                    }
+                                    break;
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Hidden("txt_RowsPerPage", Model.RowsPerPage)

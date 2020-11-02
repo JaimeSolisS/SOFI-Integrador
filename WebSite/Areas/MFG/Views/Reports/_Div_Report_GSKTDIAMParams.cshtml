@@ -1,0 +1,85 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Reports.GSKTDIAMParamsViewModel
+<div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Gaskets</label>
+            <div class="input">
+                @Html.ListBox("ddl_Gasket_GSKTDIAM", Model.GasketsList, new { @class = "form-control multiple-select", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Machines</label>
+            <div class="input">
+                @Html.ListBox("ddl_Machines_GSKTDIAM", Model.MachinesList, new { @class = "form-control multiple-select", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Cavities</label>
+            <div class="input">
+                @Html.ListBox("ddl_Cavities_GSKTDIAM", Model.CavitiesList, new { @class = "form-control multiple-select", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Process</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Process_GSKTDIAM", Model.ProcessList, new { @class = "form-control multiple-select", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Shifts</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Shifts_GSKTDIAM", Model.ShiftsList, new { @class = "form-control multiple-select", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Materials</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Materials_GSKTDIAM", Model.MaterialsList, new { @class = "form-control multiple-select", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_StartDatetime</label>
+            <div class='input-group date'>
+                @Html.TextBox("txt_StartDatetime_GSKTDIAM", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), htmlAttributes: new { @class = "form-control datetimepicker" })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_EndDatetime</label>
+            <div class='input-group date'>
+                @Html.TextBox("txt_EndDatetime_GSKTDIAM", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), htmlAttributes: new { @class = "form-control datetimepicker" })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>

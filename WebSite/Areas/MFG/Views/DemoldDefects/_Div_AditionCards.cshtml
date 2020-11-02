@@ -1,0 +1,73 @@
+﻿@model List<Core.Entities.Catalog>
+<div class="uic-wrapper no-touch">
+    <ul>
+        <li>
+            <ul class="cards-wrapper" style="height:38vh !important;">
+                <li class="card card-front card-front-adition active">
+                    <div class="col-sm-12">
+                        <h2>@Resources.MFG.DemoldDefects.lbl_Adition</h2>
+
+                        <div class="btn-group btn-group-toggle col-sm-12" data-toggle="buttons">
+                            @foreach (var itemadition in Model)
+                            {
+                                <button id="@itemadition.CatalogDetailID" data-noadditon="@itemadition.Param4" class="btn-info btn-pretty btn-lg cataditionoption btn-generic col-sm-4"><span>@itemadition.Param1</span></button>
+                            }
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="card card-middle card-middle-adition" style="height:38vh !important;">
+                    <div class="row" style="text-align:center">
+                        <div class="col-sm-12">
+                            <h2>@Resources.MFG.DemoldDefects.lbl_Adition</h2>
+                            <div class="btn-group btn-group-toggle" id="adition_container" data-toggle="buttons" style="text-align:left;width:100%;height:29vh !important; overflow-y: auto;">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="card card-back card-back-adition" style="height:38vh !important;">
+                    <div class="row" style="text-align:center">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12" style="border:solid; width:100%; height:34vh !important">
+                                <br />
+                                <span class="fa fa-check" style="font-size:40px; color:green;"></span>
+                                <h3>@Resources.MFG.DemoldDefects.lbl_AditionCategory</h3>
+                                <h1><span  id="lbl_catadition" class="selectedcardoption"></span></h1>
+                                <h3>@Resources.MFG.DemoldDefects.lbl_Adition</h3>
+                                <h1><span  id="lbl_adition" class="selectedcardoption"></span></h1>
+                                <br />
+                            </div>
+                        </div>
+                        <h10></h10>
+                    </div>
+                </li>
+            </ul>
+
+            <nav>
+                <ul>
+                    @*<li><a class="btn-back" id="btn-back-adition" style="padding-left: 10px;"><i class="fa fa-arrow-left"></i></a></li>*@
+                    <li>
+                        <button type="button" class="btn-back" id="btn-back-adition" style="
+                            top:1px !important;
+                            margin-left: 2%;
+                            margin-top:0%;
+                            width:6vh;
+                            height:6vh;
+                            background-color:orange;
+                            color:white;
+                            border-radius: 5px 5px;
+                            text-align:center">
+                            <span class="fa fa-arrow-left"></span>
+                        </button>
+                    </li>
+                    <li style="display:none"><a class="btn-next" id="btn-next-adition">@Resources.Common.dtatbl_sNext <i class="fa fa-arrow-right"></i></a></li>
+                </ul>
+            </nav>
+
+        </li>
+    </ul>
+</div>

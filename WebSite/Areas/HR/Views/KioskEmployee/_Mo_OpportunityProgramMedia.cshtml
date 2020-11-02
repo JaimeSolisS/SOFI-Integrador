@@ -1,0 +1,28 @@
+﻿@model List<Core.Entities.IAttachment>
+<div id="mo_OpportunityProgramMedia" class="modal fade" role="dialog" style="align-content:center;width:100% !important; height: 100vh">
+    <div class="modal-content" style="width:100% !important;height: 100vh" id="modal-content-resize">
+        <div class="modal-body">
+            <div class="row carosuel-video-container" id="div_boxCarouselVideoContainer">
+                <button type="button" class="btn btn-danger" style="margin-left:10px" id="close_opportunityprogrammedia_modal">@Resources.Common.btn_Close</button>
+                <div class="col-xs-12">
+                    <div class="carousel-video" data-slide="1">
+                        @foreach (var item in Model)
+                        {
+                            <img data-mediatype="image" id="@item.FileID" class="SlideMediaContent" src="@item.FilePathName" style="width:100%;height:450px" />
+                        }
+                    </div>
+
+                    <div class="carousel-video-nav" style="background-color: black;">
+                        @foreach (var item in Model)
+                        {
+                            <div style="height: 100px; position: relative;padding:3px;">
+                                <img id="imgpreview_@item.FileID" src="~/Content/img/fileinput/loading3.gif" alt="prev_@item.FileID" style="object-fit: contain;position: absolute;height:100%;width:98%" />
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

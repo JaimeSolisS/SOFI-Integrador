@@ -1,0 +1,16 @@
+﻿.activeOption.option-no {
+    background-color: red !important;
+    color: white !important;
+
+}
+
+.activeOption.option-yes {
+    background-color: springgreen !important;
+    color: white !important;
+
+}
+
+.unselectRadioLabel {
+    background-color: lightgray !important;
+    color: black !important;
+}

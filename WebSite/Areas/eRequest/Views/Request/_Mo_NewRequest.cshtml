@@ -1,0 +1,43 @@
+﻿<div id="mo_NewRequest" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 50vh">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Request.lbl_Request</h4>
+            </div>
+            <div class="modal-body">
+                <form id="create-form" class="lobi-form">
+                    <fieldset class="no-padding">
+                        <div class="row">
+                            <div class="col-xs-12 ">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrganizationID">@Resources.Catalog.lbl_Facility</label>
+                                    <div class="input">
+                                        @Html.DropDownList("FacilityID", (SelectList)Model.FacilityList, htmlAttributes: new { @class = "form-control select" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 ">
+                                <div class="form-group">
+                                    <label class="control-label" for="CatalogTag">@Resources.Request.lbl_Request</label>
+                                    <div class="input">
+                                        @Html.DropDownList("FormatID", new SelectList(new List<SelectListItem>()), htmlAttributes: new { @class = "form-control select", title = Resources.Common.chsn_SelectOption })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                        <button id="btn_Create" type="button" class="btn btn-primary">@Resources.Common.btn_Accept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

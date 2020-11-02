@@ -1,0 +1,9 @@
+﻿@model List<Core.Entities.GenericItem>
+@foreach (var item in Model)
+{
+    <div>
+        <div class="image">
+            <img src="@item.Name" style="margin: auto;" class="image-full-detail" />
+        </div>
+    </div>
+}

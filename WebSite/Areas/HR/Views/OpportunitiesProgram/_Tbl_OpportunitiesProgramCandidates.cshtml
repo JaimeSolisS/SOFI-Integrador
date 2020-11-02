@@ -1,0 +1,58 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.OpportunitiesProgram.IndexViewModel
+<div class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" style="margin-bottom:0px !important" id="table_OpportunitiesProgramCandidates">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>@Resources.HR.Kiosk.lbl_EmpNum</th>
+                <th>@Resources.HR.Kiosk.lbl_Name</th>
+                <th>@Resources.HR.Kiosk.lbl_Department</th>
+                <th>@Resources.HR.Kiosk.lbl_InscriptionDate</th>
+                <th style="width:10%">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+
+        <tbody class="sortable">
+            @foreach (var item in Model.Candidate)
+            {
+            <tr data-candidateid="@item.OPCandidateID" data-opportunityprogramid="@item.OpportunityProgramID" data-isdiscarted="@item.IsDiscarted" id="candidates_row_@item.OPCandidateID">
+                @if (item.IsDiscarted)
+                {
+                    <td style="background-color:gold">@item.CandidateID</td>
+                    <td style="background-color:gold">@item.CandidateName</td>
+                    <td style="background-color:gold">@item.DepartmentName</td>
+                    <td style="background-color:gold">@item.DateAddedFormat</td>
+                }
+                else
+                {
+                    <td>@item.CandidateID</td>
+                    <td>@item.CandidateName</td>
+                    <td>@item.DepartmentName</td>
+                    <td>@item.DateAddedFormat</td>
+                }
+                <td style="text-align:center">
+                    <div class="btn-group btn-group-sm">
+                        @if (Model.AllowSendNotifications || Model.AllowFullAccess)
+                        {
+                            <button type="button" class="btn btn-warning notify-opportunity-program-candidate" title="@Resources.HR.Kiosk.btn_Notify">
+                                <span class="fa fa-envelope-o"></span>
+                            </button>
+                        }
+                        @if ((item.IsDiscarted && Model.AllowDiscardAccept) || (Model.AllowFullAccess && item.IsDiscarted))
+                        {
+                            <button type="button" class="btn btn-success accept-opportunity-program-candidate" title="@Resources.Common.btn_Accept">
+                                <span class="fa fa-check-square-o"></span>
+                            </button>
+                        }
+                        else if (Model.AllowDiscardAccept || Model.AllowFullAccess)
+                        {
+                            <button type="button" class="btn btn-danger discard-opportunity-program-candidate" title="@Resources.HR.Kiosk.lbl_Discard">
+                                <span class="fa fa-times"></span>
+                            </button>
+                        }
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

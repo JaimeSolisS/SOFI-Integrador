@@ -1,0 +1,85 @@
+﻿@model List<Core.Entities.Catalog>
+<div class="uic-wrapper no-touch">
+    <ul>
+        <li>
+            <ul class="cards-wrapper" style="height:45vh !important;margin-top:5%">
+                <li class="card card-front card-front-family active" style="height:45vh !important;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    ">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-9">
+                                    <h2>@Resources.MFG.DemoldDefects.lbl_Family</h2>
+                                </div>
+                                <div class="col-sm-3 pull-right" style="display:none;">
+                                    <button id="btn_ShowAll" type="button" class="btn-success btn-pretty btn-lg pull-right" style="padding-top:5px; padding-bottom:5px;">@Resources.Common.btn_ShowAll</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-group btn-group-toggle col-sm-12 scrollbar" data-toggle="buttons" id="families_container" style="height:220px !important;">
+                            @foreach (var family in Model)
+                            {
+                                <button id="@family.CatalogDetailID" type="button" class="btn-info btn-pretty btn-lg familyoption col-sm-2"
+                                        data-moldfamilyid="@family.CatalogDetailID"
+                                        data-moldfamilyname="@family.ValueID"
+                                        data-toggle="tooltip" data-placement="top" title="" data-original-title="@family.ValueID">
+                                    @family.ValueID
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </li>
+
+                <li class="card card-middle card-middle-family" style="height:45vh !important;">
+                    <div class="row" style="text-align:center">
+                        <div class="col-sm-12">
+                            <h1>@Resources.MFG.MoldFamilies.lbl_LenTypes</h1>
+                            <div class="btn-group btn-group-toggle" id="lens_container" data-toggle="buttons" style="text-align:center;width:100%;">
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="card card-back-family" style="height:45vh !important;">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12" style="border:solid;text-align:center">
+                                <br />
+                                <span class="fa fa-check" style="font-size:40px; color:green"></span>
+                                <h3>@Resources.MFG.DemoldDefects.lbl_Family</h3>
+                                <h1><span id="lbl_family" class="selectedcardoption"></span></h1>
+                                <br />
+                                <h3>@Resources.MFG.DemoldDefects.lbl_LenType</h3>
+                                <h1><span id="lbl_lentype" class="selectedcardoption"></span></h1>
+                            </div>
+                        </div>
+                        <h10></h10>
+                    </div>
+                </li>
+            </ul>
+            <nav>
+                <ul>
+                    <li>
+                        <label class="btn-back" id="btn-back-family" style="
+                            margin-left: 2%;
+                            margin-top:5%;
+                            background-color:orange;
+                            color:white;
+                            width:8%;
+                            border-radius: 5px 5px;
+                            text-align:center"
+                            >
+                            <span class="fa fa-arrow-left"></span>
+                        </label>
+                    </li>
+                    <li style="display:none"><a class="btn-next" id="btn-next-family">@Resources.Common.dtatbl_sNext <i class="fa fa-arrow-right"></i></a></li>
+                </ul>
+            </nav>
+
+        </li>
+    </ul>
+</div>

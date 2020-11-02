@@ -1,0 +1,190 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskRequestAdministrator.IndexViewModel
+
+@Html.Partial("~/Areas/HR/Views/KioskEmployee/_NotificationsBar.cshtml")
+
+@using (Html.BeginForm("RequestsExportToExcel", "KioskRequestAdministrator", FormMethod.Post))
+{
+    <div class="content-frame">
+        <div class="content-frame-top">
+            <div class="page-title">
+                <h2 class="margin-none">@Resources.HR.Kiosk.title_Requests</h2>
+            </div>
+            <div class="pull-right">
+                <button id="btn_New" type="submit" class="btn btn btn-success" style="background-color:forestgreen" title="@Resources.HR.Kiosk.lbl_ExportRequestExcel">
+                    <span class="fa fa-table"></span>
+                    @Resources.HR.Kiosk.btn_Excel
+                </button>
+            </div>
+        </div>
+
+        <div class="content-frame-body content-frame-body-all">
+            <div class="panel panel-primary" id="pnlRequestFilters">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body" >
+                    <div class="row">
+                        <div class="col-xs-12 col-md-3" id="div_RequisitionsTypes">
+                            <label>@Resources.HR.Kiosk.lbl_Facility</label>
+                            @Html.DropDownList("ddl_UserFacilities", Model.UserFacilitiesList, new { @class = "form-control RequestFilters", multiple = "multiple", title = Resources.Common.chsn_SelectOption, data_actions_box = "true" })
+                        </div>
+                        <div class="col-xs-12 col-md-3">
+                            <label>@Resources.HR.Kiosk.lbl_RequestNumber</label>
+                            @Html.TextBox("txt_RequestNumber", "", new { @class = "form-control RequestFilters", maxlength = 20, @list = "dtl_RequestNumbers" })
+                        </div>
+                        <div class="col-xs-12 col-md-3" id="div_RequisitionsTypes">
+                            <label>@Resources.HR.Kiosk.lbl_RequestType</label>
+                            @Html.DropDownList("ddl_RequestTypes", Model.RequestTypesList, new { @class = "form-control RequestFilters", @selected = true, multiple = "multiple", title = Resources.Common.chsn_SelectOption, data_actions_box = "true" })
+                        </div>
+
+                        <div class="col-xs-3 col-md-3" id="div_RequisitionsTypes">
+                            <label class="checkbox margin-top-no margin-bottom-2">
+                                <div class="icheckbox_minimal-grey" style="position: relative;">
+                                    <input type="checkbox" class="check-range-date preserve-settings SuggestionFilters" id="checkbox-filter-date" style="position: absolute; opacity: 0;">
+                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                </div>
+                                @Resources.Common.lbl_Date
+                            </label>
+                            <div class="input-daterange input-group datepicker-demo">
+                                <input type="text" id="txt_RequestStartDate" class="form-control customdatepicker RequestFilters" name="txt_RequestStartDate"
+                                       placeholder="Start Date" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:yyyy-MM-dd}", DateTime.Now.AddDays(Model.RequestHistoryDays * -1))">
+                                <span class="input-group-addon">@Resources.Common.lbl_To</span>
+                                <input type="text" id="txt_RequestEndDate" class="form-control customdatepicker RequestFilters" name="txt_RequestEndDate"
+                                       placeholder="Hasta" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:yyyy-MM-dd}", DateTime.Now)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-3">
+                            <label>@Resources.HR.Kiosk.lbl_Department</label>
+                            @Html.DropDownList("ddl_RequestDepartment", Model.RequestDepartmentsList, new { @class = "form-control RequestFilters" })
+                        </div>
+                        @if (Model.AllowViewAllRequests)
+                        {
+                            <div class="col-xs-12 col-md-3">
+                                <label>@Resources.HR.Kiosk.lbl_Responsible</label>
+                                @Html.TextBox("txt_Responsible", "", new { @class = "form-control RequestFilters", maxlength = 100, @list = "dtl_RequestResponsibles", multiple = "multiple", title = Resources.Common.chsn_SelectOption })
+                            </div>
+                        }
+                        <div class="col-xs-12 col-md-3">
+                            <label>@Resources.HR.Kiosk.lbl_RequestStatus</label>
+                            <select id="ddl_RequestStatus" name="ddl_RequestStatus" class="form-control RequestFilters" data-actions-box="true" data-lang="es_ES" multiple="multiple">
+                                @foreach (var status in Model.RequestStatusNormalList)
+                                {
+                                    <option value="@status.CatalogDetailID" data-valueid="@status.ValueID">@status.DisplayText</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-md-3" id="div_RequisitionsTypes">
+                            <label>@Resources.MFG.OperationRecords.lbl_Shift</label>
+                            @Html.DropDownList("ddl_ShiftsList", Model.ShiftsList, new { @class = "form-control RequestFilters", multiple = "multiple", title = Resources.Common.chsn_SelectOption, data_actions_box = "true" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-footer text-right">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button id="btn_RequestSearch" type="button" class="btn btn-info">@Resources.Common.search</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="div_controls">
+                <div class="row">
+                    <div class="col-sm-12" style="margin-bottom:1%" id="btn_GeneralChangeStatus">
+                        <button type="button" class="btn btn-warning pull-right" id="btn_RejectRequest" title="@Resources.HR.Kiosk.btn_RejectRequest"><span class="fa fa-times"></span>@Resources.HR.Kiosk.btn_RejectRequest</button>
+                        @if (Model.AllowCancel)
+                        {
+                            <button type="button" id="btn_CancelRequest" class="btn btn-danger pull-right" style="margin-right:1%;"><span class="fa fa-ban"></span>@Resources.HR.Kiosk.lbl_CancelRequest</button>
+                        }
+                        @if (Model.AllowClose)
+                        {
+                            <button type="button" id="btn_CloseRequest" style="margin-right:1%" class="btn btn-info pull-right"><span class="fa fa-times"></span>@Resources.HR.Kiosk.btn_CloseRequest</button>
+                        }
+                        @if (Model.AllowMarkDone)
+                        {
+                            <button type="button" id="btn_MarkDoneRequest" style="margin-right:1%" class="btn btn-success pull-right"><span class="fa fa-check"></span>@Resources.HR.Kiosk.bth_MarkDone</button>
+                        }
+                        @if (Model.AllowMarkDone || Model.AllowReOpen)
+                        {
+                            <button type="button" id="btn_ReopenRequest" style="margin-right:1%; background-color:blue" class="btn btn-info pull-right"><span class="fa fa-reply"></span>@Resources.HR.Kiosk.btn_ReOpen</button>
+                        }
+                        @if (Model.AllowAssign)
+                        {
+                            <button type="button" id="btn_AssignRequest" style="margin-right:1%; background-color:grey;color:white" class="btn pull-right"><span class="fa fa-user"></span>@Resources.HR.Kiosk.btn_Assign</button>
+                        }
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="div_RequestList" class="tabcontent panel panel-default">
+                        @Html.Action("SearchRequestData")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Hidden("PageNumber", true)
+}
+@Html.Hidden("SelectedDefaultStatus", Model.DefaultStatus)
+@Html.Hidden("PostedRequestNumber", Model.PostedRequestNumber)
+
+<div id="root_modal">
+
+</div>
+
+<div id="div_add_new_user">
+
+</div>
+
+<datalist id="dtl_RequestResponsibles" hidden>
+</datalist>
+
+<datalist id="dtl_RequestNumbers">
+</datalist>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/jquery/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/HR/Kiosk/KioskRequestAdministrator.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/HR/KioskRequestAdministrator/Index.js?v20200609" charset="utf-8"></script>
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js?v20200609" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            var cultureID = '@(Session["CultureID"] != null ? Session["CultureID"].ToString() : "" )';
+            var LangResources = {
+                msg_RequisitionMandatory: "@Html.Raw(Resources.HR.Kiosk.msg_RequisitionMandatory)",
+                msg_ConfirmMarkRequestDone: "@Html.Raw(Resources.HR.Kiosk.msg_ConfirmMarkRequestDone)",
+                msg_ConfirmMarkRequestFinish: "@Html.Raw(Resources.HR.Kiosk.msg_ConfirmMarkRequestFinish)",
+                msg_ConfirmMarkRequestAssign: "@Html.Raw(Resources.HR.Kiosk.msg_ConfirmMarkRequestAssign)",
+                lbl_RejectRequest: "@Html.Raw(Resources.HR.Kiosk.lbl_RejectRequest)",
+                lbl_RejectRequestAlertText: "@Html.Raw(Resources.HR.Kiosk.lbl_RejectRequestAlertText)",
+                lbl_CancelRequestAlertText: "@Html.Raw(Resources.HR.Kiosk.lbl_CancelRequestAlertText)",
+                lbl_MarkDone: "@Html.Raw(Resources.HR.Kiosk.lbl_MarkDone)",
+                btn_CloseRequest: "@Html.Raw(Resources.HR.Kiosk.btn_CloseRequest)",
+                lbl_CancelRequest: "@Html.Raw(Resources.HR.Kiosk.lbl_CancelRequest)",
+                lbl_CloseRequest: "@Html.Raw(Resources.HR.Kiosk.lbl_CloseRequest)",
+                lbl_ReOpenRequest: "@Html.Raw(Resources.HR.Kiosk.lbl_ReOpen)",
+                lbl_ReOpenRequestAlertText: "@Html.Raw(Resources.HR.Kiosk.lbl_ReOpenRequestAlertText)",
+                msg_ResponsibleIsMandatory: "@Html.Raw(Resources.HR.Kiosk.msg_ResponsibleIsMandatory)",
+                culture: cultureID.substr(0, 2).toLowerCase()
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}
+

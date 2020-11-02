@@ -1,0 +1,126 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Request.IndexViewModel
+<table class="table datatable" id="tbl_requestlist">
+    <thead class="hidden">
+        <tr>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RequestList)
+        {
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-3" style=" border: 1px solid grey;">
+                            <div class="form-group">
+                                @*<label class="control-label"><b>@Resources.Request.lbl_Folio</b></label><br />*@
+                                <label class="control-label" style="color:red; font-weight:bold; font-size:27.5px;">@item.Folio</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3" style=" border: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Common.lbl_CreatedOn:</label><br />
+                                <label class="control-label">@item.DateAddedFormat</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3" style=" border: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Request.lbl_CreatedBy:</label><br />
+                                <label class="control-label">@item.UserFullName</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3" style=" border: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Common.lbl_Facility:</label><br />
+                                <label class="control-label">@item.FacilityName</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3 div_concept" style=" border: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Common.lbl_DocumentType:</label><br />
+                                <label class="control-label">@item.FormatName</label>
+                            </div>
+                        </div>
+
+                        @Html.Action("GetListIndex", "AdditionalFields", new { Area = "", ReferenceID = item.RequestID, FormatID = item.FormatID, ModuleName = "Requests", ViewReadOnly = false })
+
+                        <div class="col-xs-12" style=" border: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@item.ConceptName:</label><br />
+                                <label class="control-label">@item.Concept</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" style=" border: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@item.SpecificationName:</label><br />
+                                <label class="control-label">@item.Specification</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" style="border: 1px solid grey">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-10 col-md-10" style=" border-right: 1px solid grey;">
+                                    <div class="form-group">
+                                        <label class="control-label" style="font-weight: bold;">@Resources.Request.lbl_Approvals :</label><br />
+                                        <div class="btn-group" data-concept="@item.Concept" data-statusvalueid="@item.StatusValueID">
+                                            @Html.Action("GetRequestLoopFlow", "Request", new { Area = "", RequestID = item.RequestID })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-2 col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label" style="font-weight: bold;">@Resources.Request.lbl_Status:</label><br />
+                                        <label class="control-label btn @item.StatusClass" data-statusid="@item.StatusValueID">@item.Status</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-xs-12" style=" border: 1px solid grey;">
+                            <div class="form-group margin-bottom-none div_options" style="padding:5px;" data-idrequest="@item.RequestID" data-formatid="@item.FormatID" data-facility="@item.FacilityID">
+                                <button class="btn-link display-detail zoom" title="@Resources.Request.lbl_ViewDetail">
+                                    <img class="zoom" src="~/Content/img/buttonicon/Eye-Show.png" height="24" width="24" />
+                                </button>
+                                <span class="vertical-devider">&nbsp;</span>
+                                <button class="btn-link display-log zoom" title="@Resources.Request.lbl_SeeApprovalLog">
+                                    <img class="zoom" src="~/Content/img/buttonicon/eReq-log.png" height="24" width="24" />
+                                </button>
+                                <span class="vertical-devider">&nbsp;</span>
+                                <button class="btn-link display-attachment zoom" title="@Resources.Request.lbl_ViewAttachments">
+                                    <img class="zoom" src="~/Content/img/buttonicon/folder_add.png" height="24" width="24" />
+                                </button>
+                                <span class="vertical-devider">&nbsp;</span>
+                                @if (item.StatusValueID.ToLower() != "cancelled" && Model.AllowCancel || item.StatusValueID.ToLower() != "cancelled" && Model.AllowFullAccess)
+                                {
+                                    <button class="btn-link cancel-request zoom" title="@Resources.Request.lbl_CancelRequest">
+                                        <img class="zoom" src="~/Content/img/buttonicon/eReq-delete.png" height="24" width="24" />
+                                    </button>
+                                    <span class="vertical-devider">&nbsp;</span>
+                                }
+                                @if (item.StatusValueID.ToLower() != "cancelled" || item.StatusValueID.ToLower() != "cancelled" && Model.AllowFullAccess)
+                                {
+                                    <button class="btn-link show-pdf zoom" data-url="" data-formatid="@item.FormatID" title="@Resources.Request.lbl_PrintFormat">
+                                        <img class="zoom" src="~/Content/img/buttonicon/eReq-pdf.png" height="24" width="24" />
+                                    </button>
+                                    <span class="vertical-devider">&nbsp;</span>
+                                }
+                                <button class="btn-link ereq-edit zoom" data-url="" title="@Resources.Request.lbl_EditFormat">
+                                    <img class="zoom" src="~/Content/img/buttonicon/eReq-edit.png" height="24" width="24" />
+                                </button>
+                                @if (item.StatusValueID.Trim() == "Return")
+                                {
+                                    <button id="btnReturnLoan" data-requestid="@item.RequestID" class="btn btn-info margin-left-10">@Resources.Request.btn_ReturnLoan</button>
+                                }
+                                <span class="vertical-devider">&nbsp;</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

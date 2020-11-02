@@ -1,0 +1,275 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MachineSetup.EditViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Model.NewEditSetup</h2>
+        </div>
+        <div class="pull-right">
+            @Html.ActionLink(@Resources.Common.btn_Back, "Index", "MachineSetup", null, new { @class = "btn btn-default " })
+            <button id="btn_save" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.MFG.MachineSetups.lbl_GeneralInfo
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            @Html.Label("lbl_name", @Resources.MFG.MachineSetups.lbl_Name, new { @class = "control-label " })
+                            @Html.TextBox("MachineSetupName", Model.MachineSetupName, new { @class = "form-control max-length", @maxlength = "50" })
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            @Html.Label("lbl_enable", @Resources.MFG.MachineSetups.lbl_Enable, new { @class = "control-label" })
+                            <div>
+                                <label class="switch switch-small">
+                                    <input type="checkbox" id="Enabled" checked="@Model.Enabled.Value" />
+                                    <span> &nbsp;</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.MFG.MachineSetups.lbl_MachineMaterials
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_Machine</label>
+                            <select id="ddl_MachineSetupName" name="ddl_MachineSetupName" class="selectpicker select form-control" data-live-search="true">
+                                @foreach (var machine in Model.MachinesList)
+                                {
+                                    <option value="@machine.Value">@machine.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_Material</label>
+                            <select id="ddl_Material" name="ddl_Material" class="selectpicker select form-control" data-live-search="true">
+                                @foreach (var material in Model.MaterialList)
+                                {
+                                    <option value="@material.Value">@material.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_F_UserAccount">@Resources.MFG.OperationRecords.lbl_CycleTime</label>
+                            <div class="input-group">
+                                @Html.TextBox("CycleTime", "", new { @class = "form-control onlydecimals max-length", @maxlength = "10" })
+                                <span class="input-group-addon">@Resources.MFG.MachineSetups.lbl_CycleTimeUom</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_F_UserAccount">@Resources.MFG.ActionPlan.lbl_ProductionProcess</label>
+                            <div class="input-group col-sm-12">
+                                @Html.DropDownList("ddl_ProductionProcess", Model.ProductionProcessList, new { @class = "form-control select selectpicker", @title = Resources.Common.chsn_SelectOption })
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3 pull-right" style="text-align:right">
+                        <br />
+                        <div class="form-group" style="margin-top:2%">
+                            <label class="control-label"></label>
+                            <button class="btn btn-success" id="add_machine_material">@Resources.Common.btnAdd</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <br />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="div_machine_materials">
+                            @Html.Partial("_Tbl_MachineMaterials", Model.MaterialSetupsList)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.MFG.MachineSetups.lbl_Parameters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button id="btn_Seccion" class="btn btn-success pull-right addSetupParameter">@Resources.MFG.MachineSetups.lbl_AddSetupParameter</button>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="div_materials_parameters">
+                            @Html.Partial("_Tbl_MachineSetupSections", Model.SectionsList)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="div_Mo_AddSetupParameter">
+
+</div>
+
+<div id="div_Mo_NewMachine">
+
+</div>
+
+<div id="div_Mo_NewMaterial">
+
+</div>
+
+<div id="div_Mo_NewParameter">
+
+</div>
+
+<div id="div_Mo_NewSection">
+
+</div>
+
+<div id="div_Mo_NewSection">
+
+</div>
+
+<div id="div_Mo_ParametersFormula">
+
+</div>
+
+<input type="hidden" data-ifYes="@Resources.Common.lbl_Yes" data-ifNo="@Resources.Common.lbl_NO" />
+
+@Html.Hidden("MachineSetupID", Model.MachineSetupID)
+@Html.Hidden("YesID", Model.YesID)
+
+<select id="ListSectionWithParameters" style="display:none">
+    @foreach (var item in Model.SectionWithMachineParameterList)
+    {
+        <option value="@item.ParameterSectionID">@item.ParameterSectionID</option>
+    }
+</select>
+<style>
+    .xeditable_link_style {
+        color: #0088cc;
+        cursor: pointer;
+        border-bottom: dashed 1px #0088cc;
+    }
+</style>
+
+@section Styles{
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/MFG/MachineSetup/Edit.js?v20191107" charset="utf-8"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            var LangResources = {
+                SelectMachine: '@Resources.MFG.MachineSetups.lbl_SelectMachine',
+                SelectMaterial: '@Resources.MFG.MachineSetups.lbl_SelectMaterial',
+                SelectParameter: '@Resources.MFG.MachineSetups.lbl_SelectParameter',
+                SelectSection: '@Resources.MFG.MachineSetups.lbl_SelectSection',
+
+                MessageNoMaterial: '@Resources.MFG.MachineSetups.msg_NoMaterial',
+                MessageNoParameter: '@Resources.MFG.MachineSetups.msg_NoParameter',
+                MessageMachineMaterialRepeat: '@Resources.MFG.MachineSetups.msg_MachineMaterialRepeat',
+                IfYes: '@Resources.Common.lbl_Yes',
+                IfNo: '@Resources.Common.lbl_NO',
+                CycleTimeMandatory: '@Resources.MFG.MachineSetups.msg_CycleTimeIsMandatory',
+                MachMatMandatory: '@Resources.MFG.MachineSetups.msg_MachMatMandatory',
+                DuplicatedMaterial: '@Resources.MFG.MachineSetups.msg_DuplicatedMaterial',
+                MinMaxInvalid: '@Resources.MFG.MachineSetups.msg_MinMaxInvalid',
+
+                RequiredSection: '@Resources.MFG.MachineSetups.msg_RequiredSection',
+                RequiredParameter:'@Resources.MFG.MachineSetups.msg_RequiredParameter',
+                RequiredUoM:'@Resources.MFG.MachineSetups.msg_RequiredUoM',
+                RequiredMinValue:'@Resources.MFG.MachineSetups.msg_RequiredMinValue',
+                RequiredMaxValue: '@Resources.MFG.MachineSetups.msg_RequiredMaxValue',
+                MachDescObligtory: '@Resources.MFG.MachineSetups.msg_MachDescObligtory',
+                PrecitionLengthValidation: '@Resources.MFG.MachineSetups.msg_PrecitionLengthValidation',
+                NameMandatory: '@Resources.MFG.MachineSetups.msg_NameMandatory',
+                msg_RequiredSection: '@Resources.MFG.MachineSetups.msg_RequiredSection',
+
+                lbl_UoM: '@Resources.MFG.MachineSetups.lbl_UoM',
+                lbl_Mandatory: '@Resources.MFG.MachineSetups.lbl_Mandatory',
+                lbl_Parameter: '@Resources.MFG.MachineSetups.lbl_Parameter',
+                IsAlert: '@Resources.MFG.MachineSetups.lbl_IsAlert',
+
+                SectionName: '@Resources.MFG.MachineSetups.lbl_SectionName',
+                SectionDescription: '@Resources.MFG.MachineSetups.lbl_SectionDescription',
+                PrecitionLengthInvalid: '@Resources.MFG.MachineSetups.msg_PrecitionLengthInvalid',
+                msg_ProductionProcessMandatory: '@Resources.MFG.MachineSetups.msg_ProductionProcessMandatory',
+
+                lbl_Machine: '@Resources.MFG.MachineSetups.lbl_Machine',
+                lbl_Material: '@Resources.MFG.MachineSetups.lbl_Material',
+                lbl_CycleTime: '@Resources.MFG.MachineSetups.lbl_CycleTimeUom',
+                lbl_ProductionProcess: '@Resources.MFG.ActionPlan.lbl_ProductionProcess',
+                msg_ParameterFormulaAdded: '@Resources.MFG.MachineSetups.msg_ParameterFormulaAdded',
+                msg_ParameterFormulaError: '@Resources.MFG.MachineSetups.msg_ParameterFormulaError',
+                lbl_IsCalculated: '@Resources.MFG.MachineSetups.lbl_IsCalculated',
+
+                lbl_ParameterFormula: '@Resources.MFG.MachineSetups.lbl_ParameterFormula',
+                lbl_Value: '@Resources.MFG.MachineSetups.lbl_Value',
+                lbl_Operator: '@Resources.MFG.MachineSetups.lbl_Operator',
+                lbl_NumericValue: '@Resources.MFG.MachineSetups.lbl_NumericValue',
+                lbl_ValueFormula: '@Resources.MFG.MachineSetups.lbl_ValueFormula',
+                msg_ParameterExistInTable: '@Resources.MFG.MachineSetups.msg_ParameterExistInTable'
+            }
+            EditInit(LangResources);
+        });
+    </script>
+}

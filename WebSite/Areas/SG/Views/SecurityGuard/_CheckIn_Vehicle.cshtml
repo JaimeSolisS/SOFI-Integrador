@@ -1,0 +1,44 @@
+﻿@model WebSite.Areas.SG.Models.SecurityGuard.CheckInVehicleViewModel
+<div id="mo_CheckInVehicle" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:4; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header" style="height:10%;background-color:black;border-radius:0px 0px;">
+            <h1 class="modal-title" style="color:white">@Resources.SG.SecurityGuard.lbl_VehicleData</h1>
+            <div class="fa fa-home pull-right fa-5x bg-white padding-10 btnHomeButton"></div>
+        </div>
+        <div class="modal-body padding-none" style="height:80%; overflow-y:auto;overflow-x: hidden;">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="ddl_VehicleMarks">@Resources.SG.SecurityGuard.lbl_Mark</label>
+                        <div class="input">
+                            @Html.DropDownList("ddl_VehicleMarks", Model.VehicleMarksList, new { @class = "input-xl width-100p" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4" id="div_CheckIn">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="ddl_VehiclePlates">@Resources.SG.SecurityGuard.lbl_Plates</label>
+                        <div class="input">
+                            @Html.TextBox("txt_VehiclePlates", Model.VehiclePlates, new { @class = "input-xl width-100p max-length", autocomplete = "off", @maxlength = "15" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txt_ResponsibleGuard">@Resources.SG.SecurityGuard.lbl_ResponsibleGuard</label>
+                        <div class="input">
+                            @Html.TextBox("txt_ResponsibleGuard", "", new { @class = "input-xl width-100p max-length", autocomplete = "off", @maxlength = "50" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-primary pull-left btn_footer dimiss-modal" data-modalid="mo_CheckInVehicle">@Resources.Common.btn_Back</button>
+            <button type="button" class="btn btn-success pull-right btn_footer disabled"
+                    id="btn_RegistryCheckIn" data-personaltype="">
+                @Resources.SG.SecurityGuard.lbl_Registry
+            </button>
+        </div>
+    </div>
+</div>

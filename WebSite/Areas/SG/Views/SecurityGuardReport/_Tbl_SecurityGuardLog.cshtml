@@ -1,0 +1,47 @@
+﻿@model List<Core.Entities.SecurityGuardLog>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_edit">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th class="text-white bg-primary w-32"></th>
+            <th class="text-white bg-primary">@Resources.HR.Kiosk.lbl_Type</th>
+            <th class="text-white bg-primary">@Resources.HR.Kiosk.lbl_Name</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_Vehicle</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_WhoVisits</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_CheckIn</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_CheckOut</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_IdentificationType</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_BagdeNumber</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_ResponsibleGuard</th>
+        </tr>
+    </thead>
+    <tbody class="ui-state-default sortable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.HaveTools)
+                {
+                    <td class="details-control" data-securityguardlogid="@item.SecurityGuardLogID"></td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>@item.PersonTypeName</td>
+                <td>@item.PersonName</td>
+                <td>
+                    <b>@Resources.SG.SecurityGuard.lbl_Mark</b> : @item.VehicleMarkName <br />
+                    <b>@Resources.SG.SecurityGuard.lbl_Plates</b> : @item.VehiclePlates
+                </td>
+                <td>@item.WhoVisit</td>
+                <td>@item.CheckInFormat</td>
+                <td>@item.CheckOutFormat</td>
+                <td>
+                    @item.IdentificationTypeName
+                    <img src="@item.IdentificationImgPath" style="height:30px" class="pull-right" />
+                </td>
+                <td>@item.BadgeNumber</td>
+                <td>@item.SecurityOfficerID</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,105 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.GenericCharts.NewEditDataChartAxisViewModel
+<div id="mo_ChartAxis" class="modal fade" role="dialog">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.NewEditTitle</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12" style="margin-bottom: 15px;">
+                        <label class="control-label">@Resources.GenericCharts.lbl_AxisName</label>
+                        @Html.TextBox("txt_AxisName", Model.AxisName, new { @class = "form-control max-length", @maxlength = "100" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group" id="aux_Categories">
+                        <label>@Resources.GenericCharts.lbl_AxisCategories</label>
+                        @Html.DropDownList("ddl_AxisCategories", Model.AxisCategories_List, new { @class = "form-control selectpicker" })
+                    </div>
+                    <div class="col-sm-6 form-group y_axis_fields" style="display:none">
+                        <label>@Resources.GenericCharts.lbl_ChartType</label>
+                        @Html.DropDownList("ddl_DataChartsTypes", Model.DataChartsTypes_List, new { @class = "form-control selectpicker" })
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-sm-3" id="aux_ddl_DataTypes">
+                        <label class="control-label">@Resources.GenericCharts.lbl_DataType</label>
+                        @Html.DropDownList("ddl_DataTypes", Model.DataTypes_List, new { @class = "form-control selectpicker" })
+                    </div>
+                    <div class="col-sm-3 y_axis_fields" style="display:none">
+                        <label class="control-label">@Resources.GenericCharts.lbl_Color</label>
+                        <input type="hidden" class="mini-color" id="txt_Color" name="txt_Color" value="@Model.Color"/>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.GenericCharts.lbl_ShowLine</label>
+                            <br />
+                            <label class="switch switch-small">
+                                <input type="checkbox" id="chk_ShowLine" @(Model.ShowLine == true ? "checked" : "")  />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row y_axis_fields" style="display:none">
+                    <div class="col-sm-12">
+                        <hr />
+                        <h4>@Resources.GenericCharts.lbl_LabelFormat</h4>
+                    </div>
+                </div>
+                <div class="row y_axis_fields" style="display:none; margin-bottom: 15px;">
+                    <div class="col-sm-3 ">
+                        <label class="control-label">@Resources.GenericCharts.lbl_FormatList</label>
+                        <select id="ddl_FormatData" class="form-control selectpicker">
+                            @foreach (var item in Model.DataFormat_List)
+                            {
+                                <option value="@item.CatalogDetailID" data-valueid="@item.ValueID" data-param1="@item.Param1">@item.DisplayText</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="control-label">@Resources.GenericCharts.lbl_FormatPreview</label>
+                        @Html.TextBox("txt_FormatDataPreview", null, new { @class = "form-control max-length", @maxlength = "100" })
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="control-label">@Resources.GenericCharts.lbl_LabelRotation</label>
+                        @Html.TextBox("txt_Datalabelrotation", Model.Rotation, new { @class = "form-control max-length", @maxlength = "3" })
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.GenericCharts.lbl_LabelShow</label>
+                            <br />
+                            <label class="switch switch-small">
+                                <input type="checkbox" id="chk_DatalabelShow" @(Model.ShowLabel == true ? "checked" : "") />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                    </div>
+                <div class="row y_axis_fields" style="display:none">
+                    <div class="col-sm-3">
+                        <label class="control-label">@Resources.GenericCharts.lbl_FontSize %</label>
+                        @Html.TextBox("txt_DatalabelFontSize", Model.FontSize, new { @class = "form-control max-length", @maxlength = "2" })
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="control-label">@Resources.GenericCharts.lbl_FontColor</label>
+                        <input type="hidden" class="mini-color" id="txt_DatalabelColor" name="txt_DatalabelColor" value="@Model.FontColor"/>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="control-label">@Resources.GenericCharts.lbl_FontBackgroundColor</label>
+                        <input type="hidden" class="mini-color" id="txt_DatalabelBackgroundColor" name="txt_DatalabelBackgroundColor" value="@Model.FontBackgroundColor"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_SaveAxis" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("IsEdit", Model.IsEdit)
+@Html.Hidden("GenericChartAxisID", Model.GenericChartAxisID)

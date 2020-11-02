@@ -1,0 +1,27 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.GenericCharts.DataChartFiltersViewModel
+
+@{
+    <div class="row">
+        @foreach (var filter in Model.FilterList)
+        {
+            <div class="col-sm-3">
+                <label class="col-sm-12">@filter.FilterName</label>
+                <div class="input-group col-sm-12" id="div_@filter.FilterName">
+                    @if (filter.FilterTypeName.ToUpper() == "LIST")
+                    {
+                        <select id="ddl_@filter.FilterName" data-entityid="@filter.FilterListID" data-filtertypename="@filter.FilterTypeName" title="@Resources.Common.chsn_SelectOption" class="form-control selectpicker filters_of_chart"></select>
+                    }
+                    else if (filter.FilterTypeName.ToUpper() == "DATE")
+                    {
+                        <input type="text" class="form-control filters_of_chart filter_datepicker" data-entityid="@filter.FilterTypeID" id="ddl_@filter.FilterName" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@Html.Hidden("ChartTypeText", Model.ChartType)
+@Html.Hidden("ChartName", Model.ChartName)
+@Html.Hidden("ChartTitle", Model.ChartTitle)

@@ -1,0 +1,55 @@
+﻿@model  WebSite.Areas.HR.Models.ViewModels.KioskEmployee.PaymentReceiptsViewModel
+<div id="_mo_PaymentReceipts" class="modal fade" role="dialog" style="align-content:center;width:100% !important; height: 100vh; z-index:9">
+    <div class="modal-content" style="width:100% !important;">
+        <div class="modal-header">
+            <div class="row">
+                <div class="col-xs-7">
+                    <h1 class="modal-title">@Resources.HR.Kiosk.lbl_PaymentReceipts</h1>
+                </div>
+                <div class="col-xs-3" style="padding-right: 15px">
+                    <button type="button" id="btn_SendMarkedReceipts" class="btn btn-success HeaderModalButtons" aria-hidden="true">@Resources.HR.Kiosk.lbl_SendMarkedReceipts</button>
+                </div>
+                <div class="col-xs-2" style="padding-right: 15px">
+                    <button type="button" id="btn_ClosePaymentReceiptsModal" class="btn btn-danger HeaderModalButtons" style="width:100%;" aria-hidden="true">@Resources.Common.btn_Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_PrePayroll">
+                <thead>
+                    <tr class="font-size-lg ">
+                        <th style="width:55px;" class="bg-primary text-white text-center"></th>
+                        <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Receipts</th>
+                        <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_RFC</th>
+                        <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Invoice</th>
+                        <th class="bg-primary text-white text-center w-130">@Resources.Common.lbl_Options</th>
+                    </tr>
+                </thead>
+                <tbody class="sortable">
+                    @foreach (var item in Model.PaymentReceiptsList)
+                    {
+                        <tr class="prepayroll_row font-size-xl" >
+                            <td><input type="checkbox" class="chk_Recepit" style="height:50px; width: 50px;" data-folio="@item.FolioSobre"  data-receipt="@item.Recibo"/></td>
+                            <td class="tag-serial">@item.Recibo</td>
+                            <td>@item.Receptor</td>
+                            <td>@item.FolioSobre</td>
+                            <td class="text-center">
+                                <div class="btn-group btn-group-lg">
+                                    <button class="btn btn-info view-pdf-receipt StandardUserButton text-center" style="padding-left:12px; padding-top: 0px;" data-pdfsource="@item.FilePDF.Replace("{0}", Model.EmployeeNumber)"
+                                            data-receiptnumber="@item.Recibo" data-folio="@item.FolioSobre">
+                                        <span style="padding-top:0px; font-size:20px; padding-left:0px" class="fa fa-eye"></span>
+                                    </button>
+                                    <button class="btn btn-success send-attachment-receipt StandardUserButton text-center" style="padding-left:12px; padding-top:0px;" data-xmlsource="@item.FileXML.Replace("{0}", Model.EmployeeNumber)"
+                                            data-pdfsource="@item.FilePDF.Replace("{0}", Model.EmployeeNumber)" data-folio="@item.FolioSobre" data-receiptnumber="@item.Recibo">
+                                        <span style="padding-top:0px; font-size:20px; padding-left:0px" class="fa fa-envelope-o"></span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

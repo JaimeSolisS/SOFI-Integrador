@@ -1,0 +1,21 @@
+﻿@model List<Core.Entities.KioskUserPointsMovement>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_PointsDetails">
+    <thead>
+        <tr>
+            <th colspan="2" class="bg-blue HeaderTableStyle">@Resources.HR.Kiosk.lbl_PointsDetail</th>
+        </tr>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.HR.Kiosk.lbl_Reasons</th>
+            <th>@Resources.HR.Kiosk.lbl_Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="">
+                <td class="h4">@item.Concepto</td>
+                <td class="h4">@item.Puntos</td>
+            </tr>
+        }
+    </tbody>
+</table>

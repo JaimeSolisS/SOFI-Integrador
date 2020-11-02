@@ -1,0 +1,195 @@
+﻿@model WebSite.Areas.CI.Models.ViewModels.Administration.DashboardAreaDetailUpsertViewModel
+<div id="mo_DashboardAreaDetailUpsert" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.HeaderModal</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_Size">@Resources.CI.DashboardManagement.lbl_Parent </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_ParentNode", Model.ParentsNodesList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_Size">@Resources.CI.DashboardManagement.lbl_Section </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Section", Model.SectionsList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <table id="tb_AddDashboardDetailArea" class="display table table-condensed table-striped table-bordered margin-bottom-5">
+                            <thead>
+                                <tr>
+                                    <th class="w-35prc">@Resources.Common.lbl_language</th>
+                                    <th>@Resources.CI.DashboardManagement.lbl_DetailNameTag</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb_AddDashboardAreaDetailBody">
+                                @foreach (var item in Model.DashboardNameTranslate)
+                                {
+                                    <tr>
+
+                                        @if (Model.DashboardAreaDetailInfo.DashboardAreaDetailID != 0)
+                                        {
+                                            <td data-languageid="@item.CatalogDetailID">@item.CultureID</td>
+                                            <td><input type="text" id="txt_languagetext_@item.CatalogDetailID" value="@item.DisplayText" placeholder="" class="form-control" maxlength="50" /></td>
+                                        }
+                                        else
+                                        {
+                                            <td data-languageid="@item.CatalogDetailID">@item.DisplayText</td>
+                                            <td><input type="text" id="txt_languagetext_@item.CatalogDetailID" value="" placeholder="" class="form-control" maxlength="50" /></td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-12 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_DAD_Footer">@Resources.CI.DashboardManagement.lbl_FooterTag</label>
+                            <div class="input-group">
+                                <span class="input-group-addon glyphicon glyphicon glyphicon-option-horizontal"></span>
+                                <input type="text" maxlength="20" class="form-control" placeholder="@Resources.CI.DashboardManagement.lbl_FooterPhTag" id="txt_DAD_Footer" name="txt_DAD_Footer" value="@Model.DashboardAreaDetailInfo.Footer" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_DAD_FileType">@Resources.CI.DashboardManagement.lbl_FileTypeTag </label>
+                            <div class="input">
+                                <select id="ddl_DAD_FileType" name="ddl_DAD_FileType" data-live-search="true" class="form-control select field-disabled" @Model.FileTypeDisabled>
+                                    @foreach (var item in Model.FileTypeList)
+                                    {
+                                        if (Model.DashboardAreaDetailInfo.DashboardAreaDetailID != 0 && Model.DashboardAreaDetailInfo.FileTypeID == item.CatalogDetailID)
+                                        {
+                                            <option value="@item.CatalogDetailID" data-valueid="@item.ValueID" data-valid-extension="@item.Param1" selected>@item.DisplayText</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.CatalogDetailID" data-valueid="@item.ValueID" data-valid-extension="@item.Param1">@item.DisplayText</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_Size">@Resources.CI.DashboardManagement.lbl_SizeTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Add_Size", Model.DashboardSizeList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 margin-bottom-5 @Model.FileTypeLinkCss" id="divBoxFileTypeLink">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_Add_Href">@Resources.CI.DashboardManagement.lbl_HrefTag </label>
+                            <div class="input-group">
+                                <span class="input-group-addon fa fa-link"></span>
+                                <input type="text" class="form-control" placeholder="http://sample.com" id="txt_Add_Href" name="txt_Add_Href" value="@Model.DashboardAreaDetailInfo.HRef" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_BackColor">@Resources.CI.DashboardManagement.lbl_BackColorTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Add_BackColor", Model.DashboardBackColorList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_FontColor">@Resources.CI.DashboardManagement.lbl_FontColorTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Add_FontColor", Model.DashboardFontColorList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_Icon">@Resources.CI.DashboardManagement.lbl_IconTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Add_Icon", Model.DashboardIconList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_Add_BackGroundImage">@Resources.CI.DashboardManagement.lbl_BackgroundImage </label>
+                            <div class="input-group d-flex">
+                                <span class="input-group-addon fa fa-link"></span>
+                                <input type="text" class="form-control field-disabled" placeholder="url" id="txt_Add_BackGroundImage" name="txt_Add_BackGroundImage" disabled data-url="@Model.DashboardAreaDetailInfo.BackgroundImage" value="@Model.DashboardAreaDetailInfo.BackgroundImageFileName" />
+                                <button id="btn_BrowseBackGroundImage" class="btn btn-info" title="@Resources.Common.tt_BrowseTag">...</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 margin-bottom-5 @Model.FileTypeMediaOrFileCss" id="divBoxFileTypeMediaOrFile">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_Add_SourcePath">@Resources.CI.DashboardManagement.lbl_SourcePathTag </label>
+                            <div class="input-group  d-flex">
+                                <span class="input-group-addon  fa fa-link"></span>
+                                <input type="text" class="form-control field-disabled" placeholder="url" id="txt_Add_SourcePath" name="txt_Add_SourcePath" disabled data-url="@Model.DashboardAreaDetailInfo.SourcePath" value="@Model.DashboardAreaDetailInfo.SourcePathFileName" />
+                                <button id="btn_BrowseSourcePath" class="btn btn-info @Model.SourcePathHidden" title="@Resources.Common.tt_BrowseTag">...</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 @Model.FileTypeGaleryCss divBoxFileTypeGalery">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_DataEffect">@Resources.CI.DashboardManagement.lbl_DataEffectTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Add_DataEffect", Model.DashboardDataEffectList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 @Model.FileTypeGaleryCss divBoxFileTypeGalery">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_Add_DataEffectDuration">@Resources.CI.DashboardManagement.lbl_DataEffectDurationTag </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control onlynumbers" placeholder="0" id="txt_Add_DataEffectDuration" maxlength="5" name="txt_Add_DataEffectDuration" value="@Model.DashboardAreaDetailInfo.DataEffectDuration" />
+                                <span class="input-group-addon">@Resources.CI.DashboardManagement.lbl_SecondsTag</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 margin-bottom-5 hidden">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_Add_SeqTag">@Resources.CI.DashboardManagement.lbl_SeqTag </label>
+                            <div class="input-group">
+                                <span class="input-group-addon glyphicon glyphicon-sort-by-order"></span>
+                                <input type="text" class="form-control onlynumbers" placeholder="0" maxlength="2" id="txt_Add_SeqTag" name="txt_Add_SeqTag" value="@Model.DashboardAreaDetailInfo.Seq" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="hidden">
+                    <form action="~/CI/Administration/UploadDashboardDetails" class="form-dropzone-backgroundimage dropzone">
+                        @Html.Hidden("TransactionDetailID", Model.TransactionID)
+                    </form>
+                    <form action="~/CI/Administration/UploadDashboardFileType" class="form-dropzone-filetype dropzone">
+                        @Html.Hidden("TransactionDetailID", Model.TransactionID)
+                        @Html.Hidden("hdnFileTypeValueID", Model.DashboardAreaDetailInfo.FileTypeValueID)
+                        @Html.Hidden("hdnFileExtensions", "")
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                <button type="button" id="btn_NewDashboardAreasDetail" data-entityid="@Model.DashboardAreaDetailInfo.DashboardAreaDetailID" 
+                        data-dashboardareaid="@Model.DashboardAreaDetailInfo.DashboardAreaID" 
+                        data-parentdashboardareadetailid="@Model.DashboardAreaDetailInfo.ParentDashboardAreaDetailID"
+                        class="btn btn-success" title="@Resources.Common.btn_Save">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+

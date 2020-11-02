@@ -1,0 +1,8 @@
+﻿@model List<Core.Entities.DashboardArea>
+
+@foreach (var area in Model)
+{
+    <div class="tiles-grid tiles-group @area.SizeClass fg-black" data-group-title="@area.Title">
+        @Html.Action("GetAreaDetail", new { area.DashboardAreaID, area.ParentID })
+    </div>
+}

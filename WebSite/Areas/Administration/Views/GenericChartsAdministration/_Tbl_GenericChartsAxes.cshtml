@@ -1,0 +1,60 @@
+﻿@model List<Core.Entities.GenericChartsAxis>
+<div class="panel-body">
+    <button class="btn btn-success pull-right" style="margin-bottom:1%" id="btn_NewAxis">
+        @Resources.GenericCharts.btn_NewAxis
+    </button>
+
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_Axis">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>Seq</th>
+                <th>@Resources.GenericCharts.lbl_Category</th>
+                <th>@Resources.GenericCharts.lbl_ChartName</th>
+                <th>@Resources.GenericCharts.lbl_DataType</th>
+                <th>@Resources.GenericCharts.lbl_Color</th>
+                <th>@Resources.GenericCharts.lbl_Format</th>
+                <th>@Resources.GenericCharts.lbl_Type</th>
+                <th>@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="ui-state-default">
+            @{
+                var i = 1;
+                foreach (var item in Model)
+                {
+                    <tr id="axis_@i"
+                        class="chart-axis-row"
+                        data-entityid="@item.GenericChartAxisID"
+                        data-isaxex="@item.IsAxeX"
+                        data-axischarttypeid="@item.AxisChartTypeID"
+                        data-axiscategory="@item.Category"
+                        data-axisdatatypeid="@item.AxisDatatypeID"
+                        data-color="@item.AxisColor"
+                        data-axistypeid="@item.AxisTypeID"
+                        data-formattypeid="@item.AxisFormatID"
+                        data-prefix="@item.AxisFormat"
+                        data-showline="@item.ShowLine"
+                        data-labelrotation="@item.DataLabelRotation"
+                        data-labelshow="@item.DataLabelShow"
+                        data-labelfontsize="@item.DataLabelFontSize"
+                        data-labelfontcolor="@item.DataLabelFontColor"
+                        data-labelfontbgcolor="@item.DataLabelFontBGColor"
+                        >
+                        <td>@i</td>
+                        <td>@item.Category</td>
+                        <td>@item.AxisName</td>
+                        <td>@item.DataTypeName</td>
+                        <td><input type="hidden" class="mini-color BackgroundColor" value="@item.AxisColor" name="BackgroundColor" /></td>
+                        <td>@item.AxisFormat</td>
+                        <td>@item.DataChartTypeName</td>
+                        <td style="width:15%; text-align:center">
+                            <button class="btn btn-success text-primary edit-axis-record"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>
+                            <button class="btn btn-danger delete-axis-record"><span class="glyphicon glyphicon-trash"></span></button>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>

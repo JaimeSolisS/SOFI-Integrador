@@ -1,0 +1,49 @@
+﻿@model List<Core.Entities.DashboardAreaDetail>
+<div class="slider">
+    <table class="display table table-striped table-bordered table-condensed margin-none" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th class="center">#</th>
+                <th>@Resources.CI.DashboardManagement.gvh_DetailNameTag</th>
+                <th>@Resources.CI.DashboardManagement.gvh_FileTypeTag </th>
+                <th>@Resources.CI.DashboardManagement.gvh_DetailSizeTag</th>
+                <th>@Resources.CI.DashboardManagement.gvh_IconTag</th>
+                <th>@Resources.CI.DashboardManagement.gvh_FooterTag</th>
+                <th>@Resources.CI.DashboardManagement.gvh_BackColorTag</th>
+                <th>@Resources.CI.DashboardManagement.gvh_FontColorTag</th>
+                <th class="left">@Resources.Common.gvH_DateAdded</th>
+                <th class="left">@Resources.Common.gvH_UpdatedBy</th>
+                <th class="left">@Resources.Common.gvH_DateLastMaint</th>
+                <th class="left w-120">@Resources.Common.gvH_Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="center">
+                    <a class="x-editable" data-type="text" data-title="@Resources.CI.DashboardManagement.gvh_SequenceTag" data-pk="@item.DashboardAreaDetailID" data-url="/CI/Administration/DashboardAreasDetail_UpdateQuickEditable" data-value="@item.Seq" data-name="Seq" data-tpl="<input type='text' class='onlynumbers' maxlength = '9' placeholder='0'>">
+                        @item.Seq
+                    </a>
+                </td>
+                <td class="tag-serial">@item.Name</td>
+                <td>@item.FileType</td>
+                <td>@item.SizeClass</td>
+                <td>@item.Icon</td>
+                <td>@item.Footer</td>
+                <td>@item.BackColorClass</td>
+                <td>@item.FontColorClass</td>
+                <td>@item.DateAddedFormat</td>
+                <td>@item.UserFullName</td>
+                <td>@item.DateLastMaintFormat</td>
+                <td style="width:120px; text-align:center">
+                    <div class="btn-group dropup">
+                        <button class="btn btn-info edit-dashboardAreaDetail" data-dashboardarea-id="@item.DashboardAreaID" data-entityid="@item.DashboardAreaDetailID" title="@Resources.CI.DashboardManagement.tt_EditDashboardDetail"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button class="btn btn-danger delete-dashboardAreaDetail" data-dashboardarea-id="@item.DashboardAreaDetailID" title="@Resources.CI.DashboardManagement.tt_DeleteDashboardAreaDetailTag"><span class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

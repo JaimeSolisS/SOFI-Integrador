@@ -1,0 +1,51 @@
+﻿<div id="m_EditCultures" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Catalog.title_EditTraslations "<label id="l_ValueID"></label>"</h4>
+            </div>
+            <div class="modal-body">
+                
+                <form id="add-detailculture-form" class="lobi-form">
+                    @Html.Hidden("hf_EDC_CatalogDetailID")
+                    <fieldset class="no-padding">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="SelectedStateID">@Resources.Catalog.lbl_Culture</label>
+                                    <div class="input">
+                                        <select id="CultureID" name="CultureID" class="form-control select" data-live-search="true"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="form-group">
+                                    <label class="control-label" for="TranslationDescription">@Resources.Catalog.lbl_Description</label>
+                                    <label class="input-group">
+                                        <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                        <input type="text" id="TranslationDescription" name="TranslationDescription" placeholder="@Resources.Catalog.lbl_Description" maxlength="255" class="form-control max-lenght" />
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <label class="control-label">&nbsp;</label>
+                                <br />
+                                <button id="btn_new_Culture" type="button" class="btn btn-block btn-default btn-pretty">@Resources.Common.btnAdd</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                @*TABLA*@
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="table_CatalogDetailsCultures"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+            </div>
+        </div>
+    </div>
+</div>

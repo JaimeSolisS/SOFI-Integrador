@@ -1,0 +1,129 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.GenericCharts.DataChartFieldsViewModel
+<div class="row" id="data_zone" style="display:none">
+    <div class="col-sm-12" style="margin-bottom:1%">
+        <div class="row">
+            <div class="col-sm-11">
+                <textarea rows="1" cols="1" id="txt_PasteClipboardData" placeholder="@Resources.GenericCharts.lbl_PasteYourInfoHere" class="form-control" style="overflow:hidden; height:65px; font-style:italic" onpaste="GetInfoCopied(this)"></textarea>
+            </div>
+            <div class="col-sm-1" style="text-align:center">
+                <br />
+                <button class="btn btn-info" id="btn_ChartPreview" title="@Resources.GenericCharts.title_ChartPreview"><span class="fa fa-bar-chart-o"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+<table id="tbl_GenericChartData" class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped">
+    <thead>
+        <tr id="headers">
+            @{
+                var count = 1;
+                foreach (var field in Model.DataFieldsList)
+                {
+                    <th data-identifier="@field.GenericChartAxisID"
+                        data-datacharttypename="@field.DataChartTypeName"
+                        data-format="@field.AxisFormat"
+                        data-color="@field.AxisColor"
+                        data-axistype="@field.AxisDatatypeID"
+                        data-entityid="@field.GenericChartAxisID"
+                        data-formattype="@field.AxisFormat"
+                        data-showline="@field.ShowLine"
+                        data-labelrotation="@field.DataLabelRotation"
+                        data-labelshow="@field.DataLabelShow"
+                        data-labelfontsize="@field.DataLabelFontSize"
+                        data-labelfontcolor="@field.DataLabelFontColor"
+                        data-labelfontbgcolor="@field.DataLabelFontBGColor"
+                        id="val_header_@count">
+                        <a href="#" class="x-editable table_header" data-type="text"
+                           data-value="@field.AxisName">@field.AxisName</a>
+                    </th>
+
+                    count = count + 1;
+                }
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.GenericChartDataList)
+        {
+            <tr class="table_data_row">
+                <td>@item.Field1</td>
+                <td><input type="text" value="@item.Field2" class="form-control Field_2" /></td>
+                @if (item.Field3 != null)
+                {
+                    <td><input type="text" value="@item.Field3" class="form-control Field_3" /></td>
+                }
+                @if (item.Field4 != null)
+                {
+                    <td><input type="text" value="@item.Field4" class="form-control Field_4" /></td>
+                }
+                @if (item.Field5 != null)
+                {
+                    <td><input type="text" value="@item.Field5" class="form-control Field_5" /></td>
+                }
+                @if (item.Field6 != null)
+                {
+                    <td><input type="text" value="@item.Field6" class="form-control Field_6" /></td>
+                }
+                @if (item.Field7 != null)
+                {
+                    <td><input type="text" value="@item.Field7" class="form-control Field_7" /></td>
+                }
+                @if (item.Field8 != null)
+                {
+                    <td><input type="text" value="@item.Field8" class="form-control Field_8" /></td>
+                }
+                @if (item.Field9 != null)
+                {
+                    <td><input type="text" value="@item.Field9" class="form-control Field_9" /></td>
+                }
+                @if (item.Field10 != null)
+                {
+                    <td><input type="text" value="@item.Field10" class="form-control Field_10" /></td>
+                }
+                @if (item.Field11 != null)
+                {
+                    <td><input type="text" value="@item.Field11" class="form-control Field_11" /></td>
+                }
+                @if (item.Field12 != null)
+                {
+                    <td><input type="text" value="@item.Field12" class="form-control Field_12" /></td>
+                }
+                @if (item.Field13 != null)
+                {
+                    <td><input type="text" value="@item.Field13" class="form-control Field_13" /></td>
+                }
+                @if (item.Field14 != null)
+                {
+                    <td><input type="text" value="@item.Field14" class="form-control Field_14" /></td>
+                }
+                @if (item.Field15 != null)
+                {
+                    <td><input type="text" value="@item.Field15" class="form-control Field_15" /></td>
+                }
+                @if (item.Field16 != null)
+                {
+                    <td><input type="text" value="@item.Field16" class="form-control Field_16" /></td>
+                }
+                @if (item.Field17 != null)
+                {
+                    <td><input type="text" value="@item.Field17" class="form-control Field_17" /></td>
+                }
+                @if (item.Field18 != null)
+                {
+                    <td><input type="text" value="@item.Field18" class="form-control Field_18" /></td>
+                }
+                @if (item.Field19 != null)
+                {
+                    <td><input type="text" value="@item.Field19" class="form-control Field_19" /></td>
+                }
+                @if (item.Field20 != null)
+                {
+                    <td><input type="text" value="@item.Field20" class="form-control Field_20" /></td>
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.Hidden("ContainsData", Model.ContainsData)
+@Html.Hidden("GenericChartHeaderDataIDLoaded", Model.GenericChartHeaderDataID)

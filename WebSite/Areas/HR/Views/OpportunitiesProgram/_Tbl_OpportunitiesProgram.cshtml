@@ -1,0 +1,89 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.OpportunitiesProgram.IndexViewModel
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped dataTable" id="table_OpportunitiesProgram">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th width="5%"></th>
+            <th>@Resources.HR.Kiosk.lbl_VacantNumber</th>
+            <th>@Resources.HR.Kiosk.lbl_Name</th>
+            <th>@Resources.HR.Kiosk.lbl_Department</th>
+            <th style="text-align:center">@Resources.HR.Kiosk.lbl_ExpirationDate</th>
+            <th style="text-align:center">@Resources.Common.lbl_Enabled</th>
+            <th style="text-align:center">@Resources.HR.Kiosk.lbl_Candidates</th>
+            <th>@Resources.Common.lbl_CreatedOn</th>
+            <th style="width:15%">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody class="sortable">
+        @foreach (var item in Model.OpportunitiesProgramList)
+        {
+            <tr data-departmentid="@item.DepartmentID" data-opportunityprogramid="@item.OpportunityProgramID" class="opportunities_row" isDiscarted="!(@item.Enabled)">
+                <td class="details-control" width="5%"></td>
+                <td><b>@item.OpportunityNumber</b></td>
+                <td>
+                    @item.Name <br />
+                    <span class="tag-serial"> @Resources.MFG.OperationRecords.lbl_Shift</span> : @item.ShiftDescription <br />
+                    <span class="tag-serial">@Resources.HR.Kiosk.lbl_Grade</span> : @item.GradeName
+                </td>
+                <td>@item.DepartmentName</td>
+                <td style="text-align:center">
+                    @if (item.ExpirationDate < DateTime.Today.Date)
+                    {
+                        <label class="label label-control" style="background-color:red; border-radius: 3px 4px; color:white; font-size:12px"><b>@item.ExpirationDateFormatted</b></label>
+                    }
+                    else
+                    {
+                        @item.ExpirationDateFormatted
+                    }
+                </td>
+                @if (item.Enabled)
+                {
+                    <td style="text-align:center">@Resources.Common.lbl_Yes</td>
+                }
+                else
+                {
+                    <td style="text-align:center; background-color:gold">@Resources.Common.lbl_NO</td>
+                }
+                <td style="text-align:center">@item.Candidates</td>
+                <td style="text-align:left">
+                    <b>@Resources.Common.lbl_On: </b>@item.DateAddedFormat<br />
+                    <b>@Resources.Common.lbl_By: </b>@item.UserFullName<br />
+                </td>
+                <td style="text-align:center;">
+                    <div class="btn-group">
+                        @*<button type="button" class="btn btn-info see-opportunity-program-single" title="@Resources.HR.Kiosk.btn_SeeOpportunity">
+                                <span class="fa fa-eye"></span>
+                            </button>*@
+
+                        @if (Model.AllowSendNotifications || Model.AllowFullAccess)
+                        {
+                            <button type="button" class="btn btn-warning notify-opportunity-program-single" title="@Resources.HR.Kiosk.btn_Notify">
+                                <span class="fa fa-envelope-o"></span>
+                            </button>
+                        }
+
+                        @if (Model.AllowEdit || Model.AllowFullAccess)
+                        {
+                            <button type="button" class="btn btn-success edit-opportunity-program" title="@Resources.Common.lbl_Edit">
+                                <span class="fa fa-lg fa-edit" style="color: white !important"></span>
+                            </button>
+                        }
+
+                        @if ((item.Enabled && Model.AllowEnableDisable) || (Model.AllowFullAccess && item.Enabled))
+                        {
+                            <button type="button" class="btn btn-danger disable-opportunity-program-single" title="@Resources.HR.Kiosk.btn_Disable">
+                                <span class="fa fa-ban"></span>
+                            </button>
+
+                        }
+                        else if (Model.AllowEnableDisable || Model.AllowFullAccess)
+                        {
+                            <button type="button" class="btn btn-default enable-opportunity-program-single" title="@Resources.HR.Kiosk.btn_Enable">
+                                <span class="fa fa-check-circle-o"></span>
+                            </button>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

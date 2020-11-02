@@ -1,0 +1,154 @@
+﻿@model WebSite.Areas.SG.Models.CheckInViewModel
+<div id="mo_CheckInStep2" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:3; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header">
+            <h1 class="modal-title" style="color:white">@Resources.SG.SecurityGuard.ttl_SecurityGuard</h1>
+            <div class="fa fa-home pull-right fa-5x bg-white padding-10 btnHomeButton"></div>
+        </div>
+        <div class="modal-body padding-none" style="height:80%; overflow-y:auto;overflow-x: hidden;">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txt_WhoVisits">@Resources.SG.SecurityGuard.lbl_WhoVisits</label>
+                        <div class="input width-100p" style="display: inline-flex;">
+                            @Html.TextBox("txt_WhoVisits", Model.WhoVisits, new { @class = "input-xl width-100p max-length", autocomplete = "off", @maxlength = "100" })
+                            <button id="btnClearVisit" class="btn refresh-button padding-none" title="@Resources.Common.lbl_Clear"><i class="fa fsize-25 fa-eraser"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4" id="div_CheckIn">
+                    <div class="form-group">
+                        <label class="control-label fa-2x width-85p" for="ddl_PersonCheckIngTypeList">@Resources.SG.SecurityGuard.lbl_BagdeNumber</label>
+                        <div class="input width-100p" style="display: inline-flex;">
+                            @Html.DropDownList("ddl_BadgesList", Model.BadgesList, new { @class = "input-xl width-85p" })
+                            <button id="btn_RefreshBadgesList" data-vendortypeid="@Model.VendorTypeID" class="btn refresh-button padding-none"><span class="fa fa-refresh refresh-span"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txt_PersonName">@Resources.SG.SecurityGuard.lbl_IdentificationType</label>
+                        <div class="input">
+                            @Html.DropDownList("ddl_IdentificationsList", Model.IdentificationsList, new { @class = "input-xl width-100p" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="div_IdentificationPhoto">
+                    <label class="control-label fa-2x">@Resources.SG.SecurityGuard.lbl_IdentificationPhoto</label>
+                    <form action="~/Attachments/SaveDropzoneJsUploadedFiles" class="form-dropzone needsclick dz-clickable h-100" id="form-dropzone-identification">
+                        @Html.Hidden("ReferenceID", Model.TempAttachmentID)
+                        @Html.Hidden("AttachmentType", "TEMPID")
+                        <div class="dz-message center-content padding-top-10" id="img_identification">
+                            <img src="@Model.IdenTificationPath" id="img_IdentificationPreview" />
+                        </div>
+                        <div class="center-content" id="div_DropInstruction">
+                            @Resources.Common.lbl_DropzoneClickToTake
+                        </div>
+                    </form>
+                    <div class="row" style="display:none">
+                        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                            <div id="AttachmentsTableIdentification">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-6 display-none" id="div_IdentificationPhotoMask">
+                    <div class="dz-message center-content padding-top-10" id="img_identificationMask">
+                        <img src="@Model.IdenTificationPath" id="img_IdentificationPreviewMask" />
+                    </div>
+                    @Html.Hidden("TempReferenceID", Model.TempAttachmentID)
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txt_EquipmentCode">@Resources.SG.SecurityGuard.lbl_Equipment</label>
+                        <div class="input">
+                            @Html.TextBox("txt_EquipmentCode", "", new { @class = "input-xl width-100p", autocomplete = "off" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 display-none" id="div_EquipmentTable">
+                    <table id="EqupmentTable" class="display table table-striped table-bordered table-condensed-xs margin-none">
+                        <thead>
+                            <tr class="bg-primary">
+                                <th class="fsize-25">#</th>
+                                <th class="fsize-25">@Resources.SG.SecurityGuard.lbl_Equipment</th>
+                                <th class="fsize-25">@Resources.SG.SecurityGuard.lbl_EquipmentType</th>
+                                <th class="fsize-25" style="width:22px"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var count = 1;
+                                foreach (var equipment in Model.EquipmentList)
+                                {
+                                    <tr class="row_equipment" data-equipmentid="@equipment.EquipmentID" data-upc="@equipment.UPC">
+                                        <td class="fa-2x">@count</td>
+                                        <td class="fa-2x">@equipment.EquipmentName</td>
+                                        <td class="fa-2x">@equipment.EquipmentTypeName</td>
+                                        <td class="fa-2x" title="@Resources.Common.lbl_Delete">
+                                            <button class="btn btn-danger delete-equipment-row"><span class="glyphicon glyphicon-trash fsize-25"></span></button>
+                                        </td>
+                                    </tr>
+                                    count++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @if (Model.PersonalType == "Supplier")
+                {
+                    <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+                        <label class="control-label fa-2x" for="chk_UseVehicle">@Resources.SG.SecurityGuard.lbl_UseVehicle</label>
+                        <div class="btn-group btn-group-toggle width-100p" data-toggle="buttons">
+                            @if (Model.UseVehicle)
+                            {
+                                <label class="btn fsize-25 unselectRadioLabel vehicleOptions option-no width-40p">
+                                    <input type="radio" name="options" autocomplete="off"> @Resources.Common.lbl_NO
+                                </label>
+                                <label class="btn fsize-25 unselectRadioLabel vehicleOptions option-yes width-40p active">
+                                    <input type="radio" name="options" autocomplete="off" id="btnYesUseVehicle" checked>  @Resources.Common.lbl_Yes
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="btn fsize-25 unselectRadioLabel vehicleOptions option-no width-40p active">
+                                    <input type="radio" name="options" autocomplete="off" checked> @Resources.Common.lbl_NO
+                                </label>
+                                <label class="btn fsize-25 unselectRadioLabel vehicleOptions option-yes width-40p">
+                                    <input type="radio" name="options" id="btnYesUseVehicle" autocomplete="off">  @Resources.Common.lbl_Yes
+                                </label>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+                        <label class="control-label fa-2x" for="chk_UseTools">@Resources.SG.SecurityGuard.lbl_UseTools</label>
+                        <div class="btn-group btn-group-toggle width-100p" data-toggle="buttons">
+                            @if (Model.HaveTools)
+                            {
+                                <label class="btn fsize-25 unselectRadioLabel toolsOptions option-no width-40p">
+                                    <input type="radio" name="options1" autocomplete="off"> @Resources.Common.lbl_NO
+                                </label>
+                                <label class="btn fsize-25 unselectRadioLabel toolsOptions option-yes width-40p active">
+                                    <input type="radio" name="options1" autocomplete="off" id="btnYesUseTools" checked>  @Resources.Common.lbl_Yes
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="btn fsize-25 unselectRadioLabel toolsOptions option-no width-40p active">
+                                    <input type="radio" name="options1" autocomplete="off" class="padding-top-10" checked> @Resources.Common.lbl_NO
+                                </label>
+                                <label class="btn fsize-25 unselectRadioLabel toolsOptions option-yes width-40p">
+                                    <input type="radio" name="options1" autocomplete="off" id="btnYesUseTools">  @Resources.Common.lbl_Yes
+                                </label>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-primary pull-left btn_footer dimiss-modal" data-modalid="mo_CheckInStep2">@Resources.Common.btn_Back</button>
+            <button type="button" class="btn btn-success pull-right btn_footer disabled" id="btn_RegistryCheckIn" data-personaltype="@Model.PersonalType">@Resources.SG.SecurityGuard.lbl_Registry</button>
+        </div>
+    </div>
+</div>

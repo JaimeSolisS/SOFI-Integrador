@@ -1,0 +1,78 @@
+﻿@model WebSite.Areas.QA.Models.ViewModels.Filmetric.IndexViewModel
+<div class="row">
+    <div class="col-xs-12 ">
+        <button type="button" id="new" class="btn-success btn-pretty btn-lg pull-right"><i class="fa fa-plus"></i> @Resources.Common.btn_New</button>
+    </div>    <div class="col-xs-12 ">
+        <button type="button" id="dashboard" class="btn-success btn-pretty btn-lg pull-right">Dashboard</button>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        @Html.Partial("_FiltersDashboard", Model)
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div id="Operations_Div">
+            @Html.Partial("_Tbl_Inspections", Model.InspectionList)
+        </div>
+    </div>
+</div>
+<div id="divpopup" style="display:none"></div>
+
+
+
+
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+
+    <script src="~/Scripts/QA/Filmetric/Index.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var LangResources = {
+                chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                chsn_SelectMultipleOption: "@Resources.Common.chsn_SelectMultipleOption",
+                chsn_NoResults: "@Resources.Common.chsn_NoResults",
+                ntf_SelectWarehouse: "@Resources.Catalog.ntf_SelectWarehouse",
+                ntf_SelectVendor: "@Resources.Catalog.ntf_SelectVendor",
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#search').on('click', function () {
+                var ProductID = $('#ddl_Product').val();
+                var SubstractID = $('#ddl_Substract').val();
+                var BaseID = $('#ddl_Base').val();
+                var MaterialID = $('#ddl_Material').val();
+                var txt_F_StartDay = $('#txt_F_StartDay').val();
+                var txt_F_EndDay = $('#txt_F_EndtDay').val();
+
+                window.location = "/QA/Filmetric/Index?ProductID=" + ProductID;
+            });
+
+            $('#cancel').on('click', function () {
+                $('.loading-process-div').show();
+                window.location = "/QA/Filmetric/Index";
+            });
+        });
+    </script>
+}
+
+
+
+

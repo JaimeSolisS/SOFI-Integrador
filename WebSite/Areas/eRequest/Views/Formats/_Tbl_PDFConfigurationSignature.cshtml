@@ -1,0 +1,42 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Formats.CreateViewModel
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_PFDConfigurationSignature">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.Request.lbl_Field</th>
+            <th>@Resources.Request.lbl_ImageWidth</th>
+            <th>@Resources.Request.lbl_ImageHeight</th>
+            <th>@Resources.Request.lbl_HorizontalPosition</th>
+            <th>@Resources.Request.lbl_VerticalPosition</th>
+            <th width="50">@Resources.Common.lbl_Options</th>
+
+        </tr>
+    </thead>
+    <tbody id="tbody_accessusers">
+        @foreach (var item in Model._PDFConfigurationSignature)
+        {
+            <tr data-filedetailtempid="@item.FileDetailTempID">
+                <td>@item.FieldName</td>
+                <td>
+                    <input type="text" value="@item.ImageWidth" data-columnname="ImageWidth" class="form-control QuickUpdateText decimal-1-places" autocomplete="off">
+                    @*@Html.TextBox("txt_ImageWidth", @item.ImageWidth, new { @autocomplete = "off", @class = "form-control txt_FontSize decimal-1-places" })*@
+                </td>
+                <td>
+                    <input type="text" value="@item.ImageHeight" data-columnname="ImageHeight" class="form-control QuickUpdateText decimal-1-places" autocomplete="off">
+                    @*@Html.TextBox("txt_ImageHeight", @item.ImageHeight, new { @autocomplete = "off", @class = "form-control txt_FontSize decimal-1-places" })*@
+                </td>
+                <td>
+                    <input type="text" value="@item.PositionX" data-columnname="PositionX" class="form-control QuickUpdateText decimal-1-places" autocomplete="off">
+                    @*@Html.TextBox("txt_PositionX", @item.PositionX, new { @autocomplete = "off", @class = "form-control decimal-1-places" })*@
+                </td>
+                <td>
+                    <input type="text" value="@item.PositionY" data-columnname="PositionY" class="form-control QuickUpdateText decimal-1-places" autocomplete="off">
+                    @*@Html.TextBox("txt_PositionY", @item.PositionY, new { @autocomplete = "off", @class = "form-control decimal-1-places" })*@
+                </td>
+                <td>
+                    <button class="tbl_btn_DeleteConfigurationFieldPDF btn btn-danger" title="@Resources.Request.lbl_DeleteRule" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

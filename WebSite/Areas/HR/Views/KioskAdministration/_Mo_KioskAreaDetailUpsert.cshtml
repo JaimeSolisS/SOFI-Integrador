@@ -1,0 +1,218 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskAdministration.KioskAreaDetailUpsertViewModel
+<div id="mo_KioskAreaDetailUpsert" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.HeaderModal</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    @if (!Model.IsRoot)
+                    {
+                        <div class="col-xs-6 margin-bottom-5">
+                            <div class="form-group">
+                                <label class="control-label margin-bottom-none" for="ddl_Add_Size">@Resources.CI.DashboardManagement.lbl_Parent </label>
+                                <div class="input">
+                                    @Html.DropDownList("ddl_ParentNode", Model.ParentsNodesList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-xs-6 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_Size">@Resources.CI.DashboardManagement.lbl_Section </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Section", Model.SectionsList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <table id="tb_AddKioskDetailArea" class="display table table-condensed table-striped table-bordered margin-bottom-5">
+                            <thead>
+                                <tr>
+                                    <th class="w-35prc">@Resources.Common.lbl_language</th>
+                                    <th>@Resources.CI.DashboardManagement.lbl_DetailNameTag</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb_AddKioskAreaDetailBody">
+                                @foreach (var item in Model.KioskNameTranslate)
+                                {
+                                    <tr>
+
+                                        @if (Model.KioskAreaDetailInfo.KioskAreaDetailID != 0)
+                                        {
+                                            <td data-languageid="@item.CatalogDetailID">@item.CultureID</td>
+                                            <td><input type="text" id="txt_languagetext_@item.CatalogDetailID" value="@item.DisplayText" placeholder="" class="form-control" maxlength="50" autocomplete="off" /></td>
+                                        }
+                                        else
+                                        {
+                                            <td data-languageid="@item.CatalogDetailID">@item.DisplayText</td>
+                                            <td><input type="text" id="txt_languagetext_@item.CatalogDetailID" value="" placeholder="" class="form-control" maxlength="50" autocomplete="off" /></td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="col-sm-6 margin-bottom-5" id="div_ddl_DAD_FileType">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_DAD_FileType">@Resources.HR.Kiosk.lbl_NodeType </label>
+                            <div class="input">
+                                <select id="ddl_DAD_FileType" name="ddl_DAD_FileType" data-live-search="true" class="form-control select">
+                                    @foreach (var item in Model.FileTypeList)
+                                    {
+                                        if (Model.KioskAreaDetailInfo.KioskAreaDetailID != 0 && Model.KioskAreaDetailInfo.FileTypeID == item.CatalogDetailID)
+                                        {
+                                            <option value="@item.CatalogDetailID" data-valueid="@item.ValueID" data-valid-extension="@item.Param1" selected>@item.DisplayText</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.CatalogDetailID" data-valueid="@item.ValueID" data-valid-extension="@item.Param1">@item.DisplayText</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 margin-bottom-5 @Model.FileTypeMediaOrFileCss" id="divBoxFileTypeMediaOrFile">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_Add_SourcePath">@Resources.CI.DashboardManagement.lbl_SourcePathTag </label>
+                            <div class="input-group  d-flex">
+                                <span class="input-group-addon  fa fa-link"></span>
+                                <input type="text" readonly class="form-control field-disabled TypeOfNode" placeholder="url" id="txt_Add_SourcePath" name="txt_Add_SourcePath" data-url="@Model.KioskAreaDetailInfo.SourcePath" value="@Model.KioskAreaDetailInfo.SourcePathFileName" />
+                                <button id="btn_BrowseSourcePath" class="btn btn-info @Model.SourcePathHidden" title="@Resources.Common.tt_BrowseTag">...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 margin-bottom-5 @Model.FileTypeLinkCss" id="divBoxFileTypeLink">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_Add_Href">@Resources.CI.DashboardManagement.lbl_HrefTag </label>
+                            <div class="input-group">
+                                <span class="input-group-addon fa fa-link"></span>
+                                <input type="text" class="form-control TypeOfNode" placeholder="http://sample.com" id="txt_Add_Href" name="txt_Add_Href" value="@Model.KioskAreaDetailInfo.HRef" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 margin-bottom-5" id="divVisualizationMode">
+                        <label class="control-label" for="chkHrefVisualizationMode">@Resources.HR.Kiosk.lbl_WindowMode</label>
+                        <div class="btn-group btn-group-toggle width-100p" data-toggle="buttons">
+                            <label class="btn unselectRadioLabel visuzalizationOptions option-no width-40p" id="rdoOptionNo">
+                                <input type="radio" name="options" autocomplete="off"> @Resources.Common.lbl_NO
+                            </label>
+                            <label class="btn unselectRadioLabel visuzalizationOptions option-yes width-40p" id="rdoOptionyes">
+                                <input type="radio" name="options" autocomplete="off" id="chkHrefVisualizationMode" checked="@Model.KioskAreaDetailInfo.IsWindow">  @Resources.Common.lbl_Yes
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_Size">@Resources.CI.DashboardManagement.lbl_SizeTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Add_Size", Model.KioskSizeList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_BackColor">@Resources.CI.DashboardManagement.lbl_BackColorTag </label>
+                            <div class="input" id="input_kiosk_area_detail_backgroundcolor">
+                                <input type="hidden" class="mini-color" value="@Model.BackgroundColor" id="kiosk_area_detail_backgroundcolor" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 margin-bottom-5">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_FontColor">@Resources.CI.DashboardManagement.lbl_FontColorTag </label>
+                            <div class="input" id="input_kiosk_area_detail_fontcolor">
+                                <input type="hidden" class="mini-color" value="@Model.FontColor" id="kiosk_area_detail_fontcolor" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-8 @Model.FileTypeGaleryCss divBoxFileTypeGalery">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="ddl_Add_DataEffect">@Resources.CI.DashboardManagement.lbl_DataEffectTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Add_DataEffect", Model.KioskDataEffectList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 @Model.FileTypeGaleryCss divBoxFileTypeGalery">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_Add_DataEffectDuration">@Resources.CI.DashboardManagement.lbl_DataEffectDurationTag </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control onlynumbers" placeholder="0" id="txt_Add_DataEffectDuration" maxlength="5" name="txt_Add_DataEffectDuration" value="@Model.KioskAreaDetailInfo.DataEffectDuration" style="text-align:center" />
+                                <span class="input-group-addon">@Resources.CI.DashboardManagement.lbl_SecondsTag</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 margin-bottom-5 hidden">
+                        <div class="form-group">
+                            <label class="control-label margin-bottom-none" for="txt_Add_SeqTag">@Resources.CI.DashboardManagement.lbl_SeqTag </label>
+                            <div class="input-group">
+                                <span class="input-group-addon glyphicon glyphicon-sort-by-order"></span>
+                                <input type="text" class="form-control onlynumbers" placeholder="0" maxlength="2" id="txt_Add_SeqTag" name="txt_Add_SeqTag" value="@Model.KioskAreaDetailInfo.Seq" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="tab">
+                            <button type="button" class="tablinks" id="tab_backgroundImage" onclick="ChangeTabs(event, 'backgroundImage')">@Resources.CI.DashboardManagement.lbl_BackgroundImage</button>
+                            <button type="button" class="tablinks" onclick="ChangeTabs(event, 'icon')">@Resources.CI.DashboardManagement.lbl_IconTag</button>
+                        </div>
+
+                        <div id="backgroundImage" class="tabcontent">
+                            <div class="form-group">
+                                <div class="input-group d-flex">
+                                    <span class="input-group-addon fa fa-link"></span>
+                                    <input type="text" class="form-control field-disabled" placeholder="url" id="txt_Add_BackGroundImage" name="txt_Add_BackGroundImage" disabled data-url="@Model.KioskAreaDetailInfo.BackgroundImage" value="@Model.KioskAreaDetailInfo.BackgroundImageFileName" />
+                                    <button id="btn_BrowseBackGroundImage" class="btn btn-info" title="@Resources.Common.tt_BrowseTag">...</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="icon" class="tabcontent">
+                            <div class="form-group">
+                                <div class="input">
+                                    @Html.DropDownList("ddl_Add_Icon", Model.KioskIconList, Resources.Common.chsn_SelectOption, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="hidden">
+                    <form action="~/HR/KioskAdministration/UploadKioskDetails" class="form-dropzone-backgroundimage dropzone">
+                        @Html.Hidden("TransactionDetailID", Model.TransactionID)
+                    </form>
+                    <form action="~/CI/Administration/UploadDashboardFileType" class="form-dropzone-filetype dropzone">
+                        @Html.Hidden("TransactionDetailID", Model.TransactionID)
+                        @Html.Hidden("hdnFileTypeValueID", Model.KioskAreaDetailInfo.FileTypeValueID)
+                        @Html.Hidden("hdnFileExtensions", "")
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                <button type="button" id="btn_SaveNewKioskAreasDetail" data-entityid="@Model.KioskAreaDetailInfo.KioskAreaDetailID"
+                        data-dashboardareaid="@Model.KioskAreaDetailInfo.KioskAreaID"
+                        data-parentkioskareadetailid="@Model.KioskAreaDetailInfo.ParentKioskAreaDetailID"
+                        class="btn btn-success" title="@Resources.Common.btn_Save">
+                    @Resources.Common.btn_Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

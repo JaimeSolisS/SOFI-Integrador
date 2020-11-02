@@ -1,0 +1,89 @@
+﻿
+@model WebSite.Areas.HR.Models.ViewModels.KioskRequestAdministrator.IndexViewModel
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel-body padding-none">
+            <div class="content-frame">
+                <div class="content-frame-body content-frame-body-all">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading ui-draggable-handle">
+                            <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-collapse" id="MyRequisitionsPanel"><span class="fa fa-angle-down"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-3 col-md-3">
+                                    <label>@Resources.HR.Kiosk.lbl_RequestType</label>
+                                    @Html.DropDownList("ddl_RequestTypes", Model.RequestTypesList, new { @class = "form-control RequestFilters", multiple = "multiple" })
+
+                                </div>
+                                <div class="col-xs-3 col-md-3">
+                                    <label>@Resources.HR.Kiosk.lbl_RequestStatus</label>
+                                    @Html.DropDownList("ddl_RequestStatus", Model.RequestStatusList, new { @class = "form-control RequestFilters", multiple = "multiple" })
+                                </div>
+                                <div class="col-xs-3 col-md-3">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-1">
+                                                <input id="checkbox-filter-date" class="check-range-date preserve-settings RequestFilters" type="checkbox" data-preserveaction="click">
+                                                <input id="checkdate" name="checkdate" type="hidden" value="false">
+                                            </div>
+                                            <div class="col-xs-1" style="padding-left: 0px;">
+                                                <label class="control-label" for="Datetype">@Resources.Common.lbl_Date</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-daterange input-group row">
+                                            <div class="col-xs-6 col-md-6" style="padding-right: 5px;">
+                                                <div class="input-group">
+                                                    <input type="text" id="txt_RequestStartDate" class="form-control customdatepicker RequestFilters" placeholder="Desde" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:YYYY-MM-DD}", DateTime.Now.AddDays(-7))" />
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-6" style="padding-left: 5px;">
+                                                <div class="input-group">
+                                                    <input type="text" id="txt_RequestEndDate" class="form-control customdatepicker RequestFilters" placeholder="Hasta" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:YYYY-MM-DD}", DateTime.Now)" />
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-md-3">
+                                    <label>@Resources.HR.Kiosk.lbl_Departments</label>
+                                    @Html.DropDownList("ddl_RequestDepartment", Model.RequestDepartmentsList, new { @class = "form-control RequestFilters", multiple = "multiple" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3 col-md-3">
+                                    <label>@Resources.HR.Kiosk.lbl_Requester</label>
+                                    @Html.TextBox("txt_RequestEmployee", "", new { @class = "form-control RequestFilters" })
+
+                                </div>
+                                <div class="col-xs-3 col-md-3">
+                                    <label>@Resources.HR.Kiosk.lbl_Description</label>
+                                    @Html.TextBox("txt_RequestDescription", "", new { @class = "form-control RequestFilters" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                            <button id="btn_RequestSearch" type="button" data-ispublic="@false" data-claveempleado="@Model.ClaveEmpleado" class="btn btn-info">@Resources.Common.search</button>
+                        </div>
+                    </div>
+
+                    <button id="btn_NewPrivateRequest" style="margin-bottom:2%" type="button" data-ispublic="@false" class="btn btn-info pull-right">@Resources.HR.Kiosk.lbl_NewRequest</button>
+
+                    <div class="panel">
+                        <div id="div_tbl_PublicRequests">
+                            @Html.Action("SearchRequestPrivateData", new { RequestUserID = Model.ClaveEmpleado })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

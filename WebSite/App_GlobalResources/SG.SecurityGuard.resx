@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="alert_CovidQuestionnaire" xml:space="preserve">
+    <value>Confirmo que las siguientes respuestas son verdaderas</value>
+  </data>
+  <data name="btn_AddNewBadges" xml:space="preserve">
+    <value>Agregar nuevo gafete</value>
+  </data>
+  <data name="btn_AddNewCompany" xml:space="preserve">
+    <value>Agregar nueva compañia</value>
+  </data>
+  <data name="btn_AddNewEquipment" xml:space="preserve">
+    <value>Agregar nuevo equipo</value>
+  </data>
+  <data name="btn_AddNewGuard" xml:space="preserve">
+    <value>Agregar nuevo guardia</value>
+  </data>
+  <data name="btn_NotUse" xml:space="preserve">
+    <value>No usar</value>
+  </data>
+  <data name="btn_Use" xml:space="preserve">
+    <value>Usar</value>
+  </data>
+  <data name="lbl_Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="lbl_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="lbl_AddAndNew" xml:space="preserve">
+    <value>Agregar y nuevo</value>
+  </data>
+  <data name="lbl_AddCompany" xml:space="preserve">
+    <value>Agregar compañia</value>
+  </data>
+  <data name="lbl_AddNewVendorUser" xml:space="preserve">
+    <value>Agregar nuevo empleado</value>
+  </data>
+  <data name="lbl_AvailableTools" xml:space="preserve">
+    <value>Herramientas disponibles</value>
+  </data>
+  <data name="lbl_BadgeCode" xml:space="preserve">
+    <value>Codigo del gafete</value>
+  </data>
+  <data name="lbl_Badges" xml:space="preserve">
+    <value>Gafetes</value>
+  </data>
+  <data name="lbl_BadgeType" xml:space="preserve">
+    <value>Tipo de gafete</value>
+  </data>
+  <data name="lbl_BagdeNumber" xml:space="preserve">
+    <value>N. Gafete</value>
+  </data>
+  <data name="lbl_CheckIn" xml:space="preserve">
+    <value>Entrada</value>
+  </data>
+  <data name="lbl_CheckOut" xml:space="preserve">
+    <value>Salida</value>
+  </data>
+  <data name="lbl_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="lbl_CovidQuestionnaire" xml:space="preserve">
+    <value>Cuestionario sobre COVID</value>
+  </data>
+  <data name="lbl_DateHourIn" xml:space="preserve">
+    <value>Fecha y hora de entrada</value>
+  </data>
+  <data name="lbl_DateHourOut" xml:space="preserve">
+    <value>Fecha y hora de salida</value>
+  </data>
+  <data name="lbl_Department" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="lbl_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="lbl_EditVendorUser" xml:space="preserve">
+    <value>Editar proveedor</value>
+  </data>
+  <data name="lbl_Employee" xml:space="preserve">
+    <value>Empleado</value>
+  </data>
+  <data name="lbl_Equipment" xml:space="preserve">
+    <value>Equipo</value>
+  </data>
+  <data name="lbl_EquipmentName" xml:space="preserve">
+    <value>Nombre del equipo</value>
+  </data>
+  <data name="lbl_Equipments" xml:space="preserve">
+    <value>Equipos</value>
+  </data>
+  <data name="lbl_EquipmentType" xml:space="preserve">
+    <value>Tip de equipo</value>
+  </data>
+  <data name="lbl_ExpirationDate" xml:space="preserve">
+    <value>Fecha de expiración</value>
+  </data>
+  <data name="lbl_Finish" xml:space="preserve">
+    <value>Terminar</value>
+  </data>
+  <data name="lbl_GuardName" xml:space="preserve">
+    <value>Nombre del guardia</value>
+  </data>
+  <data name="lbl_GuardNumber" xml:space="preserve">
+    <value>N. Guardia</value>
+  </data>
+  <data name="lbl_Guards" xml:space="preserve">
+    <value>Guardias</value>
+  </data>
+  <data name="lbl_IdentificationPhoto" xml:space="preserve">
+    <value>Foto de indetificación</value>
+  </data>
+  <data name="lbl_IdentificationType" xml:space="preserve">
+    <value>Tipo de Identificación</value>
+  </data>
+  <data name="lbl_Inactive" xml:space="preserve">
+    <value>Inactivo</value>
+  </data>
+  <data name="lbl_InsuranceNumber" xml:space="preserve">
+    <value>Número del seguro social</value>
+  </data>
+  <data name="lbl_Mark" xml:space="preserve">
+    <value>Marca</value>
+  </data>
+  <data name="lbl_Model" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="lbl_NBadge" xml:space="preserve">
+    <value>N. Gafete</value>
+  </data>
+  <data name="lbl_NewGuard" xml:space="preserve">
+    <value>Nuevo guardia</value>
+  </data>
+  <data name="lbl_NewName" xml:space="preserve">
+    <value>Nuevo nombre</value>
+  </data>
+  <data name="lbl_NSerie" xml:space="preserve">
+    <value>N. Serie</value>
+  </data>
+  <data name="lbl_Owner" xml:space="preserve">
+    <value>Propietario</value>
+  </data>
+  <data name="lbl_PersonCheckIngType" xml:space="preserve">
+    <value>Tipo de persona que entra</value>
+  </data>
+  <data name="lbl_PersonName" xml:space="preserve">
+    <value>Nombre de la persona</value>
+  </data>
+  <data name="lbl_PersonVerification" xml:space="preserve">
+    <value>Verificación de la persona</value>
+  </data>
+  <data name="lbl_Plates" xml:space="preserve">
+    <value>Placas</value>
+  </data>
+  <data name="lbl_PrintLabel" xml:space="preserve">
+    <value>Etiqueta</value>
+  </data>
+  <data name="lbl_ReasonForUse" xml:space="preserve">
+    <value>Motivo de uso</value>
+  </data>
+  <data name="lbl_Registry" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="lbl_ReprintAccessLabels" xml:space="preserve">
+    <value>Reimprimir etiquetas de acceso</value>
+  </data>
+  <data name="lbl_ResponsibleGuard" xml:space="preserve">
+    <value>Guardia responsable</value>
+  </data>
+  <data name="lbl_ScannBox" xml:space="preserve">
+    <value>Código de acceso</value>
+  </data>
+  <data name="lbl_Status" xml:space="preserve">
+    <value>Estatus</value>
+  </data>
+  <data name="lbl_Suppliers" xml:space="preserve">
+    <value>Proveedores</value>
+  </data>
+  <data name="lbl_ToolImgMandatory" xml:space="preserve">
+    <value>La herramienta debe llevar una imagen</value>
+  </data>
+  <data name="lbl_ToolName" xml:space="preserve">
+    <value>Nombre de la herramienta</value>
+  </data>
+  <data name="lbl_ToolNameMandatory" xml:space="preserve">
+    <value>La herramienta debe de llevar un nombre</value>
+  </data>
+  <data name="lbl_ToolRegister" xml:space="preserve">
+    <value>Registro de herramientas</value>
+  </data>
+  <data name="lbl_Tools" xml:space="preserve">
+    <value>Herramientas</value>
+  </data>
+  <data name="lbl_ToolsData" xml:space="preserve">
+    <value>Datos de las herramientas</value>
+  </data>
+  <data name="lbl_UPC" xml:space="preserve">
+    <value>UPC</value>
+  </data>
+  <data name="lbl_UploadNewPhoto" xml:space="preserve">
+    <value>Subir foto nueva</value>
+  </data>
+  <data name="lbl_Use" xml:space="preserve">
+    <value>Uso</value>
+  </data>
+  <data name="lbl_UseTools" xml:space="preserve">
+    <value>¿Usa herramientas?</value>
+  </data>
+  <data name="lbl_UseVehicle" xml:space="preserve">
+    <value>¿Usa vehículo?</value>
+  </data>
+  <data name="lbl_Vehicle" xml:space="preserve">
+    <value>Vehículo</value>
+  </data>
+  <data name="lbl_VehicleData" xml:space="preserve">
+    <value>Datos del vehículo</value>
+  </data>
+  <data name="lbl_VerificationData" xml:space="preserve">
+    <value>Datos de verificación</value>
+  </data>
+  <data name="lbl_WhoVisits" xml:space="preserve">
+    <value>¿A quién visita?</value>
+  </data>
+  <data name="msg_AddToolInstruction" xml:space="preserve">
+    <value>Por favor especificar el nombre de la herramienta y su correspondiente fotografía.</value>
+  </data>
+  <data name="msg_CheckInSessionStarted" xml:space="preserve">
+    <value>Ya tienes un registro de entrada, por favor finalizalo antes de inicar otro.</value>
+  </data>
+  <data name="msg_ConfirmDeleteVendorUser" xml:space="preserve">
+    <value>¿Seguro que desea eliminar al usuario ##USER##?</value>
+  </data>
+  <data name="msg_CovidAlertQuestion" xml:space="preserve">
+    <value>Lo sentimos, parece que no estás en condiciones de acceder a la planta.</value>
+  </data>
+  <data name="msg_DeleteBadgeConfirm" xml:space="preserve">
+    <value>¿Seguro que desea eliminar el gafete?</value>
+  </data>
+  <data name="msg_DeleteCompanyConfirm" xml:space="preserve">
+    <value>¿Seguro que desea eliminar la compañia de proveedores?</value>
+  </data>
+  <data name="msg_DeleteEquipmentConfirm" xml:space="preserve">
+    <value>¿Seguro que desea borrar el equipo?</value>
+  </data>
+  <data name="msg_DisableMissingGuard" xml:space="preserve">
+    <value>El codigo del guardia no existe o no está habilitado para dar permisos.</value>
+  </data>
+  <data name="msg_EquipmentIsScanned" xml:space="preserve">
+    <value>El equipo ya ha sido escaneado.</value>
+  </data>
+  <data name="msg_EquipmentNotFound" xml:space="preserve">
+    <value>El equipo no ha sido encontrado.</value>
+  </data>
+  <data name="msg_EquipmentRowDeleteConfirm" xml:space="preserve">
+    <value>El usuario no accederá con el equipo esta vez, ¿Es correcto?</value>
+  </data>
+  <data name="msg_ExpirationDate" xml:space="preserve">
+    <value>La fecha de expiración para el curso de seguridad de esta persona ha caducado.</value>
+  </data>
+  <data name="msg_HomeLinkConfirmation" xml:space="preserve">
+    <value>¿Seguro que desea volver al menú de inicio?</value>
+  </data>
+  <data name="msg_PleaseIdentifyYourself" xml:space="preserve">
+    <value>Por favor identifiquese</value>
+  </data>
+  <data name="msg_PrintLabelConfirm" xml:space="preserve">
+    <value>¿Seguro que desea imprimir la etiqueta{0}?</value>
+  </data>
+  <data name="msg_SuccessGuardDisable" xml:space="preserve">
+    <value>El guardia ha sido deshabilitado</value>
+  </data>
+  <data name="msg_SuccessGuardEnable" xml:space="preserve">
+    <value>El guardia ha sido habilitado</value>
+  </data>
+  <data name="msg_ToolMandatory" xml:space="preserve">
+    <value>Por favor carga y/o selecciona una herramienta.</value>
+  </data>
+  <data name="msg_UserNotInSystem" xml:space="preserve">
+    <value>No existe un usuario con esa clave en el sistema</value>
+  </data>
+  <data name="title_ExcelReport" xml:space="preserve">
+    <value>Reporte de entradas y salidas en caseta</value>
+  </data>
+  <data name="title_FullScreenImg" xml:space="preserve">
+    <value>Imagen expandida</value>
+  </data>
+  <data name="ttl_SecurityGuard" xml:space="preserve">
+    <value>Guardia de seguridad</value>
+  </data>
+</root>

@@ -1,0 +1,43 @@
+﻿@model List<Core.Entities.OperationTask>
+<table class="display table table-condensed ">
+    <thead>
+        <tr style="font-size: large;font-weight: bold;">
+            <td>@Resources.Common.lbl_CreatedOn</td>
+            <td>@Resources.MFG.Dashboard.lbl_ProblemDescription</td>
+            <td>@Resources.MFG.Dashboard.lbl_Responsible</td>
+            <td>@Resources.MFG.Dashboard.lbl_TargetDate</td>
+            <td>@Resources.Common.lbl_Status</td>
+            <td>@Resources.MFG.ActionPlan.lbl_SuggestedAction</td>
+            <td>@Resources.MFG.ActionPlan.lbl_Comments</td>
+            <td>@Resources.MFG.ActionPlan.lbl_AssignTask</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr style="font-size: large;" data-entityid="@item.OperationTaskID">
+            <td>@item.DateAddedFormat</td>
+            <td>
+                @Resources.MFG.Dashboard.lbl_Machine : @item.MachineName
+                <br />
+                @item.ProblemDescription
+            </td>
+            <td>
+                @item.ResponsibleFullName
+                <br />
+                @item.AttendantUserName
+            </td>
+            <td>@item.TargetDateFormat</td>
+            <td>@item.StatusName</td>
+            <td>@item.SuggestedAction</td>
+            <td>@item.OpTaskDetailLastComment</td>
+            <td>
+                @if (item.StatusValue == "U")
+                {
+                    <button class="btn btn-primary assigned" style="background-color:cornflowerblue; border-color:cornflowerblue" title="@Resources.MFG.ActionPlan.btn_Assigned"><span class="glyphicon glyphicon-user"></span></button>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

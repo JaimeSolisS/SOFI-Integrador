@@ -1,0 +1,28 @@
+﻿@model WebSite.Areas.Production.Models.Goals.TableDetailViewModel
+<div class="slider">
+    <table class="display table table-striped table-bordered table-condensed-xs margin-none" id="@Model.TableID" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th class="left">@Resources.ProductionGoal.gvh_HourTag</th>
+                <th class="left">@Resources.ProductionGoal.gvh_GoalValueTag</th>
+                <th class="w-45 margin-none padding-0" >
+                    <button class="btn btn-info save-production-details" data-production-goalid="@Model.GoalID" title="@Resources.ProductionGoal.tt_SaveGoals"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ProductionGoalsDetails)
+            {
+            <tr class="font-size-sm">
+                <td>
+                    @item.HourValueFormat
+                </td>
+                <td colspan="2">
+                    <input type="text" maxlength="10" class="form-control production-detail-value onlydecimals" data-entityid="@item.GoalDetailID" data-hour="@item.HourValue" placeholder="0.00" value="@item.GoalValue" />
+                </td>
+                
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

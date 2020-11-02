@@ -1,0 +1,20 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Reports.ReportParamViewModel
+<div id="params_report_@Model.Report.CatalogDetailID" class="panel panel-primary params_panel">
+    <div class="panel-heading ui-draggable-handle">
+        <h3 class="panel-title">
+            @Model.Report.DisplayText @Resources.MFG.Reports.lbl_Parameters
+        </h3>
+        <ul class="panel-controls">
+            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+        </ul>
+    </div>
+
+    <div class="panel-body">
+        @*filtros especificaos del reporte, basados en el ValueID del report*@
+        @Html.Action("GetParams_"+ Model.Report.ValueID)        
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+        <button class="btn btn-info btn-pretty btn_export" data-entityid="@Model.Report.CatalogDetailID">@Resources.MFG.Reports.lbl_Export</button>
+    </div>
+</div>

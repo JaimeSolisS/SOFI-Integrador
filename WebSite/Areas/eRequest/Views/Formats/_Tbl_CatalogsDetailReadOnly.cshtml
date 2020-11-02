@@ -1,0 +1,23 @@
+﻿@model List<Core.Entities.CatalogDetailTemp>
+
+<div class="slider">
+    <table class="display datatable table table-condensed table-striped" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+                <th style="text-align: left;">@Resources.Catalog.gvH_ValueID</th>
+                <th style="text-align: left;">@Resources.Common.gvH_UpdatedBy</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+                <tr class="font-size-sm">
+                    <td>
+                        <label class="control-label">@m.ValueID</label>
+                    </td>
+                    <td>@m.UserName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

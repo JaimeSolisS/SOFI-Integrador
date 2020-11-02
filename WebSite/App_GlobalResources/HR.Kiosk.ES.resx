@@ -1,0 +1,939 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="alert_CommentsInstructions" xml:space="preserve">
+    <value>Por favor indique sus comentarios</value>
+  </data>
+  <data name="alert_NonPointsExchange" xml:space="preserve">
+    <value>No estamos en periodo de intercambio de puntos, gracias por su comprensión.</value>
+  </data>
+  <data name="alert_PrivateOpportunitiesProgram" xml:space="preserve">
+    <value>Abajo se muestra un listado con las oportunidades laborales activas.</value>
+  </data>
+  <data name="alert_PrivateRequestsInfo" xml:space="preserve">
+    <value>Ésta es una lista con las solicitudes que ha realizado en la empresa durante su estancia.</value>
+  </data>
+  <data name="alert_PrivateSuggestionInfo" xml:space="preserve">
+    <value>Ésta es una lista con las sugerencias que ha realizado en la empresa durante su estancia.</value>
+  </data>
+  <data name="alert_SelectRequestCategory" xml:space="preserve">
+    <value>Por favor seleccionar una categoría para el tipo de solicitud a realizar</value>
+  </data>
+  <data name="bth_MarkDone" xml:space="preserve">
+    <value>Marcar solicitud como terminada</value>
+  </data>
+  <data name="btn_Assign" xml:space="preserve">
+    <value>Asignar solicitud</value>
+  </data>
+  <data name="btn_CloseRequest" xml:space="preserve">
+    <value>Cerrar solicitud</value>
+  </data>
+  <data name="btn_CreateNewOpportunity" xml:space="preserve">
+    <value>Crear nueva oportunidad</value>
+  </data>
+  <data name="btn_Disable" xml:space="preserve">
+    <value>Deshabilitar</value>
+  </data>
+  <data name="btn_Enable" xml:space="preserve">
+    <value>Habilitar</value>
+  </data>
+  <data name="btn_Excel" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="btn_KioskNewPublicRequisition" xml:space="preserve">
+    <value>Nueva solicitud pública</value>
+  </data>
+  <data name="btn_KioskSeePublicRequisitions" xml:space="preserve">
+    <value>Ver solicitudes públicas</value>
+  </data>
+  <data name="btn_Logout" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="btn_Notify" xml:space="preserve">
+    <value>Notificar</value>
+  </data>
+  <data name="btn_RejectRequest" xml:space="preserve">
+    <value>Rechazar solicitud</value>
+  </data>
+  <data name="btn_ReOpen" xml:space="preserve">
+    <value>Re abrir</value>
+  </data>
+  <data name="btn_SeeOpportunity" xml:space="preserve">
+    <value>Ver oportunidad</value>
+  </data>
+  <data name="btn_Suggestions" xml:space="preserve">
+    <value>Sugerencias</value>
+  </data>
+  <data name="lblVideoURL" xml:space="preserve">
+    <value>URL del video</value>
+  </data>
+  <data name="lbl_AccumulatedSavings" xml:space="preserve">
+    <value>Ahorro acumulado</value>
+  </data>
+  <data name="lbl_Action" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="lbl_AddedBy" xml:space="preserve">
+    <value>Agregado por</value>
+  </data>
+  <data name="lbl_Address" xml:space="preserve">
+    <value>Direccion</value>
+  </data>
+  <data name="lbl_AdmissionDate" xml:space="preserve">
+    <value>Fecha de Ingreso</value>
+  </data>
+  <data name="lbl_AlertNewOpportunity" xml:space="preserve">
+    <value>Alerta de nueva oportunidad laboral</value>
+  </data>
+  <data name="lbl_AlignCenter" xml:space="preserve">
+    <value>Alinear al centro</value>
+  </data>
+  <data name="lbl_AlignLeft" xml:space="preserve">
+    <value>Alinear a la izquierda</value>
+  </data>
+  <data name="lbl_AlignRight" xml:space="preserve">
+    <value>Alinear a al derecha</value>
+  </data>
+  <data name="lbl_ApplyVacancy" xml:space="preserve">
+    <value>Aplicar para la vacante</value>
+  </data>
+  <data name="lbl_Attention" xml:space="preserve">
+    <value>Atención</value>
+  </data>
+  <data name="lbl_Available" xml:space="preserve">
+    <value>Disponibles</value>
+  </data>
+  <data name="lbl_AvailableCourses" xml:space="preserve">
+    <value>Cursos disponibles</value>
+  </data>
+  <data name="lbl_AvailableItems" xml:space="preserve">
+    <value>Articulos disponibles</value>
+  </data>
+  <data name="lbl_Availables" xml:space="preserve">
+    <value>Disponibles</value>
+  </data>
+  <data name="lbl_AvailableVacationDays" xml:space="preserve">
+    <value>Días disponibles de vacaciones</value>
+  </data>
+  <data name="lbl_B7Available" xml:space="preserve">
+    <value>Permiso B7 disponible</value>
+  </data>
+  <data name="lbl_BackgroundColor" xml:space="preserve">
+    <value>Color de fondo</value>
+  </data>
+  <data name="lbl_Bold" xml:space="preserve">
+    <value>Negrita</value>
+  </data>
+  <data name="lbl_CancelledByUser" xml:space="preserve">
+    <value>Cancelado por el usuario</value>
+  </data>
+  <data name="lbl_CancelRequest" xml:space="preserve">
+    <value>Cancelar solicitud</value>
+  </data>
+  <data name="lbl_CancelRequestAlertText" xml:space="preserve">
+    <value>Por favor indique en los comentarios la razon de la cancelación de la solicitud</value>
+  </data>
+  <data name="lbl_Candidates" xml:space="preserve">
+    <value>Candidatos</value>
+  </data>
+  <data name="lbl_CarouselMedia" xml:space="preserve">
+    <value>Imágenes y vídeos del carrusel</value>
+  </data>
+  <data name="lbl_CarouselTransitionTime" xml:space="preserve">
+    <value>Tiempo de transición del carrusel</value>
+  </data>
+  <data name="lbl_Category" xml:space="preserve">
+    <value>Categoría</value>
+  </data>
+  <data name="lbl_CloseRequest" xml:space="preserve">
+    <value>Cerrar solicitudes</value>
+  </data>
+  <data name="lbl_Code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="lbl_CommentCategories" xml:space="preserve">
+    <value>Categorías de comentarios</value>
+  </data>
+  <data name="lbl_Comments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="lbl_Concept" xml:space="preserve">
+    <value>Concepto</value>
+  </data>
+  <data name="lbl_CourseInscription" xml:space="preserve">
+    <value>Incripción a curso</value>
+  </data>
+  <data name="lbl_CourseInscriptionQuestion" xml:space="preserve">
+    <value>¿Seguro que desea inscribirse al curso?</value>
+  </data>
+  <data name="lbl_Courses" xml:space="preserve">
+    <value>Cursos</value>
+  </data>
+  <data name="lbl_CURP" xml:space="preserve">
+    <value>CURP</value>
+  </data>
+  <data name="lbl_DashboardGasket_YieldDefectsReport" xml:space="preserve">
+    <value>Reporte de gráfica de yield defects</value>
+  </data>
+  <data name="lbl_Department" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="lbl_Departments" xml:space="preserve">
+    <value>Departamentos</value>
+  </data>
+  <data name="lbl_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="lbl_DescriptionFormTextEditor" xml:space="preserve">
+    <value>Descripción del editor de texto</value>
+  </data>
+  <data name="lbl_DescriptionType" xml:space="preserve">
+    <value>Tipo de descripción</value>
+  </data>
+  <data name="lbl_Disabled" xml:space="preserve">
+    <value>Deshabilitada</value>
+  </data>
+  <data name="lbl_Discard" xml:space="preserve">
+    <value>Descartar</value>
+  </data>
+  <data name="lbl_DocumentStyle" xml:space="preserve">
+    <value>Estílo de documento</value>
+  </data>
+  <data name="lbl_EditOpportunity" xml:space="preserve">
+    <value>Editar oportunidad</value>
+  </data>
+  <data name="lbl_Egress" xml:space="preserve">
+    <value>Salida</value>
+  </data>
+  <data name="lbl_eMail" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="lbl_EmailReceiptSendedSuccess" xml:space="preserve">
+    <value>La información de tus recibos ha sido enviada a tu correo.</value>
+  </data>
+  <data name="lbl_EmailVerification" xml:space="preserve">
+    <value>Verificación de email</value>
+  </data>
+  <data name="lbl_EmployeeFootprint" xml:space="preserve">
+    <value>N. empleado y huella</value>
+  </data>
+  <data name="lbl_EmpNum" xml:space="preserve">
+    <value>N. empleado</value>
+  </data>
+  <data name="lbl_Enabled" xml:space="preserve">
+    <value>Habilitada</value>
+  </data>
+  <data name="lbl_EndRegistry" xml:space="preserve">
+    <value>Termina registro</value>
+  </data>
+  <data name="lbl_Entrance" xml:space="preserve">
+    <value>Entrada</value>
+  </data>
+  <data name="lbl_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="lbl_ExpirationDate" xml:space="preserve">
+    <value>Fecha de expiración</value>
+  </data>
+  <data name="lbl_ExportRequestExcel" xml:space="preserve">
+    <value>Exportar la información a excel</value>
+  </data>
+  <data name="lbl_ExtraHours" xml:space="preserve">
+    <value>Horas extras</value>
+  </data>
+  <data name="lbl_Facility" xml:space="preserve">
+    <value>Planta</value>
+  </data>
+  <data name="lbl_FinishPetition" xml:space="preserve">
+    <value>Terminar petición</value>
+  </data>
+  <data name="lbl_ForegroundColor" xml:space="preserve">
+    <value>Primer plano</value>
+  </data>
+  <data name="lbl_FreeText" xml:space="preserve">
+    <value>Texto libre</value>
+  </data>
+  <data name="lbl_GeneratePetition" xml:space="preserve">
+    <value>Generar petición</value>
+  </data>
+  <data name="lbl_Grade" xml:space="preserve">
+    <value>Grado</value>
+  </data>
+  <data name="lbl_Header1" xml:space="preserve">
+    <value>Encabezado 1</value>
+  </data>
+  <data name="lbl_Header2" xml:space="preserve">
+    <value>Encabezado 2</value>
+  </data>
+  <data name="lbl_Header3" xml:space="preserve">
+    <value>Encabezado 3</value>
+  </data>
+  <data name="lbl_Header4" xml:space="preserve">
+    <value>Encabezado 4</value>
+  </data>
+  <data name="lbl_Header5" xml:space="preserve">
+    <value>Encabezado 5</value>
+  </data>
+  <data name="lbl_Header6" xml:space="preserve">
+    <value>Encabezado 6</value>
+  </data>
+  <data name="lbl_Hour" xml:space="preserve">
+    <value>Hora(s)</value>
+  </data>
+  <data name="lbl_Images" xml:space="preserve">
+    <value>Imagen(es)</value>
+  </data>
+  <data name="lbl_ImageURL" xml:space="preserve">
+    <value>Imagen URL</value>
+  </data>
+  <data name="lbl_Indent" xml:space="preserve">
+    <value>Aumentar sangría</value>
+  </data>
+  <data name="lbl_InscribedCourses" xml:space="preserve">
+    <value>Cursos inscritos</value>
+  </data>
+  <data name="lbl_InscriptionDate" xml:space="preserve">
+    <value>Fecha de inscripción</value>
+  </data>
+  <data name="lbl_InsertHorizontalRule" xml:space="preserve">
+    <value>Insertar regla horizontal</value>
+  </data>
+  <data name="lbl_InsertImage" xml:space="preserve">
+    <value>Insertar imagen</value>
+  </data>
+  <data name="lbl_InsertLink" xml:space="preserve">
+    <value>Insert Link</value>
+  </data>
+  <data name="lbl_InsertVideo" xml:space="preserve">
+    <value>Insertar video</value>
+  </data>
+  <data name="lbl_InsufficientPoints" xml:space="preserve">
+    <value>No cuentas con los puntos necesarios para canjear los productos.</value>
+  </data>
+  <data name="lbl_Invoice" xml:space="preserve">
+    <value>Folio</value>
+  </data>
+  <data name="lbl_Italic" xml:space="preserve">
+    <value>Itálica</value>
+  </data>
+  <data name="lbl_JustifyFull" xml:space="preserve">
+    <value>Justificar</value>
+  </data>
+  <data name="lbl_Key" xml:space="preserve">
+    <value>Clave</value>
+  </data>
+  <data name="lbl_KeyboardShortcuts" xml:space="preserve">
+    <value>Atajos del teclado</value>
+  </data>
+  <data name="lbl_KioskParameters" xml:space="preserve">
+    <value>Parámetros del kiosco</value>
+  </data>
+  <data name="lbl_LoginDomainUserPass" xml:space="preserve">
+    <value>Escoge el dominio e introduce tu usuario y contraseña.</value>
+  </data>
+  <data name="lbl_LoginSensorInstructions" xml:space="preserve">
+    <value>Introduce tu número de empleado.</value>
+  </data>
+  <data name="lbl_LoginSensorInstructionsFinger" xml:space="preserve">
+    <value>Coloca tu huella en el sensor.</value>
+  </data>
+  <data name="lbl_MaritalStatus" xml:space="preserve">
+    <value>Estado civil</value>
+  </data>
+  <data name="lbl_MarkDone" xml:space="preserve">
+    <value>Marcar como terminado</value>
+  </data>
+  <data name="lbl_MarkRead" xml:space="preserve">
+    <value>Marcar leido</value>
+  </data>
+  <data name="lbl_MovementType" xml:space="preserve">
+    <value>Tipo de movimiento</value>
+  </data>
+  <data name="lbl_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lbl_NewOpportunity" xml:space="preserve">
+    <value>Nueva oportunidad</value>
+  </data>
+  <data name="lbl_NewOpportunityInfo" xml:space="preserve">
+    <value>Información de nueva oportunidad</value>
+  </data>
+  <data name="lbl_NewRequest" xml:space="preserve">
+    <value>Nueva solicitud</value>
+  </data>
+  <data name="lbl_NNS" xml:space="preserve">
+    <value>NNS</value>
+  </data>
+  <data name="lbl_Node" xml:space="preserve">
+    <value>Nodo</value>
+  </data>
+  <data name="lbl_NodeType" xml:space="preserve">
+    <value>Tipo de nodo</value>
+  </data>
+  <data name="lbl_NoItemsSelected" xml:space="preserve">
+    <value>No se ha seleccionado ningun articulo para canjear todavía</value>
+  </data>
+  <data name="lbl_Note" xml:space="preserve">
+    <value>Nota</value>
+  </data>
+  <data name="lbl_NRequest" xml:space="preserve">
+    <value>N. Solicitud</value>
+  </data>
+  <data name="lbl_Observations" xml:space="preserve">
+    <value>Observaciones</value>
+  </data>
+  <data name="lbl_OpenRequestDate" xml:space="preserve">
+    <value>Fecha de solicitud</value>
+  </data>
+  <data name="lbl_OpenWindow" xml:space="preserve">
+    <value>Abrir ventana</value>
+  </data>
+  <data name="lbl_OpportunitiesProgram" xml:space="preserve">
+    <value>Programa Oportunidades</value>
+  </data>
+  <data name="lbl_Ordered" xml:space="preserve">
+    <value>Ordenar</value>
+  </data>
+  <data name="lbl_Outdent" xml:space="preserve">
+    <value>Reducir sangría</value>
+  </data>
+  <data name="lbl_ParagraphFormatting" xml:space="preserve">
+    <value>Formato del parrafo</value>
+  </data>
+  <data name="lbl_PaymentReceipts" xml:space="preserve">
+    <value>Recibos de pago</value>
+  </data>
+  <data name="lbl_Petition" xml:space="preserve">
+    <value>Petición</value>
+  </data>
+  <data name="lbl_Petitions" xml:space="preserve">
+    <value>Peticiones</value>
+  </data>
+  <data name="lbl_Phone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="lbl_Points" xml:space="preserve">
+    <value>Puntos</value>
+  </data>
+  <data name="lbl_PointsDetail" xml:space="preserve">
+    <value>Detalles de puntos</value>
+  </data>
+  <data name="lbl_PointsExchange" xml:space="preserve">
+    <value>Intercambio de puntos</value>
+  </data>
+  <data name="lbl_PointsExchangeConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que desea canjear los puntos?</value>
+  </data>
+  <data name="lbl_PointsExchangeConfirmTitle" xml:space="preserve">
+    <value>Confirmación de canjeo de puntos</value>
+  </data>
+  <data name="lbl_PointsToExchange" xml:space="preserve">
+    <value>Puntos a canjear</value>
+  </data>
+  <data name="lbl_PrePayRoll" xml:space="preserve">
+    <value>Prenomina</value>
+  </data>
+  <data name="lbl_PrivateRequestsList" xml:space="preserve">
+    <value>Solicitudes privadas</value>
+  </data>
+  <data name="lbl_PublicationType" xml:space="preserve">
+    <value>Tipo de publicación</value>
+  </data>
+  <data name="lbl_PublicRequestsList" xml:space="preserve">
+    <value>Solicitudes públicas</value>
+  </data>
+  <data name="lbl_Quantity" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="lbl_Quote" xml:space="preserve">
+    <value>Comas</value>
+  </data>
+  <data name="lbl_Rank" xml:space="preserve">
+    <value>Grado</value>
+  </data>
+  <data name="lbl_ReadAll" xml:space="preserve">
+    <value>Marcar todo como leído</value>
+  </data>
+  <data name="lbl_Reasons" xml:space="preserve">
+    <value>Razones</value>
+  </data>
+  <data name="lbl_Receipts" xml:space="preserve">
+    <value>Recibos</value>
+  </data>
+  <data name="lbl_Receiver" xml:space="preserve">
+    <value>Receptor</value>
+  </data>
+  <data name="lbl_Redo" xml:space="preserve">
+    <value>Rehacer</value>
+  </data>
+  <data name="lbl_Register" xml:space="preserve">
+    <value>Inscribirse</value>
+  </data>
+  <data name="lbl_Reject" xml:space="preserve">
+    <value>Rechazar</value>
+  </data>
+  <data name="lbl_RejectRequest" xml:space="preserve">
+    <value>Rechazar solicitud</value>
+  </data>
+  <data name="lbl_RejectRequestAlertText" xml:space="preserve">
+    <value>Por favor indique en los comentarios la razón del rechazo de la(s) solicitud(es)</value>
+  </data>
+  <data name="lbl_Remaining" xml:space="preserve">
+    <value>Restantes</value>
+  </data>
+  <data name="lbl_RemoveFontStyle" xml:space="preserve">
+    <value>Remover estilo de letra</value>
+  </data>
+  <data name="lbl_ReOpen" xml:space="preserve">
+    <value>Re abrir</value>
+  </data>
+  <data name="lbl_ReOpenRequestAlertText" xml:space="preserve">
+    <value>Por favor indique en los comentarios la razón de re abrir la(s) solicitud(es)</value>
+  </data>
+  <data name="lbl_Request" xml:space="preserve">
+    <value>Solicitud</value>
+  </data>
+  <data name="lbl_Requester" xml:space="preserve">
+    <value>Solicitante</value>
+  </data>
+  <data name="lbl_RequestNumber" xml:space="preserve">
+    <value>N. Solicitud</value>
+  </data>
+  <data name="lbl_Requests" xml:space="preserve">
+    <value>Solicitudes</value>
+  </data>
+  <data name="lbl_RequestStatus" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="lbl_RequestType" xml:space="preserve">
+    <value>Tipo de solicitud</value>
+  </data>
+  <data name="lbl_RequestViewer" xml:space="preserve">
+    <value>Visor de solicitudes</value>
+  </data>
+  <data name="lbl_ResetDefault" xml:space="preserve">
+    <value>Restaurar por defecto</value>
+  </data>
+  <data name="lbl_Responsible" xml:space="preserve">
+    <value>Responsable</value>
+  </data>
+  <data name="lbl_ResponsibleFiltersSearch" xml:space="preserve">
+    <value>Nombre / Correo  /# Empleado</value>
+  </data>
+  <data name="lbl_Responsibles" xml:space="preserve">
+    <value>Responsables</value>
+  </data>
+  <data name="lbl_RFC" xml:space="preserve">
+    <value>RFC</value>
+  </data>
+  <data name="lbl_SavingsFundBalance" xml:space="preserve">
+    <value>Saldo fondo de ahorro</value>
+  </data>
+  <data name="lbl_SavingsWithdrawn" xml:space="preserve">
+    <value>Ahorro retirado</value>
+  </data>
+  <data name="lbl_ScreenSaverInterval" xml:space="preserve">
+    <value>Intervalo de protector de pantalla</value>
+  </data>
+  <data name="lbl_SelectAtLeastOneReceipt" xml:space="preserve">
+    <value>Selecciona al menos un recibo</value>
+  </data>
+  <data name="lbl_SelectFromFiles" xml:space="preserve">
+    <value>Seleccionar de archivos</value>
+  </data>
+  <data name="lbl_SendByEmail" xml:space="preserve">
+    <value>Enviar por correo</value>
+  </data>
+  <data name="lbl_SendMarkedReceipts" xml:space="preserve">
+    <value>Enviar recibos marcados</value>
+  </data>
+  <data name="lbl_SessionTime" xml:space="preserve">
+    <value>Tiempo de sesión</value>
+  </data>
+  <data name="lbl_SetTransparent" xml:space="preserve">
+    <value>Colocar transparencia</value>
+  </data>
+  <data name="lbl_StartRegistry" xml:space="preserve">
+    <value>Inicia registro</value>
+  </data>
+  <data name="lbl_Strikethrough" xml:space="preserve">
+    <value>Tachado</value>
+  </data>
+  <data name="lbl_Success" xml:space="preserve">
+    <value>Éxito</value>
+  </data>
+  <data name="lbl_SuggestedBy" xml:space="preserve">
+    <value>Sugerido por</value>
+  </data>
+  <data name="lbl_Suggestions" xml:space="preserve">
+    <value>Sugerencias</value>
+  </data>
+  <data name="lbl_TextboxDefectQty" xml:space="preserve">
+    <value>O coloca la cantidad aquí</value>
+  </data>
+  <data name="lbl_TextDisplay" xml:space="preserve">
+    <value>Mostrar texto</value>
+  </data>
+  <data name="lbl_TextFormatting" xml:space="preserve">
+    <value>Formato de texto</value>
+  </data>
+  <data name="lbl_TimeRunningOutSessionMsg" xml:space="preserve">
+    <value>Quedan {0} segundos para que termine su sesión, presione continuar si desea seguir utilizando los servicios del kiosco.</value>
+  </data>
+  <data name="lbl_TimeRunningOutSessionTitle" xml:space="preserve">
+    <value>Su tiempo de sesión se agota.</value>
+  </data>
+  <data name="lbl_Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="lbl_Underline" xml:space="preserve">
+    <value>Subrayado</value>
+  </data>
+  <data name="lbl_Undo" xml:space="preserve">
+    <value>Deshacer</value>
+  </data>
+  <data name="lbl_Unordered" xml:space="preserve">
+    <value>Desordenar</value>
+  </data>
+  <data name="lbl_UnreadedNotifications" xml:space="preserve">
+    <value>Cantidad de notificaciones sin leer</value>
+  </data>
+  <data name="lbl_URLquestion" xml:space="preserve">
+    <value>Pregunta URL</value>
+  </data>
+  <data name="lbl_UserPasswordIncorrect" xml:space="preserve">
+    <value>Usuario y/o contraseña incorrectos.</value>
+  </data>
+  <data name="lbl_UserWithoutEmail" xml:space="preserve">
+    <value>Usuario sin correo electrónico. Por favor póngase en contacto con el departamento de recursos humanos para obtener asistencia.</value>
+  </data>
+  <data name="lbl_UserWithoutEmployeeNumber" xml:space="preserve">
+    <value>El usuario no tiene un número de empleado asignado, por favor contacte con recursos humanos para resolver este detalle.</value>
+  </data>
+  <data name="lbl_VacantName" xml:space="preserve">
+    <value>Vacante</value>
+  </data>
+  <data name="lbl_VacantNumber" xml:space="preserve">
+    <value>N. Vacante</value>
+  </data>
+  <data name="lbl_Vacations" xml:space="preserve">
+    <value>Vacaciones</value>
+  </data>
+  <data name="lbl_ViewPDF" xml:space="preserve">
+    <value>Ver PDF</value>
+  </data>
+  <data name="lbl_WelcomeToKiosk" xml:space="preserve">
+    <value>Bienvenido al kiosco</value>
+  </data>
+  <data name="lbl_WindowMode" xml:space="preserve">
+    <value>¿Modo ventana?</value>
+  </data>
+  <data name="lbl_WorkingHours" xml:space="preserve">
+    <value>Horas laborales</value>
+  </data>
+  <data name="msg_AlertCandidateToAcceptModal" xml:space="preserve">
+    <value>Capture un mensaje que se enviará al usuario aceptado.</value>
+  </data>
+  <data name="msg_AlertCandidateToDiscardModal" xml:space="preserve">
+    <value>Por favor capture un mensaje que se enviará al usuario a descartar.</value>
+  </data>
+  <data name="msg_AlertRequestDescriptionInstructions" xml:space="preserve">
+    <value>Por favor captura una descripción para tu solicitud.</value>
+  </data>
+  <data name="msg_AlertRequestsTypeInstructions" xml:space="preserve">
+    <value>Por favor elige el tipo de solicitud a realizar.</value>
+  </data>
+  <data name="msg_AlertRequestUserInstructions" xml:space="preserve">
+    <value>Por favor rellena la siguiente información para identificarte.</value>
+  </data>
+  <data name="msg_AlertSendNotificationInstructions" xml:space="preserve">
+    <value>Por favor redacte el mensaje a enviar a los candidatos</value>
+  </data>
+  <data name="msg_AlertSendSingleNotificationInstructions" xml:space="preserve">
+    <value>Por favor escriba el mensaje para enviar al candidato</value>
+  </data>
+  <data name="msg_AlertSuggestionMandatoryFields" xml:space="preserve">
+    <value>Por favor seleccione una categoría e introduzca sus comentarios.</value>
+  </data>
+  <data name="msg_ApplyVacancyConfirm" xml:space="preserve">
+    <value>Esta apunto de aplicar a la vacante #VACANCY#. ¿Desea continuar?</value>
+  </data>
+  <data name="msg_BackgroundImageAlertInfo" xml:space="preserve">
+    <value>El cambio de la imagen de fondo no se aplica hasta que presiones guardar</value>
+  </data>
+  <data name="msg_CancelRequestConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que desea cancelar la solicitud?</value>
+  </data>
+  <data name="msg_CandidatesMessageMandatory" xml:space="preserve">
+    <value>Por favor redacte el mensaje para los candidatos</value>
+  </data>
+  <data name="msg_ChooseADepartment" xml:space="preserve">
+    <value>Por favor elige un departamento</value>
+  </data>
+  <data name="msg_ChooseAShift" xml:space="preserve">
+    <value>Por favor elige un turno</value>
+  </data>
+  <data name="msg_ChooseRequestType" xml:space="preserve">
+    <value>Por favor elige un tipo de solicitud</value>
+  </data>
+  <data name="msg_CloseRequestConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que desea cerrar la solicitud?</value>
+  </data>
+  <data name="msg_ConfirmCarouselMediaDelete" xml:space="preserve">
+    <value>¿Estas seguro que deseas eliminar el elemento del carrusel?</value>
+  </data>
+  <data name="msg_ConfirmMarkRequestAssign" xml:space="preserve">
+    <value>¿Seguro que desea asignar la solicitud?</value>
+  </data>
+  <data name="msg_ConfirmMarkRequestDone" xml:space="preserve">
+    <value>¿Seguro que desea cerrar la solicitud?</value>
+  </data>
+  <data name="msg_ConfirmMarkRequestFinish" xml:space="preserve">
+    <value>¿Seguro que desea dar por terminada la solicitud?</value>
+  </data>
+  <data name="msg_ConfirmRemoveBackgroundKiosk" xml:space="preserve">
+    <value>¿Deseas remover la imagen de fondo aplicada?</value>
+  </data>
+  <data name="msg_DefectsDefectsChartsHelp" xml:space="preserve">
+    <value>Las gráficas que se encuentran del lado derecho de la pantalla, muestran el porcentaje de defectos contra los otros defectos, de este modo, muestran que defectos se produjeron mas y cuales menos.</value>
+  </data>
+  <data name="msg_DeleteAreaConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que desea borrar la sección?</value>
+  </data>
+  <data name="msg_DeleteAreaDetailConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que desea borrar los detalles de la sección?</value>
+  </data>
+  <data name="msg_DeleteNodeConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que desea borrar el nodo?</value>
+  </data>
+  <data name="msg_DeleteSuggestionConfirm" xml:space="preserve">
+    <value>¿Está seguro que desea eliminar la sugerencia?</value>
+  </data>
+  <data name="msg_DisableVacantConfirm" xml:space="preserve">
+    <value>La vacante se deshabilitará. ¿Desea continuar?</value>
+  </data>
+  <data name="msg_EnableVacantConfirm" xml:space="preserve">
+    <value>La vacante se habilitará. ¿Desea continuar?</value>
+  </data>
+  <data name="msg_FinishedByUser" xml:space="preserve">
+    <value>Finalizado por el usuario</value>
+  </data>
+  <data name="msg_GrossDefectsChartsHelp" xml:space="preserve">
+    <value>Las gráficas que se encuentran del lado izquierdo de la pantalla, muestran el porcentaje de defectos comparados con la producción total proveniente de la información de apriso.</value>
+  </data>
+  <data name="msg_InvalidUser" xml:space="preserve">
+    <value>El usuario ingresado no es válido</value>
+  </data>
+  <data name="msg_IsYourEmailQuestion" xml:space="preserve">
+    <value>El recibo se enviará al siguiente correo ##EMAIL##. ¿Desea continuar?</value>
+  </data>
+  <data name="msg_KioskConfigurationSaved" xml:space="preserve">
+    <value>La configuración del kiosco se ha guardado correctamente</value>
+  </data>
+  <data name="msg_LogoutConfirm" xml:space="preserve">
+    <value>¿Estás seguro de que quieres cerrar sesión?</value>
+  </data>
+  <data name="msg_MandatoryDescription" xml:space="preserve">
+    <value>Danos un poco mas de información de tu solicitud</value>
+  </data>
+  <data name="msg_MandatoryFileReference" xml:space="preserve">
+    <value>Debes cargar un archivo o introducir un link de referencia</value>
+  </data>
+  <data name="msg_MandatoryNodeType" xml:space="preserve">
+    <value>Debes escoger un tipo de nodo</value>
+  </data>
+  <data name="msg_MarkDoneRequestConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que desea marcar como terminada la solicitud?</value>
+  </data>
+  <data name="msg_MarkRequestConfirmMessage" xml:space="preserve">
+    <value>¿Desea finalizar la petición?</value>
+  </data>
+  <data name="msg_PleaseIdentify" xml:space="preserve">
+    <value>Ayudanos a saber quien eres. Identificate por favor</value>
+  </data>
+  <data name="msg_RejectRequestConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que desea rechazar la solicitud?</value>
+  </data>
+  <data name="msg_ReOpenRequestConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que desea re abrir la solicitud?</value>
+  </data>
+  <data name="msg_RequisitionMandatory" xml:space="preserve">
+    <value>Debes seleccionar al menos una requisición</value>
+  </data>
+  <data name="msg_ResponsibleAssignInstruction" xml:space="preserve">
+    <value>Por favor escribe el nombre, id, correo o numero de empleado del que será responsable de esta solicitud</value>
+  </data>
+  <data name="msg_ResponsibleIsMandatory" xml:space="preserve">
+    <value>Es necesario escoger un responsable.</value>
+  </data>
+  <data name="msg_SendNotificationConfirm" xml:space="preserve">
+    <value>La notificación se enviará. ¿Desea continuar?</value>
+  </data>
+  <data name="msg_Sort" xml:space="preserve">
+    <value>Puede ordenar los archivos moviéndolos con el mouse. Algunos archivos pueden tardar varios minutos en subirse, no de click en guardar hasta que el elemento aparezca en la tabla de abajo.</value>
+  </data>
+  <data name="msg_ThereNotCandidatesToNotify" xml:space="preserve">
+    <value>No hay candidatos a quienes mandarles notificación.</value>
+  </data>
+  <data name="title_AssignResponsible" xml:space="preserve">
+    <value>Asignar responsable</value>
+  </data>
+  <data name="title_CreateNode" xml:space="preserve">
+    <value>Crear nodo</value>
+  </data>
+  <data name="title_CreateRootNode" xml:space="preserve">
+    <value>Crear nodo raíz</value>
+  </data>
+  <data name="title_EditRootNode" xml:space="preserve">
+    <value>Editar nodo raíz</value>
+  </data>
+  <data name="title_GeneralSettingKiosk" xml:space="preserve">
+    <value>Configuración General del Kiosco</value>
+  </data>
+  <data name="title_HumanResourcesKiosk" xml:space="preserve">
+    <value>Kiosco de Recursos Humanos</value>
+  </data>
+  <data name="title_OpportunitiesProgramExcelReport" xml:space="preserve">
+    <value>Reporte de Excel del Programa Oportunidades</value>
+  </data>
+  <data name="title_OpportunitiesPrograms" xml:space="preserve">
+    <value>Programa Oportunidades</value>
+  </data>
+  <data name="title_Requests" xml:space="preserve">
+    <value>Solicitudes</value>
+  </data>
+  <data name="title_SendNotify" xml:space="preserve">
+    <value>Enviar notificación</value>
+  </data>
+  <data name="title_Suggestions" xml:space="preserve">
+    <value>Sugerencias</value>
+  </data>
+  <data name="tooltip_AddRootNode" xml:space="preserve">
+    <value>Agregar nodo raíz</value>
+  </data>
+  <data name="tooltip_AddRootSection" xml:space="preserve">
+    <value>Agregar sección raíz</value>
+  </data>
+  <data name="tooltip_RemoveItemMedia" xml:space="preserve">
+    <value>Remover elemento multimedia</value>
+  </data>
+  <data name="tt_GralSettingTag" xml:space="preserve">
+    <value>Configuración general</value>
+  </data>
+</root>

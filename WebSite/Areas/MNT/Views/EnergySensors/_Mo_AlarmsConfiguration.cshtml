@@ -1,0 +1,83 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergySensors.EnergySensorsAlarmsViewModel
+<div id="mo_AlarmsConfiguration" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="height:1000px;position: absolute;z-index: 9;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.MNT.EnergySensors.title_AlarmsConfiguration</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12" style="height:auto">
+                        <div class="col-sm-3" style="text-align:right">
+                            <h5>@Resources.MNT.EnergySensors.lbl_SensorName</h5>
+                        </div>
+                        <div class="col-sm-9">
+                            <h5 id="modalSensorName">@Model.SensorName</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top:2%">
+                        <div class="col-sm-3" style="text-align:right">
+                            <h5>@Resources.MNT.EnergySensors.lbl_CopyConfigFrom</h5>
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.DropDownList("ddl_SensorsConfigList", Model.SensorConfigForCopyList, new { @class = "form-control selectpicker" })
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12" style="margin-top:2%">
+                        <div class="col-sm-3" style="text-align:right">
+                            <h5>@Resources.MNT.EnergySensors.lbl_SetSameValue</h5>
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextBox("txt_SetSameValue", null, new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-2">
+                            <button id="btn_SetSameValue" class="btn btn-primary" style="background-color:cornflowerblue !important; border:none; width: 100%">
+                                @Resources.MNT.EnergySensors.lbl_Set
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_alarms">
+                            <thead>
+                                <tr class="font-size-sm bg-primary">
+                                    <th>@Resources.MNT.EnergySensors.lbl_Hour</th>
+                                    <th>@Resources.MNT.EnergySensors.lbl_MaxValue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.SensorsConfigList)
+                                {
+                                    <tr>
+                                        <td>@item.ValueHour - @Convert.ToInt32(@Convert.ToInt32(item.ValueHour) + 1)</td>
+                                        <td><input type="text" class="form-control MaxValueByHour" id="txt_ValueForHour_@item.ValueHour" value="@item.MaxValue" /></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_cancel" data-dismiss="modal">@Resources.Common.btnCancel</button>
+                <button id="btn_SaveAlarmconfiguracion" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-body {
+        max-height: calc(100vh - 510px);
+        overflow-y: auto;
+    }
+</style>

@@ -1,0 +1,51 @@
+﻿@model List<Core.Entities.Profile>
+<table id="profiles_table" class="display table table-striped table-bordered table-condensed-xs datatable" cellspacing="0">
+    <thead>
+        <tr class="bg-primary">
+            <th>
+                @Resources.User.lbl_Profile
+            </th>
+            <th>
+                @Resources.Common.lbl_Createdby
+            </th>
+            <th>
+                @Resources.Common.gvH_DateLastMaint
+            </th>
+            <th>
+                @Resources.Common.gvH_DateAdded
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <span class="tag-serial">@item.ProfileName</span>
+                </td>
+                <td>
+                    @item.UserFullName
+                </td>
+                <td>
+                    @item.DateLastMaintFormat
+                </td>
+                <td>
+                    @item.DateAddedFormat
+                </td>
+                <td width="1%" class="text-center">
+                    <div class="btn-group btn-group-md dropup">
+                        <button type="button" class="btn btn-info btn-pretty dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-cog"></i> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li class="edit-profile" data-entityid="@item.ProfileID"><a href="@Url.Action("Edit",new {item.ProfileID })"><i class="fa fa-edit text-primary"></i> @Resources.Common.lbl_Edit</a></li>
+                            <li class="delete-profile" data-entityid="@item.ProfileID"><a href="#"><i class="fa fa-ban text-danger"></i> @Resources.Common.lbl_Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

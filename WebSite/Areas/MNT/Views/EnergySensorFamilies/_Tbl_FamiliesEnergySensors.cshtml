@@ -1,0 +1,37 @@
+﻿@model List<Core.Entities.EnergySensorFamilies>
+@if (Model.Count > 0)
+{
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_edit" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>@Resources.MNT.EnergySensors.lbl_FamilyName</th>
+                <th>@Resources.Common.gvH_UpdatedBy</th>
+                <th>@Resources.Common.gvH_UpdatedOn</th>
+                <th>@Resources.Common.lbl_Options</th>
+
+            </tr>
+        </thead>
+        <tbody class="ui-state-default sortable">
+            @foreach (var item in Model)
+            {
+                <tr id="@item.EnergySensorFamilyID">
+                    <td style="width:50%">
+                        @item.FamilyName
+                    </td>
+                    <td>
+                        @item.UserFullName
+                    </td>
+                    <td>
+                        @item.DateLastMaintFormat
+                    </td>
+                    <td style="width:120px; text-align:center">
+                        <div class="btn-group dropup">
+                            <button class="btn btn-success text-primary familyEnergySensorEdit" title="@Resources.Common.lbl_Edit"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>
+                            <button class="btn btn-danger familyEnergySensorDelete" title="@Resources.Common.lbl_Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

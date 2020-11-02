@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6ADD69B3-1763-483F-A6B6-7E55C0E2BB9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Core.Entities</RootNamespace>
+    <AssemblyName>Core.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration\GenericCharts\GenericChart.cs" />
+    <Compile Include="Administration\GenericCharts\GenericChartAxis.cs" />
+    <Compile Include="Administration\GenericCharts\GenericChartData.cs" />
+    <Compile Include="Administration\GenericCharts\GenericChartFilterData.cs" />
+    <Compile Include="Administration\GenericCharts\GenericChartHeaderData.cs" />
+    <Compile Include="Administration\GenericCharts\GenericChartsFilters.cs" />
+    <Compile Include="Attachments\Attachment.cs" />
+    <Compile Include="AuxiliarColumnName.cs" />
+    <Compile Include="Catalog\Catalog.cs" />
+    <Compile Include="Catalog\CatalogDetail.cs" />
+    <Compile Include="Catalog\CatalogDetailTemp.cs" />
+    <Compile Include="Catalog\CatalogParameter.cs" />
+    <Compile Include="Charts\Chart.cs" />
+    <Compile Include="Charts\ChartOption.cs" />
+    <Compile Include="Charts\Chart_ComputerSetting.cs" />
+    <Compile Include="Charts\Chart_ComputerSettingsDetail.cs" />
+    <Compile Include="CheckListTemplate.cs" />
+    <Compile Include="CheckListTemplatesDetail.cs" />
+    <Compile Include="CI\DashboardArea.cs" />
+    <Compile Include="CI\DashboardAreaDetail.cs" />
+    <Compile Include="CI\DashboardAreaNode.cs" />
+    <Compile Include="CI\DashboardCarouselVideos.cs" />
+    <Compile Include="CI\DashboardCarouselVideosTmp.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="Email.cs" />
+    <Compile Include="Entity\EntityField.cs" />
+    <Compile Include="eRequest\eReqUserAccess.cs" />
+    <Compile Include="eRequest\FormatAccessTemp.cs" />
+    <Compile Include="eRequest\FormatGenericDetail.cs" />
+    <Compile Include="eRequest\FormatGenericDetailTemp.cs" />
+    <Compile Include="eRequest\Formats.cs" />
+    <Compile Include="eRequest\FormatsEntity.cs" />
+    <Compile Include="eRequest\FormatsLoopsApprovers_TEMP.cs" />
+    <Compile Include="eRequest\FormatsLoopsFlow.cs" />
+    <Compile Include="eRequest\FormatsLoopsFlow_TEMP.cs" />
+    <Compile Include="eRequest\FormatsLoopsRulesDetail_TEMP.cs" />
+    <Compile Include="eRequest\FormatsLoopsRulesTemp.cs" />
+    <Compile Include="eRequest\FormatsMedia.cs" />
+    <Compile Include="eRequest\PDFFilesDetail.cs" />
+    <Compile Include="eRequest\Request.cs" />
+    <Compile Include="eRequest\RequestApprovalLog.cs" />
+    <Compile Include="eRequest\RequestGenericDetail_tb.cs" />
+    <Compile Include="eRequest\RequestLoopFlow.cs" />
+    <Compile Include="eRequest\RequestMedia.cs" />
+    <Compile Include="eRequest\RequestsGenericDetail.cs" />
+    <Compile Include="Facility.cs" />
+    <Compile Include="GenericItem.cs" />
+    <Compile Include="GenericRequest.cs" />
+    <Compile Include="GenericReturn.cs" />
+    <Compile Include="Attachments\IAttachment.cs" />
+    <Compile Include="HR\HRUserAccess.cs" />
+    <Compile Include="HR\KioskArea.cs" />
+    <Compile Include="HR\KioskAreaDetail.cs" />
+    <Compile Include="HR\KioskAreaNode.cs" />
+    <Compile Include="HR\KioskCarouselMedia.cs" />
+    <Compile Include="HR\KioskCarouselMediaTmp.cs" />
+    <Compile Include="HR\KioskCourses.cs" />
+    <Compile Include="HR\KioskCoursesPermit.cs" />
+    <Compile Include="HR\KioskEmployeMovements.cs" />
+    <Compile Include="HR\KioskExchangeableItem.cs" />
+    <Compile Include="HR\KioskExchangeItemsForList.cs" />
+    <Compile Include="HR\KioskNotification.cs" />
+    <Compile Include="HR\KioskNotificationsDetail.cs" />
+    <Compile Include="HR\KioskPaymentReceipt.cs" />
+    <Compile Include="HR\KioskPrePayroll.cs" />
+    <Compile Include="HR\KioskRequestNotification.cs" />
+    <Compile Include="HR\KioskUserCourseInscribed.cs" />
+    <Compile Include="HR\KioskUserInfo.cs" />
+    <Compile Include="HR\KioskUserPendingPointsExchange.cs" />
+    <Compile Include="HR\KioskUserPointsMovement.cs" />
+    <Compile Include="HR\KioskUserRequest.cs" />
+    <Compile Include="HR\KioskUserRequestLog.cs" />
+    <Compile Include="HR\KioskUserSuggestion.cs" />
+    <Compile Include="HR\OpportunitiesProgram.cs" />
+    <Compile Include="HR\OpportunitiesProgramCandidate.cs" />
+    <Compile Include="HR\OpportunitiesProgramMedia.cs" />
+    <Compile Include="HR\OpportunitiesProgramResponsible.cs" />
+    <Compile Include="Interface\DataInterface.cs" />
+    <Compile Include="Interface\DataInterfaceConnectionParameters.cs" />
+    <Compile Include="Interface\DataInterfacelog.cs" />
+    <Compile Include="Interface\DataInterfacesField.cs" />
+    <Compile Include="MFG\Catalogs.cs" />
+    <Compile Include="MFG\DashboardOperationParamater.cs" />
+    <Compile Include="MFG\DemoldDefectAlert.cs" />
+    <Compile Include="MFG\DemoldDefectDetails.cs" />
+    <Compile Include="MFG\DemoldDefects.cs" />
+    <Compile Include="MFG\DownTime.cs" />
+    <Compile Include="MFG\DashboardMachine.cs" />
+    <Compile Include="MFG\ExcelMoldFamilies.cs" />
+    <Compile Include="MFG\LenType.cs" />
+    <Compile Include="MFG\Machine.cs" />
+    <Compile Include="MFG\MachineParameters.cs" />
+    <Compile Include="MFG\MachineSetup.cs" />
+    <Compile Include="MFG\MachineSetupParameters.cs" />
+    <Compile Include="MFG\MaterialSetup.cs" />
+    <Compile Include="MFG\MoldFamily.cs" />
+    <Compile Include="MFG\OperationProduction.cs" />
+    <Compile Include="MFG\OperationProductionDetail.cs" />
+    <Compile Include="MFG\OperationProductionDetailsLog.cs" />
+    <Compile Include="MFG\OperationRecord.cs" />
+    <Compile Include="MFG\OperationSetup.cs" />
+    <Compile Include="MFG\OperationSetupParameter.cs" />
+    <Compile Include="MFG\OperationTask.cs" />
+    <Compile Include="MFG\OperationTaskDetails.cs" />
+    <Compile Include="MFG\ProductionReject.cs" />
+    <Compile Include="MFG\ProductionVAT.cs" />
+    <Compile Include="MFG\ProductLenInProduction.cs" />
+    <Compile Include="MFG\ValidateProductLen.cs" />
+    <Compile Include="MNT\EnergySensorFamilies.cs" />
+    <Compile Include="MNT\EnergySensorFamiliesGauge.cs" />
+    <Compile Include="MNT\EnergySensors.cs" />
+    <Compile Include="MNT\EnergySensorValues.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="Organization.cs" />
+    <Compile Include="Attachments\PartsMasterAttachment.cs" />
+    <Compile Include="PDFFiles\PDFFile.cs" />
+    <Compile Include="PDFFiles\PDFFilesDetailTable.cs" />
+    <Compile Include="PDFFiles\PDFFilesDetail_TEMP.cs" />
+    <Compile Include="Production\Defect.cs" />
+    <Compile Include="Production\DefectProcess.cs" />
+    <Compile Include="Production\MoldScraps.cs" />
+    <Compile Include="Production\ProductionGoal.cs" />
+    <Compile Include="Production\ProductionGoalsDetail.cs" />
+    <Compile Include="Production\ProductionLine.cs" />
+    <Compile Include="Production\ShiftsMaster.cs" />
+    <Compile Include="Profile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QA\DataPoint.cs" />
+    <Compile Include="QA\FilmetricFilmLimits.cs" />
+    <Compile Include="QA\FilmetricInspectionDetail.cs" />
+    <Compile Include="QA\FilmetricInspection.cs" />
+    <Compile Include="SG\Badges.cs" />
+    <Compile Include="SG\CheckInPersonInfo.cs" />
+    <Compile Include="SG\Equipment.cs" />
+    <Compile Include="SG\Guard.cs" />
+    <Compile Include="SG\SecurityGuardLog.cs" />
+    <Compile Include="SG\SecurityGuardTool.cs" />
+    <Compile Include="SG\Vendor.cs" />
+    <Compile Include="SG\VendorUser.cs" />
+    <Compile Include="SG\VendorUserTool.cs" />
+    <Compile Include="SQL_DataType\t_AdditionalFields.cs" />
+    <Compile Include="SQL_DataType\t_ChartData.cs" />
+    <Compile Include="SQL_DataType\t_DemoldDefectsChart.cs" />
+    <Compile Include="SQL_DataType\t_DemoldDefectsChartData.cs" />
+    <Compile Include="SQL_DataType\t_Files.cs" />
+    <Compile Include="SQL_DataType\t_FormatsLoopsFlow.cs" />
+    <Compile Include="SQL_DataType\t_GenericItem.cs" />
+    <Compile Include="SQL_DataType\t_MasterTemplate.cs" />
+    <Compile Include="SQL_DataType\t_MoldScrap.cs" />
+    <Compile Include="SQL_DataType\t_ProductionGoalsDetail.cs" />
+    <Compile Include="SQL_DataType\t_ProjectChartData.cs" />
+    <Compile Include="SQL_DataType\t_RequestGenericDetail.cs" />
+    <Compile Include="SQL_DataType\t_SeriesChart.cs" />
+    <Compile Include="SQL_DataType\t_ServicesChartData.cs" />
+    <Compile Include="SQL_DataType\t_TicketsChartData.cs" />
+    <Compile Include="SQL_DataType\t_YieldDefectChartData.cs" />
+    <Compile Include="SQL_DataType\y_YieldDowntimesChartData.cs" />
+    <Compile Include="TableAdditionalFields.cs" />
+    <Compile Include="TableMaintenance.cs" />
+    <Compile Include="TranslationDetail.cs" />
+    <Compile Include="User\AppEvents.cs" />
+    <Compile Include="User\AppMenu.cs" />
+    <Compile Include="User\User.cs" />
+    <Compile Include="User\UserFacility.cs" />
+    <Compile Include="User\UsersProcessLine.cs" />
+    <Compile Include="User\UsersProfiles.cs" />
+    <Compile Include="Utilities\Converters.cs" />
+    <Compile Include="WMS_Attachment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SqlCompareDEVvsTEST.scmp" />
+    <None Include="SqlSchemaCompare2.scmp" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

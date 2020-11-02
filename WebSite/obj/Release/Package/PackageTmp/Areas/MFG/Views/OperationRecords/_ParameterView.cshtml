@@ -1,0 +1,155 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.OperationRecords.ParameterViewModel
+<div class="row setup-param-input" data-setupparamid="@Model.Parameter.OperationSetupParameterID"
+     data-typevalue="@Model.Parameter.ParameterTypeValue"
+     data-machineparameterid="@Model.Parameter.MachineParameterID"
+     data-ismandatory="@Model.Parameter.IsMandatory">
+    <label class="col-xs-3 control-label">@Model.Parameter.OperationParameterName</label>
+    @if (Model.Parameter.ParameterTypeValue == "INT")
+    {
+        if (Model.Parameter.UseReference == true)
+        {
+            <div class="col-xs-4">
+                <div class="input-group input-group-lg">
+                    <input disabled class="param-val form-control control-numpad onlynumbers param_@Model.OperationParameterName.ToString().Replace(" ", "_").Replace("%", "").Replace("(", "").Replace(")", "")" data-functionvalue="@Model.Parameter.FunctionValue" placeholder="Value" type="text" value="@Model.Parameter.Value" maxlength="@Model.Parameter.ParameterLength">
+                    <span class="input-group-addon">@Model.Parameter.ParameterUoMName</span>
+                </div>
+            </div>
+
+            <label class="col-xs-2 control-label">@Model.Parameter.ReferenceName</label>
+            if (Model.Parameter.ReferenceTypeValue != "LIST")
+            {
+                <div class="col-xs-3">
+                    <div class="input-group input-group-lg">
+                        <input class="param-ref form-control max-length param_@Model.OperationParameterName.ToString().Replace(" ", "_").Replace("%", "").Replace("(", "").Replace(")", "")" placeholder="Value" type="text" value="@Model.Parameter.Reference" style="border-radius: 6px;" maxlength="50">
+                    </div>
+                </div>
+            }
+            else if (Model.Parameter.ReferenceTypeValue == "LIST")
+            {
+                <div class="col-xs-2">
+                    <div class="">
+                        <select class="param-ref selectpicker select form-control" data-live-search="true">
+                            <option value="0"></option>
+                            @foreach (var item in Model.ReferenceSelectList)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Parameter.Reference ? "selected" : "" )>@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            }
+
+
+        }
+        else
+        {
+            <div class="col-xs-8">
+                <div class="input-group input-group-lg">
+                    <input class="param-val form-control control-numpad onlynumbers param_@Model.OperationParameterName.ToString().Replace(" ", "_").Replace("%", "").Replace("(", "").Replace(")", "")" placeholder="Value" data-functionvalue="@Model.Parameter.FunctionValue" type="text" value="@Model.Parameter.Value" maxlength="@Model.Parameter.ParameterLength">
+                    <span class="input-group-addon">@Model.Parameter.ParameterUoMName</span>
+                </div>
+            </div>
+        }
+    }
+    @if (Model.Parameter.ParameterTypeValue == "DECIMAL")
+    {
+        if (Model.Parameter.UseReference == true)
+        {
+            <div class="col-xs-4">
+                <div class="input-group input-group-lg">
+                    <input class="@Model.OperationSetupParameterID param-val form-control control-numpad onlydecimals  @Model.isCalculated param_@Model.OperationParameterName.ToString().Replace(" ", "_").Replace("%", "").Replace("(", "").Replace(")", "") " data-functionvalue="@Model.Parameter.FunctionValue" placeholder="Value" type="text" value="@Model.Parameter.Value" maxlength="@Model.Parameter.ParameterLength">
+                    <span class="input-group-addon">@Model.Parameter.ParameterUoMName</span>
+                </div>
+            </div>
+
+            <label class="col-xs-2 control-label">@Model.Parameter.ReferenceName</label>
+            if (Model.Parameter.ReferenceTypeValue != "LIST")
+            {
+                <div class="col-xs-3">
+                    <div class="input-group input-group-lg">
+                        <input class="param-ref form-control max-length param_@Model.OperationParameterName.ToString().Replace(" ", "_").Replace("%", "").Replace("(", "").Replace(")", "")" placeholder="Value" type="text" value="@Model.Parameter.Reference" style="border-radius: 6px;" maxlength="50">
+                    </div>
+                </div>
+            }
+            else if (Model.Parameter.ReferenceTypeValue == "LIST")
+            {
+                <div class="col-xs-2">
+                    <div class="">
+                        <select class="param-ref selectpicker select form-control" data-live-search="true">
+                            <option value="0"></option>
+                            @foreach (var item in Model.ReferenceSelectList)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Parameter.Reference ? "selected" : "" )>@item.Text</option>
+
+                            }
+                        </select>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-xs-8">
+                <div class="input-group input-group-lg">
+                    <input class="@Model.OperationSetupParameterID param-val form-control control-numpad onlydecimals @Model.isCalculated param_@Model.OperationParameterName.ToString().Replace(" ", "_").Replace("%", "").Replace("(", "").Replace(")", "")" data-functionvalue="@Model.Parameter.FunctionValue" placeholder="Value" type="text" value="@Model.Parameter.Value" maxlength="@Model.Parameter.ParameterLength">
+                    <span class="input-group-addon">@Model.Parameter.ParameterUoMName</span>
+                </div>
+            </div>
+        }
+    }
+    @if (Model.Parameter.ParameterTypeValue == "LIST")
+    {
+        if (Model.Parameter.UseReference == true)
+        {
+            <div class="col-xs-4">
+                <div class="btn-group btn-group-lg" data-toggle="buttons">
+                    @foreach (var item in Model.OptionSelectList)
+                    {
+                        <label class="btn btn-pretty btn-default @(Model.Parameter.ValueList == item.Value ? "active" : "")">
+                            <input id="@(Model.ControlName+"_"+item.Value)" type="radio" name="@Model.ControlName" class="param-val" autocomplete="off" value="@item.Value">@item.Text
+                        </label>
+                    }
+                </div>
+            </div>
+
+            <label class="col-xs-2 control-label">@Model.Parameter.ReferenceName</label>
+            if (Model.Parameter.ReferenceTypeValue != "LIST")
+            {
+                <div class="col-xs-3">
+                    <div class="input-group input-group-lg">
+                        <input class="param-ref form-control max-length param_@Model.OperationParameterName.ToString().Replace(" ", "_").Replace("%", "").Replace("(", "").Replace(")", "")" placeholder="Value" type="text" value="@Model.Parameter.Reference" style="border-radius: 6px;" maxlength="50">
+                    </div>
+                </div>
+            }
+            else if (Model.Parameter.ReferenceTypeValue == "LIST")
+            {
+                <div class="col-xs-2">
+                    <div class="">
+                        <select class="param-ref selectpicker select form-control" data-live-search="true">
+                            <option value="0"></option>
+                            @foreach (var item in Model.ReferenceSelectList)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Parameter.Reference ? "selected" : "" )>@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-xs-9">
+                <div class="btn-group btn-group-lg" data-toggle="buttons">
+                    @foreach (var item in Model.OptionSelectList)
+                    {
+                        <label class="btn btn-pretty btn-default @(Model.Parameter.ValueList == item.Value ? "active" : "")">
+                            <input id="@(Model.ControlName+"_"+item.Value)" type="radio" name="@Model.ControlName" class="param-val" autocomplete="off" value="@item.Value">@item.Text
+                        </label>
+                    }
+                </div>
+            </div>
+
+        }
+    }
+
+</div>

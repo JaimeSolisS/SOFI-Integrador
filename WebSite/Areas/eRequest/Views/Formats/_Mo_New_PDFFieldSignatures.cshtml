@@ -1,0 +1,50 @@
+﻿@model List<Core.Entities.CatalogDetailTemp>
+<div id="mo_pdfsignatureconfigure" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Request.lbl_signature</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="tbl_phase_list">
+                            <table class="table accesstable display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_PDFFielSignatureConfig">
+                                <thead>
+                                    <tr class="font-size-sm bg-primary">
+                                        <th width="20"></th>
+                                        <th>@Resources.Request.lbl_Phase</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="ui-state-default sortable">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="font-size-sm" data-fieldname="@item.ValueID" data-id="@item.CatalogDetailID" data-tempid="@item.CatalogDetailTempID">
+                                            <td>
+                                                @*<div class="icheckbox_minimal-grey" style="position: relative;">
+                                                        <input type="checkbox" class="check-range-date preserve-settings" id="checkbox_select_phase" style="position: absolute; opacity: 0;">
+                                                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                                    </div>*@
+
+                                                <label class="checkbox lobicheck lobicheck-rounded" style="margin-bottom: 20px; margin-left: 10px;">
+                                                    <input id="@item.CatalogDetailTempID" @item.PhaseCheck class="item-check" type="checkbox">
+                                                    <i class="p-relative"></i>
+                                                </label>
+                                            </td>
+                                            <td>@item.ValueID</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_ModalSavePDFSignature" type="button" class="btn btn-success">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>

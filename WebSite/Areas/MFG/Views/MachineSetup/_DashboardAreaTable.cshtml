@@ -1,0 +1,48 @@
+﻿@model List<Core.Entities.DashboardArea>
+@if (Model.Count > 0)
+{
+    <table class="display table table-condensed table-striped datatable" id="tbl_master" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+                <th width="5%"></th>
+                <th class="left">Area</th>
+                <th class="left">Tamaño de Tag</th>
+                <th class="center">Secuencia</th>
+                <th class="left">@Resources.Common.gvH_UpdatedBy</th>
+                <th class="left">@Resources.Common.gvH_DateAdded</th>
+                <th class="left">@Resources.Common.gvH_DateLastMaint</th>
+                <th class="left w-120">@Resources.Common.gvH_Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-sm" data-entityid="@item.DashboardAreaID">
+                    <td width="5%" class="details-control"></td>
+                    <td>
+                        <a class="edit-fieldculture editable-click " data-entityid="@item.DashboardAreaID" data-url="/CI/Administration/UpdateQuickEditable" data-title="@Resources.CI.DashboardManagement.gvh_AreaTag">
+                            @item.Title
+                        </a>
+                    </td>
+                    <td>
+                        <a class="x-editable" data-type="select" data-title="@Resources.CI.DashboardManagement.gvh_SizeTag" data-source="/CI/Administration/SizeList" data-pk="@item.DashboardAreaID" data-url="/CI/Administration/UpdateQuickEditable" data-value="@item.SizeID" data-name="SizeID" data-tpl="<select class='form-control select x-editable-select'>"  >
+                            @item.SizeText
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a class="x-editable" data-type="text" data-title="@Resources.CI.DashboardManagement.gvh_SequenceTag" data-pk="@item.DashboardAreaID" data-url="/CI/Administration/UpdateQuickEditable" data-value="@item.Seq" data-name="Seq" data-tpl="<input type='text' class='onlynumbers' maxlength = '9' placeholder='0'>">
+                            @item.Seq
+                        </a>
+                    </td>
+                    <td>@item.UserFullName </td>
+                    <td>@item.DateAddedFormat </td>
+                    <td>@item.DateLastMaintFormat </td>
+                    <td class="pull-right">
+                        <button class="btn btn-info add-dashboardareadetail" data-dashboardarea-id="@item.DashboardAreaID" title="@Resources.CI.DashboardManagement.tt_AddDashboardAreaDetail"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button class="btn btn-danger delete-dashboardArea" data-dashboardarea-id="@item.DashboardAreaID" title="@Resources.CI.DashboardManagement.tt_DeleteDashboardAreaTag"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

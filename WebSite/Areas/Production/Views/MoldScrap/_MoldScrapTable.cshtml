@@ -1,0 +1,29 @@
+﻿@model List<Core.Entities.MoldScraps>
+@if (Model.Count > 0)
+{
+    <table class="display table table-bordered table-striped dataTable" id="tbl_moldscrap" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+                <th class="left">@Resources.MoldScrap.gvh_ScrapHour</th>
+                <th class="left">@Resources.MoldScrap.gvh_ShiftName</th>
+                <th class="left">@Resources.MoldScrap.gvh_ScrapValue</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var moldScrap in Model)
+            {
+            <tr class="font-size-sm">
+                <td>
+                    @moldScrap.HourValueFormat
+                </td>
+                <td>
+                    @moldScrap.ShiftName
+                </td>
+                <td>
+                    <input type="text" maxlength="10" class="form-control moldScrapValue onlydecimals" data-entityid="@moldScrap.ScrapID" data-hour="@moldScrap.HourValue" placeholder="0.00" value="@moldScrap.Quantity" />
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

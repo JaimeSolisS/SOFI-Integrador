@@ -1,0 +1,22 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MoldFamilies.EditViewModel
+<div id="sliderID" class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_LensTypes">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th class="text_center">@Resources.MFG.MoldFamilies.lbl_LensTypes</th>
+                <th style="width:5%">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="sortable">
+            @foreach (var item in Model.LensOfFamily)
+            {
+                <tr data-entityid="@item.LensTypeID" class="LenTypesRow @Model.AuxiliarClass" data-moldfamilylenid="@item.MoldFamilyLensTypeID">
+                    <td class="text_center">@item.LensTypeName</td>
+                    <td text-align:center">
+                        <button class="btn btn-danger delete-lentype-record"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

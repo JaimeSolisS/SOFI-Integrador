@@ -1,0 +1,71 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.VATs.EditViewModel
+<div id="mo_NewEditVAT" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-5" style="text-align:right">
+                        <label>@Resources.MFG.VatsCatalog.lbl_VATNumber</label>
+                    </div>
+                    <div class="col-sm-7">
+                        @Html.TextBox("txt_mo_VatNumber", Model.ProductionVATObj.VATName, new { @class = "form-control selectpicker max-length", @maxlength = "50" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-5" style="text-align:right">
+                        <label>@Resources.MFG.MachineSetups.lbl_ProductionLine</label>
+                    </div>
+                    <div class="col-sm-7">
+                        @Html.DropDownList("txt_mo_ProductionLines", Model.ProductionLinesList, new { @class = "form-control selectpicker" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-5" style="text-align:right">
+                        <label>@Resources.MFG.OperationRecords.lbl_Shift</label>
+                    </div>
+                    <div class="col-sm-7">
+                        @Html.DropDownList("txt_mo_Shifts", Model.ShiftsList, new { @class = "form-control selectpicker" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-5" style="text-align:right">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_Enable</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <label class="switch switch-small col-sm-7">
+                                <input type="checkbox" id="chk_Enabled" checked="@Model.ProductionVATObj.Enabled" />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                @if (Model.IsEdit)
+                {
+                    <button id="btn_ModalSaveEditedVAT" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+                else
+                {
+                    <button id="btn_ModalAddNewVAT" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("VATID", Model.ProductionVATObj.VATID)
+@Html.Hidden("SelectedShift", Model.ProductionVATObj.ShiftID)
+@Html.Hidden("SelectedProductionLine", Model.ProductionVATObj.ProductionLineID)

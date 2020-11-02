@@ -1,0 +1,65 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergySensors.EnergySensorDetailsViewModel
+<div class="row" style="margin-top:0.5%">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <h1 style="margin-top: 0px;"><span class="fa fa-sitemap"></span> @Resources.MNT.EnergySensors.title_EnergyConsumtionBy @Model.FamilyName</h1>
+        </div>
+        <div class="col-md-3" style="margin-top:0.5%">
+            <h4>
+                @Model.LastHour
+            </h4>
+        </div>
+        <div class="col-md-3">
+            <button class="btn-info btn-pretty pull-right btn-lg" type="button">
+                <a href="@Url.Action("Index")" style="text-decoration:none;color:white;" onclick="ShowProgressBar()">
+                    @Resources.Common.btn_Back
+                </a>
+            </button>
+        </div>
+    </div>
+</div>
+<div id="Details_div">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">
+                        @Resources.MNT.EnergySensors.title_EnergyFamilySensors
+                    </h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        @Html.Partial("_Div_EnergySensors", Model.EnergySensorsList)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("EnergySensorFamilyID", Model.EnergySensorFamilyID)
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/GaugeMeter/gauge.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/MNT/EnergyDashboard/Details.js?v20190823" charset="utf-8"></script>
+    <script>
+        $(document).ready(function () {
+            var LangResources = {
+                asd: '@Resources.MNT.EnergySensors.lbl_Family'
+            }
+            DetailsInit(LangResources);
+        });
+    </script>
+}

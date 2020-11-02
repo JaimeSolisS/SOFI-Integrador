@@ -1,0 +1,104 @@
+﻿@model WebSite.Areas.Production.Models.Defects.IndexViewModel
+<div id="mo_AddDefectDetail" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.ModalHeader_AddDetailTag</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_DefectName">@Resources.Defects.lbl_DefectName</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_DefectName", Model.DefectsListCatalog, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12  ">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_ProductionProcess">@Resources.Defects.lbl_ProcessProductionTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_ProductionProcess", Model.ProductionProcessList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 @Model.ClassProcessLine" id="div_AD_ContainerControlProductionLine">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_ProductionLine">@Resources.Defects.lbl_ProcessLineTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_ProductionLine", Model.UserProcessesLine, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_VA">@Resources.Defects.lbl_VATag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_VA", Model.VAList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_Design">@Resources.Defects.lbl_DesignTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_Design", Model.DesignList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_Shift">@Resources.MoldScrap.lbl_ShiftTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_Shift", Model.ShiftList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_AD_DefectColor">@Resources.Defects.lbl_DefectColorTag</label>
+                            <br />
+                            @if (Model.DefectProcessInfo.DefectProcessID != null && Model.DefectProcessInfo.DefectProcessID != 0)
+                            {
+                                <input type="hidden" class="mini-color" value="@Model.DefectProcessInfo.Color" id="txt_AD_DefectColor" name="txt_AD_DefectColor" />
+                            }
+                            else
+                            {
+                                <input type="hidden" class="mini-color" value="#000000" id="txt_AD_DefectColor" name="txt_AD_DefectColor" />
+                            }
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_AD_DefectFontColor">@Resources.Defects.lbl_FontColorTag</label>
+                            <br />
+                            @if (Model.DefectProcessInfo.DefectProcessID  != null && Model.DefectProcessInfo.DefectProcessID != 0)
+                            {
+                                <input type="hidden" class="mini-color" id="txt_AD_DefectFontColor" value="@Model.DefectProcessInfo.FontColor" name="txt_AD_DefectFontColor" />
+                            }
+                            else
+                            {
+                                <input type="hidden" class="mini-color" id="txt_AD_DefectFontColor" value="#000000" name="txt_AD_DefectFontColor" />
+                            }
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_AD_Goal">@Resources.Defects.lbl_GoalTag</label>
+                            <div class="input-group">
+                                <input type="text" maxlength="10" class="form-control moldScrapValue onlydecimals" placeholder="0.00" id="txt_AD_Goal" name="txt_AD_Goal" value="@Model.DefectProcessInfo.GoalValue" />
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_AddDefectDetail" type="button" data-defectid="@Model.DefectID" data-defect-processid="@Model.DefectProcessInfo.DefectProcessID" class="btn btn-info">@Model.Modal_SaveButtonTag</button>
+            </div>
+        </div>
+    </div>
+</div>

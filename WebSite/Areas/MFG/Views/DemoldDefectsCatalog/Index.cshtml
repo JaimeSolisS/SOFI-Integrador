@@ -1,0 +1,123 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.DemoldDefectsCatalog.IndexViewModel
+@using (Html.BeginForm("DemoldDefectsAlertsExportToExcel", "DemoldDefectsCatalog", FormMethod.Post))
+{
+    <div class="content-frame">
+        <div class="content-frame-top">
+            <div class="page-title">
+                <h2 class="margin-none">@Resources.MFG.DemoldDefectsCatalog.title_DemoldDefectsList</h2>
+            </div>
+            <div class="pull-right">
+                <label id="btn_New" class="btn btn btn-success" title="">
+                    <span class="fa fa-plus-circle"></span>
+                    @Resources.Common.btn_New
+                </label>
+                <label id="btn_Alerts" class="btn btn btn-success" title="">
+                    <span class="fa fa-bell-o"></span>
+                    @Resources.MFG.DemoldDefectsCatalog.lbl_Alerts
+                </label>
+                <button id="btn_ExportToExcel" class="btn btn btn-success" title="">
+                    <span class="fa fa-table"></span>
+                    @Resources.MFG.DemoldDefectsCatalog.title_ExcelExport
+                </button>
+            </div>
+        </div>
+        <div class="content-frame-body content-frame-body-all">
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3">
+                            <label>@Resources.MFG.OperationRecords.lbl_Shift</label>
+                            @Html.DropDownList("ddl_Shifts", Model.ShiftsList, new { @class = "form-control selectpicker filters" })
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <label>@Resources.MFG.MachineSetups.lbl_ProductionLine</label>
+                            @Html.DropDownList("ddl_ProductionLines", Model.LinesList, new { @class = "form-control selectpicker filters" })
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <label>@Resources.Common.lbl_StartDate</label>
+                            <div class="input-group">
+                                @Html.TextBox("txt_StartDateExcel", Model.StartDate, htmlAttributes: new { @class = "form-control datepicker filters" })                                
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <label>@Resources.Common.lbl_EndDate</label>
+                            <div class="input-group">
+                                @Html.TextBox("txt_EndDateExcel", Model.EndDate, htmlAttributes: new { @class = "form-control datepicker filters" })
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3">
+                            <label>@Resources.MFG.DemoldDefects.lbl_Design</label>
+                            @Html.DropDownList("ddl_design", Model.DesignList, new { @class = "form-control selectpicker filters" })                            
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <label>@Resources.MFG.VatsCatalog.lbl_VATNumber</label>
+                            @Html.DropDownList("VatNumber", Model.VATList, new { @class = "form-control selectpicker filters" })
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <label>@Resources.MFG.DemoldDefects.lbl_Defect</label>
+                            @Html.DropDownList("ddl_DefectCat", Model.DefectsList, new { @class = "form-control selectpicker filters" })
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <label>@Resources.MFG.DemoldDefects.lbl_DefectType</label>
+                            @Html.DropDownList("ddl_DefectType", Model.DefectsTypesList, new { @class = "form-control selectpicker filters" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">                    
+                    <label id="btn_Search" class="btn btn-info">@Resources.Common.search</label>
+                </div>
+            </div>
+            @Html.Hidden("IsDateChanged", false)
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div id="div_Tbl_DemoldDefectDetails">
+                        @Html.Partial("_Tbl_DemoldDefectDetails", Model.DemoldDefectDetailList)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="div_mo_NewEdit">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/MFG/DemoldDefectsCatalog/Index.js?v20191031" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+
+            var LangResources = {
+                msg_DeleteDemoldDefectConfirmMessage: "@Html.Raw(@Resources.MFG.DemoldDefectsCatalog.msg_DeleteDemoldDefectConfirmMessage)",
+                chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                TagAll: "@Resources.Common.TagAll"
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

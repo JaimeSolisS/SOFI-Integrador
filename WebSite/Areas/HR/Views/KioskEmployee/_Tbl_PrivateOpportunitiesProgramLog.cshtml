@@ -1,0 +1,24 @@
+﻿@model List<Core.Entities.KioskNotification>
+<div class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" style="margin-bottom:0px !important">
+        <thead>
+            <tr class="font-size-lg">
+                <th class="bg-info text-white">@Resources.HR.Kiosk.lbl_Type</th>
+                <th class="bg-info text-white">@Resources.Common.lbl_Title</th>
+                <th class="bg-info text-white">@Resources.Common.lbl_Message</th>
+                <th class="bg-info text-white">@Resources.Common.lbl_CreatedOn</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-lg" data-messagetypeid="@item.MessageTypeID">
+                    <td class="font-bold text-blue-dark">@item.MessageTypeName</td>
+                    <td class="font-bold">@item.Title</td>
+                    <td class="font-italic">@item.Message</td>
+                    <td class="text-center">@item.DateAddedFormat</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

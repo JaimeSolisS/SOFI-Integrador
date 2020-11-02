@@ -1,0 +1,29 @@
+﻿@model List<Core.Entities.Vendor>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tblCompanies">
+    <thead>
+        <tr class="font-size-lg">
+            <th class="w-32 bg-primary text-white"></th>
+            <th class="bg-primary text-white">@Resources.SG.SecurityGuard.lbl_Company</th>
+            <th class="bg-primary text-white" >@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody class="ui-state-default sortable">
+        @foreach (var item in Model)
+        {
+            <tr data-vendorid="@item.VendorID">
+                <td class="details-control vendorCompany w-32" ></td>
+                <td class="font-size-lg">@item.VendorName</td>
+                <td class="text-center w-150">
+                    <div class="btn-group btn-group-lg">
+                        <button class="btn btn-success addEmployeeToCompany" title="@Resources.Common.btnAdd">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <button class="btn btn-danger deleteCompany" title="@Resources.Common.lbl_Delete">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

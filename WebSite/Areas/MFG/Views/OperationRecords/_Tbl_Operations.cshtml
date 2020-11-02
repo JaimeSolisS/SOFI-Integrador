@@ -1,0 +1,48 @@
+﻿@model List<Core.Entities.OperationRecord>
+<table class="table table-bordered table-striped table-actions">
+    <thead>
+        <tr>
+            <th>@Resources.MFG.Login.lbl_Machine</th>
+            <th>@Resources.MFG.OperationRecords.lbl_MachineSetup</th>
+            <th>@Resources.MFG.Login.lbl_Shift</th>
+            <th>@Resources.MFG.Login.lbl_Day</th>
+            <th>@Resources.Common.lbl_Status</th>
+            <th>@Resources.Common.lbl_Createdby</th>
+            <th>@Resources.MFG.Login.lbl_Modifications</th>
+            <th>@Resources.MFG.Login.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.MachineName</td>
+            <td>@item.MachineSetupName</td>
+            <td>@item.ShiftName</td>
+            <td>@item.OperationDateFormat</td>
+            <td>@item.StatusName</td>
+            <td>
+                @Resources.MFG.OperationRecords.lbl_OperatorNumber: @item.OperatorNumber
+            </td>
+            <td>
+                @Resources.Common.lbl_By: @item.UserFullName
+                <br />
+                @Resources.Common.lbl_On: @item.DateLastMaintFormat
+            </td>
+            <td style="text-align:center;">
+                <button class="btn-pretty btn-lg btn-info" type="button" title="@Resources.Common.tt_Edit">
+                    <a class="glyphicon glyphicon-pencil" href="@Url.Action("Edit", new { item.OperationRecordID })" style="text-decoration:none;color:white;"></a>                   
+                </button>                
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+<style>
+    .table > thead > tr > th, .table > tbody > tr > td {
+        font-size: 18px;
+    }
+</style>
+

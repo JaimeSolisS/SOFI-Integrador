@@ -1,0 +1,34 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.Users.CreateViewModel
+<div id="mo_AddNewUser" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.User.tt_AddNewUser</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" style="width:100%" for="ddl_PersonCheckIngTypeList">@Resources.Common.gvH_UserName</label>
+                            <div class="input" style="display: inline-flex; width:100%">
+                                @Html.TextBox("txtSearchUser", "", new { @class = "form-control", style = "width:90%" })
+                                <button id="btnSearchUser" class="btn btn-info padding-none" style="width:10%"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="margin-top:15px" id="div_ResponsiblesResultTable">
+                        
+                    </div>
+                </div>
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back_new_section" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_AddSection" type="button" class="btn btn-success">@Resources.Common.tt_AddNew</button>
+            </div>*@
+        </div>
+    </div>
+</div>

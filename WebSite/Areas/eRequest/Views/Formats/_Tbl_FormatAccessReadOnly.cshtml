@@ -1,0 +1,39 @@
+﻿@model List<Core.Entities.FormatAccessTemp>
+<div class="slider">
+    <table class="table accesstable display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_FormatAccess">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>@Resources.Common.lbl_Facility</th>
+                <th>@Resources.Common.lbl_Access</th>
+                <th>@Resources.Common.lbl_Updatedby</th>
+                <th>@Resources.Common.gvH_DateLastMaint</th>
+            </tr>
+        </thead>
+
+        <tbody class="ui-state-default sortable">
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-sm " data-id="@item.FormatAccessID" data-tempid="@item.FormatAccessTempID">
+                    @if (item.FacilityID == 0)
+                    {
+                        <td>@Resources.Request.lbl_AllFacility</td>
+                    }
+                    else
+                    {
+                        <td>@item.FacilityName</td>
+                    }
+                    @if (item.UserID == 0)
+                    {
+                        <td>@Resources.Request.lbl_AllUsers</td>
+                    }
+                    else
+                    {
+                        <td>@item.UserFullName</td>
+                    }
+                    <td>@item.CreateUserName</td>
+                    <td>@item.DateLastMaintFormat</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

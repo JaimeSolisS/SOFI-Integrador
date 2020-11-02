@@ -1,0 +1,27 @@
+﻿<div id="m_EditCultures" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Catalog.title_EditTraslations "<label id="l_ValueID"></label>"</h4>
+            </div>
+            <div class="modal-body">
+                
+                <form id="add-detailculture-form" class="lobi-form">
+                    @Html.Hidden("hf_EDC_CatalogDetailID")
+                    @Html.Hidden("hf_EDC_CatalogDetailTempID")
+                </form>
+                @*TABLA*@
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="table_CatalogDetailsCultures"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">@Resources.Common.btnCancel</button>
+                <button type="button" class="btn btn-success" id="btn_save_cat_translation">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>

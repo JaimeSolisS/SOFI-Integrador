@@ -1,0 +1,20 @@
+﻿@model List<Core.Entities.EnergySensors>
+
+@foreach (var item in Model)
+{
+    if (item.Enabled)
+    {
+        <div class="col-xs-1" style="width:200px;padding-top: 20px;padding-bottom:20px;">
+            <div class="shadow-div-effect @item.AlertCssClass" style="background-color: white;">
+                <a href="#" class="energy-sensor-image" data-energysensorid="@item.EnergySensorID">
+                    <div style="height: 150px; position: relative;padding:3px;">
+                        <img src="@item.ImagePath" style="object-fit: contain;position: absolute;height:100%;width:98%" />
+                    </div>
+                </a>
+                <div style="text-align:center;">
+                    <label style="font-size:medium">@item.SensorName</label>
+                </div>
+            </div>
+        </div>
+    }
+}

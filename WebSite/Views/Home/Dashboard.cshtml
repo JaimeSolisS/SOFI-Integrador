@@ -1,0 +1,90 @@
+﻿<div class="container-fluid start-screen h-100">
+    <h1 class="start-screen-title">ESSILOR Dashboard</h1>
+
+    <div class="tiles-area clear">
+        <div class="row">
+            <div class="row tiles-grid tiles-group size-2 fg-black" data-group-title="Production">
+                <a href="@Url.Action("Charts",new {controller ="Home",area="",type="2" })" data-role="tile" class="bg-indigo fg-white">
+                    <span class="fa fa-cogs icon"></span>
+                    <span class="branding-bar">High Index</span>
+
+                </a>
+                <div data-role="tile" class="col-xs-12 bg-indigo fg-white">
+                    <a href="@Url.Action("Charts",new {controller ="Home",area="",type="18" })" data-role="tile" class="bg-indigo fg-white">
+                        <span class="fa fa-cogs icon"></span>
+                        <span class="branding-bar">High Index Polar</span>
+                    </a>
+                </div>
+                <div data-role="tile" class="bg-indigo fg-white">
+                    <a href="@Url.Action("Charts",new {controller ="Home",area="",type="17" })" data-role="tile" class="bg-indigo fg-white">
+                        <span class="fa fa-cogs icon"></span>
+                        <span class="branding-bar">1.5 Clear</span>
+                    </a>
+                </div>
+                <div data-role="tile" class="bg-indigo fg-white">
+                    <a href="@Url.Action("Charts",new {controller ="Home",area="",type="19" })" data-role="tile" class="bg-indigo fg-white">
+                        <span class="fa fa-cogs icon"></span>
+                        <span class="branding-bar">1.5 Polar</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="tiles-grid tiles-group size-1 fg-black" data-group-title="IT">
+            <a href="@Url.Action("ITCharts",new {controller ="Home",area="" })" data-role="tile" data-effect="image-set" class="bg-cyan fg-white">
+                <span class="fa fa-laptop icon"></span>
+                <span class="branding-bar">IT Charts</span>
+            </a>
+        </div>
+
+        <div class="tiles-grid tiles-group size-1 fg-black" data-group-title="Purchasing">
+            <a href="@Url.Action("Index",new {controller ="Dashboard",area="PUR" })" data-role="tile" data-effect="image-set" class="bg-red fg-white">
+                <span class="fa fa-shopping-cart icon"></span>
+                <span class="branding-bar">Purchasing Charts</span>
+            </a>
+        </div>
+
+        <div class="tiles-grid tiles-group size-1 fg-black" data-group-title="CI">
+            <a href="@Url.Action("Index",new {controller ="Dashboard",area="CI" })" data-role="tile" class="bg-green fg-white">
+                <span class="fa fa-check-circle  icon"></span>
+                <span class="branding-bar">Continuous Improvement</span>
+            </a>
+        </div>
+
+        <div class="tiles-grid tiles-group size-1 fg-black" data-group-title="Logistic">
+            <a href="@Url.Action("LogisticLinks", new {controller ="Dashboard",area="LGX" })" data-role="tile" class="fg-white" style="background-color:darkgoldenrod">
+                <span class="fa fa fa-truck icon"></span>
+                <span class="branding-bar">Logistic Links</span>
+            </a>
+        </div>
+
+        <div class="tiles-grid tiles-group size-1 fg-black" data-group-title="WHS" style="width:140px">
+            <a href="http://mx-essapp:8100/" data-role="tile" class="bg-orange fg-white">
+                <span class="fa fa-archive  icon"></span>
+                <span class="branding-bar">SOFI Warehouse Apps</span>
+            </a>
+        </div>
+    </div>
+
+        <div class="tiles-area clear">
+            <div class="tiles-grid tiles-group size-1 fg-black" data-group-title="Energy">
+                <a href="@Url.Action("EnergyLinks", new {controller ="EnergyDashboard", area="MNT" })" data-role="tile" class="fg-white" style="background-color:yellow">
+                    <span class="fa fa fa-lightbulb-o icon" style="color:black"></span>
+                    <span class="branding-bar" style="color:black">Energy Links</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro.min.css">
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-colors.min.css">
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-rtl.min.css">
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-icons.min.css">
+}
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/metro/metro.min.js"></script>
+}

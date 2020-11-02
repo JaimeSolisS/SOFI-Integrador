@@ -1,0 +1,34 @@
+﻿@model List<Core.Entities.Badge>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tblBadges">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_BadgeCode</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_NBadge</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_BadgeType</th>
+            <th class="text-white bg-primary w-150">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody class="ui-state-default sortable">
+        @foreach (var item in Model)
+        {
+            <tr class="font-size-lg" data-badgeid="@item.BadgeID">
+                <td class="font-bold">@item.UniqueNumber</td>
+                <td>
+                    <a href="#" id="@item.UniqueNumber" class="x-editable" data-badgetypeid="@item.BadgeTypeID" data-type="text" data-pk="@item.BadgeID" data-url="/SG/SecurityGuardConfigurations/UpdateBadgeName" data-title="@Resources.SG.SecurityGuard.lbl_NewName">@item.BadgeNumber</a>
+                </td>
+                <td class="font-italic">@item.BadgeTypeName</td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-lg">
+                        <button class="btn btn-info printBadgeLabel printLabel" data-referenceid="@item.BadgeID"
+                                data-referencetypeid="@item.ReferenceTypeID" title="@Resources.Common.lbl_Print">
+                            <span class="glyphicon glyphicon-print"></span>
+                        </button>
+                        <button class="btn btn-danger deleteBadge" title="@Resources.Common.lbl_Delete">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

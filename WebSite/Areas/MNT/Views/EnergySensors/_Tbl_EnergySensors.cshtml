@@ -1,0 +1,49 @@
+﻿@model List<Core.Entities.EnergySensors>
+@if (Model.Count > 0)
+{
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_edit" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>@Resources.MNT.EnergySensors.lbl_Family</th>
+                <th>@Resources.MNT.EnergySensors.lbl_SensorName</th>
+                <th>@Resources.MNT.EnergySensors.lbl_Use</th>
+                <th>@Resources.MNT.EnergySensors.lbl_IndexKey</th>
+                <th>@Resources.Common.gvH_UpdatedBy</th>
+                <th>@Resources.Common.gvH_UpdatedOn</th>
+                <th>@Resources.Common.lbl_Options</th>
+
+            </tr>
+        </thead>
+        <tbody class="ui-state-default sortable">
+            @foreach (var item in Model)
+            {
+            <tr id="@item.EnergySensorID">
+                <td id="@item.EnergySensorFamilyID">
+                    @item.FamilyName
+                </td>
+                <td>
+                    @item.SensorName
+                </td>
+                <td id="@item.SensorUseID">
+                    @item.SensorUseName
+                </td>
+                <td>
+                    @item.IndexKey
+                </td>
+                <td>
+                    @item.UserFullName
+                </td>
+                <td>
+                    @item.DateLastMaintFormat
+                </td>
+                <td style="width:18%; text-align:center">
+                    <button class="btn btn-success text-primary energySensorEdit" title="@Resources.Common.lbl_Edit"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>
+                    <button class="btn btn-info energySensorCopyAs" title="@Resources.Common.lbl_CopyAs"><span class="fa fa-copy"></span></button>
+                    <button class="btn btn-danger energySensorDelete" title="@Resources.Common.lbl_Delete"><span class="glyphicon glyphicon-trash"></span></button>
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

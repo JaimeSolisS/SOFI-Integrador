@@ -1,0 +1,44 @@
+﻿@model List<Core.Entities.FilmetricInspection>
+<table class="table table-bordered table-striped table-actions" id="tbl_details">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Material</th>
+            <th>@Resources.QA.Filmetrics.lbl_line</th>
+            <th>@Resources.QA.Filmetrics.lbl_product</th>
+            <th>@Resources.QA.Filmetrics.lbl_Base</th>
+            <th>@Resources.QA.Filmetrics.lbl_substract</th>
+            <th>@Resources.Common.gvH_DateAdded</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="5%">
+                    <input type="button" value="Expand" id="btnExpand"
+                           onclick="javascript:BtnOnclick(@item.FilmetricInspectionID);" />
+                </td>
+              <td>@item.MaterialName</td>
+                <td>@item.LineName</td>
+                <td>@item.ProductName</td>
+                <td>@item.BaseName</td>
+                <td>@item.SubstractName</td>
+                <td>
+                    @Resources.Common.lbl_By: @item.UserFullName
+                    <br />
+                    @Resources.Common.lbl_On: @item.DateLastMaintFormat
+                </td>
+
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
+
+
+
+

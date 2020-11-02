@@ -1,0 +1,110 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.DemoldDefectsCatalog.AlertsViewModel
+<div id="mo_Alerts" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.MFG.DemoldDefectsCatalog.title_DemoldDefectsAlerts</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    @*<div class="col-xs-3">
+            <div class="form-group">
+                <label class="control-label" for="ddl_alerts_Shifts">@Resources.MFG.OperationRecords.lbl_Shift</label>
+                <div class="input">
+                    @Html.DropDownList("ddl_alerts_Shifts", Model.ShiftsList, new { @class = "form-control selectpicker" })
+                </div>
+            </div>
+        </div>*@
+
+                    @*<div class="col-xs-3">
+            <div class="form-group">
+                <label class="control-label" for="ddl_alerts_Lines">@Resources.MFG.MachineSetups.lbl_ProductionLine</label>
+                <div class="input">
+                    @Html.DropDownList("ddl_alerts_Lines", Model.LinesList, new { @class = "form-control selectpicker" })
+                </div>
+            </div>
+        </div>*@
+
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_alerts_Families">@Resources.MFG.DemoldDefects.lbl_Family</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_alerts_Families", Model.FamiliesList, new { @class = "form-control selectpicker", data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_lenstypes">@Resources.MFG.DemoldDefects.lbl_LenType</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_lenstypes", Model.LensTypesList, new { @class = "form-control selectpicker", data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_alerts_DefectsCategories">@Resources.MFG.DemoldDefects.lbl_Defect</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_alerts_DefectsCategories", Model.DefectsCategoriesList, new { @class = "form-control selectpicker" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_alerts_HourInterval">@Resources.MFG.DemoldDefectsCatalog.lbl_HourInterval</label>
+                            <div class="input">
+                                @Html.TextBox("txt_alerts_HourInterval", 1, new { @class = "form-control onlynumbers" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_alerts_Gross">@Resources.MFG.OperationRecords.lbl_Gross %</label>
+                            <div class="input">
+                                @Html.TextBox("txt_alerts_Gross", null, new { @class = "form-control onlydecimals" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-9">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_alerts_Gross"></label>
+                            <div class="input">
+                                <button id="btn_AddAlert" class="btn btn-success" style="width:100%">
+                                    <span class="fa fa-plus-circle"></span>
+                                    @Resources.Common.btnAdd
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div id="div_Tbl_DemoldDefectDetails">
+                        @Html.Partial("_Tbl_Alerts", Model.AlertsList)
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back_alerts" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_SaveAlerts" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>

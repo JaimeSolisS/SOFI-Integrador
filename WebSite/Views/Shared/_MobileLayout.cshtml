@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Resources.Common.title_WebTitle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+
+    @Styles.Render("~/Content/css/jquery")
+    @Styles.Render("~/Content/css/bootstrap")
+    @Styles.Render("~/Content/css/fontawesome")
+    <link href="~/Content/PLUGINS/animate/animate.min.css" rel="stylesheet" />
+    @RenderSection("Styles", false)
+
+    <link rel="stylesheet" type="text/css" id="theme" href="~/Content/theme-default.css?v20190308" />
+    <link rel="stylesheet" href="~/Content/SOFI.css?v20190325" />
+
+</head>
+<body>
+    <div class="page-content">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div class="loading-process-div" style="display: none;">
+        <span id="s_LoadingProcessText" class="spinner-text">@Resources.Common.lbl_Processing</span>
+    </div>
+    @Html.Partial("_ConfirmBox")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/noty")
+    @RenderSection("scripts", false)
+
+    <!-- START TEMPLATE -->
+    <script type="text/javascript" src="~/Scripts/plugins.js"></script>
+    <script type="text/javascript" src="~/Scripts/actions.js"></script>
+    <script type="text/javascript" src="~/Scripts/CoreFunctions.js?v20190312"></script>
+    <!-- END TEMPLATE -->
+    <!-- START Hidden Common Translations -->
+    @Html.Hidden("Warning_Common_Tag", Resources.Common.lbl_Warning)
+    @Html.Hidden("Delete_Common_Tag", Resources.Common.btnDeleteTag)
+    @Html.Hidden("Cancel_Common_Tag", Resources.Common.btnCancel)
+    @Html.Hidden("title_ConfirmDelete_Common_Tag", Resources.Common.title_ConfirmDelete)
+    @Html.Hidden("Yes_Common_Tag", Resources.Common.lbl_Yes)
+    @Html.Hidden("No_Common_Tag", Resources.Common.lbl_NO)
+    <!-- END Hidden Common Translations -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //select default lang when change
+            var cultureID = '@(Session["CultureID"] != null ? Session["CultureID"].ToString() : "" )';
+            $('.SelectCulture_' + cultureID).addClass("active");
+            var culture_label = $('.SelectCulture_' + cultureID).find(' a').text();
+            $('#culture_label').text(culture_label);
+            var flag_img = $('.SelectCulture_' + cultureID).find(' a').find(' img').attr("src");
+            $('#flag_img').attr("src",flag_img);
+
+            var facilityID = '@(Session["BaseFacilityId"] != null ? Session["BaseFacilityId"].ToString() : "" )';
+            $('.SelectFacility_' + facilityID).addClass("active");
+            var facility_label = $('.SelectFacility_' + facilityID).find(' a').text();
+            $('#facility_label').text(facility_label);
+
+            if ('@ViewBag.Exception' !== '') {
+                console.log('@ViewBag.Exception');
+                notification('', '@ViewBag.Exception', 'error');
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

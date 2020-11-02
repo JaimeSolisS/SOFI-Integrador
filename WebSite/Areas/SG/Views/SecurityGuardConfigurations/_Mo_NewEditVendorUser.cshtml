@@ -1,0 +1,94 @@
+﻿@model WebSite.Areas.SG.Models.ViewModels.SecurityGuardConfigurations.NewEditViewModel
+<div id="mo_NewEditVendorUser" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.ModalTitle</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label tag-serial" for="lblCompanyID">@Resources.SG.SecurityGuard.lbl_Company</label>
+                            <div class="input-group col-xs-12">
+                                <label id="lblMoCompanyID" data-vendorid="@Model.VendorEntity.VendorID">@Model.VendorEntity.VendorName</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label tag-serial" for="txtVendorUserName">@Resources.SG.SecurityGuard.lbl_PersonName</label>
+                            <div class="input-group col-xs-12">
+                                @Html.TextBox("txtMoVendorUserName", Model.VendorUserEntity.FullName, new { @class = "form-control max-length", maxlength = 150, autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label tag-serial" for="txtVendorUserAccessCode">@Resources.SG.SecurityGuard.lbl_ScannBox</label>
+                            <div class="input">
+                                @Html.TextBox("txtMoVendorUserAccessCode", Model.VendorUserEntity.AccessCode, new { @class = "form-control max-length", maxlength = 20, autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label tag-serial" for="txtVendorUserInsuranceNumber">@Resources.SG.SecurityGuard.lbl_InsuranceNumber</label>
+                            <div class="input">
+                                @Html.TextBox("txtMoVendorUserInsuranceNumber", Model.VendorUserEntity.InsuranceNumber, new { @class = "form-control onlynumbers max-length", maxlength = 30, autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label tag-serial" for="txtVendorUserExpirationDate">@Resources.SG.SecurityGuard.lbl_ExpirationDate</label>
+                            <div class="input">
+                                @Html.TextBox("txtMoVendorUserExpirationDate", Model.VendorUserEntity.ExpirationDate.ToString("yyyy-MM-dd"), new { @class = "form-control disabled-style-none", @readonly = "true", autocomplete = "off" });
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                        <label class="control-label tag-serial">@Resources.SG.SecurityGuard.lbl_Active</label><br />
+                        <div class="btn-group btn-group-toggle width-100p" data-toggle="buttons">
+                            @if (Model.VendorUserEntity.Enabled)
+                            {
+                                <label class="btn unselectRadioLabel option-no width-40p">
+                                    <input type="radio" name="options" autocomplete="off"> @Resources.Common.lbl_NO
+                                </label>
+                                <label class="btn unselectRadioLabel option-yes width-40p active">
+                                    <input type="radio" name="options" autocomplete="off" id="btnMoVendorUserActive" checked>  @Resources.Common.lbl_Yes
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="btn unselectRadioLabel option-no width-40p active">
+                                    <input type="radio" name="options" autocomplete="off" checked> @Resources.Common.lbl_NO
+                                </label>
+                                <label class="btn unselectRadioLabel option-yes width-40p">
+                                    <input type="radio" name="options" id="btnMoVendorUserActive" autocomplete="off">  @Resources.Common.lbl_Yes
+                                </label>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+
+                @if (Model.Type == "Edit")
+                {
+                    <button id="btnSaveEditedUserVendor" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+                else
+                {
+                    <button id="btnSaveNewUserVendor" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("MoVendorUserID", Model.VendorUserEntity.VendorUserID)

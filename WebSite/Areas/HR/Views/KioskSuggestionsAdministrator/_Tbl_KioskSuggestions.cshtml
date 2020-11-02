@@ -1,0 +1,31 @@
+﻿@model List<Core.Entities.KioskEmployeeSuggestion>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped datatable" id="table_Suggestions">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.HR.Kiosk.lbl_Facility</th>
+            <th>@Resources.HR.Kiosk.lbl_Category</th>
+            <th>@Resources.HR.Kiosk.lbl_Comments</th>
+            <th>@Resources.HR.Kiosk.lbl_SuggestedBy </th>
+            <th>@Resources.Common.lbl_CreatedOn</th>
+            <th style="width:15%">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody class="sortable">
+        @foreach (var item in Model)
+        {
+            <tr class="private_suggestion_row" data-categoryid="@item.CategoryID">
+                <td><b><i>@item.FacilityName</i></b></td>
+                <td>@item.CategoryName</td>
+                <td>@item.Comments</td>
+                <td><b>@item.EmployeeNumber</b> - @item.SuggestedBy</td>
+                <td>@item.DateAddedFormat</td>
+                <td width="1%" class="text-center">
+                    <button type="button" class="btn btn-danger delete-suggestion" title="@Resources.Common.lbl_Delete"
+                            data-kioskemployeesuggestionid="@item.KioskEmployeeSuggestionID">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

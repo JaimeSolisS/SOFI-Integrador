@@ -1,0 +1,157 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Request.IndexViewModel
+
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="remove-margins">@Resources.Request.H_eRequest</h2>
+        </div>
+        <div class="pull-right">
+            @if (Model.AllowApproveReq)
+            {
+                <button id="btn_Login" class="btn btn-primary"><span class="fa fa-pencil-square-o"></span>@Resources.Request.lbl_ElectronicSignature</button>
+            }
+            <button id="btn_showsingnature" class="btn btn-primary" style="display:none"><span class="fa fa-pencil-square-o"></span></button>
+            @if (Model.AllowCreateReq)
+            {
+                <button id="btn_new_request" class="btn btn-success"><span class="fa fa-plus-circle"></span>@Resources.Common.btn_New</button>
+            }
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-6 col-md-3 margin-top-10">
+                        <label>@Resources.Request.lbl_Invoice</label>
+                        @Html.TextBox("txt_RequestNumber", "", new { @autocomplete = "off", @class = "form-control eRequestFilters onlynumbers", maxlength = 20, @list = "dtl_RequestNumbers" })
+                    </div>
+                    <div class="col-xs-3 col-sm-6 col-md-3 margin-top-10" id="div_RequisitionsTypes">
+                        <label>@Resources.HR.Kiosk.lbl_RequestType</label>
+                        @Html.DropDownList("ddl_RequestTypes", Model.FormatList, new { @class = "form-control eRequestFilters select", multiple = "multiple", @selected = true, title = Resources.Common.chsn_SelectOption, data_actions_box = "true" })
+                    </div>
+                    <div class="col-xs-3 col-sm-6 col-md-3">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="check">
+                                    <div class="icheckbox_minimal-grey" style="position: relative;">
+                                        <input type="checkbox" class="check-range-date preserve-settings eRequestFilters" id="checkbox_filter_date" style="position: absolute; opacity: 0;">
+                                        <ins class="iCheck-helper eRequestFilters" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                    </div> @Resources.Common.lbl_Date
+                                </label>
+                            </div>
+                            <div class="col-xs-8">
+                                <div>
+                                    @Html.DropDownList("ddl_DateTypes", Model.DateTypeList, new { @class = "form-control eRequestFilters select dateTypeFilter" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    @*<label class="control-label">Range picker</label>*@
+                                    <div class="input-daterange input-group datepicker-demo">
+                                        <input type="text" id="txt_OpportunitiesProgramStartDate" class="form-control datetimepicker dateTypeFilter eRequestFilters" name="txt_OpportunitiesProgramStartDate"
+                                               placeholder="Start Date" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:yyyy-MM-dd}", DateTime.Now.AddDays(-7))">
+                                        <span class="input-group-addon">@Resources.Common.lbl_To</span>
+                                        <input type="text" id="txt_OpportunitiesProgramEndDate" class="form-control datetimepicker dateTypeFilter eRequestFilters" name="txt_OpportunitiesProgramEndDate"
+                                               placeholder="Hasta" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:yyyy-MM-dd}", DateTime.Now)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-6 col-md-3 margin-top-10">
+                        <label>@Resources.HR.Kiosk.lbl_Department</label>
+                        @Html.DropDownList("ddl_RequestDepartment", Model.DepartmentList, new { @class = "form-control eRequestFilters RequestFilters select", multiple = "multiple", title = Resources.Common.chsn_SelectOption, data_actions_box = "true" })
+                    </div>
+                    <div class="col-xs-3 col-sm-6 col-md-3 margin-top-10">
+                        <label>@Resources.Request.lbl_Status</label>
+                        @Html.DropDownList("ddl_Status", Model.StatusList, new { @class = "form-control eRequestFilters", multiple = "multiple", title = Resources.Common.chsn_SelectOption, data_actions_box = "true" })
+                    </div>
+                    <div class="col-xs-3 col-sm-6 col-md-3 margin-top-10">
+                        <label>@Resources.Common.lbl_Facility</label>
+                        @Html.DropDownList("ddl_Facility", Model.UserFacilitiesList, new { @class = "form-control eRequestFilters", multiple = "multiple", title = Resources.Common.chsn_SelectOption, data_actions_box = "true" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                <button id="btn_RequestSearch" type="button" class="btn btn-info">@Resources.Common.search</button>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-body" id="divTblRequests">
+                @Html.Partial("_Tbl_Requests", Model)
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="div_Login"></div>
+<input type="hidden" id="UserIDLogin" value="0">
+<input type="hidden" id="UserIDLoginType" value="">
+<input type="hidden" id="RequestLoopFlowID" value="0">
+<div id="divGenericModal"></div>
+
+@Html.Partial("_ImageResourceModal")
+@Html.Partial("_Mo_NewRequest")
+@Html.Partial("_Mo_Signature")
+@Html.Partial("_Mo_Signature_2FA")
+@Html.Partial("_Mo_ShowSignature")
+@Html.Partial("_Mo_Phase_Approval")
+@Html.Partial("_Mo_2FA")
+
+@Html.Hidden("RequestDefaultStatus", Model.RequestDefaultStatus)
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/jquery/jquery-ui.min.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/slick/slick.min.js"></script>
+    <script src="~/Scripts/PLUGINS/jsignature/jSignature.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/eRequest/Request/Index.js?v20200908" charset="utf-8"></script>
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js?v20200609" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cultureID = '@(Session["CultureID"] != null ? Session["CultureID"].ToString() : "" )';
+
+            var Resources = {
+                msg_RequestCancel: "@Html.Raw(Resources.Request.msg_CancelRequest)",
+                msg_LoginApprove: "@Html.Raw(Resources.Request.msg_LoginApprove)",
+                msg_CreateNewApproval2FA: "@Html.Raw(Resources.Request.msg_CreateNewApproval2FA)",
+                lbl_HideDetail: "@Html.Raw(Resources.Request.lbl_HideDetail)",
+                lbl_ViewDetail: "@Html.Raw(Resources.Request.lbl_ViewDetail)",
+                lbl_SeeApprovalLog: "@Html.Raw(Resources.Request.lbl_SeeApprovalLog)",
+                lbl_HideApprovalLog: "@Html.Raw(Resources.Request.lbl_HideApprovalLog)",
+                lbl_ViewAttachments: "@Html.Raw(Resources.Request.lbl_ViewAttachments)",
+                lbl_HideAttachments: "@Html.Raw(Resources.Request.lbl_HideAttachments)",
+                lbl_UserPassMandatory: "@Html.Raw(Resources.Request.lbl_UserPassMandatory)",
+                msg_FacilityFormatMandatory: "@Html.Raw(Resources.Request.msg_FacilityFormatMandatory)",
+                culture: cultureID.substr(0, 2).toLowerCase()
+            };
+            IndexInit(Resources);
+        });
+    </script>
+}
+<style>
+    canvas.jSignature {
+        border: 1px solid black !important;
+    }
+</style>

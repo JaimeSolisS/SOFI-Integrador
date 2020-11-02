@@ -1,0 +1,75 @@
+﻿@model WebSite.Areas.SG.Models.ViewModels.SecurityGuardConfigurations.IndexViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.SG.SecurityGuard.ttl_SecurityGuard</h2>
+        </div>
+        <div class="pull-right">
+            <div class="btn btn-success pull-right btnNewRecord" id="btnAddNewCompany">@Resources.SG.SecurityGuard.btn_AddNewCompany</div>
+        </div>
+
+    </div>
+    <div class="content-frame-body content-frame-body-all">
+
+        <!-- Tab links -->
+        <div class="tab font-size-lg">
+            <button class="tablinks active" data-tabname="Suppliers" data-btdaddnewid="btnAddNewVendor" data-btdaddnewnam="@Resources.SG.SecurityGuard.btn_AddNewCompany" id="supplierTab">@Resources.SG.SecurityGuard.lbl_Suppliers</button>
+            <button class="tablinks" data-tabname="Equipment" data-btdaddnewid="btnAddNewEquipment" data-btdaddnewnam="@Resources.SG.SecurityGuard.btn_AddNewEquipment">@Resources.SG.SecurityGuard.lbl_Equipments</button>
+            <button class="tablinks" data-tabname="Guard" data-btdaddnewid="btnAddNewGuard" data-btdaddnewnam="@Resources.SG.SecurityGuard.btn_AddNewGuard">@Resources.SG.SecurityGuard.lbl_Guards</button>
+            <button class="tablinks" data-tabname="Badges" data-btdaddnewid="btnAddNewBadge" data-btdaddnewnam="@Resources.SG.SecurityGuard.btn_AddNewBadges">@Resources.SG.SecurityGuard.lbl_Badges</button>
+        </div>
+
+        <div id="Suppliers" class="tabcontent" style="height:100%">
+            @Html.Partial("_Tab_Suppliers", Model)
+        </div>
+
+        <div id="Equipment" class="tabcontent" style="height:100%">
+
+        </div>
+        <div id="Guard" class="tabcontent" style="height:100%">
+
+        </div>
+        <div id="Badges" class="tabcontent" style="height:100%">
+
+        </div>
+    </div>
+</div>
+
+<div id="div_GenericModalContainer"></div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/Content/SG/TabsStyles.css" rel="stylesheet" />
+    <link href="~/Content/SG/SecurityGuardConfigurations.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/SG/SecurityGuardConfigurations/Index.js?v20200916" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cultureID = '@(Session["CultureID"] != null ? Session["CultureID"].ToString() : "" )';
+            var LangResources = {
+                btn_AddNewCompany: "@Html.Raw(Resources.SG.SecurityGuard.btn_AddNewCompany)",
+                btn_AddNewEquipment: "@Html.Raw(Resources.SG.SecurityGuard.btn_AddNewEquipment)",
+                btn_AddNewGuard: "@Html.Raw(Resources.SG.SecurityGuard.btn_AddNewGuard)",
+                btn_AddNewBadges: "@Html.Raw(Resources.SG.SecurityGuard.btn_AddNewBadges)",
+                msg_ConfirmDeleteVendorUser: "@Html.Raw(Resources.SG.SecurityGuard.msg_ConfirmDeleteVendorUser)",
+                msg_PrintLabelConfirm: "@Html.Raw(Resources.SG.SecurityGuard.msg_PrintLabelConfirm)",
+                msg_DeleteCompanyConfirm: "@Html.Raw(Resources.SG.SecurityGuard.msg_DeleteCompanyConfirm)",
+                msg_DeleteBadgeConfirm: "@Html.Raw(Resources.SG.SecurityGuard.msg_DeleteBadgeConfirm)",
+                msg_DeleteEquipmentConfirm: "@Html.Raw(Resources.SG.SecurityGuard.msg_DeleteEquipmentConfirm)",
+                culture: cultureID.substr(0, 2).toLowerCase()
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

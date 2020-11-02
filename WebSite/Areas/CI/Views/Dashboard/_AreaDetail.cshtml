@@ -1,0 +1,87 @@
+﻿@model WebSite.Areas.CI.Models.ViewModels.Dashboard.IndexDetailViewModel
+
+@foreach (var item in Model._List)
+{
+    if (item.FileTypeValueID.ToUpper() == "PDF")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_PDFFile bg-@item.BackColorClass shadow-div-effect" data-cover="@item.BackgroundImage"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-footer="@item.Footer" data-sourcepath="@item.SourcePath">
+            @if (item.Icon.ToUpper().StartsWith("MIF"))
+            {
+                <span class="@item.Icon"></span>
+            }
+            else if (item.Icon.Length > 0)
+            {
+                <img src="@item.Icon" class="icon" />
+            }
+            <span class="branding-bar fg-@item.FontColorClass">@item.Name</span>
+            <span class="badge-bottom fg-@item.FontColorClass">@item.Footer</span>
+        </div>
+    }
+    else if (item.FileTypeValueID.ToUpper() == "L")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_Link bg-@item.BackColorClass fg-@item.FontColorClass shadow-div-effect" data-cover="@item.BackgroundImage"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-footer="@item.Footer" data-href="@item.HRef">
+            @if (item.Icon.ToUpper().StartsWith("MIF"))
+            {
+                <span class="@item.Icon"></span>
+            }
+            else if (item.Icon.Length > 0)
+            {
+                <img src="@item.Icon" class="icon" />
+            }
+            <span class="branding-bar fg-@item.FontColorClass">@item.Name</span>
+            <span class="badge-bottom fg-@item.FontColorClass">@item.Footer</span>
+        </div>
+    }
+    else if (item.FileTypeValueID.ToUpper() == "V")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_Video bg-@item.BackColorClass fg-@item.FontColorClass shadow-div-effect" data-cover="@item.BackgroundImage"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-footer="@item.Footer" data-sourcepath="@item.SourcePath">
+            @if (item.Icon.ToUpper().StartsWith("MIF"))
+            {
+                <span class="@item.Icon"></span>
+            }
+            else if (item.Icon.Length > 0)
+            {
+                <img src="@item.Icon" class="icon" />
+            }
+            <span class="branding-bar fg-@item.FontColorClass">@item.Name</span>
+            <span class="badge-bottom fg-@item.FontColorClass">@item.Footer</span>
+        </div>
+    }
+    else if (item.FileTypeValueID.ToUpper() == "I")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_Image bg-@item.BackColorClass fg-@item.FontColorClass shadow-div-effect" data-cover="@item.BackgroundImage"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-footer="@item.Footer" data-sourcepath="@item.SourcePath">
+            @if (item.Icon.ToUpper().StartsWith("MIF"))
+            {
+                <span class="@item.Icon"></span>
+            }
+            else if (item.Icon.Length > 0)
+            {
+                <img src="@item.Icon" class="icon" />
+            }
+            <span class="branding-bar fg-@item.FontColorClass">@item.Name</span>
+            <span class="badge-bottom fg-@item.FontColorClass">@item.Footer</span>
+        </div>
+    }
+    else if (item.FileTypeValueID.ToUpper() == "G")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_Gallery bg-@item.BackColorClass shadow-div-effect" data-cover="@item.BackgroundImage"
+             data-effect="@item.DataEffectClass" data-effect-duration="@item.DataEffectDuration"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-footer="@item.Footer" data-sourcepath="@item.SourcePath">
+            @Html.Action("GetGallery", new { item.DashboardAreaID, item.DataEffectClass, item.SourcePath })
+            <span class="branding-bar fg-@item.FontColorClass">@item.Name</span>
+            <span class="badge-bottom fg-@item.FontColorClass">@item.Footer</span>
+        </div>
+    }
+    else
+    {
+        <a href="#" data-role="tile" class="bg-indigo fg-white" target="_blank">
+            <span class="mif-github icon"></span>
+            <span class="branding-bar">Github</span>
+            <span class="badge-bottom">30</span>
+        </a>
+    }
+}

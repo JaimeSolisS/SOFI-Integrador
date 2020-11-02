@@ -1,0 +1,92 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MachineSetup.MachineSetupParameterViewModel
+<div class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped parameter_table" id="tbl_Section_@Model.ParameterSectionID" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>#</th>
+                <th>@Resources.MFG.MachineSetups.lbl_Parameter</th>
+                <th>@Resources.MFG.MachineSetups.lbl_IsCalculated</th>
+                <th>@Resources.MFG.MachineSetups.lbl_UoM</th>
+                <th>@Resources.MFG.MachineSetups.lbl_Mandatory</th>
+                <th>@Resources.MFG.MachineSetups.lbl_IsAlert</th>
+                <th>@Resources.MFG.MachineSetups.lbl_Min</th>
+                <th>@Resources.MFG.MachineSetups.lbl_Max</th>
+                <th style="width:5%">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="sortable">
+            <tr style="border-color:transparent"><td colspan="8"></td></tr>
+
+            @foreach (var item in Model.MachineSetupParameterList)
+            {
+                <tr id="row_@item.MachineSetupParameterID"
+                    class="machine-setup-parameter-row param_@item.ParameterName.Replace(" ", "_").Replace("(","").Replace(")","")"
+                    data-machinesetupparameterid="@item.MachineSetupParameterID"
+                    data-machinesetupid="@item.MachineSetupID"
+                    data-parametersectionid="@item.ParameterSectionID"
+                    data-parametername="@item.ParameterName"
+                    data-uom="@item.UoM"
+                    data-seq="@item.Seq"
+                    data-machineparameterid="@item.MachineParameterID"
+                    data-parameteruomid="@item.ParameterUoMID"
+                    data-ismandatory="@item.IsMandatory"
+                    data-isalert="@item.IsAlert"
+                    data-minvalue="@item.MinValue"
+                    data-maxvalue="@item.MaxValue"
+                    data-functionvalue="@item.FunctionValue"
+                    data-functionminvalue="@item.FunctionMinValue"
+                    data-functionmaxvalue="@item.FunctionMaxValue"
+                    data-iscalculated="@item.IsCalculated">
+                    <td>@item.Seq</td>
+
+                    <td data-identifier="parameter">
+                        <a href="#" class="x-editable" data-type="select"
+                           data-value="@item.ParameterName"
+                           data-source="/MFG/MachineSetup/ParameterList" data-title="@Resources.MFG.MachineSetups.lbl_Parameter">@item.ParameterName</a>
+                    </td>
+
+                    <td>
+                        @if (item.IsCalculated == 1)
+                        {
+                            <label class="edit_formula formula_type_value xeditable_link_style" data-formula-type="value" >@Resources.Common.lbl_Edit</label>
+                        }
+                        else
+                        {
+                            @Resources.Common.lbl_NO
+                        }
+                    </td>
+
+                    <td data-identifier="uom">
+                        <a href="#" class="x-editable" data-type="select"
+                           data-value="@item.ParameterUoMID"
+                           data-source="/MFG/MachineSetup/UoMList" data-title="@Resources.MFG.MachineSetups.lbl_UoM">@item.UoM</a>
+                    </td>
+                    <td data-identifier="mandatory">
+                        <a href="#" class="x-editable" data-type="select"
+                           data-value="@item.IsMandatory"
+                           data-source="/MFG/MachineSetup/YesNoList" data-title="@Resources.MFG.MachineSetups.lbl_Mandatory">@item.IsMandatoryText</a>
+                    </td>
+                    <td data-identifier="alert">
+                        <a href="#" class="x-editable" data-type="select"
+                           data-value="@item.IsAlert"
+                           data-source="/MFG/MachineSetup/YesNoList" data-title="@Resources.MFG.MachineSetups.lbl_IsAlert">@item.IsAlertText</a>
+                    </td>
+                    <td data-identifier="min">
+                        <a href="#" class="x-editable" data-type="text"
+                           data-value="@item.MinValue" data-tpl="<input type='text' class='onlydecimals max-length' maxlength = '@item.MaxLength'>"
+                           data-title="@Resources.MFG.MachineSetups.lbl_Min">@item.MinValue</a>
+                    </td>
+                    <td data-identifier="max">
+                        <a href="#" class="x-editable" data-type="text"
+                           data-value="@item.MaxValue" data-tpl="<input type='text' class='onlydecimals max-length' maxlength = '@item.MaxLength'>"
+                           data-title="@Resources.MFG.MachineSetups.lbl_Max">@item.MaxValue</a>
+                    </td>
+                    <td style="width:15%">
+                        @*<button class="btn btn-success text-primary edit-machine-parameter"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>*@
+                        <button class="btn btn-danger delete-machine-setup-parameter"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

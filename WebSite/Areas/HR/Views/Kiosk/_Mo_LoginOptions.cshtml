@@ -1,0 +1,148 @@
+﻿@model IEnumerable<SelectListItem>
+<div id="mo_LoginOption" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:9">
+    <div class="modal-dialog" style="width:400px">
+        <div class="modal-content" style="height:auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Common.lbl_Access</h4>
+            </div>
+            <div class="modal-body padding-none">
+                <div class="row" style="padding: 0px 0px 0px 0px">
+                    <div class="col-xs-12">
+
+                        <div class="tab">
+                            <button type="button" style="width:190px" class="tablinks text-center" id="tab_user_fingerprint" onclick="ChangeTabs(event, 'user_fingerprint')">@Resources.HR.Kiosk.lbl_EmployeeFootprint</button>
+                            <button type="button" style="width:190px" class="tablinks text-center" id="tab_user_password" onclick="ChangeTabs(event, 'user_password')">@Resources.Common.lbl_UserAndPassword</button>
+                        </div>
+
+                        <div id="user_fingerprint" class="tabcontent">
+                            <div id="user_validation">
+                                <div class="alert alert-info alert-dismissible padding-10" id="alert_background_image" role="alert">
+                                    <div class="col-sx-12">
+                                        <div class="col-xs-12" style="text-align:left;">
+                                            @Resources.HR.Kiosk.lbl_LoginSensorInstructions
+                                        </div>
+                                    </div>
+                                </div><br /><br />
+
+                                <div class="col-sx-12">
+                                    @Html.Password("txt_UserNum", "", new { @class = "form-control max-length", @maxlength = "20", @autocomplete = "off" })
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="1" class="btn-info btn-lg LoginNumPad">1</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="2" class="btn-info btn-lg LoginNumPad">2</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="3" class="btn-info btn-lg LoginNumPad">3</button>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="4" class="btn-info btn-lg LoginNumPad">4</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="5" class="btn-info btn-lg LoginNumPad">5</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="6" class="btn-info btn-lg LoginNumPad">6</button>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="7" class="btn-info btn-lg LoginNumPad">7</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="8" class="btn-info btn-lg LoginNumPad">8</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="9" class="btn-info btn-lg LoginNumPad">9</button>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <button type="button" style="width: 100% !important;background-color:burlywood !important;border-color:burlywood !important; padding-left:0em; padding-right: 0em;" data-numvalue="C" class="btn-info btn-lg LoginNumPad fg-black">@Resources.Common.lbl_Clear</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" data-numvalue="0" class="btn-info btn-lg LoginNumPad">0</button>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button type="button" style="width: 100% !important;background-color:green !important;border-color:green !important" data-numvalue="OK" class="btn-info btn-lg LoginNumPad">@Resources.Common.lbl_OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="finger_scan_validation" style="display:none;">
+                                <div class="row">
+                                    <div class="alert alert-info alert-dismissible padding-10" id="alert_background_image" role="alert">
+                                        <div class="col-sx-12">
+                                            <div class="col-xs-12" style="text-align:left;">
+                                                @Resources.HR.Kiosk.lbl_LoginSensorInstructionsFinger
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label id="finger_scann_time_remain"></label>
+                                </div>
+                                <div class="row">
+                                    <img src="~/Content/img/finger_scann.gif" style="width:100%" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="user_password" class="tabcontent">
+                            <div class="alert alert-info alert-dismissible padding-10" id="alert_background_image" role="alert">
+                                <div class="col-sx-12">
+                                    <div class="col-xs-12" style="text-align:left;">
+                                        @Resources.HR.Kiosk.lbl_LoginDomainUserPass
+                                    </div>
+                                </div>
+                            </div><br /><br />
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>@Resources.Common.lbl_Domain</label><br />
+                                </div>
+                                <div class="col-xs-12">
+                                    @Html.DropDownList("ddl_UsrDomain", Model, new { @class = "form-control selectpicker user_password_field" })
+                                    <br /><br />
+                                </div>
+                                <div class="col-xs-12">
+                                    <label>@Resources.Common.lbl_User</label><br />
+                                </div>
+                                <div class="col-xs-12">
+                                    @Html.TextBox("txt_UsrName", "", new { @class = "form-control user_password_field max-length", @autocomplete = "off", @maxlength = "100" })
+                                    <br />
+                                </div>
+                                <div class="col-xs-12">
+                                    <label>@Resources.Common.lbl_Password</label><br />
+                                </div>
+                                <div class="col-xs-12">
+                                    @Html.Password("txt_UsrPass", "", new { @class = "form-control user_password_field max-length", @autocomplete = "off", @maxlength = "100" })
+                                    <br />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-xs-8"></div>
+                                <div class="col-xs-4">
+                                    <button type="button" id="btn_ActiveDiretoryLogin" class="btn btn-success" style="width:100%">@Resources.Common.btn_Accept</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default close-preview-video" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                </div>*@
+        </div>
+    </div>
+</div>

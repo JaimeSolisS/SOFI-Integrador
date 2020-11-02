@@ -1,0 +1,79 @@
+﻿@model WebSite.Areas.Production.Models.Goals.IndexViewModel
+<div id="mo_AddProductionGoal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.ModalGoalHeader</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_GoalName">@Resources.ProductionGoal.lbl_GoalNameTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_GoalName", Model.CatalogGoalList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_ProductionProcess">@Resources.ProductionGoal.lbl_ProcessProductionTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_ProductionProcess", Model.ProductionProcessList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12  @Model.ClassProcessLine" id="div_AD_ContainerControlProductionLine">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_ProductionLine">@Resources.ProductionGoal.lbl_ProcessLineTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_ProductionLine", Model.UserProcessesLine, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_VA">@Resources.ProductionGoal.lbl_VATag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_VA", Model.VAList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_Design">@Resources.ProductionGoal.lbl_DesignTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_Design", Model.DesignList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_Shift">@Resources.ProductionGoal.lbl_ShiftTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_AD_Shift", Model.ShiftList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_AD_Goal">@Resources.Defects.lbl_GoalTag</label>
+                            <div class="input-group">
+                                @if (Model.ProductionGoalInfo.GoalID == 0)
+                                {<input type="text" maxlength="10" class="form-control moldScrapValue onlydecimals" placeholder="0.00" id="txt_AD_Goal" name="txt_AD_Goal" /> }
+                                else
+                                { <input type="text" maxlength="10" class="form-control moldScrapValue onlydecimals" placeholder="0.00" id="txt_AD_Goal" value="@Model.ProductionGoalInfo.GoalValue" name="txt_AD_Goal" />}
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_SaveProductionGoal" type="button" data-goalid="@Model.ProductionGoalInfo.GoalID" class="btn btn-info">@Model.ModalGoalAcceptButton</button>
+            </div>
+        </div>
+    </div>
+</div>

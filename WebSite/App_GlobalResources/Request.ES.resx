@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btn_Approve" xml:space="preserve">
+    <value>Aprobar</value>
+  </data>
+  <data name="btn_CreateSignature" xml:space="preserve">
+    <value>Guardar firma</value>
+  </data>
+  <data name="btn_EditSignature" xml:space="preserve">
+    <value>Editar mi firma</value>
+  </data>
+  <data name="btn_Reject" xml:space="preserve">
+    <value>Rechazar</value>
+  </data>
+  <data name="btn_Reset" xml:space="preserve">
+    <value>Reiniciar</value>
+  </data>
+  <data name="H_CreateRequest" xml:space="preserve">
+    <value>Nueva solicitud</value>
+  </data>
+  <data name="H_eRequest" xml:space="preserve">
+    <value>Requisición electrónica</value>
+  </data>
+  <data name="H_Format" xml:space="preserve">
+    <value>Formato</value>
+  </data>
+  <data name="H_Formats" xml:space="preserve">
+    <value>Formatos</value>
+  </data>
+  <data name="lbl_2FA" xml:space="preserve">
+    <value>Usar doble verificación</value>
+  </data>
+  <data name="lbl_AccessFormat" xml:space="preserve">
+    <value>Accesos al formato</value>
+  </data>
+  <data name="lbl_AccessGarantedTo" xml:space="preserve">
+    <value>Acceso concedido a</value>
+  </data>
+  <data name="lbl_AddDepurty" xml:space="preserve">
+    <value>Agregar sustituto</value>
+  </data>
+  <data name="lbl_AddDetailField" xml:space="preserve">
+    <value>Añadir campo de detalle</value>
+  </data>
+  <data name="lbl_AddFormatFields" xml:space="preserve">
+    <value>Agregar campos de formato</value>
+  </data>
+  <data name="lbl_AddNewAccessFormat" xml:space="preserve">
+    <value>Nuevo acceso al formato</value>
+  </data>
+  <data name="lbl_AddPhase" xml:space="preserve">
+    <value>Agregar Fase</value>
+  </data>
+  <data name="lbl_AddRule" xml:space="preserve">
+    <value>Agregar regla</value>
+  </data>
+  <data name="lbl_AllFacility" xml:space="preserve">
+    <value>Todas las plantas</value>
+  </data>
+  <data name="lbl_AllowAttachments" xml:space="preserve">
+    <value>Permitir archivos adjuntos</value>
+  </data>
+  <data name="lbl_AllUsers" xml:space="preserve">
+    <value>Todos los usuarios</value>
+  </data>
+  <data name="lbl_Approval" xml:space="preserve">
+    <value>Aprobación</value>
+  </data>
+  <data name="lbl_ApprovalPhases" xml:space="preserve">
+    <value>Fases de aprobaciones</value>
+  </data>
+  <data name="lbl_Approve" xml:space="preserve">
+    <value>Aprueba</value>
+  </data>
+  <data name="lbl_ApprovingDepartment" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="lbl_ApprovingUser" xml:space="preserve">
+    <value>Usuario aprobador</value>
+  </data>
+  <data name="lbl_Article" xml:space="preserve">
+    <value>Artículo</value>
+  </data>
+  <data name="lbl_Articles" xml:space="preserve">
+    <value>Artículos</value>
+  </data>
+  <data name="lbl_Attachments" xml:space="preserve">
+    <value>Archivos adjuntos</value>
+  </data>
+  <data name="lbl_CancelRequest" xml:space="preserve">
+    <value>Cancelar requerimiento</value>
+  </data>
+  <data name="lbl_CatalogList" xml:space="preserve">
+    <value>Lista de catálogos</value>
+  </data>
+  <data name="lbl_Code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="lbl_Comments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="lbl_Company" xml:space="preserve">
+    <value>Empresa</value>
+  </data>
+  <data name="lbl_Concept" xml:space="preserve">
+    <value>Concepto</value>
+  </data>
+  <data name="lbl_CreatedBy" xml:space="preserve">
+    <value>Creado por</value>
+  </data>
+  <data name="lbl_Department" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="lbl_Detail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="lbl_DetailFields" xml:space="preserve">
+    <value>Campos de detalle</value>
+  </data>
+  <data name="lbl_DirectApproval" xml:space="preserve">
+    <value>Enviar para aprobación directa</value>
+  </data>
+  <data name="lbl_EditDetailField" xml:space="preserve">
+    <value>Editar campo de detalle</value>
+  </data>
+  <data name="lbl_EditFolio" xml:space="preserve">
+    <value>Editar folio</value>
+  </data>
+  <data name="lbl_EditFormat" xml:space="preserve">
+    <value>Editar formato</value>
+  </data>
+  <data name="lbl_EditRule" xml:space="preserve">
+    <value>Editar regla</value>
+  </data>
+  <data name="lbl_ElectronicSignature" xml:space="preserve">
+    <value>Firma electrónica</value>
+  </data>
+  <data name="lbl_Field" xml:space="preserve">
+    <value>Campo</value>
+  </data>
+  <data name="lbl_Folio" xml:space="preserve">
+    <value>Folio</value>
+  </data>
+  <data name="lbl_FormatFields" xml:space="preserve">
+    <value>Campos de formato</value>
+  </data>
+  <data name="lbl_Forward" xml:space="preserve">
+    <value>Reenviar</value>
+  </data>
+  <data name="lbl_General" xml:space="preserve">
+    <value>Información General</value>
+  </data>
+  <data name="lbl_HideApprovalLog" xml:space="preserve">
+    <value>Ocultar bitácora de aprobaciones</value>
+  </data>
+  <data name="lbl_HideAttachments" xml:space="preserve">
+    <value>Ocultar archivos adjuntos</value>
+  </data>
+  <data name="lbl_HideDetail" xml:space="preserve">
+    <value>Ocultar Detalle</value>
+  </data>
+  <data name="lbl_Invoice" xml:space="preserve">
+    <value>Folio</value>
+  </data>
+  <data name="lbl_IsEnabled" xml:space="preserve">
+    <value>¿Está habilitado?</value>
+  </data>
+  <data name="lbl_Justification" xml:space="preserve">
+    <value>Justificación</value>
+  </data>
+  <data name="lbl_Languague" xml:space="preserve">
+    <value>Lenguaje</value>
+  </data>
+  <data name="lbl_Length" xml:space="preserve">
+    <value>Longitud</value>
+  </data>
+  <data name="lbl_Listed" xml:space="preserve">
+    <value>¿Es listado?</value>
+  </data>
+  <data name="lbl_Mandatory" xml:space="preserve">
+    <value>¿Es obligatorio?</value>
+  </data>
+  <data name="lbl_Model" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="lbl_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lbl_NewRule" xml:space="preserve">
+    <value>Nueva regla</value>
+  </data>
+  <data name="lbl_NothingSelected" xml:space="preserve">
+    <value>Nada seleccionado</value>
+  </data>
+  <data name="lbl_OutputType" xml:space="preserve">
+    <value>Tipo de salida</value>
+  </data>
+  <data name="lbl_Owned" xml:space="preserve">
+    <value>Material propiedad de</value>
+  </data>
+  <data name="lbl_Phase" xml:space="preserve">
+    <value>Fase</value>
+  </data>
+  <data name="lbl_PlateNumber" xml:space="preserve">
+    <value>Número de placa</value>
+  </data>
+  <data name="lbl_Position" xml:space="preserve">
+    <value>Posición</value>
+  </data>
+  <data name="lbl_Precition" xml:space="preserve">
+    <value>Precisión</value>
+  </data>
+  <data name="lbl_PrintFormat" xml:space="preserve">
+    <value>Imprimir formato</value>
+  </data>
+  <data name="lbl_Request" xml:space="preserve">
+    <value>Solicitud</value>
+  </data>
+  <data name="lbl_RequirementNumber" xml:space="preserve">
+    <value>Número de requisito</value>
+  </data>
+  <data name="lbl_Rule" xml:space="preserve">
+    <value>Regla</value>
+  </data>
+  <data name="lbl_Rules" xml:space="preserve">
+    <value>Reglas</value>
+  </data>
+  <data name="lbl_SeeApprovalLog" xml:space="preserve">
+    <value>Ver bitácora de aprobaciones</value>
+  </data>
+  <data name="lbl_SerialNumber" xml:space="preserve">
+    <value>Número de serie</value>
+  </data>
+  <data name="lbl_ShowAs" xml:space="preserve">
+    <value>Mostrar como</value>
+  </data>
+  <data name="lbl_signature" xml:space="preserve">
+    <value>Firma</value>
+  </data>
+  <data name="lbl_Status" xml:space="preserve">
+    <value>Estatus</value>
+  </data>
+  <data name="lbl_Tolerance" xml:space="preserve">
+    <value>Tolerancia</value>
+  </data>
+  <data name="lbl_Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="lbl_UserPassMandatory" xml:space="preserve">
+    <value>Por favor introduce un usuario y una contraseña válida</value>
+  </data>
+  <data name="lbl_ValidatedUserSuccess" xml:space="preserve">
+    <value>Usuario validado correctamente</value>
+  </data>
+  <data name="lbl_ValidatedUserWrong" xml:space="preserve">
+    <value>Las credenciales del usuario son incorrectas</value>
+  </data>
+  <data name="lbl_ViewAttachments" xml:space="preserve">
+    <value>Ver archivos adjuntos</value>
+  </data>
+  <data name="lbl_ViewDetail" xml:space="preserve">
+    <value>Ver detalle</value>
+  </data>
+  <data name="lbl_Visible" xml:space="preserve">
+    <value>¿Es visible?</value>
+  </data>
+  <data name="msg_CancelReqCreate" xml:space="preserve">
+    <value>¿Estas seguro que deseas retornar al listado de requerimientos?. Todos los cambios realizados se perderán.</value>
+  </data>
+  <data name="msg_CancelRequest" xml:space="preserve">
+    <value>¿Estás seguro de que deseas cancelar la solicitud?</value>
+  </data>
+  <data name="msg_CreateNewApproval2FA" xml:space="preserve">
+    <value>Se generará un nuevo código de acceso, el anterior ya no funcionará</value>
+  </data>
+  <data name="msg_CreateReqConfirmation" xml:space="preserve">
+    <value>¿Estás seguro que deseas crear este requerimiento?</value>
+  </data>
+  <data name="msg_ErrorLength" xml:space="preserve">
+    <value>La longitud no puede ser 0</value>
+  </data>
+  <data name="msg_ErrorPrecision" xml:space="preserve">
+    <value>La precisión no puede ser 0</value>
+  </data>
+  <data name="msg_IfTheFormatIs" xml:space="preserve">
+    <value>Si el formato es del departamento de:</value>
+  </data>
+  <data name="msg_FacilityFormatMandatory" xml:space="preserve">
+    <value>Debes seleccionar una planta y un formato.</value>
+  </data>
+  <data name="msg_LoginApprove" xml:space="preserve">
+    <value>El usuario que está intentando aprobar no es un usuario válido para aprobar esta fase, ¿desea autenticarse para aprobar la fase?</value>
+  </data>
+  <data name="msg_Msg2FA" xml:space="preserve">
+    <value>Ingrese la contraseña que llegó a su correo electrónico</value>
+  </data>
+  <data name="msg_NameEN" xml:space="preserve">
+    <value>El nombre en inglés no puede estar vacío</value>
+  </data>
+  <data name="msg_NameES" xml:space="preserve">
+    <value>El nombre en español no puede estar vacio</value>
+  </data>
+  <data name="msg_PersonalApproves" xml:space="preserve">
+    <value>Entonces aprueba personal de:</value>
+  </data>
+  <data name="msg_SelectHowYouWant" xml:space="preserve">
+    <value>Seleccione como desea configurar la aprobación</value>
+  </data>
+  <data name="msg_Signature" xml:space="preserve">
+    <value>No tienes una firma electrónica configurada, por favor dibujala</value>
+  </data>
+  <data name="msg_TypeMandatory" xml:space="preserve">
+    <value>Tienes que seleccionar un tipo</value>
+  </data>
+  <data name="th_ApprovalSequence" xml:space="preserve">
+    <value>Secuencia de aprobación</value>
+  </data>
+  <data name="th_IfTheReqFromDepart" xml:space="preserve">
+    <value>Si el request es del Departamento</value>
+  </data>
+  <data name="t_AddApprover" xml:space="preserve">
+    <value>Agregar aprobador</value>
+  </data>
+  <data name="t_AddDeputyApprover" xml:space="preserve">
+    <value>Agregar aprobador sustituto</value>
+  </data>
+  <data name="lbl_AddNewApprover" xml:space="preserve">
+    <value>Agregar un nuevo aprobador</value>
+  </data>
+  <data name="lbl_AllDepartments" xml:space="preserve">
+    <value>Todos los departamentos</value>
+  </data>
+  <data name="lbl_Decimals" xml:space="preserve">
+    <value>decimales</value>
+  </data>
+  <data name="lbl_EditApprover" xml:space="preserve">
+    <value>Editar aprobador</value>
+  </data>
+  <data name="lbl_FormatName" xml:space="preserve">
+    <value>Nombre del formato</value>
+  </data>
+  <data name="lbl_ListName" xml:space="preserve">
+    <value>Nombre de la lista</value>
+  </data>
+  <data name="lbl_RuleConfiguration" xml:space="preserve">
+    <value>Configuración de reglas</value>
+  </data>
+  <data name="lbl_WithDecimals" xml:space="preserve">
+    <value>con</value>
+  </data>
+  <data name="lbl_YouCanApproveAfter" xml:space="preserve">
+    <value>Puede aprobar después de</value>
+  </data>
+  <data name="msg_CancelFormatCreate" xml:space="preserve">
+    <value>¿Esta seguro que quiere cancelar la creación, si cancela todos los cambios realizados aquí se perderán?</value>
+  </data>
+  <data name="msg_Delete_Confirm" xml:space="preserve">
+    <value>¿Estas seguro que quieres borrar esto?</value>
+  </data>
+  <data name="btn_ReturnLoan" xml:space="preserve">
+    <value>Retornar prestamo</value>
+  </data>
+  <data name="lbl_ReturnBy" xml:space="preserve">
+    <value>Regresado por</value>
+  </data>
+  <data name="lbl_ReturnDate" xml:space="preserve">
+    <value>Fecha de retorno</value>
+  </data>
+  <data name="alert_ReturnMaterialInstruction" xml:space="preserve">
+    <value>Por favor seleccione el material que se va a retornar.</value>
+  </data>
+  <data name="msg_SaveChanges" xml:space="preserve">
+    <value>Guardar cambios</value>
+  </data>
+  <data name="msg_SaveChangesQ" xml:space="preserve">
+    <value>¿Quieres guardar los cambios realizados?</value>
+  </data>
+  <data name="ttl_NewFormat" xml:space="preserve">
+    <value>Nuevo formato</value>
+  </data>
+  <data name="lblDatePart" xml:space="preserve">
+    <value>Parte de la fecha</value>
+  </data>
+  <data name="lblExceptions" xml:space="preserve">
+    <value>Excepciones</value>
+  </data>
+  <data name="lbl_AddCondition" xml:space="preserve">
+    <value>Agregar condición</value>
+  </data>
+  <data name="lbl_AddException" xml:space="preserve">
+    <value>Agregar excepción</value>
+  </data>
+  <data name="lbl_Approver" xml:space="preserve">
+    <value>Aprobador</value>
+  </data>
+  <data name="lbl_CreateRule" xml:space="preserve">
+    <value>Crear regla</value>
+  </data>
+  <data name="lbl_DeleteRule" xml:space="preserve">
+    <value>Eliminar regla</value>
+  </data>
+  <data name="lbl_EndField" xml:space="preserve">
+    <value>Campo final</value>
+  </data>
+  <data name="lbl_EndNumber" xml:space="preserve">
+    <value>Número final</value>
+  </data>
+  <data name="lbl_FormatField" xml:space="preserve">
+    <value>Campo del formato</value>
+  </data>
+  <data name="lbl_ManageDetail" xml:space="preserve">
+    <value>Maneja detalle</value>
+  </data>
+  <data name="lbl_NewCondition" xml:space="preserve">
+    <value>Nueva condición</value>
+  </data>
+  <data name="lbl_NewException" xml:space="preserve">
+    <value>Nueva excepción</value>
+  </data>
+  <data name="lbl_Number" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="lbl_SetUpPDF" xml:space="preserve">
+    <value>Configurar documento PDF</value>
+  </data>
+  <data name="lbl_StartField" xml:space="preserve">
+    <value>Campo inicial</value>
+  </data>
+  <data name="lbl_StartNumber" xml:space="preserve">
+    <value>Número inicial</value>
+  </data>
+  <data name="lbl_Use2FA" xml:space="preserve">
+    <value>Usa doble verificación</value>
+  </data>
+  <data name="lbl_UseDirectApproval" xml:space="preserve">
+    <value>Usa aprobación directa</value>
+  </data>
+  <data name="lbl_Value" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="msg_SelectDatePart" xml:space="preserve">
+    <value>Selecciona una parte de la fecha a evaluar</value>
+  </data>
+  <data name="msg_SelectFieldFormat" xml:space="preserve">
+    <value>Selecciona un campo del formato</value>
+  </data>
+  <data name="msg_step1" xml:space="preserve">
+    <value>Por favor seleccione el campo del formato que desea utilizar en esta regla.</value>
+  </data>
+  <data name="msg_Step2_1" xml:space="preserve">
+    <value>Por favor indique como comparar el campo &lt;b&gt;"#FIELD#"&lt;/b&gt;</value>
+  </data>
+  <data name="msg_Step2_2" xml:space="preserve">
+    <value>+ Between. Si &lt;b&gt;"#FIELD#"&lt;/b&gt; esta entre 2 valores</value>
+  </data>
+  <data name="msg_Step2_3" xml:space="preserve">
+    <value>+ In. Si &lt;b&gt;"#FIELD#"&lt;/b&gt; es igual a uno de varios valores</value>
+  </data>
+  <data name="msg_Step2_4" xml:space="preserve">
+    <value>+ Like. Si &lt;b&gt;"#FIELD#"&lt;/b&gt; es igual a un valor en especifico</value>
+  </data>
+  <data name="msg_ThisFieldCanNotUse" xml:space="preserve">
+    <value>Este tipo de campo no puede usar este comparador</value>
+  </data>
+  <data name="lbl_AddFile" xml:space="preserve">
+    <value>Agregar archivo</value>
+  </data>
+  <data name="lbl_ChangeFile" xml:space="preserve">
+    <value>Cambiar archivo</value>
+  </data>
+  <data name="lbl_Flows" xml:space="preserve">
+    <value>Flujos</value>
+  </data>
+  <data name="lbl_Font" xml:space="preserve">
+    <value>Tipo de letra</value>
+  </data>
+  <data name="lbl_FontColor" xml:space="preserve">
+    <value>Color de letra</value>
+  </data>
+  <data name="lbl_FontSize" xml:space="preserve">
+    <value>Tamaño de letra</value>
+  </data>
+  <data name="lbl_HorizontalPosition" xml:space="preserve">
+    <value>Posicion horizontal</value>
+  </data>
+  <data name="lbl_ImageHeight" xml:space="preserve">
+    <value>Altura de la imagen</value>
+  </data>
+  <data name="lbl_ImageWidth" xml:space="preserve">
+    <value>Ancho de la imagen</value>
+  </data>
+  <data name="lbl_RequestedFields" xml:space="preserve">
+    <value>Campos Solicitados</value>
+  </data>
+  <data name="lbl_SignatureConfiguration" xml:space="preserve">
+    <value>Configuración de las firmas</value>
+  </data>
+  <data name="lbl_UserAccess" xml:space="preserve">
+    <value>Acceso de usuarios</value>
+  </data>
+  <data name="H_FormatName" xml:space="preserve">
+    <value>Formato</value>
+  </data>
+  <data name="H_IsEnabled" xml:space="preserve">
+    <value>Habilitado</value>
+  </data>
+  <data name="H_ManageDetail" xml:space="preserve">
+    <value>Pide detalle</value>
+  </data>
+  <data name="H_Use2FA" xml:space="preserve">
+    <value>Utiliza doble verificacion</value>
+  </data>
+  <data name="H_UseDirectApproval" xml:space="preserve">
+    <value>Se va a aprobacion directa</value>
+  </data>
+  <data name="lbl_VerticalPosition" xml:space="preserve">
+    <value>Posicion vertical</value>
+  </data>
+  <data name="H_AllowAttachments" xml:space="preserve">
+    <value>Permitir archivos adjuntos</value>
+  </data>
+  <data name="H_SelectDetailsShow" xml:space="preserve">
+    <value>Selecciona los detalles a mostrar</value>
+  </data>
+  <data name="lbl_InitialHorizontalPosition" xml:space="preserve">
+    <value>Posición horizontal inicial</value>
+  </data>
+  <data name="lbl_IsEquals" xml:space="preserve">
+    <value>Es igual a</value>
+  </data>
+  <data name="lbl_LineSpacing" xml:space="preserve">
+    <value>Interlineado</value>
+  </data>
+  <data name="lbl_MaximumNumberDetails" xml:space="preserve">
+    <value>Número máximo de detalles</value>
+  </data>
+  <data name="lbl_ShowWhen" xml:space="preserve">
+    <value>Mostrar cuando</value>
+  </data>
+  <data name="lbl_ValueToShow" xml:space="preserve">
+    <value>Valor a mostrar</value>
+  </data>
+</root>

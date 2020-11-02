@@ -1,0 +1,257 @@
+﻿@model  WebSite.Areas.MFG.Models.ViewModels.Dashboard.ChartsViewModel
+@using (Html.BeginForm("DashboardChartsAllReports", "Dashboard", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-3">
+            <div class="page-title">
+                <h1 style="margin-top: 0px;"><span class="fa fa-search"></span>@Resources.MFG.Dashboard.title_Charts</h1>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row" style="padding-top: 6px;">
+                <div class="col-xs-1">
+                    <h4 style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Shift</h4>
+                </div>
+                <div class="col-xs-3">
+                    @Html.DropDownList("ShiftID", Model.ShiftList, new { @class = "form-control select", data_style = "btn-success" })
+                </div>
+                <div class="col-xs-2">
+                    <h4 style="padding-top: 6px;">@Resources.Common.lbl_StartDate</h4>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" id="txt_Date" name="txt_Date" class="form-control datepicker" value="@Model.DateFormat" data-date="@Model.DateFormat" data-date-viewmode="years" />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2" style="padding-top:5px">
+            <button class="btn btn-success"><span class="fa fa-table"></span>@Resources.CI.Dashboard.lbl_ExportAllReports</button>
+        </div>
+        <div class="col-md-2 pull-right">
+            <!-- START WIDGET CLOCK -->
+            <div class="widget widget-info widget-padding-sm" style="min-height: 0;margin: 0px;padding:0px;">
+                <div class="widget-big-int plugin-clock">00:00</div>
+                <div class="widget-subtitle plugin-date">Loading...</div>
+            </div>
+            <!-- END WIDGET CLOCK -->
+        </div>
+    </div>
+    <div class="row">
+        @* Yield vs defects *@
+        <div class="col-md-6">
+            <div id="yield_panel" class="panel panel-default" data-updatefunc="UpdateYieldDefectsChart" data-chartplugin="chart.js" data-chartid="graficadeyield">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel-title-box">
+                                <h3 id="ChartTitle_YieldDefectsExcelReport">@Resources.MFG.Dashboard.lbl_Yield_vs_Defects </h3>
+                                <span>Defects</span>
+                            </div>
+                            <ul class="panel-controls" style="margin-top: 2px;">
+                                <li><a href="#" id="btn_YieldDefectsExcelReport" title="@Resources.MNT.EnergySensors.title_ExcelReportAlert" style="background-color:rgb(149, 183, 93); color:white"><span class="fa fa-table"></span></a></li>
+                                <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Machines</label>
+                                <div class="col-md-9">
+                                    @Html.ListBox("yieldchart_SelectedMachines", Model.MachinesList, new { @class = "form-control select", multiple = "multiple", data_style = "btn-success" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-2" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Process</label>
+                                <div class="col-md-10">
+                                    @Html.DropDownList("yieldchart_process", Model.ProcessList, new { @class = "form-control select", data_style = "btn-success" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-4" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Materials</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("yieldchart_materials", Model.MaterialsList, new { @class = "form-control select", data_style = "btn-success" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body padding-0">
+                    <div class="chart-holder chart-container" id="YieldDefectsChart" style="position: relative;height: 400px;">
+                        <canvas id="ChartYieldDefects" style="position: relative;margin: auto;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* EER vs Downtimes *@
+        @*<div class="col-md-6">
+                <div id="EER_panel" class="panel panel-default" data-updatefunc="UpdateTopDefectsChart" data-chartid="graficadedefectos">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel-title-box">
+                                    <h3>@Resources.MFG.Dashboard.lbl_EER_vs_Downtimes</h3>
+                                    <span></span>
+                                </div>
+                                <ul class="panel-controls" style="margin-top: 2px;">
+                                    <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                                    <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-3" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Machines</label>
+                                    <div class="col-md-9">
+                                        @Html.ListBox("eerchart_SelectedMachines", Model.MachinesList, new { @class = "form-control select", multiple = "multiple", data_style = "btn-success" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Process</label>
+                                    <div class="col-md-7">
+                                        @Html.DropDownList("eerchart_process", Model.ProcessList, new { @class = "form-control select", data_style = "btn-success" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Materials</label>
+                                    <div class="col-md-7">
+                                        @Html.DropDownList("eerchart_materials", Model.MaterialsList, new { @class = "form-control select", data_style = "btn-success" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body padding-0">
+                        <div id="TopDefectsChart" class="chart-holder" style="height: 400px;">
+                            <canvas id="ChartEEM" style="position: relative;margin: auto;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        @* Downtimes *@
+        <div class="col-md-6">
+            <div id="downtimes_panel" class="panel panel-default" data-updatefunc="UpdateDowntimesChart" data-chartid="graficadedowntimes">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel-title-box">
+                                <h3>@Resources.MFG.Dashboard.lbl_Downtimes</h3>
+                                <span></span>
+                            </div>
+                            <ul class="panel-controls" style="margin-top: 2px;">
+                                <li><a href="#" id="btn_DowntimesExcelReport" title="@Resources.MNT.EnergySensors.title_ExcelReportAlert" style="background-color:rgb(149, 183, 93); color:white"><span class="fa fa-table"></span></a></li>
+                                <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Machines</label>
+                                <div class="col-md-9">
+                                    @Html.ListBox("dtchart_SelectedMachines", Model.MachinesList, new { @class = "form-control select", multiple = "multiple", data_style = "btn-success" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Process</label>
+                                <div class="col-md-7">
+                                    @Html.DropDownList("dtchart_process", Model.ProcessList, new { @class = "form-control select", data_style = "btn-success" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Materials</label>
+                                <div class="col-md-7">
+                                    @Html.DropDownList("dtchart_materials", Model.MaterialsList, new { @class = "form-control select", data_style = "btn-success" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body padding-0">
+                    <div id="DowntimeChart" class="chart-holder" style="height: 400px;">
+                        <canvas id="ChartDT" style="position: relative;margin: auto;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @* production rate *@
+        <div class="col-md-6">
+            <div id="prod_panel" class="panel panel-default" data-updatefunc="UpdateProductionchart" data-chartid="graficadeproduccion">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel-title-box">
+                                <h3>@Resources.MFG.Dashboard.lbl_ProductionRate</h3>
+                                <span></span>
+                            </div>
+                            <ul class="panel-controls" style="margin-top: 2px;">
+                                <li><a href="#" id="btn_ProductionExcelReport" title="@Resources.MNT.EnergySensors.title_ExcelReportAlert" style="background-color:rgb(149, 183, 93); color:white"><span class="fa fa-table"></span></a></li>
+                                <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Machines</label>
+                                <div class="col-md-9">
+                                    @Html.ListBox("prodchart_SelectedMachines", Model.MachinesList, new { @class = "form-control select", multiple = "multiple", data_style = "btn-success" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body padding-0">
+                    <div class="chart-holder" id="Productionchart" style="height: 200px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@Html.Hidden("HoursArray", Model.HoursArray)
+
+<div id="div_FiltersReportConfirmation">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/apexcharts/apexcharts.css" rel="stylesheet" />
+}
+@section scripts {
+    <script src="~/Scripts/PLUGINS/charts/Chart.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-annotation.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/apexcharts/apexcharts.js"></script>
+    <script src="~/Scripts/MFG/Dashboard/Charts.js?v20190815" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ChartsInit();
+        });
+    </script>
+}

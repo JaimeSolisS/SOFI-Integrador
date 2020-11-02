@@ -1,0 +1,300 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Formats.AddNewRuleModel
+<div id="mo_Create_Rule" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" style="width: 600px">
+        <div id="div_Step1">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title">@Resources.Request.lbl_CreateRule</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-success alert-dismissible padding-10" id="alert_background_image" role="alert">
+                                <div style="text-align:left;">
+                                    @Resources.Request.msg_step1
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label" for="Name">@Resources.Request.lbl_FormatField</label>
+                            <div class="form-group">
+                                <select id="ListFieldActive" class="select form-control" title="@Resources.Request.lbl_NothingSelected"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="DatePart" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="control-label" for="Name">@Resources.Request.lblDatePart</label>
+                                <div class="form-group">
+                                    @Html.DropDownList("SelectDatePart", Model._DatePart, htmlAttributes: new { @class = "form-control select" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">@Resources.Common.btnCancel</button>
+                    <button type="button" class="btn btn-info" id="btn_next_step2">@Resources.Common.btn_Next</button>
+                </div>
+            </div>
+        </div>
+        <div id="div_Step2" style="display:none">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title">@Resources.Request.lbl_CreateRule</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-success alert-dismissible padding-10" id="alert_background_image" role="alert">
+                                <div id="div_instructions_step_2" style="text-align:left;">
+                                    <span id="remplace1">@Html.Raw(Resources.Request.msg_Step2_1)</span><br />
+                                    <span id="remplace2">@Html.Raw(Resources.Request.msg_Step2_2)</span><br />
+                                    <span id="remplace3">@Html.Raw(Resources.Request.msg_Step2_3)</span><br />
+                                    <span id="remplace4">@Html.Raw(Resources.Request.msg_Step2_4)</span><br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label">@Resources.Request.lbl_FormatField</label>
+                            <div class="form-group">
+                                @Html.DropDownList("ComparatorType", Model._ComparatorType, htmlAttributes: new { @class = "form-control select", @title=Resources.Request.lbl_NothingSelected})
+                            </div>
+                        </div>
+                    </div>
+                    <div id="BetweenDate" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Common.lbl_StartDate</label>
+                                    <input type="text" id="txt_StartBetweenDate" class="form-control datetimepicker" placeholder="@Resources.Common.lbl_StartDate" style="text-align: center;border-radius: 4px;">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Common.lbl_EndDate</label>
+                                    <input type="text" id="txt_EndBetweenDate" class="form-control datetimepicker" placeholder="@Resources.Common.lbl_EndDate" style="text-align: center;border-radius: 4px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="BetweenText" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_StartField</label>
+                                    <input type="text" id="txt_StartBetweenText" class="form-control max-length" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_EndField</label>
+                                    <input type="text" id="txt_EndBetweenText" class="form-control max-length" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="BetweenNumeric" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_StartNumber</label>
+                                    <input type="text" id="txt_StartBetweenNumeric" class="form-control max-length integer" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_EndNumber</label>
+                                    <input type="text" id="txt_EndBetweenNumeric" class="form-control max-length integer" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="BetweenDecimal" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_StartNumber</label>
+                                    <input type="text" id="txt_StartBetweenDecimal" class="form-control max-length decimal" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_EndNumber</label>
+                                    <input type="text" id="txt_EndBetweenDecimal" class="form-control max-length decimal" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="InDate" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Common.lbl_Date</label>
+                                    <input type="text" id="txt_InDate" class="form-control datetimepicker" style="text-align: center;border-radius: 4px;">
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <button type="button" class="btn btn-success" id="btn_add_indate" style="margin-top: 20px;">@Resources.Common.btnAdd</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="InText" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_Field</label>
+                                    <input type="text" id="txt_InText" class="form-control max-length" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <button type="button" class="btn btn-success" id="btn_add_intext" style="margin-top: 20px;">@Resources.Common.btnAdd</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="InNumeric" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_Number</label>
+                                    <input type="text" id="txt_InNumeric" class="form-control max-length integer" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <button type="button" class="btn btn-success" id="btn_add_innumeric" style="margin-top: 20px;">@Resources.Common.btnAdd</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="InDecimal" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_Number</label>
+                                    <input type="text" id="txt_InDecimal" class="form-control max-length decimal" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <button type="button" class="btn btn-success" id="btn_add_indecimal" style="margin-top: 20px;">@Resources.Common.btnAdd</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="InList" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_Field</label>
+                                    <select id="txt_InList" class="select form-control" title="@Resources.Request.lbl_NothingSelected"></select>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <button type="button" class="btn btn-success" id="btn_add_inList" style="margin-top: 20px;">@Resources.Common.btnAdd</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="InTable" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <br />
+                                <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped margin-bottom-none" id="tbl_invalues">
+                                    <thead>
+                                        <tr class="font-size-sm bg-primary">
+                                            <th>@Resources.Request.lbl_Value</th>
+                                            <th width="60px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody_invalues">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="LikeText" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_Field</label>
+                                    <input type="text" id="txt_LikeText" class="form-control max-length" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="LikeNumeric" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_Number</label>
+                                    <input type="text" id="txt_LikeNumeric" class="form-control max-length integer" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="LikeDecimal" class="statehide" style="display:none">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label">@Resources.Request.lbl_Number</label>
+                                    <input type="text" id="txt_LikeDecimal" class="form-control max-length decimal" maxlength="100" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">@Resources.Common.btnCancel</button>
+                    <button type="button" class="btn btn-primary" id="btn_Back_Step2_1">@Resources.Common.btn_Back</button>
+                    <button type="button" class="btn btn-info" id="btn_next_step3">@Resources.Common.btn_Save</button>
+                </div>
+            </div>
+        </div>
+        <div id="div_Step3" style="display:none">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title">@Resources.Request.lbl_CreateRule</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label">@Resources.Request.lbl_Rules</label>
+                        </div> 
+                        <div class="col-xs-12" id="div_tbl_FormatsloopRulesDetail">
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label">@Resources.Request.lblExceptions</label>
+                        </div>
+                        <div class="col-xs-12" id="div_tbl_FormatsloopRulesDetailExceptions">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">@Resources.Common.btnCancel</button>
+                    <button type="button" class="btn btn-warning" id="btn_new_exception">@Resources.Request.lbl_NewException</button>
+                    <button type="button" class="btn btn-info" id="btn_new_condition">@Resources.Request.lbl_NewCondition</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Hidden("ComparatorTypeSelected")
+@Html.Hidden("IsAdditionalFielSelected")
+@Html.Hidden("CatalogTagSelected")
+@Html.Hidden("RuleTypeSelected")
+@Html.Hidden("DatePartSelected")
+@Html.Hidden("FormatLoopRuleTempIDCreate",Model.FormatLoopRuleTempID)
+@Html.Hidden("TableAdditionalFieldIDSelected")
+@Html.Hidden("RuleDetailTypeSelected")
+@Html.Hidden("SeqCreate")

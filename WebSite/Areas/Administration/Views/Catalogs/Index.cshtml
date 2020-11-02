@@ -1,0 +1,157 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.Catalogs.IndexViewModel
+
+<!-- START CONTENT FRAME -->
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.Catalog.title_Catalog</h2>
+        </div>
+        <div class="pull-right">
+            @if (Model.AllowCreate)
+            {
+                <button id="btn_new_catalog" class="btn btn-success"><span class="fa fa-plus-circle"></span>@Resources.Common.btn_New</button>
+            }
+        </div>
+    </div>
+    <!-- START CONTENT FRAME RIGHT -->
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Common.lbl_Filters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="CatalogID">@Resources.Catalog.lbl_Catalog</label>
+                            <select id="CatalogID" name="CatalogID" data-live-search="true" class="form-control select" title=@Html.Raw(Resources.Common.chsn_SelectOption)></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2 padding-top-22">
+                        @if (Model.AllowEdit)
+                        {
+                            <button id="btn_edit_Params" class="btn btn-default hidden">
+                                <i class="fa fa-cog text-blue"></i>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*DETAILS*@
+        <form id="add-detail-form" class="lobi-form hidden">
+            @Html.Hidden("hf_ADF_CatalogID")
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">@Resources.Catalog.title_Details</h3>
+                </div>
+
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label" for="ValueID">@Resources.Catalog.lbl_ValueID</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" id="ValueID" name="ValueID" placeholder="@Resources.Catalog.lbl_ValueID" maxlength="30" class="form-control max-lenght" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 col-xs-12 hidden" id="div_Param1">
+                            <div class="form-group">
+                                <label class="control-label" id="lbl_Param1" for="Param1"></label>
+                                <label class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" id="Param1" name="Param1" maxlength="255" class="max-lenght detail-field form-control" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 col-xs-12 hidden" id="div_Param2">
+                            <div class="form-group">
+                                <label class="control-label" id="lbl_Param2" for="Param2"></label>
+                                <label class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" id="Param2" name="Param2" maxlength="255" class="max-lenght detail-field form-control" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 col-xs-12 hidden" id="div_Param3">
+                            <div class="form-group">
+                                <label class="control-label" id="lbl_Param3" for="Param3"></label>
+                                <label class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" id="Param3" name="Param3" maxlength="255" class="max-lenght detail-field form-control" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 col-xs-12 hidden" id="div_Param4">
+                            <div class="form-group">
+                                <label class="control-label" id="lbl_Param4" for="Param4"></label>
+                                <label class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" id="Param4" name="Param4" maxlength="255" class="max-lenght detail-field form-control" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 col-xs-12">
+                            <label class="control-label">&nbsp;</label>
+                            <br />
+                            <button id="btn_new_detail" type="button" class="btn btn-block btn-success btn-pretty">@Resources.Common.btnAdd</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr />
+        @*TABLA*@
+        <div class="panel panel-info hidden" id="div_table_CatalogsDetail">
+            <div class="panel-body">
+                <div id="table_CatalogsDetail">
+                </div>
+                @Html.Partial("_Mo_EditCatalog")
+                @Html.Partial("_m_EditCultures")
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_m_Create")
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+    <style type="text/css">
+        .input-group-addon:first-child {
+            top: 0.02em !important;
+        }
+    </style>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/bootstrap-select")
+
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Administration/Catalogs/Index.js?v20190312" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+                var LangResources = {
+                    chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                    chsn_SelectMultipleOption: "@Resources.Common.chsn_SelectMultipleOption",
+                    chsn_NoResults: "@Resources.Common.chsn_NoResults",
+                    ntf_SelectWarehouse: "@Resources.Catalog.ntf_SelectWarehouse",
+                    ntf_SelectVendor: "@Resources.Catalog.ntf_SelectVendor"
+                };
+                IndexInit(LangResources);
+        });
+    </script>
+}

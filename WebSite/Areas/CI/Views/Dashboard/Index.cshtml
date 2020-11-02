@@ -1,0 +1,223 @@
+﻿@model WebSite.Areas.CI.Models.ViewModels.Dashboard.IndexViewModel
+@{
+    Layout = "~/Views/Shared/_FullScreenLayout.cshtml";
+}
+
+<div class="BackImage" style="background-image: url(@Model.BackgroundImage);">
+    <div class="page-title padding-5 border-bottom-1" style="border-bottom:2px solid #0088ce; background:#f5f5f5 url('../../Content/img/bg.png') left top repeat; position: absolute;z-index: 9;">
+        <div class="row">
+            <div class="col-xs-11">
+                <h2 class="panel-title" style="font-size:26px;">@Resources.CI.Dashboard.title</h2>
+                <div class="pull-right">
+                    <h3 class="margin-bottom-none">@Model.MonthName</h3>
+                    <span id="s_TotalVisits" class="label label-danger">@Model.TotalVisits @Resources.CI.Dashboard.lbl_Visits</span>
+                </div>
+                <label id="lbl_Visits" class="hidden">@Resources.CI.Dashboard.lbl_Visits</label>
+            </div>
+            <div class="col-xs-1">
+                <a id="refresh-dashboard" href="#" class="pull-right" style="background-color:#0088ce;border:1px solid blue;border-radius:3px;font-size:large;padding:5px;color:whitesmoke;">
+                    @Resources.Common.tt_Reload
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid start-screen split left h-100 padding-top-70" id="div_boxPanelLeft">
+        <div id="div_FilterAlert" class="alert alert-success hidden" role="alert">
+            <button type="button" class="btn-lg close" onclick="return CloseFilterAlert()" data-toggle="tooltip" data-placement="top" title="@Resources.CI.Dashboard.tt_RemoveFilter"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 id="s_filterText" class="margin-bottom-none"></h3>
+        </div>
+        <hr class="margin-none bg-primary" />
+        <div id="div_DashboardAreas" class="tiles-area clear">
+            @Html.Action("GetAreas", new { Model.ParentID })
+        </div>
+    </div>
+    <div class="container-fluid split right h-100 padding-top-70" id="div_boxPanelRight">
+        <!-- START WIDGET CLOCK -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="widget widget-info widget-padding-sm" style="min-height: 0;margin: 0px;padding:0px;">
+                    <div class="widget-big-int plugin-clock">00:00</div>
+                    <div class="widget-subtitle plugin-date">Loading...</div>
+                </div>
+            </div>
+        </div>
+        <!-- END WIDGET CLOCK -->
+        <div class="row carosuel-video-container" id="div_boxCarouselVideoContainer">
+            <div class="col-xs-12">
+                <div class="carousel-video" data-slide="1">
+                    @foreach (var item in Model._CarouselVideos)
+                    {
+                        <div>
+                            <video id="@item.VideoID" style="width:100%" controls preload="auto">
+                                <source src="@item.Path" />
+                            </video>
+                        </div>
+                    }
+                </div>
+
+                <div class="carousel-video-nav" style="background-color: black;">
+                    @foreach (var item in Model._CarouselVideos)
+                    {
+                        <div style="height: 125px; position: relative;padding:3px;">
+                            <img id="imgpreview_@item.VideoID" src="~/Content/img/fileinput/loading3.gif" alt="prev_@item.VideoID" style="object-fit: contain;position: absolute;height:100%;width:98%" />
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="pnl_Detail" class="panel panel-success hidden" style="overflow-y:hidden">
+    <div class="panel-heading ui-draggable-handle">
+        <div class="panel-title-box" style="height:60px">
+            <h1 id="h3_Name" style="margin-top:10px;padding:0px"> <span id="s_Footer"></span></h1>
+        </div>
+        <ul class="panel-controls">
+            <li><a id="a_fullscreen" href="#" class="panel-fullscreen hidden"><span class="fa fa-expand"></span></a></li>
+            <li><a href="#" class="containerpanel-remove" style="height: 59px;width: 200px;border-radius: 30px;font-size: 26px;font-weight: bold;color: white;background-color: #ff4500;border-color: #ff4500;padding-top: 12px;text-decoration: none"><span>@Resources.Common.btn_Back</span></a></li>
+        </ul>
+    </div>
+    <div id="body_pnl_Detail" class="panel-body padding-0 overflow-y-no">
+        <embed id="pdf_file" src="" type="application/pdf" style="width:100%;height:100%;" />
+        <div id="div_link" style="width:100%;height:100%;"></div>
+        <div id="div_video">
+            <video id="v_video" controls="controls" class="videoDetail">
+                <source id="s_video" src="">
+            </video>
+        </div>
+        <img id="i_detail" src="" style="width:100%;height:100%" />
+        <div id="div_Gallery">
+            <div class="SliderFade">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="div_screensavervideo" class="hidden">
+    @*<input type="hidden" id="hd_CurrentSlideVideSeq" value="2" />*@
+    <video id="v_screensaver" style="display:none;" onended="NextScreenVideo()">
+        <source id="sv_screensaver" src="@Model.ScreenSaverVideoPath">
+    </video>
+</div>
+
+<div id="mo_Welcome" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h1>@Resources.CI.Dashboard.Welcome</h1>
+            </div>
+            <div class="modal-footer text-center">
+                <button id="welcome-close" type="button" class="btn btn-primary" data-dismiss="modal">@Resources.Common.btn_Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro.min.css?v20190606">
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-colors.min.css">
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-rtl.min.css">
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-icons.min.css">
+
+    <link href="~/Content/PLUGINS/slick/slick-theme.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/slick/slick.css" rel="stylesheet" />
+
+    <style>
+        .slide-video {
+            background-color: black;
+        }
+
+        .carousel-video .slick-vertical .slick-slide {
+            border: none;
+        }
+    </style>
+}
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/metro/metro.min.js"></script>
+    <script src="~/Scripts/PLUGINS/slick/slick.min.js"></script>
+    <script src="~/Scripts/PLUGINS/x-frame-bypass/x-frame-bypass.js"></script>
+    <script src="~/Scripts/CI/Dashboard/Index.js?v20191004" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var Resources = {
+                ScreenSaverInterval:  @Model.ScreenSaverInterval.ToString(),
+                CloseWindowAfterIterval: @Model.ClosedWindowAfter.ToString(),
+                Visits:  "@Resources.Common.chsn_SelectOption"
+            };
+
+            IndexInit(Resources);
+        });
+    </script>
+}
+
+<style>
+    .BackImage {
+        height: 100%;
+        width: 100%;
+        background-position: top;
+        background-size: cover;
+    }
+
+    .videoDetail {
+        position: fixed;
+        width: 100% !important;
+        height: 91.5% !important;
+    }
+
+    .FullScreenVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+    }
+
+    .btn-back {
+        height: 59px;
+        width: 200px;
+        border-radius: 30px;
+        font-size: 26px;
+        font-weight: bold;
+        color: white;
+        background-color: #ff4500;
+        border-color: #ff4500;
+        padding-top: 12px;
+        text-decoration: none
+    }
+
+    /*F.Vera -> Cambiar a css principal*/
+    .split {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: auto;
+    }
+
+    .left {
+        left: 0;
+    }
+
+    .right {
+        right: 0;
+    }
+
+    .carosuel-video-container {
+        height: calc(100% - 7em);
+        vertical-align: middle;
+    }
+
+    .w-100-prc {
+        width: 100%;
+    }
+</style>

@@ -1,0 +1,44 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Reports.EERDTLSParamsViewModel
+<div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_StartDatetime</label>
+            <div class='input-group date'>
+                @Html.TextBox("txt_StartDatetime_EERDTLS", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), htmlAttributes: new { @class = "form-control datetimepicker" })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_EndDatetime</label>
+            <div class='input-group date'>
+                @Html.TextBox("txt_EndDatetime_EERDTLS", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), htmlAttributes: new { @class = "form-control datetimepicker" })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Machines</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Machines_EERDTLS", Model.MachinesList, new { @class = "form-control multiple-select", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Shifts</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Shifts_EERDTLS", Model.ShiftsList, new { @class = "form-control multiple-select", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+</div>

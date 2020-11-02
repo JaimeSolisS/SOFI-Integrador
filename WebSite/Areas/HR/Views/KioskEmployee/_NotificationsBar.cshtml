@@ -1,0 +1,23 @@
+﻿<ul class="x-navigation x-navigation-horizontal x-navigation-panel" style="background-color:black;">
+    <li class="xn-icon-button pull-right hidden">
+        <a href="#" class="mb-control" data-box="#mb-signout"><span style="display:none" class="fa fa-sign-out"></span></a>
+    </li>
+
+    <li class="xn-icon-button pull-right">
+        <a href="#"><span class="fa fa-envelope"></span></a>
+        <div class="informer informer-warning"><span id="request_count"></span></div>
+        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging ui-draggable">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title"><span class="fa fa-envelope"></span> @Resources.HR.Kiosk.lbl_PrivateRequestsList</h3>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="panel-body list-group list-group-contacts scroll mCustomScrollbar _mCS_2 mCS-autoHide mCS_no_scrollbar" style="height: 200px;">
+                @Html.Action("GetUserNotifications")
+            </div>
+            <div class="panel-footer text-center">
+                <button type="button" class="btn btn-secondary btn-readall" id="readAllPrivate" onclick="ReadAllPrivate()">@Resources.HR.Kiosk.lbl_ReadAll</button>
+            </div>
+        </div>
+    </li>
+</ul>

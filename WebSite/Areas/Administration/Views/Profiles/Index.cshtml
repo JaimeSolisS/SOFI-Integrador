@@ -1,0 +1,70 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.Profiles.IndexViewModel
+<!-- START CONTENT FRAME -->
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="remove-margins"> @Resources.Profile.lbl_ViewMainHeader</h2>
+        </div>
+        <div class="pull-right">
+            <button id="btn_new_profile" class="btn btn-success" title="@Resources.Profile.tt_NewProfileTag"><span class="fa fa-plus-circle"> @Resources.Common.btn_New</span></button>
+        </div>
+    </div>
+
+    <!-- START CONTENT FRAME RIGHT -->
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Common.lbl_Filters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_ScrapDate">@Resources.User.lbl_Profile</label>
+                            <div class="input-group">
+                                @Html.DropDownList("ddl_F_Profile", Model.ProfileList, htmlAttributes: new { @class = "form-control select applyfilters", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info">
+            <div class="panel-body filters" id="div_boxProfileInfo">
+                @Html.Partial("_Tbl_Profiles", Model.Profiles)
+            </div>
+        </div>
+    </div>
+
+    <div id="div_MsgText" class="hidden">
+        <span id="lbl_MsgDeleteProfileTag">@Resources.Profile.lbl_MsgDeleteProfileTag</span>
+        <span id="lbl_TitleDeleteProfileTag">@Resources.Common.lbl_Warning</span>
+        <span id="lbl_DeleteButtonTag">@Resources.Common.btnDeleteTag</span>
+        <span id="lbl_CancelButtonTag">@Resources.Common.btnCancel</span>
+
+        <span id="lbl_MsgDeleteDefectTag">@Resources.Defects.lbl_MsgDeleteDefectTag</span>
+    </div>
+    @section Styles
+    {
+        <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+    }
+
+
+    @section scripts {
+        @Scripts.Render("~/bundles/noty")
+        @Scripts.Render("~/bundles/bootstrap-select")
+        
+        <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/Scripts/PLUGINS/sweetalert/sweetalert.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/Administration/Profiles/Index.js" charset="utf-8"></script>
+    }
+    @Html.Partial("_Mo_Create")
+</div>

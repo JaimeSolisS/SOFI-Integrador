@@ -1,0 +1,127 @@
+﻿@model WebSite.Areas.CI.Models.ViewModels.Administration.IndexViewModel
+
+<!-- START CONTENT FRAME -->
+<div class="content-frame" id="div_MainDashboardManagement">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.CI.DashboardManagement.lbl_MainHeader_tag </h2>
+        </div>
+        <div class="pull-right">
+            <button id="btn_AddDashboard" class="btn btn-success" title="@Resources.CI.DashboardManagement.tt_AddAreaTag" data-dashboardID="0"><span class="fa fa-plus-circle"> @Resources.CI.DashboardManagement.lbl_AddAreaTag </span></button>
+            <button id="btn_GralSetting" class="btn btn-info" title="@Resources.CI.DashboardManagement.tt_GralSettingTag"><span class="fa fa-cogs"> @Resources.CI.DashboardManagement.tt_GralSettingTag </span></button>
+        </div>
+    </div>
+
+    <!-- START CONTENT FRAME RIGHT -->
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Common.lbl_Filters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_F_Dashboard">@Resources.CI.DashboardManagement.lbl_AreaNameTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_F_Dashboard", Model.ListAreas, htmlAttributes: new { @class = "form-control select applyfilters", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_F_FileType">@Resources.CI.DashboardManagement.lbl_FileTypeTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_F_FileType", Model.FileTypeList, htmlAttributes: new { @class = "form-control select applyfilters", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_F_FileType">@Resources.CI.DashboardManagement.lbl_View</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_F_View", Model.ViewsList, htmlAttributes: new { @class = "form-control select applyfilters" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*List Main Defects*@
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div id="div_boxTableInfo">
+                    @Html.Action("DashboardAreaList",new {  DashboardAreaID=0,  FileTypeID=0,  ViewType=Model.DFT_View })
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@*Modals*@
+<div id="div_MPE" class="hidden">
+
+</div>
+<div id="div_ReorderSections">
+
+</div>
+<div id="div_NodeUpsert">
+
+</div>
+
+@*DropZone*@
+<div class="hidden">
+    <div id="dZUploadOnlyImages" class="dropzone"></div>
+    <div id="dZUploadOnlyVideos" class="dropzone"></div>
+</div>
+<div id="div_MsgText" class="hidden">
+    <span id="lbl_MsgDeleteDashboardAreaDetailTag">@Resources.CI.DashboardManagement.lbl_MsgDeleteDashboardAreaDetailTag </span>
+    <span id="lbl_MsgDeleteDashboardAreaTag">@Resources.CI.DashboardManagement.lbl_MsgDeleteDashboardAreaTag </span>
+    <span id="lbl_TitleDeleteDashboardAreaTag">@Resources.Common.lbl_Warning</span>
+    <span id="lbl_DeleteButtonTag">@Resources.Common.btnDeleteTag</span>
+    <span id="lbl_CancelButtonTag">@Resources.Common.btnCancel</span>
+    <span id="lbl_MsgDeleteDefectTag">@Resources.Defects.lbl_MsgDeleteDefectTag</span>
+    <span id="nft_DifferentSectionNode">@Resources.CI.DashboardManagement.nft_DifferentSectionNode</span>
+    <span id="ntf_SectionSeparated">@Resources.CI.DashboardManagement.ntf_SectionSeparated</span>
+</div>
+
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/CI/Administration/Index.js?v20190613" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var LangResources = {
+                chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                chsn_SelectMultipleOption: "@Resources.Common.chsn_SelectMultipleOption",
+                chsn_NoResults: "@Resources.Common.chsn_NoResults",
+                ntf_SelectWarehouse: "@Resources.Catalog.ntf_SelectWarehouse",
+                ntf_SelectVendor: "@Resources.Catalog.ntf_SelectVendor",
+                nft_DifferentSectionNode: "@Resources.CI.DashboardManagement.nft_DifferentSectionNode",
+                ntf_SectionSeparated:"@Resources.CI.DashboardManagement.ntf_SectionSeparated"
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+}

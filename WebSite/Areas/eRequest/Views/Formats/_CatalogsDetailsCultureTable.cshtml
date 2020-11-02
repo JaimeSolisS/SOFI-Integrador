@@ -1,0 +1,62 @@
+﻿@model List<Core.Entities.TranslationDetail>
+@if (Model.Count > 0)
+{
+    <table class="display table table-striped table-bordered dataTable" cellspacing="0" width="100%">
+        <thead>
+            <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+                <th>
+                    @Resources.Catalog.lbl_Culture
+                </th>
+                <th>
+                    @Resources.Catalog.lbl_Description
+                </th>
+                <th>
+                    @Resources.Common.lbl_Updatedby
+                </th>
+                <th>
+                    @Resources.Common.gvH_DateLastMaint
+                </th>
+                <th>
+                    @Resources.Common.gvH_DateAdded
+                </th>
+                @*<th></th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-sm">
+                    <td>
+                        @item.CultureID
+                    </td>
+                    <td id="gvH_Param4_">
+                        @*<a id="Description" data-type="text" data-pk="@item.CatalogDetailID" data-culture="@item.CultureID" data-url="/Administration/Catalogs/Translation_UpdateEditable?pk2=@item.CultureID" data-value="@item.Description">@item.Description</a>*@
+                        @if (item.CultureID == "EN-US")
+                        {
+                            <input type="text" id="CatalogTranslationEN" data-tag="@item.Tag" value="@item.Description" maxlength="100" class="form-control max-lenght" />
+                        }
+                        else if(item.CultureID == "ES-MX")
+                        {
+                            <input type="text" id="CatalogTranslationES" data-tag="@item.Tag" value="@item.Description" maxlength="100" class="form-control max-lenght" />
+                        }
+                    </td>
+                    @*<td>
+                            @item.Description
+                        </td>*@
+                    <td>
+                        @item.UserFullName
+                    </td>
+                    <td>
+                        @item.DateLastMaint.ToString("yyyy-MM-dd HH:mm:ss")
+                    </td>
+                    <td>
+                        @item.DateAdded.ToString("yyyy-MM-dd HH:mm:ss")
+                    </td>
+                    @*<td>
+                            <span data-catalogdetailid="@item.Tag" data-cultureID="@item.CultureID" class="glyphicon glyphicon-remove btn btn-danger btn-sm del-detail-row"></span>
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+}

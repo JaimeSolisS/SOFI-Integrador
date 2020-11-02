@@ -1,0 +1,151 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskAdministration.IndexViewModel
+
+<!-- START CONTENT FRAME -->
+<div class="content-frame" id="div_MainKioskManagement">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.HR.Kiosk.title_GeneralSettingKiosk </h2>
+        </div>
+        <div class="pull-right">
+            <button id="btn_GralSetting" class="btn btn-info" title="@Resources.HR.Kiosk.tt_GralSettingTag"><span class="fa fa-cogs"> @Resources.CI.DashboardManagement.tt_GralSettingTag </span></button>
+        </div>
+    </div>
+
+    <!-- START CONTENT FRAME RIGHT -->
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary" style="display:none">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Common.lbl_Filters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_F_Kiosk">@Resources.CI.DashboardManagement.lbl_AreaNameTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_F_Kiosk", Model.ListAreas, htmlAttributes: new { @class = "form-control select applyfilters", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_F_FileType">@Resources.CI.DashboardManagement.lbl_FileTypeTag</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_F_FileType", Model.FileTypeList, htmlAttributes: new { @class = "form-control select applyfilters", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_F_FileType">@Resources.CI.DashboardManagement.lbl_View</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_F_View", Model.ViewsList, htmlAttributes: new { @class = "form-control select applyfilters" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*List Main Defects*@
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button id="btn_AddRootSection" title="@Resources.HR.Kiosk.tooltip_AddRootSection" class="btn btn-warning pull-right" title="@Resources.CI.DashboardManagement.tt_AddAreaTag" data-dashboardID="0"><span class="fa fa-sort-amount-desc"> @Resources.CI.DashboardManagement.lbl_AddAreaTag </span></button>
+                        <button id="btn_AddRootNode" title="@Resources.HR.Kiosk.tooltip_AddRootNode" data-isroot="@true" class="btn btn-success pull-right" title="@Resources.CI.DashboardManagement.tt_AddAreaTag" data-dashboardID="0"><span class="glyphicon glyphicon-plus"> @Resources.HR.Kiosk.title_CreateRootNode </span></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="div_boxTableInfo">
+                            @Html.Action("KioskAreaList", new { KioskAreaID = 0, FileTypeID = 0, ViewType = Model.DFT_View })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modals*@
+<div id="div_MPE" class="hidden">
+
+</div>
+<div id="div_ReorderSections">
+
+</div>
+<div id="div_NodeUpsert">
+
+</div>
+
+@Html.Partial("_ImageResourceModal")
+@Html.Partial("_Mo_PreviewVideo")
+@*@Html.Hidden("KioskCarouselMediaID", Model.KioskAreaList);*@
+
+@*DropZone*@
+<div class="hidden">
+    <div id="dZUploadOnlyImages" class="dropzone"></div>
+    <div id="dZUploadOnlyVideos" class="dropzone"></div>
+</div>
+<div id="div_MsgText" class="hidden">
+    <span id="lbl_MsgDeleteDashboardAreaDetailTag">@Resources.CI.DashboardManagement.lbl_MsgDeleteDashboardAreaDetailTag </span>
+    <span id="lbl_MsgDeleteDashboardAreaTag">@Resources.CI.DashboardManagement.lbl_MsgDeleteDashboardAreaTag </span>
+    <span id="lbl_TitleDeleteDashboardAreaTag">@Resources.Common.lbl_Warning</span>
+    <span id="lbl_DeleteButtonTag">@Resources.Common.btnDeleteTag</span>
+    <span id="lbl_CancelButtonTag">@Resources.Common.btnCancel</span>
+    <span id="lbl_MsgDeleteDefectTag">@Resources.Defects.lbl_MsgDeleteDefectTag</span>
+    <span id="nft_DifferentSectionNode">@Resources.CI.DashboardManagement.nft_DifferentSectionNode</span>
+    <span id="ntf_SectionSeparated">@Resources.CI.DashboardManagement.ntf_SectionSeparated</span>
+</div>
+
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/HR/KioskAdministration/Index.js?v20200429" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var LangResources = {
+                chsn_SelectOption: "@Html.Raw(@Resources.Common.chsn_SelectOption)",
+                chsn_SelectMultipleOption: "@Html.Raw(@Resources.Common.chsn_SelectMultipleOption)",
+                chsn_NoResults: "@Html.Raw(@Resources.Common.chsn_NoResults)",
+                ntf_SelectWarehouse: "@Html.Raw(@Resources.Catalog.ntf_SelectWarehouse)",
+                ntf_SelectVendor: "@Html.Raw(@Resources.Catalog.ntf_SelectVendor)",
+                nft_DifferentSectionNode: "@Html.Raw(@Resources.CI.DashboardManagement.nft_DifferentSectionNode)",
+                ntf_SectionSeparated: "@Html.Raw(@Resources.CI.DashboardManagement.ntf_SectionSeparated)",
+                msg_DeleteNodeConfirmMessage: "@Html.Raw(@Resources.HR.Kiosk.msg_DeleteNodeConfirmMessage)",
+                msg_KioskConfigurationSaved: "@Html.Raw(@Resources.HR.Kiosk.msg_KioskConfigurationSaved)",
+                msg_DeleteAreaConfirmMessage: "@Html.Raw(@Resources.HR.Kiosk.msg_DeleteAreaConfirmMessage)",
+                msg_DeleteAreaDetailConfirmMessage: "@Html.Raw(@Resources.HR.Kiosk.msg_DeleteAreaDetailConfirmMessage)",
+                msg_MandatoryFileReference: "@Html.Raw(@Resources.HR.Kiosk.msg_MandatoryFileReference)",
+                msg_MandatoryNodeType: "@Html.Raw(@Resources.HR.Kiosk.msg_MandatoryNodeType)",
+                msg_ConfirmRemoveBackgroundKiosk: "@Html.Raw(Resources.HR.Kiosk.msg_ConfirmRemoveBackgroundKiosk)",
+                msg_ConfirmCarouselMediaDelete: "@Html.Raw(Resources.HR.Kiosk.msg_ConfirmCarouselMediaDelete)"
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/Content/HR/Kiosk/KioskAdministration.css" rel="stylesheet" />
+    <link href="~/Content/HR/Kiosk/Kiosk.css" rel="stylesheet" />
+}

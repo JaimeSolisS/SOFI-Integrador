@@ -1,0 +1,38 @@
+﻿@model List<Core.Entities.FormatsLoopsApprovers_TEMP>
+<div class="slider_approvers">
+    <table class="table accesstable display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-none" id="tbl_FormatLoopApprover">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th width="270">@Resources.Request.th_IfTheReqFromDepart</th>
+                <th>@Resources.Request.lbl_Approve</th>
+                <th>@Resources.Request.lbl_Tolerance</th>
+                <th width="120px">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+
+        <tbody class="ui-state-default sortable">
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-sm " data-id="@item.FormatLoopApproverTempID" data-tempid="@item.FormatLoopFlowTempID">
+                    <td>@item.DepartmentOriginName</td>
+                    <td>
+                        @if (item.JobPositionID == 0 && item.DepartmentID == 0 && item.ApproverID == 0)
+                        {
+                            @Resources.Request.lbl_AllUsers
+                        }
+                        else
+                        {
+                            @((item.JobPositionID > 0)? Resources.Request.lbl_Position + ": " +item.JobPositionName + " / ":"") @((item.DepartmentID > 0)? Resources.Request.lbl_ApprovingDepartment + ": " + item.DepartmentName + " / ":"") @((item.ApproverID > 0)?Resources.Request.lbl_ApprovingUser + ": " + item.ApproverName + " / ":"")
+                        }
+
+                    </td>
+                    <td>@item.Tolerance @item.ToleranceUoMName</td>
+                    <td>
+                        <button type="button" class="btn btn-success edit-FormatsLoopsApprovers" title="@Resources.Common.lbl_Edit"><span class="fa fa-edit"></span></button>
+                        <button type="button" class="btn btn-danger delete-FormatsLoopsApprovers" title="@Resources.Common.lbl_Delete"><span class="fa fa-lg fa-trash-o"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

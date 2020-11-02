@@ -1,0 +1,104 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.GenericCharts.DataChartAdminViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.GenericCharts.title_DataChartAdmin</h2>
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-info pull-right" id="btn_SaveDataChartChart">@Resources.Common.btn_Save</button>
+        </div>
+    </div>
+    <div class="content-frame-body content-frame-body-all">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.GenericCharts.lbl_ChartOfAreas
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.GenericCharts.lbl_ChartsAreas</label>
+                        @Html.DropDownList("ddl_ChartsAreas", Model.ChartAreasList, new { @class = "form-control selectpicker", title = Resources.Common.chsn_SelectOption })
+                    </div>
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.GenericCharts.lbl_ChartOfAreas</label>
+                        @Html.DropDownList("ddl_ChartsOfArea", Model.ChartsOfAreaList, new { @class = "form-control selectpicker", title = Resources.Common.chsn_SelectOption })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="div_Main_DataChartAdminFilters" style="display:none">
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">
+                        @Resources.GenericCharts.lbl_DataChartFilters
+                    </h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+                <div id="div_DataChartAdminFilters" class="panel-body">
+
+                </div>
+            </div>
+
+            <div id="hideIfNotFilter" style="display:none">
+                <div class="panel panel-primary" id="div_DataChartAdminFilters">
+                    <div class="panel-heading ui-draggable-handle">
+                        <h3 class="panel-title">
+                            @Resources.GenericCharts.lbl_DataChart
+                        </h3>
+                        <ul class="panel-controls">
+                            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                        </ul>
+                    </div>
+                    <div id="div_DataChartAdminFieldsTable" class="panel-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="div_mo_CharPreview">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/charts/Chart.min.js"></script>
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.min.js"></script>
+
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-annotation.min.js"></script>
+    <script src="~/Scripts/Administration/GenericCharts/Index.js?v20191004" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                var LangResources = {
+                    btn_Save: "@Resources.Common.btn_Save",
+                    chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                    title_DataChartAdmin: "@Resources.GenericCharts.title_DataChartAdmin",
+                    lbl_ChartsAreas: "@Resources.GenericCharts.lbl_ChartsAreas",
+                    lbl_ChartOfAreas: "@Resources.GenericCharts.lbl_ChartOfAreas",
+                    msg_ChartContainsData: "@Resources.GenericCharts.msg_ChartContainsData",
+                    lbl_PreviewChart: "@Resources.GenericCharts.lbl_PreviewChart",
+                    msg_PreviewChartEmptyData: "@Resources.GenericCharts.msg_PreviewChartEmptyData"
+                };
+
+                IndexInit(LangResources);
+        });
+    </script>
+}

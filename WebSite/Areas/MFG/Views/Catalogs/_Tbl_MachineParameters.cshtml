@@ -1,0 +1,65 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Catalogs.CatalogTableViewModel
+<div class="content-frame-body content-frame-body-all">
+    <div class="panel panel-primary">
+        <div class="panel-heading ui-draggable-handle">
+            <h3 class="panel-title">
+                @Resources.Common.lbl_Filters
+            </h3>
+            <ul class="panel-controls">
+                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+            </ul>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+                    <label>@Resources.MFG.MachineSetups.lbl_Parameter</label>
+                    @Html.TextBox("machine_parameter_name", null, new { @class = "form-control ToHideTable" })
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <label>@Resources.MFG.MachineSetups.lbl_Type</label>
+                    @Html.DropDownList("machine_parameter_type", Model.ParameterTypesList, new { @class = "form-control selectpicker ToHideTable" })
+                </div>
+                <div class="col-xs-12 col-md-2 pull-right">
+                    <button class="btn btn-success" style="width:100%" id="btn_search_machine_parameter">@Resources.Common.search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="div_hidden">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_MachineParameters">
+                    <thead>
+                        <tr class="font-size-sm bg-primary">
+                            <th>@Resources.MFG.MachineSetups.lbl_Parameter</th>
+                            <th>@Resources.MFG.MachineSetups.lbl_Type</th>
+                            <th>@Resources.MFG.MachineSetups.lbl_Length</th>
+                            <th>@Resources.MFG.MachineSetups.lbl_ReferenceList</th>
+                            <th>@Resources.MFG.MachineSetups.lbl_UseReference</th>
+                            <th>@Resources.Common.lbl_Options</th>
+                        </tr>
+                    </thead>
+                    <tbody class="ui-state-default">
+                        @foreach (var item in Model.MachinesParametersList)
+                        {
+                            <tr data-entityid="@item.MachineParameterID">
+                                <td>@item.ParameterName</td>
+                                <td id="@item.ParameterTypeID">@item.ParameterTypeName</td>
+                                <td>@item.ParameterLength</td>
+                                <td>@item.ParameterListID</td>
+                                <td>@item.UseReference</td>
+                                <td style="width:15%">
+                                    <button class="btn btn-success text-primary edit-machineparameters-record"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>
+                                    <button class="btn btn-danger delete-record"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Hidden("Identifier", "MachineParameters")
+@Html.Hidden("Message", "MachineParameters")

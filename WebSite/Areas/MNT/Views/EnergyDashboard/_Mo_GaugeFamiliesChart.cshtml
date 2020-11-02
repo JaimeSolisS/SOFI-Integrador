@@ -1,0 +1,41 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergyDashboard.ChartFamiliesGaugeViewModel
+<div id="mo_ChartFamiliesGauge" class="modal fade" role="dialog" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header col-sm-12">
+                <div class="">
+                    <div class="col-sm-6">
+                        <h2>Daily Chart</h2>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <input type="text" id="txt_ChartGaugeDate" name="txt_ChartGaugeDate" class="form-control datepicker" value="@Model.DateFormat" />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body col-sm-12" style="background-color:white;">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="panel panel-default" data-chartplugin="chart.js" data-chartid="graficagaugefamilias" data-updatefunc="GetHourValuesByDayChartData">
+                            <div class="panel-body padding-0">
+                                <div class="chart-holder chart-container" id="_Div_GaugeFamiliesChart" style="position: relative;height: 400px;">
+                                    <canvas id="GaugeFamiliesChart" style="position: relative;margin: auto;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+
+            <div class="modal-footer col-sm-12">
+                
+            </div>
+
+        </div>
+    </div>
+</div>

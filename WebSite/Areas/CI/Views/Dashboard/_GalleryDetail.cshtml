@@ -1,0 +1,13 @@
+﻿@model WebSite.Areas.CI.Models.ViewModels.Dashboard.IndexGalleryViewModel
+
+@foreach (var item in Model._List)
+{
+    if (Model.DataEffectClass.ToLower().StartsWith("animate"))
+    {
+        <div class="slide" data-cover="@item.Name"></div>
+    }
+    else
+    {
+        <img src="@item.Name">
+    }
+}

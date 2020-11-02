@@ -1,0 +1,23 @@
+﻿@model int
+<div class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>
+                    <div class="btn-group btn-group-lg">
+                        <button class="btn btn-success btn-rounded editformat" data-formatid="@Model" type="button" title="@Resources.Common.lbl_Edit"><span class="fa fa-lg fa-edit"></span></button>
+                        <button class="btn btn-success btn-rounded requestedfieldsformat" data-formatid="@Model" type="button" title="@Resources.Request.lbl_RequestedFields">@Resources.Request.lbl_RequestedFields</button>
+                        <button class="btn btn-success btn-rounded detailformat" data-formatid="@Model" type="button" title="@Resources.Common.lbl_Detail">@Resources.Common.lbl_Detail</button>
+                        <button class="btn btn-success btn-rounded formatphases" data-formatid="@Model" type="button" title="@Resources.Request.lbl_Phase">@Resources.Request.lbl_Phase</button>
+                        <button class="btn btn-success btn-rounded formataccess" data-formatid="@Model" type="button" title="@Resources.Request.lbl_UserAccess">@Resources.Request.lbl_UserAccess</button>
+                        <button class="btn btn-success btn-rounded formatflow" data-formatid="@Model" type="button" title="@Resources.Request.lbl_Flows">@Resources.Request.lbl_Flows</button>
+                        @*<button class="btn btn-success btn-rounded" data-formatid="@Model" type="button">@Resources.Common.lbl_Edit</button>*@
+                    </div>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="ui-state-default sortable">
+        </tbody>
+    </table>
+</div>

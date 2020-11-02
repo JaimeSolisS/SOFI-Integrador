@@ -1,0 +1,58 @@
+﻿@model List<Core.Entities.OperationTask>
+@if (Model.Count > 0)
+{
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_edit" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th></th>
+                <th>@Resources.MFG.ActionPlan.lbl_Machines</th>
+                <th>@Resources.Common.lbl_CreatedOn</th>
+                <th>@Resources.MFG.ActionPlan.lbl_Shifts</th>
+                <th>@Resources.MFG.ActionPlan.lbl_ProblemDescription</th>
+                <th>@Resources.MFG.ActionPlan.lbl_ResponsableFullName</th>
+                <th>@Resources.MFG.ActionPlan.lbl_SuggestedAction</th>
+                <th>@Resources.MFG.ActionPlan.lbl_TargetDate</th>
+                <th>@Resources.Common.lbl_Status</th>
+                <th>@Resources.MFG.ActionPlan.lbl_ActionDate</th>
+                <th style="text-align:center; width:5%">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="ui-state-default sortable">
+            @foreach (var item in Model)
+            {
+                <tr class="machine_material_row font-size-sm" data-entityid="@item.OperationTaskID">
+                    <td class="details-control" width="5%"></td>
+                    <td>@item.MachineName</td>
+                    <td>@item.DateAddedFormat</td>
+                    <td>@item.ShiftDescription</td>
+                    <td>@item.ProblemDescription</td>
+                    <td>
+                        @Resources.MFG.ActionPlan.lbl_Responsable: @item.ResponsibleFullName<br />
+                        @Resources.MFG.ActionPlan.lbl_AttendantUserName: @item.AttendantUserName
+                    </td>
+                    <td>@item.SuggestedAction</td>
+                    <td>@item.TargetDateFormat</td>
+                    <td>@item.StatusName</td>
+                    <td>@item.ClosedDateFormat</td>
+                    <td style="text-align:center">
+
+                        @if (item.AllowAssing == "1" && (item.StatusValue == "U" || item.StatusValue == "A"))
+                        {
+                            <button class="btn btn-primary assigned" style="background-color:cornflowerblue; border-color:cornflowerblue" title="@Resources.MFG.ActionPlan.btn_Assigned"><span class="glyphicon glyphicon-user"></span></button>
+                        }
+
+                        @if (item.AllowCancelTask == "1" && (item.StatusValue == "U" || item.StatusValue == "A"))
+                        {
+                            <button class="btn btn-danger cancelled" title="@Resources.MFG.ActionPlan.btn_Cancelled"><span class="glyphicon glyphicon-ban-circle"></span></button>
+                        }
+
+                        @if (item.AllowCloseTask == "1" && item.StatusValue == "A")
+                        {
+                            <button class="btn btn-info closed" title="@Resources.MFG.ActionPlan.btn_Closed"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                        }
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}

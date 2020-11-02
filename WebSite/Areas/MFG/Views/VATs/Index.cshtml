@@ -1,0 +1,83 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.VATs.IndexViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.MFG.VatsCatalog.title_VatsCatalogs</h2>
+        </div>
+        <div class="pull-right">
+            <button id="btn_New" class="btn btn btn-success" title="@Resources.MFG.MachineSetups.btn_New_Setup">
+                <span class="fa fa-plus-circle"></span>
+                @Resources.Common.btn_New
+            </button>
+        </div>
+    </div>
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.MFG.VatsCatalog.lbl_VATNumber</label>
+                        @Html.TextBox("txt_VatNumber", null, new { @class = "form-control filters" })
+                    </div>
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.MFG.OperationRecords.lbl_Shift</label>
+                        @Html.DropDownList("ddl_Shifts", Model.ShiftsList, new { @class = "form-control selectpicker filters", multiple = "multiple" })
+                    </div>
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.MFG.VatsCatalog.lbl_ProductionProcess</label>
+                        @Html.DropDownList("ddl_ProductionProcess", Model.ProductionProcessList, new { @class = "form-control selectpicker filters" })
+                    </div>
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.MFG.MachineSetups.lbl_ProductionLine</label>
+                        @Html.DropDownList("ddl_ProductionLines", Model.ProductionLinesList, new { @class = "form-control selectpicker filters", multiple = "multiple" })
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                <button id="btn_Search" class="btn btn-info">@Resources.Common.search</button>
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div id="div_VATsRecordsTable">
+                @Html.Partial("_Tbl_VATsRecords", Model.ProductionVATsList)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="_mo_NewEdit">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/MFG/VATs/Index.js?v20190924" charset="utf-8"></script>
+
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+
+            var LangResources = {
+                msg_DeleteVATRecordConfirm: "@Html.Raw(@Resources.MFG.VatsCatalog.msg_DeleteVATRecordConfirm)"
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

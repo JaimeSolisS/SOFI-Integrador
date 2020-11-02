@@ -1,0 +1,114 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MachineSetup.ModalParametersFormulaViewModel
+<div id="mo_ParamsFormulas" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.MFG.MachineSetups.lbl_ParameterFormula</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="tabs">
+                            <ul id="function_options" class="nav nav-tabs nav-justified">
+                                <li class="active" data-inputid="#datonum"><a href="#tabdato" data-toggle="tab" aria-expanded="true">@Resources.MFG.MachineSetups.lbl_Value</a></li>
+                                <li class="" data-inputid="#formula_Parameter"><a href="#tabparam" data-toggle="tab" aria-expanded="false">@Resources.MFG.MachineSetups.lbl_Parameter</a></li>
+                                <li class="" data-inputid="#formula_operator"><a href="#taboperador" data-toggle="tab" aria-expanded="false">@Resources.MFG.MachineSetups.lbl_Operator</a></li>
+                            </ul>
+                            <br />
+                            <div class=" tab-content">
+                                <div class="tab-pane active" id="tabdato">
+                                    <div class="form-group">
+                                        @*<label class="control-label" id="lbl_Reference" for="Reference">@Resources.MFG.MachineSetups.lbl_NumericValue</label>*@
+                                        <div class="input-group col-sm-12">
+                                            <input type="text" id="datonum" class="form-control max-length onlydecimals" maxlength="255" placeholder="0.00" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabparam">
+                                    <div class="form-group">
+                                        @*<label class="control-label" for="formula_Parameter">@Resources.MFG.MachineSetups.lbl_Parameter</label>*@
+                                        <div class="input">
+                                            <select class="form-control selectpicker select" id="formula_Parameter" data-live-search="true">
+                                                @foreach (var item in Model.ParametersList)
+                                                {
+                                                    <option value="param_@item.Text">@item.Text</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane " id="taboperador">
+                                    <div class="form-group">
+                                        @*<label class="control-label" for="formula_Parameter">@Resources.MFG.MachineSetups.lbl_Operator</label>*@
+                                        <div class="input">
+                                            <select id="formula_operator" class="form-control select selectpicker">
+                                                <option value="+">+</option>
+                                                <option value="-">-</option>
+                                                <option value="*">*</option>
+                                                <option value="/">/</option>
+                                                <option value="(">(</option>
+                                                <option value=")">)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info" id="btn_addtoformula"><span class="fa fa-plus"></span>@Resources.Common.btnAdd</button>
+                                    <button type="button" class="btn btn-danger" id="btn_delformula"><span class="fa fa-minus"></span>@Resources.Common.lbl_Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-warning" id="btn_clearformula"><span class="fa fa-eraser"></span>@Resources.Common.lbl_Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" id="lbl_Reference" for="Reference">@Resources.MFG.MachineSetups.lbl_ValueFormula</label>
+                            <div class="input-group col-sm-12">
+                                <input type="text" id="ValueFormula" class="form-control max-length" maxlength="255" value="@Model.Formula" readonly style="background-color:transparent; color:black" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                @if (Model.AddFormulaToParameter)
+                {
+                    <button id="btn_AddParamForula" type="button" data-identifier="@Model.ParamTypeIdentifier" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+                else
+                {
+                    <button id="btn_EditParamForula" 
+                            data-currentrowofparameter="@Model.CurrentRowOdParameter" 
+                            data-parameterchoosedtoformula="@Model.ParameterChoosedToFormula" 
+                            data-identifier="@Model.ParamTypeIdentifier"
+                            type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

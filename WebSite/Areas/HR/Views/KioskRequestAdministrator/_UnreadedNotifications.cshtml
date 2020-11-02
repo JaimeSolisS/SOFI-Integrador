@@ -1,0 +1,11 @@
+﻿@model List<Core.Entities.KioskRequestNotification>
+@foreach (var request in Model)
+{
+    <a href="#" class="list-group-item" id="request_notification_@request.RequestLogNotificationID" onclick="RequestLogNotificationMo(@request.RequestLogNotificationID)">
+        <div class="list-group-status status-online notification_count" data-requestnotificationid="@request.RequestLogNotificationID"></div>
+        <button title="@Resources.HR.Kiosk.lbl_MarkRead" type="button" class="btn btn-info btn-read-notify pull-left" data-id="@request.RequestLogNotificationID" data-type="@request.PublicPrivateSeparator" style="margin-right:5px;" onclick="ReadNotification(@request.RequestLogNotificationID)"> <span class="fa fa-envelope-o"></span></button>
+        <p class="pull-right">@request.DateAdded.ToString("yyyy-MM-dd HH:mm")</p>
+        <span class="contacts-title"> @request.RequestNumber - @request.MvtTypeName</span>
+        <p> @request.Description</p>
+    </a>
+}

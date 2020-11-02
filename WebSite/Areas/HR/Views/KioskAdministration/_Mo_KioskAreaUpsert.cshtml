@@ -1,0 +1,63 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskAdministration.KioskAreaUpsertViewModel
+<div id="mo_KioskAreaUpsert" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.CI.DashboardManagement.lbl_DashboardAreaAddTag</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_Add_Size">@Resources.CI.DashboardManagement.lbl_SizeTag </label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_Add_Size", Model.SizeList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_KioskAreaUpsert_Seq" class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_Add_SeqTag">@Resources.CI.DashboardManagement.lbl_SeqTag</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-sort-by-order"></span></span>
+                                <input type="text" maxlength="2" class="form-control onlynumbers" placeholder="0" id="txt_Add_SeqTag" name="txt_Add_SeqTag" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 padding-10">
+                        <header class="margin-none">
+                            <h5 class="page-header-solid">@Resources.CI.DashboardManagement.lbl_TitleNameTag </h5>
+                        </header>
+                        <table id="tb_AddKioskArea" class="display table table-condensed table-striped margin-none">
+                            <thead>
+                                <tr>
+                                    <th class="w-35prc">@Resources.Common.lbl_language</th>
+                                    <th>@Resources.Common.lbl_Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb_AddKioskAreaBody">
+                                @foreach (var item in Model.CulturesList)
+                                {
+                                    <tr>
+                                        <td data-languageid="@item.CatalogDetailID">@item.DisplayText</td>
+                                        <td><input type="text" id="txt_languagetext_@item.CatalogDetailID" value="" placeholder="@item.DisplayText.ToLower()" class="form-control" maxlength="50" autocomplete="off"/></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                <button type="button" id="btn_SaveNewKioskArea" class="btn btn-success"
+                        title="@Resources.CI.DashboardManagement.tt_CreateSectionTag">
+                    @Resources.CI.DashboardManagement.btnCreateSectionTag
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+

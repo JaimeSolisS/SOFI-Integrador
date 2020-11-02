@@ -1,0 +1,28 @@
+﻿@model List<Core.Entities.OperationTaskDetails>
+<div class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_edit" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>@Resources.Common.gvH_DateAdded</th>
+                <th>@Resources.MFG.ActionPlan.lbl_Comments</th>
+                <th>@Resources.Common.gvH_UserName</th>
+                <th style="text-align:center; width:5%">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="ui-state-default sortable">
+            @foreach (var item in Model)
+            {
+                <tr class="machine_material_row font-size-sm" data-entityid="@item.OperationTaskDetailID">
+                    <td>@item.DateAdded</td>
+                    <td>@item.Comments</td>
+                    <td>@item.UserFullName</td>
+                    <td style="width:15%; text-align:center">
+                        <button class="form-control view_attachments">
+                            @Resources.MFG.ActionPlan.lbl_ViewAttachments
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

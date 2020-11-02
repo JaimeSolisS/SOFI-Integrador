@@ -1,0 +1,55 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MachineSetup.ModalAddSetupParameterViewModel
+<div id="mo_AddMachineParameter" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.MFG.MachineSetups.lbl_AddSetupParameter</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="AD_Parameter">@Resources.MFG.MachineSetups.lbl_Parameter</label>
+                            <div class="input">
+                                @Html.DropDownList("AD_Parameter", Model.ParameterList, new { @class = "selectpicker form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="AD_UoM">@Resources.MFG.MachineSetups.lbl_UoM</label>
+                            @Html.DropDownList("AD_UoM", Model.UoMList, new { @class = "selectpicker form-control" })
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_Mandatory</label>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="control-label" for="AD_Min">@Resources.MFG.MachineSetups.lbl_Min</label>
+                            <div class="input-group">
+                                <input type="text" maxlength="10" class="form-control moldScrapValue onlydecimals" placeholder="0.00" id="AD_Min" name="AD_Min" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="control-label" for="AD_Max">@Resources.MFG.MachineSetups.lbl_Max</label>
+                            <div class="input-group">
+                                <input type="text" maxlength="10" class="form-control moldScrapValue onlydecimals" placeholder="0.00" id="AD_Max" name="AD_Max" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_AddSetupParameter" type="button" class="btn btn-info">@Resources.Common.btnAdd</button>
+            </div>
+        </div>
+    </div>
+</div>

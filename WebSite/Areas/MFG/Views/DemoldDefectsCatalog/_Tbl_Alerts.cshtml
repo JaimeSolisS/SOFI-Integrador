@@ -1,0 +1,31 @@
+﻿@model List<Core.Entities.DemoldDefectAlert>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_alerts">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.MFG.DemoldDefects.lbl_Family</th>
+            <th>@Resources.MFG.DemoldDefects.lbl_LenType</th>            
+            <th>@Resources.MFG.OperationRecords.lbl_Gross</th>
+            <th>@Resources.MFG.DemoldDefects.lbl_Defect</th>
+            <th>@Resources.MFG.DemoldDefectsCatalog.lbl_HourInterval</th>
+            <th style="text-align:center; width:5%">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody class="ui-state-default sortable" id="tbody_Alerts">
+        @foreach (var item in Model)
+        {
+        <tr class="alert-data-row" data-shiftid="@item.ShiftID"
+            data-line="@item.ProductionLineID" data-family="@item.MoldFamilyID"
+            data-lenstype="@item.LensTypeID" data-gross="@item.Gross" data-defect="@item.DefectCategory"
+            data-hourinterval="@item.HourInterval" data-demolddefectalertid="@item.DemoldDefectAlertID">
+            <td>@item.FamilyName</td>
+            <td>@item.LensTypeName</td>
+            <td>@item.Gross %</td>
+            <td>@item.DefectCategory</td>
+            <td>@item.HourInterval</td>
+            <td style="text-align:center; width:10%">
+                <button class="btn btn-danger delete-demolddefect-alert"><span class="glyphicon glyphicon-trash"></span></button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

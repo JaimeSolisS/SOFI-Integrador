@@ -1,0 +1,55 @@
+﻿<header>
+    <link href="~/Content/HR/Kiosk/slideform.css" />
+</header>
+<div class="page-title padding-5 border-bottom-1" style="border-bottom:2px solid #0088ce; background:#f5f5f5 url('../../Content/img/bg.png') left top repeat; position: absolute;z-index: 9;">
+    <div class="row">
+        <div class="col-xs-5">
+            <h4 class="panel-title lh-45" style="font-size:26px;">@Resources.HR.Kiosk.title_HumanResourcesKiosk</h4>
+        </div>
+        <div class="col-xs-2" id="kiosk_facility_name">
+            <h2 class="lh-45 margin-bottom-none"><strong>@Model.FacilityName</strong></h2>
+        </div>
+
+        <div class="col-xs-2" id="div_btn_Suggestions">
+            <button type="button" class="form-control HeaderKioskButtons" id="btn_Suggestions">@Resources.HR.Kiosk.btn_Suggestions</button>
+        </div>
+
+
+        <div class="col-xs-2">
+            <div id="div_btn_login">
+                <button type="button" class="form-control HeaderKioskButtonLogin" id="btn_Login">@Resources.Common.title_Login</button>
+            </div>
+
+            <div style="display:none" id="div_btn_logout">
+                <button type="button" class="form-control LogoutButton pull-right" id="btn_Logout">@Resources.HR.Kiosk.btn_Logout</button>
+            </div>
+        </div>
+
+        <div class="col-xs-1 text-center">
+            <li class="dropdown padding-top-10" style="width:100%; height:100%; list-style-type: none;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="vertical-align:middle">
+                    @*<img id="flag_img" style="width:50%; height: 100%;" src="" alt="flag" />*@
+                    <span id="culture_label" style="font-size:large; height:100%; display: block;"
+                          class="visible-lg-inline-block visible-md-inline-block visible-xs-inline-block">
+                        @Resources.Common.lbl_ChangeLanguage
+                    </span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" id="langlist">
+                    <li class="SelectCulture_EN-US">
+                        <a href="@Url.Action("ChangeLanguage", "Base", new {area="", lang = "EN-US" })">
+                            @*<img src="~/Content/img/flags/us.png" alt="en" />*@
+                            @Resources.Common.lbl_English
+                        </a>
+                    </li>
+                    <li class="SelectCulture_ES-MX">
+                        <a href="@Url.Action("ChangeLanguage", "Base", new {area="", lang = "ES-MX" })">
+                            @*<img src="~/Content/img/flags/es.png" alt="en" />*@
+                            @Resources.Common.lbl_Spanish
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+    </div>
+</div>

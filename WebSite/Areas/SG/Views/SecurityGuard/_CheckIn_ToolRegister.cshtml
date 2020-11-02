@@ -1,0 +1,56 @@
+﻿@model WebSite.Areas.SG.Models.CheckInToolsViewModel
+
+<div id="mo_CheckInToolsRegister" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:5; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header">
+            <h1 class="modal-title">@Resources.SG.SecurityGuard.lbl_ToolRegister</h1>
+            <div class="fa fa-home pull-right fa-5x bg-white padding-10 btnHomeButton"></div>
+        </div>
+        <div class="modal-body padding-none" style="height:80%; overflow-y:auto;overflow-x: hidden;">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="alert alert-info fa-2x line-height-30" role="alert">
+                        @Resources.SG.SecurityGuard.msg_AddToolInstruction
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txt_ToolName">@Resources.SG.SecurityGuard.lbl_ToolName</label>
+                        <div class="input">
+                            @Html.TextBox("txt_ToolName", "", new { @class = "input-xl width-100p max-length", autocomplete = "off", @maxlength = "50" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-6">
+                    <label class="control-label fa-2x">imagen de la herramienta</label>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-6" style="height:100%" id="div_ToolPhoto">
+                    <form action="~/Attachments/SaveDropzoneJsUploadedFiles" class="form-dropzone needsclick dz-clickable" id="form-dropzone-tool">
+                        @Html.Hidden("ReferenceID", Model.TempAttachmentID)
+                        @Html.Hidden("AttachmentType", "TEMPID")
+                        <div class="dz-message center-content padding-top-10" id="div_img_tool">
+                            <img src="~/Content/img/UploadCloud.png" style="height:25vh" id="img_tool" />
+                        </div>
+                        <div class="center-content fa-2x" id="div_DropTool">
+                            toque para tomar una fotografía
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-6 display-none" id="div_ToolPhotoMask">
+                    <div class="dz-message center-content padding-top-10" id="img_ToolMask">
+                        <img src="" id="img_ToolPreviewMask" style="width:100%" />
+                    </div>
+                    @Html.Hidden("TempReferenceToolID", Model.TempAttachmentID)
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-danger pull-left btn_footer fa-2x dimiss-modal emptyCurrentTools" data-modalid="mo_CheckInToolsRegister">@Resources.Common.btnCancel</button>
+            <button type="button" class="btn btn-success pull-right btn_footer fa-2x dimiss-modal" id="btn_AddNewTool">@Resources.SG.SecurityGuard.lbl_Add</button>
+            <button type="button" class="btn btn-info pull-right fsize-25 dimiss-modal h-7vh" id="btn_AddAndNewTool">@Resources.SG.SecurityGuard.lbl_AddAndNew</button>
+            <button type="button" class="btn pull-right fsize-25 dimiss-modal h-7vh bgc-orange display-none" id="btn_FinishAddTool">@Resources.SG.SecurityGuard.lbl_Finish</button>
+
+        </div>
+    </div>
+</div>

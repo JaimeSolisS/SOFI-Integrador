@@ -1,0 +1,24 @@
+﻿@model List<Core.Entities.KioskUserRequestLog>
+<div class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped margin-bottom-none">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>@Resources.HR.Kiosk.lbl_MovementType</th>
+                <th>@Resources.HR.Kiosk.lbl_Comments</th>
+                <th>@Resources.Common.gvH_UpdatedBy</th>
+                <th>@Resources.Common.lbl_Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="color:maroon;font-weight:bold;">@item.MvtTypeName</td>
+                    <td>@item.Comments</td>
+                    <td>@item.UserFullName</td>
+                    <td>@item.DateAddedFormat</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

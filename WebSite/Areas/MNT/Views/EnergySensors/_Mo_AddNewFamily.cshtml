@@ -1,0 +1,57 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergySensors.EnergySensorFamiliesViewModel
+<div id="mo_AddNewFamily" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                @if (Model.IsEdit)
+                {
+                    <h4 class="modal-title">@Resources.MNT.EnergySensors.lbl_EditFamilySensor</h4>
+                }
+                else
+                {
+                    <h4 class="modal-title">@Resources.MNT.EnergySensors.lbl_NewFamilySensor</h4>
+                }
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="col-sm-3" style="text-align:right">
+                            <h5>@Resources.MNT.EnergySensors.lbl_Name</h5>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control max-length" id="AdNewF_Name" value="@Model.Familyame" maxlength = "100"/>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:1%">
+                        <div class="col-sm-12" style="margin-top:2%">
+                            <div class="col-sm-3" style="text-align:right">
+                                <h5>@Resources.MNT.EnergySensors.lbl_Image</h5>
+                            </div>
+                            <div class="col-sm-7" style="text-align:center">
+                                <button id="btn_upload_image_family" class="btn btn-primary" style="background-color:cornflowerblue !important; border:none; width: 100%">
+                                    @Resources.MNT.EnergySensors.lbl_UploadImage
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                @if (Model.IsEdit)
+                {
+                    <button id="btn_SaveEditedFamily" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+                else
+                {
+                    <button id="btn_AddNewFamily" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("EnergySensorFamilyID", Model.EnergySensorFamilyID);

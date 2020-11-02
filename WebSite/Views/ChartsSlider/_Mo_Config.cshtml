@@ -1,0 +1,99 @@
+﻿@model WebSite.Models.ViewModels.ChartSlider.ConfigViewModel
+<div class="modal fade" id="m_Config" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">Chart Slider Configuration on @Model.CompName</h4>
+            </div>
+            <div class="modal-body">
+                <form id="save-config-form">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label>Shift</label>
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.DropDownList("ConfigShiftList", new SelectList(Model.ShiftList, "ShiftID", "ShiftDescription",Model.ShiftID), new { @class = "form-control select" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-6">
+                            @Html.DropDownList("ChartList", new SelectList(Model.ChartList, "ChartID", "ChartName"), new { @class = "form-control select" })
+                        </div>
+                        <div class="col-xs-2">
+                            <button id="add-chart" type="button" class="btn btn-success">Add</button>
+                        </div>
+                        <div class="col-xs-2">
+                            <span class="pull-right">Seconds Interval</span>
+                        </div>
+                        <div class="col-xs-2">
+                            @Html.TextBox("TimerSetup", Model.DFT_TimerSetup, new { @class = "form-control", type = "number" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table id="chart_table" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Seq</th>
+                                        <th>Chart name</th>
+                                        <th>Refresh Seconds</th>
+                                        <th>Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="charts_tbody">
+                                    @foreach (var item in Model.Charts)
+                                    {
+                                        <tr class="ChartsArray sortable-tr SettingShiftID_@item.ShiftID"
+                                            data-entityid="@item.Chart_SettingID" data-chartid="@item.ChartID"
+                                            data-order="0" data-neworder="0" style="display:none;">
+                                            <td style="vertical-align:top;">
+                                                @item.Seq
+                                            </td>
+                                            <td style="vertical-align:top;">
+                                                @item.ChartName
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        @Html.TextBox("RefreshChart_" + item.Chart_SettingID, item.IntervalRefreshTime, new { @class = "form-control", type = "number" })
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <table>
+                                                            <tr id="options_row_chart_@item.Chart_SettingID" style="display:none;">
+                                                                <td colspan=4>
+                                                                    @Html.Action("ShowChartOptions", new { Chart_SettingID = item.Chart_SettingID })
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align:top;">
+                                                @if (item.Options.Any())
+                                                {
+                                                    <span data-entityid="@item.Chart_SettingID" class="glyphicon glyphicon-cog btn btn-primary config-chart-row"></span>
+                                                }
+                                                <span data-entityid="@item.Chart_SettingID" class="glyphicon glyphicon-remove  btn btn-danger delete-chart-row"></span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-pretty zoom" data-dismiss="modal">Back</button>
+                <button id="btn_save" type="button" class="btn btn-primary btn-pretty zoom">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+

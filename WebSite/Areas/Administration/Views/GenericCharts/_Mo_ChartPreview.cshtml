@@ -1,0 +1,28 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.GenericCharts.DataChartFieldsViewModel
+<div id="mo_CharPreview" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header col-sm-12">
+                <div class="col-sm-11">
+                    <h2 id="chart_title">@Resources.GenericCharts.lbl_PreviewChart</h2>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                </div>
+            </div>
+            <div class="modal-body col-sm-12" style="background-color:white;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default" data-chartplugin="chart.js" data-chartid="graficademuestra" data-updatefunc="GeneratePreviewChart">
+                            <div class="panel-body padding-0">
+                                <div class="chart-holder chart-container" id="_Div_GenericChartPreview" style="position: relative;height: 400px;">
+                                    <canvas id="GenericChartPreview" style="position: relative;margin: auto;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

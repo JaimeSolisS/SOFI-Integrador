@@ -1,0 +1,33 @@
+﻿@model List<Core.Entities.DashboardMachine>
+<div class="row" style="margin-left:30px;">
+    @foreach (var items in Model.GroupBy(x => x.MachineCategoryID))
+    {
+        <div class="row">
+            <h2><b>@items.FirstOrDefault().MachineCategoryName</b></h2>
+        </div>
+        <div class="row">
+            @foreach (var item in items)
+            {
+                if (item.Enabled)
+                {
+                    <div class="col-xs-4" style="width:200px;padding-top: 20px;">
+                        <div class="shadow-div-effect @item.AlertCssClass" style="background-color: white;">
+                            <div style="text-align:center;">
+                                <label style="font-size:x-large">@item.MachineName</label>
+                            </div>
+
+                            <a href="#" class="machine-image" data-relatedlink="@item.RelatedLink" data-machineid="@item.MachineID" data-operationrecordid="@item.OperationRecordID">
+                                <div style="height: 150px; position: relative;padding:3px;">
+                                    <img src="@item.ImagePath" style="object-fit: contain;position: absolute;height:98%;width:98%" />
+                                </div>
+
+                            </a>
+
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <br /><br />
+    }
+</div>

@@ -1,0 +1,43 @@
+﻿@model  List<Core.Entities.KioskPrePayroll>
+<div id="_mo_PrePayroll" class="modal fade" role="dialog" style="align-content:center;width:100% !important; height: 100vh">
+    <div class="modal-content" style="width:100% !important;height: 100vh">
+        <div class="modal-header">
+            <div class="row">
+                <div class="col-xs-11">
+                    <h1 class="modal-title">@Resources.HR.Kiosk.lbl_PrePayRoll</h1>
+                </div>
+                <div class="col-xs-1" style="padding-right:15px">
+                    <button type="button" id="btn_ClosePrePayrollModal" class="btn btn-danger HeaderModalButtons" style="width:100%;" aria-hidden="true">@Resources.Common.btn_Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_PrePayroll">
+                <thead>
+                    <tr class="font-size-lg">
+                        <th class="bg-primary text-white">@Resources.Common.lbl_Date</th>
+                        <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Entrance</th>
+                        <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Egress</th>
+                        <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Observations</th>
+                        <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_WorkingHours</th>
+                        <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_ExtraHours</th>
+                    </tr>
+                </thead>
+                <tbody class="sortable">
+                    @foreach (var item in Model)
+                    {
+                        <tr class="prepayroll_row font-size-xl">
+                            <td class="text-center">@item.Fecha.ToString("yyyy-MM-dd")</td>
+                            <td class="text-center">@item.Ent1</td>
+                            <td class="text-center">@item.SalMax</td>
+                            <td class="text-left">@item.Observaciones</td>
+                            <td class="text-center font-bold text-primary">@item.HorasLaborales</td>
+                            <td class="text-center font-bold text-red-dark" >@item.HorasExtras</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

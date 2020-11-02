@@ -1,0 +1,26 @@
+﻿@model List<Core.Entities.MaterialSetup>
+<div class="slider">
+    <div id="div_MachineMaterialInfo">
+        <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped">
+            <thead>
+                <tr class="font-size-sm bg-primary">
+                    <th>@Resources.MFG.MachineSetups.lbl_Machine</th>
+                    <th>@Resources.MFG.MachineSetups.lbl_Material</th>
+                    <th>@Resources.Common.gvH_UpdatedBy</th>
+                    <th>@Resources.Common.gvH_DateAdded</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MachineName</td>
+                        <td>@item.MaterialName</td>
+                        <td>@item.UserFullName</td>
+                        <td>@item.DateLastMaintFormat</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

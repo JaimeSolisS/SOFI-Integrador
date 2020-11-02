@@ -1,0 +1,49 @@
+﻿@model  IEnumerable<SelectListItem>
+<div id="mo_NewAccessFormat" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" style="width: 500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Request.lbl_AddNewAccessFormat</h4>
+            </div>
+            <div class="modal-body">
+                @* Cuerpo aqui *@
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label border-bottom" for="txt_name">@Resources.Common.lbl_Facility:</label>
+                            @Html.DropDownList("FacilityListID", (SelectList)Model, htmlAttributes: new { @class = "form-control select", multiple = "multiple", title = Resources.Request.lbl_NothingSelected })
+                        </div>
+                    </div>
+                </div>
+                <div id="user_list">
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            @*@Html.Partial("_Tbl_FormatAccessUsers")*@
+                            <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_accessusers">
+                                <thead>
+                                    <tr class="font-size-sm bg-primary">
+                                        <th style="display:none;"></th>
+                                        <th>@Resources.Request.lbl_Name</th>
+                                        <th>@Resources.Common.lbl_Facility</th>
+                                        <th width="50px">@Resources.Common.lbl_Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_accessusers">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_ModalAddaccess" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>

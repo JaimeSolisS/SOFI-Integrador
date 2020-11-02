@@ -1,0 +1,56 @@
+﻿@model WebSite.Areas.SG.Models.CheckOutViewModel
+<div id="mo_CheckOut" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:9; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header">
+            <h1 class="modal-title">@Resources.SG.SecurityGuard.lbl_PersonVerification</h1>
+        </div>
+        <div class="modal-body padding-none" style="height:80%; overflow-y:auto;overflow-x: hidden;">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txt_ScanBox">@Resources.SG.SecurityGuard.lbl_ScannBox</label>
+                        <div class="input">
+                            @Html.TextBox("txt_ScanBoxCheckOut", "", new { @class = "input-xl width-100p max-length", autocomplete = "off", @maxlength = "50" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-3" id="div_CheckIn">
+                    <label class="control-label fa-2x" for="ddl_PersonCheckIngTypeList">@Resources.SG.SecurityGuard.lbl_PersonCheckIngType</label>
+                    <div class="input">
+                        @Html.DropDownList("ddl_PersonCheckIngTypeList", Model.PersonCheckIngTypeList, new { @class = "input-xl width-100p" })
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-3">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txt_PersonName">@Resources.SG.SecurityGuard.lbl_PersonName</label>
+                        <div class="input">
+                            @Html.TextBox("txt_PersonName", "", new { @class = "input-xl width-100p max-length", autocomplete = "off", @maxlength = "100" })
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="col-sm-12 col-xs-12 col-md-4 col-lg-3">
+                        <div class="form-group">
+                            <label class="control-label fa-2x" for="txt_CheckOutDate">@Resources.SG.SecurityGuard.lbl_DateHourOut</label>
+                            <div class="input">
+                                @Html.TextBox("txt_CheckOutDate", "", new { @class = "input-xl width-100p" })
+                            </div>
+                        </div>
+                    </div>*@
+
+                <div class="col-sm-12 col-xs-12 col-md-4 col-lg-3" id="divImgCheckOutImg" style="display:none">
+                    <img src="" style="width:100%" id="imgCheckOutImg" />
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-danger pull-left btn_footer fa-2x dimiss-modal" data-modalid="mo_CheckOut">@Resources.Common.lbl_Exit</button>
+            <button type="button" class="btn btn-success pull-right btn_footer fa-2x disabled"
+                    id="btnRegistryCheckOut" data-personaltype="" data-usertype="">
+                @Resources.SG.SecurityGuard.lbl_Registry
+            </button>
+        </div>
+    </div>
+</div>
+@Html.Hidden("CheckOutSecurityGuardLogID", 0)

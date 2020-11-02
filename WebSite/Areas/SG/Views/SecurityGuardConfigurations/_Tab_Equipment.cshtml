@@ -1,0 +1,59 @@
+﻿@model WebSite.Areas.SG.Models.ViewModels.SecurityGuardConfigurations.EquipmentViewModel
+<div class="panel panel-primary">
+    <div class="panel-heading ui-draggable-handle">
+        <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+        <ul class="panel-controls">
+            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+        </ul>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                    <label class="control-label">@Resources.SG.SecurityGuard.lbl_NSerie</label>
+                    <div class="input">
+                        @Html.TextBox("txtNSerie", "", new { @class = "form-control equipmentFilter" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                    <label class="control-label">@Resources.SG.SecurityGuard.lbl_EquipmentName</label>
+                    <div class="input">
+                        @Html.TextBox("txtEquipmentName", "", new { @class = "form-control equipmentFilter" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                    <label class="control-label">@Resources.HR.Kiosk.lbl_Type</label>
+                    <div class="input">
+                        @Html.DropDownList("ddlEquipmentTypes", Model.EquipmentTypesList, new { @class = "form-control equipmentFilter", multiple = "multiple" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                    <label class="control-label">@Resources.SG.SecurityGuard.lbl_UPC</label>
+                    <div class="input">
+                        @Html.TextBox("txtUPC", "", new { @class = "form-control equipmentFilter" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+        <button class="btn btn-info btn-pretty" id="btnSearchSecurityEquipments" type="button">@Resources.Common.btn_Search</button>
+    </div>
+</div>
+
+
+<div class="panel panel-info">
+    <div class="panel-body">
+        <div id="divEquipmentTable">
+            @Html.Partial("_Tbl_Equipments", Model.EquipmentList)
+        </div>
+    </div>
+</div>

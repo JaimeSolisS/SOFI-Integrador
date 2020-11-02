@@ -1,0 +1,125 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskEmployee.WizardRequestViewModel
+<div id="mo_RequestWizard" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" style="align-content:center; width:100% !important;z-index:10">
+    <div class="modal-dialog" style="text-align:center">
+        <div class="modal-content">
+            <div class="modal-header" style="width: 100% !important">
+                <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                <h2 class="modal-title">@Resources.HR.Kiosk.lbl_NewRequest</h2>
+            </div>
+            <div class="modal-body" style="height:80vh !important">
+                @*Wizard*@
+                <form class="slideform-form slideform-initialized" id="form_slide" action="" novalidate="novalidate">
+                    <div class="slideform-track">
+                        <div class="slideform-wrapper">
+                            <div class="slideform-slide active" id="slideform-1">
+                                <div class="slideform-group padding-top-0 padding-bottom-0" style="width:100%; height:100%;">
+
+                                    <div class="row">
+                                        <div class="alert alert-info alert-dismissible col-xs-12" id="alert_background_image" role="alert" style="margin-bottom:1%;">
+                                            <div class="col-xs-12" style="text-align:center;">
+                                                <h3 style="color:white">@Resources.HR.Kiosk.msg_AlertRequestUserInstructions</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align:left">
+                                        <label style="font-size:20px">@Resources.HR.Kiosk.lbl_EmpNum</label>
+                                    </div>
+                                    <div class="row">
+                                        @Html.TextBox("txt_User", "", new { @class = "form-control max-length FieldRequestWizard1", @maxlength = "10", autocomplete = "off" })
+                                    </div>
+                                    <div style="display:none" id="div_RequesterName">
+                                        <br />
+                                        <div class="row" style="text-align:left">
+                                            <label style="font-size:20px">@Resources.HR.Kiosk.lbl_Requester</label>
+                                        </div>
+                                        <div class="row">
+                                            <span id="span_RequesterName" class="tag-serial"></span>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row" style="text-align:left">
+                                        <label style="font-size:20px">@Resources.HR.Kiosk.lbl_Department</label>
+                                        @Html.DropDownList("ddl_Department", Model.DepartmentsList, new { @class = "form-control selectpicker FieldRequestWizard1", @style = "height: 50px !important;" })
+                                    </div>
+
+                                    <br />
+                                    <div class="row" style="text-align:left">
+                                        <label style="font-size:20px">@Resources.MFG.OperationRecords.lbl_Shift</label>
+                                        @Html.DropDownList("ddl_Shift", Model.ShiftsList, new { @class = "form-control selectpicker FieldRequestWizard1", @style = "height: 50px !important;" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slideform-slide" id="slideform-2">
+                                <div class="slideform-group padding-top-0" style="width:100% !important; height:100%; text-align:center !important">
+
+                                    <div class="row">
+                                        <div class="alert alert-info alert-dismissible col-xs-12" id="alert_background_image" role="alert" style="margin-bottom:1%;">
+                                            <div class="col-xs-12" style="text-align:center;">
+                                                <h3 style="color:white">@Resources.HR.Kiosk.alert_SelectRequestCategory</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="overflow-y:auto; height:55vh; width:100%" class="col-xs-12">
+                                            @foreach (var RequestType in Model.RequestTypesList)
+                                            {
+                                                <div class="row"><button type="button" data-requesttype="@RequestType.CatalogDetailID" class="RequestButton ">@RequestType.DisplayText</button></div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slideform-slide" id="slideform-3">
+                                <div class="slideform-group padding-top-0" style="width:100% !important; height:100%;">
+
+                                    <div class="row">
+                                        <div class="alert alert-info alert-dismissible col-sm-12" id="alert_background_image" role="alert" style="margin-bottom:1%;">
+                                            <div class="col-xs-12" style="text-align:center;">
+                                                <h3 style="color:white;">@Resources.HR.Kiosk.msg_AlertRequestDescriptionInstructions</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="text-align:left">
+                                        <label style="font-size:20px">@Resources.HR.Kiosk.lbl_Description</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="slideform-group" style="width:100% !important; text-align:center !important; padding: 0px 0px 0px 0px !important">
+                                            <textarea maxlength="255" class="font-size-lg" style="height:30vh; width:100%" id="txta_RequestDescription" autocomplete="off"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="slideform-footer padding-none" style="z-index:0 !important; width:100% !important">
+                        <div class="buttons col-xs-12 padding-none">
+                            <div class="pull-left">
+                                <button type="button" class="slideform-btn-requisition btn-info" data-dismiss="modal" style="background-color:red;"><span class="glyphicon glyphicon-remove"></span></button>
+                            </div>
+                            <div class="pull-right" style="display:none" id="div_btn_save">
+                                <button type="button" class="slideform-btn-requisition btn-info" id="btn_RequisitionSave">@Resources.Common.btn_Save</button>
+                            </div>
+                            <div class="pull-right" id="div_btn_next" style="text-align:right">
+                                <button class="slideform-btn-requisition slideform-btn-next-mask" style="display:none" type="button" id="btn_next">@Resources.Common.btn_Next</button>
+                            </div>
+                            <div class="pull-right" style="text-align:right">
+                                <button class="slideform-btn-prev slideform-btn-requisition slideform-btn" type="button" id="btn_prev_slideform"> @Resources.Common.btn_Prev</button>
+                            </div>
+                        </div>
+                        <div class="buttons" style="display:none">
+                            <div class="col-xs-12">
+                                <button class="slideform-btn-next slideform-btn" type="button" id="btn_next_slideform">@Resources.Common.btn_Next <span class="fa fa-arrow-right"></span></button>
+                            </div>
+                        </div>
+                    </footer>
+                </form>
+                @*wizard*@
+            </div>
+        </div>
+    </div>
+
+</div>

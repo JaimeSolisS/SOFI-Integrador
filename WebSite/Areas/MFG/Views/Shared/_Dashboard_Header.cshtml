@@ -1,0 +1,96 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Dashboard.HeaderViewModel
+
+<div class="row">
+    <div class="col-xs-1">
+        <div style="height: 75px;padding-top: 0px;border-top-width: 20px;margin-top: 15px;">
+            <img src="~/Content/img/logos/essilor logo.jpg" style="object-fit: contain;height: 100%;width: 100%;" />
+        </div>
+    </div>
+    <div class="col-xs-9">
+        <div style="background-color:blue;">
+            <h1 style="color: white; padding:20px;">@Resources.MFG.Dashboard.title_Dashboard</h1>
+        </div>
+    </div>
+
+    <div class="col-xs-2 pull-right">
+        <div style="padding-top: 15px;">
+            <!-- START WIDGET CLOCK -->
+            <div class="widget widget-info widget-padding-sm" style="min-height: 0;margin: 0px;padding:0px;height: 74px;">
+                <div class="widget-big-int plugin-clock">00:00</div>
+                <div class="widget-subtitle plugin-date">Loading...</div>
+            </div>
+            <!-- END WIDGET CLOCK -->
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default" style=" margin-bottom: 0px;">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-1">
+                        <h3> @Model.PlantName</h3>
+                    </div>
+                    <div class="col-xs-2">
+                        <h3> @Resources.MFG.Dashboard.lbl_DayCode : <span id="txt_daycode">@Model.JulianDay</span></h3>
+                    </div>
+                    <div class="col-xs-2" style="padding-right: 0px;padding-left: 0px;">
+                        <div class="row">
+                            <div class="col-xs-4" style="padding-right: 0px;padding-left: 0px;">
+                                <h3>@Resources.Common.lbl_Date :</h3>
+                            </div>
+                            <div class="col-xs-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" id="txt_Date" name="txt_Date" class="form-control datepicker" value="@Model.DateFormat" data-date="@Model.DateFormat" data-date-viewmode="years" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <h3>@Resources.MFG.Dashboard.lbl_Shift :</h3>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="form-group">
+                                    <div class="input">
+                                        @Html.DropDownList("ddl_Shift", Model.ShiftList, htmlAttributes: new { @class = "form-control select applyfilters" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1" style="padding-right: 0px;padding-left: 0px; text-align: center;">
+                        <div class="form-group">
+                            <label class="control-label" for="btn_Update">&nbsp;</label>
+                            <button type="button" id="btn_Update" class="btn-info btn-pretty btn-sm"><i class="fa fa-refresh"></i> @Resources.Common.lbl_Refresh</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-2" style="text-align: center;">
+                        <div class="form-group">
+                            <label class="control-label">&nbsp;</label>
+                            <button type="button" class="btn-info btn-pretty btn-sm chartslider-full "><i class="fa fa-expand"></i> @Resources.MFG.Dashboard.lbl_Fullscreen</button>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-2" style="text-align: center;">
+                        <div class="form-group">
+                            <label class="control-label">&nbsp;</label>
+                            <button type="button" id="btn_ExportToExcel" class="btn-info btn-pretty btn-sm "><i class="fa fa-expand"></i> @Resources.MFG.Dashboard.btn_ExportToExcel</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

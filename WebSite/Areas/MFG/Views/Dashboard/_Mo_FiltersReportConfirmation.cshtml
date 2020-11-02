@@ -1,0 +1,54 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Dashboard.ModalExportToExcelViewModel
+@using (Html.BeginForm(Model.ActionName, "Dashboard", FormMethod.Post))
+{
+    <div id="mo_FiltersReportConfirmation" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title">@Resources.CI.Dashboard.msg_FiltersForReport</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-heading">
+                        <div class="row" style="text-align:center !important">
+                            <div class="@Model.WidthClass" style="display:inline-block !important">
+                                <div class="form-group">
+                                    <label class="col-md-3" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Machines</label>
+                                    <div class="col-md-9">
+                                        @Html.ListBox("ddl_Machines", Model.MachinesList, new { @class = "form-control select", multiple = "multiple", data_style = "btn-success" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            @if (!(Model.IsProduction))
+                            {
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-2" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Process</label>
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("ddl_Process", Model.ProcessList, new { @class = "form-control select", data_style = "btn-success" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="col-md-4" style="padding-top: 6px;">@Resources.MFG.Dashboard.lbl_Materials</label>
+                                        <div class="col-md-8">
+                                            @Html.DropDownList("ddl_Materials", Model.MaterialsList, new { @class = "form-control select", data_style = "btn-success" })
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                @Html.Hidden("Mo_ExcelReport_ShiftID", Model.ShiftID)
+                @Html.Hidden("Mo_ExcelReport_Date", "")
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="submit" id="btn_CloseModalReport">@Resources.MFG.Dashboard.btn_ExportToExcel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

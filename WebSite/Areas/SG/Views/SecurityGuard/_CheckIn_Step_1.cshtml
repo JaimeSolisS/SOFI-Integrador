@@ -1,0 +1,62 @@
+﻿@model WebSite.Areas.SG.Models.CheckInViewModel
+<div id="mo_CheckInStep1" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:1; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header">
+            <h1 class="modal-title">@Resources.SG.SecurityGuard.lbl_PersonVerification</h1>
+            <div class="fa fa-home pull-right fa-5x bg-white padding-10 btnHomeButton"></div>
+        </div>
+        <div class="modal-body padding-none" style="height:77%; overflow-y:auto;overflow-x: hidden;">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txt_ScanBox">@Resources.SG.SecurityGuard.lbl_ScannBox</label>
+                        <div class="input">
+                            @Html.TextBox("txt_ScanBox", "", new { @class = "input-xl width-100p max-length", autocomplete = "off", @maxlength = "50" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-4" id="div_CheckIn">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="ddl_PersonCheckIngTypeList">@Resources.SG.SecurityGuard.lbl_PersonCheckIngType</label>
+                        <div class="input">
+                            <select id="ddl_PersonCheckIngTypeList" class="width-100p input-xl">
+                                @foreach (var person in Model.PersonCheckIngTypeList)
+                                {
+                                    <option value="@person.CatalogDetailID" data-valueid="@person.ValueID">@person.DisplayText</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-4">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="txt_PersonName">@Resources.SG.SecurityGuard.lbl_PersonName</label>
+                        <div class="input">
+                            @Html.TextBox("txt_PersonName", "", new { @class = "input-xl width-100p max-length", autocomplete = "off", @maxlength = "100" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12" id="div_ExpirationDate" style="display:none">
+                    <div class="form-group">
+                        <label class="control-label fa-2x" for="lbl_ExpirationDate">@Resources.SG.SecurityGuard.lbl_ExpirationDate</label>
+                        <div class="input">
+                            @Html.TextBox("txt_ExpirationDate", "", new { @class = "disabled-style input-xl width-100p", @readonly = "true", autocomplete = "off" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-danger pull-left btn_footer fa-2x dimiss-modal" data-modalid="mo_CheckInStep1">@Resources.Common.lbl_Exit</button>
+            <button type="button" class="btn btn-success pull-right btn_footer fa-2x disabled"
+                    id="btn_NextCheckInStep" data-personaltype="" data-vendortypeid="">
+                @Resources.Common.btn_Next
+            </button>
+        </div>
+    </div>
+</div>
+@Html.Hidden("TempAttachmentID", Model.TempAttachmentID)
+@Html.Hidden("UseQuestionnaire", Model.CheckListTemplateEntity.Enabled)
+@Html.Hidden("CheckListTemplateID", Model.CheckListTemplateEntity.CheckListTemplateID)
+@Html.Hidden("CurrentVendorUserID", 0)
+@Html.Hidden("SecurityGuardLogID", 0)

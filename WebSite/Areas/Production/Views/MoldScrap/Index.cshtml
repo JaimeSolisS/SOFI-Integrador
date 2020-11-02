@@ -1,0 +1,139 @@
+﻿@model WebSite.Areas.Production.Models.MoldScrap.IndexViewModel
+
+<!-- START CONTENT FRAME -->
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2><span class="fa fa-desktop"></span> @Resources.MoldScrap.lbl_ViewHeaderTag</h2>
+        </div>
+        <div class="pull-right">
+            <button id="btn_SaveMoldScrapAll" class="btn btn-success" title="@Resources.MoldScrap.tt_SaveAllTag"><span class="fa fa-save"> @Resources.MoldScrap.lbl_SaveAllTag</span></button>
+        </div>
+    </div>
+
+    <!-- START CONTENT FRAME RIGHT -->
+    <div class="content-frame-body content-frame-body-left">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Common.lbl_Filters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_ScrapDate">@Resources.MoldScrap.lbl_ScrapDateTag</label>
+                            <div class="input-group">
+                                <input type="text" id="txt_ScrapDate" name="txt_ScrapDate" class="form-control datepicker" value="@Model.ScrapDateFormat" data-date="@Model.ScrapDateFormat" data-date-viewmode="years" />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_ProductionProcess">@Resources.MoldScrap.lbl_ProductionProcessTag</label>
+                            <div class="input">
+                                <select id="ddl_ProductionProcess" name="ddl_ProductionProcess" class="form-control select" data-live-search="true">
+                                    @foreach (var process in Model.ProductionProcessList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-3 @Model.ClassProcessLine" id="div_ContainerControlProductionLine">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_ProductionLine">@Resources.MoldScrap.lbl_ProcessLine_Tag</label>
+                            <div class="input">
+                                <select id="ddl_ProductionLine" name="ddl_ProductionLine" class="form-control select" data-live-search="true">
+                                    @foreach (var line in Model.UserProcessesLine)
+                                    {
+                                        <option value="@line.Value">@line.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_Shift">@Resources.MoldScrap.lbl_ShiftTag</label>
+                            <div class="input">
+                                <select id="ddl_Shift" name="ddl_Shift" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var process in Model.ShiftList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_Design">@Resources.MoldScrap.lbl_DesignTag</label>
+                            <div class="input">
+                                <select id="ddl_Design" name="ddl_Design" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var item in Model.DesignList)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*Details SCRAP*@
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-9 margin-top-10">
+                        <div id="div_boxMoldScrapDetail" class="filters">
+                            @Html.Partial("_MoldScrapTable", Model.MoldScrapsList)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .input-group-addon:first-child {
+            top: 0.02em !important;
+        }
+    </style>
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/Production/MoldScrap/Index.js?v20190322" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+                var LangResources = {
+                    chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                    chsn_SelectMultipleOption: "@Resources.Common.chsn_SelectMultipleOption",
+                    chsn_NoResults: "@Resources.Common.chsn_NoResults",
+                    ntf_SelectWarehouse: "@Resources.Catalog.ntf_SelectWarehouse",
+                    ntf_SelectVendor: "@Resources.Catalog.ntf_SelectVendor"
+                };
+
+                IndexInit(LangResources);
+        });
+    </script>
+}

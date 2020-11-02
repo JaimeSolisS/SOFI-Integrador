@@ -1,0 +1,112 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MachineSetup.ModalNewMachineViewModel
+<div id="mo_NewMachine" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="MachineName">@Resources.MFG.MachineSetups.lbl_Machine</label>
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control moldScrapValue max-length" maxlength="50" id="MachineName" value="@Model.MachineName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="MachineDescription">@Resources.MFG.MachineSetups.lbl_MachineDesccription</label>
+                            <div class="input-group col-xs-12">
+                                <textarea class="form-control moldScrapValue max-length" maxlength="255" id="MachineDescription">@Model.MachineDescrption</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ProductionLine">@Resources.MFG.MachineSetups.lbl_ProductionLine</label>
+                            <div class="input">
+                                @Html.DropDownList("ProductionLine", Model.ProductionLineList, new { @class = "btn dropdown-toggle selectpicker btn-default col-xs-12" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="MachineCategory">@Resources.MFG.MachineSetups.lbl_MachineCategories</label>
+                            <div class="input">
+                                @Html.DropDownList("MachineCategory", Model.MachineCategoriesList, new { @class = "btn dropdown-toggle selectpicker btn-default col-xs-12" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12" style="margin-top:5%;">
+                        <div class="form-group" style="text-align:center">
+                            <label class="control-label">@Resources.MFG.ActionPlan.lbl_Attachments:</label>
+                            <div class="input-group col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="border-dashed-2">
+                                            <form action="~/Attachments/SaveDropzoneJsUploadedFiles" class="form-dropzone needsclick dz-clickable h-150">
+                                                @Html.Hidden("ReferenceID", Model.TempAttachmentID)
+                                                @Html.Hidden("AttachmentType", "TEMPID")
+                                                <div class="dz-message center-content padding-top-10">
+                                                    <img src="~/Content/img/UploadCloud.png" />
+                                                </div>
+                                                <div class="center-content">
+                                                    @Resources.Common.lbl_Dropfiles
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="text-align:center">
+                                    <div id="img_sensor">
+                                        @if (Model.ImagePath != "")
+                                        {
+                                            <img src="@Model.ImagePath" height="150" />
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                    </div>
+                    <div class="row" style="display:none">
+                        <div class="col-xs-12">
+                            <div id="AttachmentsTable">
+                                @*@Html.Action("Get", "Attachments", new { Area = "", ReferenceID = Model.EnergySensorID, AttachmentType = "TEMPID" }))*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="MachineEnabled">@Resources.MFG.MachineSetups.lbl_Enable</label>
+                            <label class="switch switch-small">
+                                <input type="checkbox" id="MachineEnabled" checked="@Model.Enabled" />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+
+                @if (Model.Type == "Edit")
+                {
+                    <button id="btn_EditMachine" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+                else
+                {
+                    <button id="btn_NewMachine" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("MachineID", Model.MachineID)

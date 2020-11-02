@@ -1,0 +1,27 @@
+﻿@model List<Core.Entities.User>
+<br />
+<div class="row">
+    <div class="col-xs-9">
+        <div class="form-group">
+            <label class="control-label" for="txt_name">@Resources.Request.lbl_AccessGarantedTo:</label>
+
+            <select id="txt_UserAccess" class="select" data-live-search="true">
+                @*<option value="0">@Resources.Common.chsn_SelectOption</option>*@
+                <option value="0" data-name="@Resources.Request.lbl_AllUsers">@Resources.Request.lbl_AllUsers</option>
+                <option value="new">-- @Resources.Common.tt_AddNew --</option>
+                @*<option value="-1">-- @Resources.Common.selectAll --</option>*@
+                @foreach (var user in Model)
+                {
+                    <option value="@user.UserID" data-department="@user.DepartmentName" data-employeenumber="@user.EmployeeNumber" data-name="@user.FullName">
+                        @user.FullName
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-3" style="margin-top: 20px;">
+        <div class="form-group pull-right">
+            <button id="btn_Adduseracces" type="button" class="btn btn-success ">@Resources.Common.btnAdd</button>
+        </div>
+    </div>
+</div>

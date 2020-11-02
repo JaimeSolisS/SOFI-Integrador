@@ -1,0 +1,39 @@
+﻿@model WebSite.Areas.CI.Models.ViewModels.Administration.GenericCultureViewModel
+<div id="mo_CultureList" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.ModelHeader</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row ">
+                    <div class="col-xs-12 padding-0">
+                        <table id="tb_CultureInfo" class="display table table-condensed table-striped margin-bottom-none">
+                            <thead>
+                                <tr>
+                                    <th class="w-35prc">@Resources.Common.lbl_language</th>
+                                    <th>@Resources.Common.lbl_Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb_CultureInfoBody">
+                                @foreach (var item in Model.FieldTranslates)
+                                {
+                                    <tr>
+                                        <td data-languageid="@item.CultureID">@item.CultureCode</td>
+                                        <td><input type="text" id="txt_languagetext_@item.CultureID" placeholder="@item.CultureCode.ToLower()" value="@item.FieldValue" class="form-control" maxlength="50" /></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                <button type="button" id="btn_CultureInfoUpdate" class="btn btn-success" data-entityid="@Model.ID" title="@Resources.Common.tt_UpdateInformation">@Resources.Common.btn_UpdateDownTime</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,69 @@
+﻿<div id="mo_Create_New_Format" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" style="width: 500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Request.ttl_NewFormat</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label class="control-label" for="Name">@Resources.Request.lbl_FormatName</label>
+                        <div class="form-group">
+                            @Html.TextBox("FormatName", "", htmlAttributes: new { @class = "form-control max-length", @maxlength = "100" })
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <br />
+                            <label class="control-label">@Resources.Request.lbl_2FA:</label>
+                            <br />
+                            <div class="btn-group">
+                                <button id="btn_Y2fa" class="btn btn-default" type="button">@Resources.Common.lbl_Yes</button>
+                                <button id="btn_N2fa" class="btn  btn-danger fa" type="button">@Resources.Common.lbl_NO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <br />
+                            <label class="control-label" for="directapproval">@Resources.Request.lbl_DirectApproval:</label>
+                            <br />
+                            <div class="btn-group">
+                                <button id="btn_YDirectA" class="btn btn-default" type="button">@Resources.Common.lbl_Yes</button>
+                                <button id="btn_NDirectA" class="btn  btn-danger fa" type="button">@Resources.Common.lbl_NO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <br />
+                            <label class="control-label" for="DetailFields">@Resources.Request.lbl_DetailFields:</label>
+                            <br />
+                            <div class="btn-group">
+                                <button id="btn_YAA" class="btn btn-default" type="button">@Resources.Common.lbl_Yes</button>
+                                <button id="btn_NAA" class="btn  btn-danger fa" type="button">@Resources.Common.lbl_NO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <br />
+                            <label class="control-label" for="allowattachments">@Resources.Request.lbl_AllowAttachments:</label>
+                            <br />
+                            <div class="btn-group">
+                                <button id="btn_YHD" class="btn btn-default" type="button">@Resources.Common.lbl_Yes</button>
+                                <button id="btn_NHD" class="btn  btn-danger fa" type="button">@Resources.Common.lbl_NO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_CreateNewFormat" type="button" class="btn btn-info">@Resources.Common.btn_Create</button>
+            </div>
+        </div>
+    </div>
+</div>

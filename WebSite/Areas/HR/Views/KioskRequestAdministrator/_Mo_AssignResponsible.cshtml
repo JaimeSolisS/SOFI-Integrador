@@ -1,0 +1,81 @@
+﻿@model List<Core.Entities.User>
+<div id="mo_AssignRequest" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:9">
+    <div class="modal-dialog" style="width: 50vh">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@Resources.HR.Kiosk.title_AssignResponsible</h4>
+            </div>
+            <div class="modal-body padding-none">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p style="font-size:15px"><strong>@Resources.HR.Kiosk.lbl_NRequest: <span style="color:darkblue" id="span_RequestNumbers"></span></strong></p>
+                        </div>
+                        <div class="col-xs-12" style="text-align:center">
+                            <div class="alert alert-info" role="alert">
+                                @Resources.HR.Kiosk.msg_ResponsibleAssignInstruction
+                            </div>
+                            @*@Html.DropDownList("txt_AssignResponsible", null, String.Empty, new { @class = "form-control", multiple = "multiple", @list = "datalist-responsibles" })*@
+                            @*@Html.TextBox("txt_AssignResponsible", "", new { @class = "form-control", @list = "datalist-responsibles" })*@
+                            @*@Html.DropDownList("ddl_RequestDepartment", Model.RequestDepartmentsList, new { @class = "form-control RequestFilters" })*@
+                            <select id="txt_AssignResponsible" class="form-control" data-live-search="true">
+                                <option value="0">@Resources.Common.chsn_SelectOption</option>
+                                <option value="new">-- @Resources.Common.tt_AddNew --</option>
+                                @foreach (var user in Model)
+                                {
+                                    <option value="@user.ID" data-department="@user.DepartmentName" data-employeenumber="@user.EmployeeNumber">@user.FullName</option>
+                                }
+                            </select>
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <b>@Resources.HR.Kiosk.lbl_Name : </b>
+                        </div>
+                        <div class="col-xs-7" id="Mo_ResponsibleName">
+                            -
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <b>@Resources.HR.Kiosk.lbl_Department : </b>
+                        </div>
+                        <div class="col-xs-7" id="Mo_ResponsibleDepartment">
+                            -
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <b>@Resources.HR.Kiosk.lbl_EmpNum : </b>
+                        </div>
+                        <div class="col-xs-7" id="Mo_ResponsibleNum">
+                            -
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <b>@Resources.HR.Kiosk.lbl_Comments</b>
+                        </div>
+                        <div class="col-xs-12">
+                            @Html.TextArea("txta_Comment", "", new { @class = "form-control", @style = "height:15vh", maxlength = "500" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger close-assign-modal" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                <button type="button" class="btn btn-success" id="btn_SaveAssignResponsible">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<datalist id="datalist-responsibles" hidden>
+    @*@foreach (var user in Model)
+        {
+            <option data-email="@user.eMail" data-department="@user.DepartmentName" data-empnum="@user.ID" value="@user.FullName"></option>
+        }*@
+</datalist>
+@Html.Hidden("Mo_AssRes_RequestID", 0)

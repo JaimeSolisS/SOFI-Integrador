@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnCreateSectionTag" xml:space="preserve">
+    <value>Create Section</value>
+  </data>
+  <data name="btn_SectionDetailsTag" xml:space="preserve">
+    <value>Create Details</value>
+  </data>
+  <data name="btn_UpdateSectionDetailsTag" xml:space="preserve">
+    <value>Update Detail</value>
+  </data>
+  <data name="gvh_AreaTag" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="gvh_BackColorTag" xml:space="preserve">
+    <value>Back Color</value>
+  </data>
+  <data name="gvh_DetailNameTag" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="gvh_DetailSizeTag" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="gvh_FileTypeTag" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="gvh_FontColorTag" xml:space="preserve">
+    <value>Font Color</value>
+  </data>
+  <data name="gvh_FooterTag" xml:space="preserve">
+    <value>Footer</value>
+  </data>
+  <data name="gvh_IconTag" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="gvh_SequenceTag" xml:space="preserve">
+    <value>Sequence</value>
+  </data>
+  <data name="gvh_Settings_File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="gvh_Settings_Seq" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="gvh_SizeTag" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="lbl_AddAreaTag" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="lbl_AreaNameTag" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="lbl_BackColorTag" xml:space="preserve">
+    <value>Background color</value>
+  </data>
+  <data name="lbl_BackgroundImage" xml:space="preserve">
+    <value>Background Image</value>
+  </data>
+  <data name="lbl_BackgroundImageTag" xml:space="preserve">
+    <value>Background Image</value>
+  </data>
+  <data name="lbl_CarouselVideosTag" xml:space="preserve">
+    <value>Carrusel de Videos</value>
+  </data>
+  <data name="lbl_CloseWindowAfterTag" xml:space="preserve">
+    <value>Close windows detail after</value>
+  </data>
+  <data name="lbl_DashboardAreaAddTag" xml:space="preserve">
+    <value>Create Section</value>
+  </data>
+  <data name="lbl_DashboardAreaDetailHeaderTag" xml:space="preserve">
+    <value>Create Section Details</value>
+  </data>
+  <data name="lbl_DashboardAreaDetailHeaderUpdateTag" xml:space="preserve">
+    <value>Update Section Details</value>
+  </data>
+  <data name="lbl_DataEffectDurationTag" xml:space="preserve">
+    <value>Effect Duration</value>
+  </data>
+  <data name="lbl_DataEffectTag" xml:space="preserve">
+    <value>Effect</value>
+  </data>
+  <data name="lbl_DetailNameTag" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lbl_Dropfiles" xml:space="preserve">
+    <value>Drop files to attach, or browse</value>
+  </data>
+  <data name="lbl_FileNotValidTag" xml:space="preserve">
+    <value>{0} - File not valid</value>
+  </data>
+  <data name="lbl_FileTypeTag" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="lbl_FontColorTag" xml:space="preserve">
+    <value>Font color</value>
+  </data>
+  <data name="lbl_FooterPhTag" xml:space="preserve">
+    <value>enter footer</value>
+  </data>
+  <data name="lbl_FooterTag" xml:space="preserve">
+    <value>Footer</value>
+  </data>
+  <data name="lbl_GeneralSettingsTag" xml:space="preserve">
+    <value>General Setting Dashboard</value>
+  </data>
+  <data name="lbl_GrlSettingTag" xml:space="preserve">
+    <value>Gral Setting</value>
+  </data>
+  <data name="lbl_HrefTag" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="lbl_IconTag" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="lbl_MainHeader_tag" xml:space="preserve">
+    <value>Dashboard Management</value>
+  </data>
+  <data name="lbl_MsgDeleteDashboardAreaDetailTag" xml:space="preserve">
+    <value>Are you sure wish to delete record?</value>
+  </data>
+  <data name="lbl_MsgDeleteDashboardAreaTag" xml:space="preserve">
+    <value>Are you sure wish to delete record and your content ?</value>
+  </data>
+  <data name="lbl_MsgDeleteFileTag" xml:space="preserve">
+    <value>Are you sure to wish delete video?</value>
+  </data>
+  <data name="lbl_OnlyOnceFileTag" xml:space="preserve">
+    <value>Please choose a single file</value>
+  </data>
+  <data name="lbl_ScreenSaverIntervalTag" xml:space="preserve">
+    <value>Screen Saver Interval</value>
+  </data>
+  <data name="lbl_ScreenSaverVideoTag" xml:space="preserve">
+    <value>Screen Saver Video</value>
+  </data>
+  <data name="lbl_SecondsTag" xml:space="preserve">
+    <value>Seconds</value>
+  </data>
+  <data name="lbl_SeqTag" xml:space="preserve">
+    <value>Sequence</value>
+  </data>
+  <data name="lbl_SizeTag" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="lbl_SourcePathTag" xml:space="preserve">
+    <value>Path File</value>
+  </data>
+  <data name="lbl_TitleDeleteFileTag" xml:space="preserve">
+    <value>Delete Video</value>
+  </data>
+  <data name="lbl_TitleNameTag" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lbl_UpdateGralSettingTag" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="lbl_UploadImageTag" xml:space="preserve">
+    <value>Click here to upload image </value>
+  </data>
+  <data name="lbl_UploadVideoTag" xml:space="preserve">
+    <value>Click here to upload a video</value>
+  </data>
+  <data name="tt_AddAreaTag" xml:space="preserve">
+    <value>Add section</value>
+  </data>
+  <data name="tt_AddDashboardAreaDetail" xml:space="preserve">
+    <value>Add details</value>
+  </data>
+  <data name="tt_CreateSectionTag" xml:space="preserve">
+    <value>Create a new section</value>
+  </data>
+  <data name="tt_DeleteDashboardAreaDetailTag" xml:space="preserve">
+    <value>Delete detail ..</value>
+  </data>
+  <data name="tt_DeleteDashboardAreaTag" xml:space="preserve">
+    <value>Delete section ..</value>
+  </data>
+  <data name="tt_EditDashboardArea" xml:space="preserve">
+    <value>Edit section ..</value>
+  </data>
+  <data name="tt_EditDashboardDetail" xml:space="preserve">
+    <value>Edit details ..</value>
+  </data>
+  <data name="tt_GralSettingTag" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="tt_SettingsPlay" xml:space="preserve">
+    <value>Play a current video</value>
+  </data>
+  <data name="tt_UpdateGralSettingTag" xml:space="preserve">
+    <value>Save settings</value>
+  </data>
+  <data name="tt_EditDashboardAreaTag" xml:space="preserve">
+    <value>Edit Section...</value>
+  </data>
+  <data name="lbl_View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="gvh_ParentNode" xml:space="preserve">
+    <value>Parent node</value>
+  </data>
+  <data name="tt_ReorderSections" xml:space="preserve">
+    <value>Manage Sections</value>
+  </data>
+  <data name="lbl_DashboardAreaNodeHeaderTag" xml:space="preserve">
+    <value>Create Node</value>
+  </data>
+  <data name="lbl_DashboardAreaNodeHeaderUpdateTag" xml:space="preserve">
+    <value>Update Node</value>
+  </data>
+  <data name="lbl_Parent" xml:space="preserve">
+    <value>Parent </value>
+  </data>
+  <data name="lbl_Section" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="lbl_Node" xml:space="preserve">
+    <value>Node</value>
+  </data>
+  <data name="nft_DifferentSectionNode" xml:space="preserve">
+    <value>Node belongs to a different section</value>
+  </data>
+  <data name="ntf_SectionSeparated" xml:space="preserve">
+    <value>Sections cannot be separated</value>
+  </data>
+</root>

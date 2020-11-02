@@ -1,0 +1,71 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MoldFamilies.EditViewModel
+<div id="mo_NewEditMoldFamily" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" style="z-index:9">
+    <div class="col-sm-4"></div>
+    <div class="modal-dialog col-sm-4" style="text-align:center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3" style="text-align:right">
+                        <label>@Resources.MFG.MoldFamilies.lbl_FamilyName</label>
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.TextBox("txt_mo_FamilyName", Model.MoldFamilyObj.FamilyName, new { @class = "form-control selectpicker max-length", @maxlength = "50" })
+                    </div>
+                </div>
+
+                <br />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3" style="text-align:right">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_Enable</label>
+                        </div>
+                        <div class="col-sm-9" style="text-align:left">
+                            <label class="switch switch-small col-sm-7">
+                                <input type="checkbox" id="chk_Enabled" checked="@Model.MoldFamilyObj.Enabled" />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3" style="text-align:right">
+                        <label>@Resources.MFG.MoldFamilies.lbl_LenTypes</label>
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.DropDownList("txt_mo_LenTypes", Model.LensTypesList, new { @class = "form-control selectpicker", data_live_search = "true" })
+                    </div>
+                    <div class="col-sm-3 pull-right">
+                        <button id="addLenToFamily" class="btn btn-info pull-right" style="background-color:dodgerblue !important; width:90%">@Resources.Common.btnAdd</button>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Partial("_Tbl_LenTypes", Model)
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                @if (Model.IsEdit)
+                {
+                    <button id="btn_ModalSaveEditedMoldFamily" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+                else
+                {
+                    <button id="btn_ModalSaveNewMoldFamily" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3"></div>
+
+</div>
+
+@Html.Hidden("MoldFamilyID", Model.MoldFamilyObj.MoldFamilyID)

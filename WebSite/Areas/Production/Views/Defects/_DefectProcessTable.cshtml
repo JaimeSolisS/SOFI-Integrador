@@ -1,0 +1,41 @@
+﻿@model List<Core.Entities.Production.DefectProcess>
+<div class="slider">
+    <table class="display table table-striped table-bordered table-condensed-xs margin-none" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>@Resources.Defects.gvh_ProductionProcess</th>
+                <th>@Resources.Defects.gvh_ProductionLine</th>
+                <th>@Resources.Defects.gvh_VA</th>
+                <th>@Resources.Defects.gvh_Design</th>
+                <th>@Resources.Defects.gvh_ShiftTag</th>
+                <th>@Resources.Defects.gvh_DefectColor</th>
+                <th>@Resources.Defects.gvh_DefectFontColor</th>
+                <th>@Resources.Defects.gvh_DefectGoal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductionProcessName</td>
+                    <td>@item.ProductionLineName</td>
+                    <td>@item.VAName</td>
+                    <td>@item.DesignName</td>
+                    <td>@item.ShiftName</td>
+                    <td class="w-100"><input type="text" readonly class="form-control x-editable" style="background-color:@item.Color" /></td>
+                    <td class="w-100"><input type="text" readonly class="form-control x-editable" style="background-color:@item.FontColor" /></td>
+                    <td>@item.GoalValueFormat</td>
+                    <td class="w-120">
+                        <span id="btn_EditDefectDetails_@item.DefectID" name="btn_EditDefectDetails_@item.DefectID" class="glyphicon glyphicon-pencil btn btn-info edit-defect-details"
+                              title="@Resources.Defects.tt_EditDefectDetail" data-defectid="@item.DefectID" data-defect-processid="@item.DefectProcessID"></span>&nbsp;
+                        <span id="btn_DeleteDefectDetails_@item.DefectID" name="btn_DeleteDefectDetails_@item.DefectID" class="glyphicon glyphicon-trash  btn btn-danger delete-defect-details"
+                              title="@Resources.Defects.tt_DeleteDefectDetails" data-defect-processid="@item.DefectProcessID"></span>
+
+                        @*<button  class="btn btn-danger delete-defect-details"  data-defect-processid="@item.DefectProcessID" title="@Resources.Defects.tt_DeleteDefectDetails"><span class="glyphicon glyphicon-trash"></span></button>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

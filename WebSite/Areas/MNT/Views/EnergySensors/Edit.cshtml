@@ -1,0 +1,253 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergySensors.EnergySensorsEditViewModel
+
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Model.Header</h2>
+        </div>
+        <div class="pull-right">
+            @Html.ActionLink(@Resources.Common.btn_Back, "Index", "EnergySensors", null, new { @class = "btn btn-default " })
+            @if (Model.IsEdit)
+            {
+                <button id="btn_SaveEditedEnergySensor" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+
+            }
+            else
+            {
+                <button id="btn_SaveNewEnergySensor" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+            }
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.MNT.EnergySensors.lbl_GeneralInformation
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-4" style="text-align:right">
+                                    <h5>@Resources.MNT.EnergySensors.lbl_Family</h5>
+                                </div>
+                                <div class="col-sm-8" style="text-align:center">
+                                    <select id="ddl_family" class="form-control selectpicker"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:1%">
+                            <div class="col-sm-12">
+                                <div class="col-sm-4" style="text-align:right">
+                                    <h5>@Resources.MNT.EnergySensors.lbl_Name</h5>
+                                </div>
+                                <div class="col-sm-8" style="text-align:center">
+                                    <input type="text" id="txt_name" class="form-control" value="@Model.ES.SensorName" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top:1%">
+                            <div class="col-sm-12">
+                                <div class="col-sm-4" style="text-align:right">
+                                    <h5>@Resources.MNT.EnergySensors.lbl_Use</h5>
+                                </div>
+                                <div class="col-sm-8" style="text-align:center">
+                                    <select id="ddl_Use" class="form-control selectpicker"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top:1%">
+                            <div class="col-sm-12">
+                                <div class="col-sm-4" style="text-align:right">
+                                    <h5>
+                                        @Resources.MNT.EnergySensors.lbl_Unit
+                                    </h5>
+                                </div>
+                                <div class="col-sm-8" style="text-align:center">
+                                    <select id="ddl_unit" class="form-control selectpicker"></select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-top:1%">
+                            <div class="col-sm-12">
+                                <div class="col-sm-4" style="text-align:right">
+                                    <h5>@Resources.MNT.EnergySensors.lbl_IndexKey</h5>
+                                </div>
+                                <div class="col-sm-8" style="text-align:center">
+                                    <input type="text" id="txt_index_key" class="form-control onlynumbers" value="@Model.ES.IndexKey" />
+                                </div>
+                            </div>
+                        </div>
+
+                        @*<div class="row" style="margin-top:1%">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-4" style="text-align:right">
+                                        <h5>@Resources.MNT.EnergySensors.lbl_DeviceId</h5>
+                                    </div>
+                                    <div class="col-sm-8" style="text-align:center">
+                                        <input type="text" id="txt_device_id" class="form-control" value="@Model.ES.Deviceid" />
+                                    </div>
+                                </div>
+                            </div>*@
+
+
+                        <div class="col-sm-12" style="margin-top:5%">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.MFG.ActionPlan.lbl_Attachments:</label>
+                                <div class="input-group col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="border-dashed-2">
+                                                <form action="~/Attachments/SaveDropzoneJsUploadedFiles" class="form-dropzone needsclick dz-clickable h-150">
+                                                    @Html.Hidden("ReferenceID", Model.TempAttachmentID)
+                                                    @Html.Hidden("AttachmentType", "TEMPID")
+                                                    <div class="dz-message center-content padding-top-10">
+                                                        <img src="~/Content/img/UploadCloud.png" />
+                                                    </div>
+                                                    <div class="center-content">
+                                                        @Resources.Common.lbl_Dropfiles
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6" style="text-align:center">
+                                            <div id="img_sensor">
+                                                @if (Model.ES.ImagePath != "")
+                                                {
+                                                    <img src="@Model.ES.ImagePath" height="150" />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+                        </div>
+                        <div class="row" style="display:none">
+                            <div class="col-xs-12">
+                                <div id="AttachmentsTable">
+                                    @*@Html.Action("Get", "Attachments", new { Area = "", ReferenceID = Model.EnergySensorID, AttachmentType = "TEMPID" }))*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3" style="text-align:center">
+                                            <h5>@Resources.MNT.EnergySensors.lbl_CopyConfigFrom</h5>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            @Html.DropDownList("ddl_SensorsConfigList", Model.SensorConfigForCopyList, new { @class = "form-control selectpicker", data_live_search = "true" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12" style="margin-top:2%">
+                                        <div class="col-sm-3" style="text-align:center">
+                                            <h5>@Resources.MNT.EnergySensors.lbl_SetSameValue</h5>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            @Html.TextBox("txt_SetSameValue", null, new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button id="btn_SetSameValue" class="btn btn-primary" style="background-color:cornflowerblue !important; border:none; width: 100%">
+                                                @Resources.MNT.EnergySensors.lbl_Set
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top:2%; text-align:center">
+                                    @Html.Partial("_Tbl_ValuesForHour", Model.SensorsConfigList)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="div_Mo_AddNewFamily">
+
+</div>
+
+<div id="div_Mo_AlarmConfiguration">
+
+</div>
+
+<div id="div_MO_Attachments">
+
+</div>
+
+@Html.Partial("~/Views/Shared/_ImageResourceModal.cshtml")
+
+@Html.Hidden("EnergySensorID", Model.ES.EnergySensorID)
+@Html.Hidden("EnergySensorFamilyID", Model.ES.EnergySensorFamilyID)
+@Html.Hidden("SensorUseID", Model.ES.SensorUseID)
+@Html.Hidden("UnitID", Model.ES.UnitID)
+@Html.Hidden("IsEdit", Model.IsEdit)
+
+
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/MNT/EnergySensors/Edit.js?v20190823" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var LangResources = {
+                lbl_SelectFamily: '@Resources.MNT.EnergySensors.lbl_SelectFamily',
+                lbl_NewFamily: '@Resources.MNT.EnergySensors.lbl_NewFamily',
+                lbl_SelectUse: '@Resources.MNT.EnergySensors.lbl_SelectUse',
+                lbl_NewUse: '@Resources.MNT.EnergySensors.lbl_NewUse',
+                lbl_SelectName: '@Resources.MNT.EnergySensors.lbl_SelectName',
+                lbl_NewName: '@Resources.MNT.EnergySensors.lbl_NewName',
+                msg_SensorUpdated: '@Resources.MNT.EnergySensors.msg_SensorUpdated',
+                msg_SensorAdded: '@Resources.MNT.EnergySensors.msg_SensorAdded',
+                msg_NewFamilyAdded: '@Resources.MNT.EnergySensors.msg_NewFamilyAdded',
+                lbl_SelectUnit: '@Resources.MNT.EnergySensors.lbl_SelectUnit',
+                msg_FamilyAlreadyExist: '@Resources.MNT.EnergySensors.msg_FamilyAlreadyExist',
+                msg_RequiredNameMaxValue: '@Resources.MNT.EnergySensors.msg_RequiredNameMaxValue',
+                msg_ValueOptionRequired: '@Resources.MNT.EnergySensors.msg_ValueOptionRequired',
+                msg_NonEmptyFieldsRequired: '@Resources.MNT.EnergySensors.msg_NonEmptyFieldsRequired',
+                msg_SetConfigurationValuesForAlarm: '@Resources.MNT.EnergySensors.msg_SetConfigurationValuesForAlarm',
+                lbl_NewSensor: '@Resources.MNT.EnergySensors.btn_NewSensor'
+            };
+
+            EditInit(LangResources);
+        });
+    </script>
+}

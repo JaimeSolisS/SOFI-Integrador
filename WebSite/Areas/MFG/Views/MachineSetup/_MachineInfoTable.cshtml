@@ -1,0 +1,40 @@
+﻿@model List<Core.Entities.MachineSetup>
+@if (Model.Count > 0)
+{
+    <table class="display table table-striped table-bordered table-condensed-xs margin-none" id="tbl_machine_setup">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th width="5%"></th>
+                <th>@Resources.MFG.MachineSetups.lbl_Setup</th>
+                <th>@Resources.MFG.MachineSetups.lbl_Enabled</th>
+                <th>@Resources.Common.gvH_UpdatedBy</th>
+                <th>@Resources.Common.gvH_UpdatedOn</th>
+                <th>@Resources.Common.gvH_Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-sm" data-entityid="@item.MachineSetupID">
+                    <td class="details-control" width="5%"></td>
+                    <td width="25%">
+                        @item.MachineSetupName
+                    </td>
+                    <td width="10%">
+                        @item.EnableText
+                    </td>
+                    <td width="25%">
+                        @item.UserFullName
+                    </td>
+                    <td width="22%">
+                        @item.DateLastMaintFormat
+                    </td>
+                    <td width="13%" style="text-align:center;">
+                        <button class="btn btn-success text-primary edit-machine-setup" data-entityid="@item.MachineSetupID" title="@Resources.MFG.MachineSetups.lbl_Title"><span class="fa fa-lg fa-edit" style="color: white !important"></span></button>
+                        <button class="btn btn-danger delete-machine-setup" data-machine-setup-id="@item.MachineSetupID" title="@Resources.Defects.tt_DeleteAllDetails"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

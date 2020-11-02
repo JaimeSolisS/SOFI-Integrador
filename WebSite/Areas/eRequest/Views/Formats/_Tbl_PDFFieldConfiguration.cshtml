@@ -1,0 +1,120 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Formats.CreateViewModel
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_PFDFieldConfiguration">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.Request.lbl_Field</th>
+            <th>@Resources.Request.lbl_ValueToShow</th>
+            <th>@Resources.Request.lbl_ShowWhen</th>
+            <th>@Resources.Request.lbl_Font</th>
+            <th>@Resources.Request.lbl_FontSize</th>
+            <th>@Resources.Request.lbl_FontColor</th>
+            <th>@Resources.Request.lbl_HorizontalPosition</th>
+            <th>@Resources.Request.lbl_VerticalPosition</th>
+            <th width="50">@Resources.Common.lbl_Options</th>
+
+        </tr>
+    </thead>
+    <tbody id="tbody_accessusers">
+        @{int count = 1;}
+        @foreach (var item in Model._PDFAdditionalFields)
+        {
+            <tr data-filedetailtempid="@item.FileDetailTempID" data-fieldname="@item.FieldName">
+                <td>@item.FieldName</td>
+                <td>
+                    <select class="form-control select QuickUpdateSelect" data-columnname="ValueToShowID">
+                        @{
+                            <option value="0">
+                                @Resources.Request.lbl_NothingSelected
+                            </option>
+                            foreach (var Font in Model._ValueToShow)
+                            {
+                                <option value="@Font.ValueID" data-valuetable="@Font.CatalogDetailID" @(((item.ValueToShowID != null) ? ((item.ValueToShowID == Font.CatalogDetailID) ? "selected" : "") : ""))>
+                                    @Font.DisplayText
+                                </option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control select showwhenfieldconfiguration QuickUpdateSelect" data-columnname="ShowWhenID">
+                        @{
+                            <option value="0">
+                                @Resources.Request.lbl_NothingSelected
+                            </option>
+                            foreach (var Font in Model._ShowWhen)
+                            {
+                                <option value="@Font.ValueID" data-valuetable="@Font.CatalogDetailID" @(((item.ShowWhenID != null) ? ((item.ShowWhenID == Font.CatalogDetailID) ? "selected" : "") : ""))>
+                                    @Font.DisplayText
+                                </option>
+                            }
+                        }
+                    </select>
+                    <div class="div_showwhenfieldconfiguration" data-selectid="@count" style="display:none;">
+                        <div class="div_date" style="display:none;">
+                            <input type="text" data-columnname="ShowWhenValue" class="form-control datetimepicker datefieldconfiguration QuickUpdateDate" style="text-align: center;border-radius: 4px;">
+                        </div>
+                        <div class="div_text" style="display:none;">
+                            <input type="text" data-columnname="ShowWhenValue" class="form-control maxlength textfieldconfiguration QuickUpdateText" maxlength="100" autocomplete="off">
+                        </div>
+                        <div class="div_numeric" style="display:none;">
+                            <input type="text" data-columnname="ShowWhenValue" class="form-control max-length integer numericfieldconfiguration QuickUpdateText" maxlength="100" autocomplete="off">
+                        </div>
+                        <div class="div_decimal" style="display:none;">
+                            <input type="text" data-columnname="ShowWhenValue" class="form-control max-length decimal decimalfieldconfiguration QuickUpdateText" maxlength="100" autocomplete="off">
+                        </div>
+                        <div class="div_select" style="display:none;">
+                            <select id="@count" class="select form-control QuickUpdateSelect selectfieldconfiguration" data-columnname="ShowWhenValue" title="@Resources.Request.lbl_NothingSelected"></select>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <select class="form-control select QuickUpdateSelect" data-columnname="FontName">
+                        @{
+                            <option value="0">
+                                @Resources.Request.lbl_NothingSelected
+                            </option>
+                            foreach (var Font in Model._FontListFE)
+                            {
+                                <option value="@Font.ValueID" data-valuetable="@Font.ValueID" @(((item.FontName != null) ? ((item.FontName.ToUpper() == Font.ValueID) ? "selected" : "") : ""))>
+                                    @Font.DisplayText
+                                </option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    <input type="text" id="txt_FontSize" value="@item.FontSize" data-columnname="FontSize" class="form-control txt_FontSize QuickUpdateText decimal-1-places" autocomplete="off" maxlength="19">
+                    @*@Html.TextBox("txt_FontSize", @item.FontSize, new { @autocomplete = "off", @class = "form-control decimal-1-places", maxlength = 19 })*@
+                </td>
+                <td>
+                    <select class="form-control select QuickUpdateSelect" data-columnname="FontColor">
+                        @{
+                            <option value="0">
+                                @Resources.Request.lbl_NothingSelected
+                            </option>
+                            foreach (var Font in Model._FontColorList)
+                            {
+                                <option value="@Font.ValueID" data-valuetable="@Font.ValueID" @(((item.FontColor != null) ? ((item.FontColor.ToUpper() == Font.ValueID) ? "selected" : "") : ""))>
+                                    @Font.DisplayText
+                                </option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    <input type="text" id="txt_PositionX" value="@item.PositionX" data-columnname="PositionX" class="form-control QuickUpdateText decimal-1-places" autocomplete="off">
+                    @*@Html.TextBox("txt_PositionX", @item.PositionX, new { @autocomplete = "off", @class = "form-control decimal-1-places" })*@
+                </td>
+                <td>
+                    <input type="text" id="txt_PositionY" value="@item.PositionY" data-columnname="PositionY" class="form-control QuickUpdateText decimal-1-places" autocomplete="off">
+                    @*@Html.TextBox("txt_PositionY", @item.PositionY, new { @autocomplete = "off", @class = "form-control decimal-1-places" })*@
+                </td>
+                <td>
+                    <button class="tbl_btn_DeleteConfigurationFieldPDF btn btn-danger" title="@Resources.Request.lbl_DeleteRule" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,30 @@
+﻿@model List<Core.Entities.Catalog>
+<table class="display table table-striped table-bordered table-condensed-xs margin-none" id="tbl_machine_setup" cellspacing="0">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th width="5%"></th>
+            <th>@Resources.MFG.MachineSetups.lbl_Section</th>
+            <th>@Resources.Common.gvH_Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="font-size-sm row_section class_Section_@item.CatalogDetailID" hidden data-catalogdetailid="@item.CatalogDetailID" id="@item.DisplayText.Replace(" ", "_")">
+                <td class="details-control" width="5%"></td>
+                <td data-identifier="section">
+                    <a href="#" class="x-editable" data-type="text"
+                       data-pk="@item.CatalogDetailID"
+                       data-name="ValueID"
+                       data-value="@item.ValueID"
+                       data-title="@Resources.MFG.MachineSetups.lbl_Section"
+                       data-url="/MFG/MachineSetup/UpdateSection"
+                       >@item.ValueID</a>
+                </td>
+                <td width="13%" style="text-align:center;">
+                    <button class="btn btn-danger clean-machine-setup-section"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

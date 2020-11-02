@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Core.Entities.TranslationDetail>
+<table class="table table-bordered  table-sm table-condensed-xs">
+    <thead>
+        <tr class="bg-primary">
+            <th>#</th>
+            <th>@Resources.Catalog.gvH_Culture</th>
+            <th>@Resources.Catalog.gvH_Description</th>
+            <th>@Resources.Common.gvH_UpdatedBy</th>
+            <th>@Resources.Common.gvH_DateLastMaint</th>
+            <th class="w-50"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.CultureID</td>
+                <td>@s.Description</td>
+                <td>@s.UserFullName</td>
+                <td>@s.DateLastMaintFormat</td>
+                <td><span data-entityid="@s.Tag" class="glyphicon glyphicon-remove  btn btn-danger btn-sm del-scan-row"></span></td>
+            </tr>
+        }
+    </tbody>
+
+</table>

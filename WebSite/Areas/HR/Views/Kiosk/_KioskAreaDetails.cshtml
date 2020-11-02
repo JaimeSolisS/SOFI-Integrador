@@ -1,0 +1,87 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.Kiosk.KioskAreaDetailsViewModel
+
+@foreach (var item in Model.KioskAreaDetailList)
+{
+    if (item.FileTypeValueID.ToUpper() == "PDF")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_PDFFile shadow-div-effect" data-cover="@item.BackgroundImage" style="color:@item.FontColor; background-color:@item.BackgroundColor"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-sourcepath="@item.SourcePath">
+            @if (item.Icon.ToUpper().StartsWith("MIF"))
+            {
+                <span class="@item.Icon"></span>
+            }
+            else if (item.Icon.Length > 0)
+            {
+                <img src="@item.Icon" class="icon" />
+            }
+            <span class="branding-bar" style="color:@item.FontColor">@item.Name</span>
+            <span class="badge-bottom" style="color:@item.FontColor">@item.Footer</span>
+        </div>
+    }
+    else if (item.FileTypeValueID.ToUpper() == "L")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_Link shadow-div-effect" data-iswindow="@item.IsWindow" data-cover="@item.BackgroundImage" style="color:@item.FontColor; background-color:@item.BackgroundColor"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-href="@item.HRef">
+            @if (item.Icon.ToUpper().StartsWith("MIF"))
+            {
+                <span class="@item.Icon"></span>
+            }
+            else if (item.Icon.Length > 0)
+            {
+                <img src="@item.Icon" class="icon" />
+            }
+            <span class="branding-bar" style="color:@item.FontColor">@item.Name</span>
+            <span class="badge-bottom" style="color:@item.FontColor">@item.Footer</span>
+        </div>
+    }
+    else if (item.FileTypeValueID.ToUpper() == "V")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_Video shadow-div-effect" data-cover="@item.BackgroundImage" style="color:@item.FontColor; background-color:@item.BackgroundColor"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-sourcepath="@item.SourcePath">
+            @if (item.Icon.ToUpper().StartsWith("MIF"))
+            {
+                <span class="@item.Icon"></span>
+            }
+            else if (item.Icon.Length > 0)
+            {
+                <img src="@item.Icon" class="icon" />
+            }
+            <span class="branding-bar" style="color:@item.FontColor;">@item.Name</span>
+            <span class="badge-bottom" style="color:@item.FontColor;">@item.Footer</span>
+        </div>
+    }
+    else if (item.FileTypeValueID.ToUpper() == "I")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_Image shadow-div-effect" data-cover="@item.BackgroundImage" style="color:@item.FontColor; background-color:@item.BackgroundColor"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-sourcepath="@item.SourcePath">
+            @if (item.Icon.ToUpper().StartsWith("MIF"))
+            {
+                <span class="@item.Icon"></span>
+            }
+            else if (item.Icon.Length > 0)
+            {
+                <img src="@item.Icon" class="icon" />
+            }
+            <span class="branding-bar" style="color:@item.FontColor;">@item.Name</span>
+            <span class="badge-bottom" style="color:@item.FontColor;">@item.Footer</span>
+        </div>
+    }
+    else if (item.FileTypeValueID.ToUpper() == "G")
+    {
+        <div data-role="tile" data-size="@item.SizeClass" class="CI_Gallery shadow-div-effect" data-cover="@item.BackgroundImage" style="color:@item.FontColor; background-color:@item.BackgroundColor"
+             data-effect="@item.DataEffectClass" data-effect-duration="@item.DataEffectDuration"
+             data-filterid="@item.FilterID" data-name="@item.Name" data-sourcepath="@item.SourcePath">
+            @Html.Action("GetGallery", new { item.KioskAreaID, item.DataEffectClass, item.SourcePath })
+            <span class="branding-bar" style="color:@item.FontColor">@item.Name</span>
+            <span class="badge-bottom" style="color:@item.FontColor">@item.Footer</span>
+        </div>
+    }
+    else
+    {
+        <a href="#" data-role="tile" class="bg-indigo fg-white" target="_blank">
+            <span class="mif-github icon"></span>
+            <span class="branding-bar">Github</span>
+            <span class="badge-bottom">30</span>
+        </a>
+    }
+}

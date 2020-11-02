@@ -1,0 +1,40 @@
+﻿@model IEnumerable<System.Web.Mvc.SelectListItem>
+<div id="mo_Suggestions" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="align-content:center;z-index:9">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h1 class="modal-title">@Resources.HR.Kiosk.title_Suggestions</h1>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alert alert-info alert-dismissible col-xs-12" id="alert_background_image" role="alert">
+                            <div class="col-xs-12" style="text-align:center;">
+                                <h3 class="fg-white margin-bottom-none">@Resources.HR.Kiosk.msg_AlertSuggestionMandatoryFields</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <label class="control-label" style="font-size:14px">@Resources.HR.Kiosk.lbl_CommentCategories</label>
+                    </div>
+                    <div class="col-xs-12" id="div_ddl_KioskCommentCategories">
+                        @Html.DropDownList("ddl_KioskCommentCategories", Model, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label class="control-label" style="font-size:14px">@Resources.HR.Kiosk.lbl_Comments</label>
+                    </div>
+                    <div class="col-xs-12">
+                        @Html.TextArea("txta_Comment", "", new { @class = "form-control", @maxlength = "255" })
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back_Suggestion" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_SaveComment" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>

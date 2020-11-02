@@ -1,0 +1,110 @@
+﻿@model WebSite.Models.ViewModels.AdditionalFieldsViewModel
+@if (Model.CollectionAdditionalFields != null && Model.CollectionAdditionalFields.Count > 0)
+{
+    <div id="div_boxAdditionalFieldSection" class="row" data-referenceid="@Model.ReferenceID">
+        @foreach (var item in Model.CollectionAdditionalFields)
+        {
+            <div class="@item.ColsBootstrapCssClass">
+                <div class="form-group">
+
+                    @if (item.DataTypeControl.ToLower() != "date" && item.DataTypeControl.ToLower() != "checkbox")
+                    {
+                        <label class="control-label">@item.FieldName</label>
+                            if (item.DataTypeControl.ToLower() == "text")
+                            {
+                                if (item.FieldLength > 130)
+                                {
+                                    <textarea rows="@item.TextAreaRows" maxlength="@item.FieldLength" class="additional-field form-control textarea-max-lenght @item.CssClass" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID">@item.FieldValue</textarea>
+                                }
+                                else
+                                {
+                                    <input type="text" maxlength="@item.FieldLength" class="additional-field ad-max-lenght form-control @item.CssClass" @Model.disabled value="@item.FieldValue" data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                                }
+                            }
+                            else if (item.DataTypeControl.ToLower() == "decimal")
+                            {
+                                <input type="text" maxlength="@item.FieldLength" class="additional-field ad-max-lenght onlydecimalsprecision @item.CssClass" @Model.disabled value="@item.FieldValue" data-precision="@item.FieldPrecision" data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                            }
+                            else if (item.DataTypeControl.ToLower() == "number")
+                            {
+                                <input type="text" maxlength="@item.FieldLength" class="additional-field ad-max-lenght onlynumbers @item.CssClass" @Model.disabled value="@item.FieldValue" data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                            }
+                            else if (item.DataTypeControl.ToLower() == "select")
+                            {
+                                
+                                <select class="additional-field form-control da-chosen-select select @item.CssClass" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID">
+                                    @foreach (var option in item.CatalogContext)
+                                    {
+                                        if (item.FieldValue.AsInt() == option.CatalogDetailID)
+                                        {
+                                            <option selected value="@(option.CatalogDetailID == 0 ? "":option.CatalogDetailID.ToString())">@option.DisplayText</option>
+                                        }
+                                        else if (option.CatalogDetailID == 0)
+                                        {
+                                            <option value="">@option.DisplayText</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@option.CatalogDetailID.ToString()">@option.DisplayText</option>
+                                        }
+                                    }
+                                </select>
+                            }
+                    }
+                    else if (item.DataTypeControl.ToLower() == "date")
+                    {
+                        <label class="control-label">@item.FieldName</label>
+                        <div class="input-group date ad-datepicker">
+                            <span class="input-group-addon"><i class="@item.FieldIcon"></i></span>
+                            @if (string.IsNullOrEmpty(item.FieldValue))
+                            {
+                                <input type="text" class="additional-field form-control @item.CssClass" placeholder="@item.FieldName" value="@DateTime.Now.ToString("yyyy-MM-dd")" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                            }
+                            else
+                            {
+                                <input type="text"  class="additional-field form-control @item.CssClass" placeholder="@item.FieldName" value="@item.FieldValue.AsDateTime().ToString("yyyy-MM-dd")" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                            }
+                        </div>
+                    }
+                    else if (item.DataTypeControl.ToLower() == "checkbox")
+                    {
+                        <div class="form-group">
+                            <small class="help-block">
+                                <label class="switch-inline switch-xs @item.CssClass">
+                                    <input type="checkbox" class="additional-field" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" @(item.FieldValue == "true" || item.FieldValue == "1" ? "checked" : "") data-valueid="@item.TableAdditionalFieldValueID" />
+                                    <i></i>
+                                </label>
+                                @item.ColumnName
+                            </small>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@* Buton para testear campos adicionales  *@
+<button onclick="return tmp_click();" class="hidden" ></button>
+<script type="text/javascript">
+    $(document).ready(function () {
+        LobiAdmin.loadScript([
+            "/Scripts/js/plugin/maxlength/bootstrap-maxlength.min.js",
+            "/Scripts/js/plugin/bootstrap-datepicker/bootstrap-datepicker.min.js"
+        ], function () {
+            LobiAdmin.loadScript([
+                "/Scripts/js/plugin/bootstrap-datepicker/bootstrap-datepicker.es.js"
+            ], function () {
+                var cultureID = '@(Session["CultureID"] != null ? Session["CultureID"].ToString() : "" )';
+                var LangResources = {
+                    chsn_SelectOption: "@Html.Raw(Resources.Common.chsn_SelectOption)",
+                    chsn_SelectMultipleOption: "@Resources.Common.chsn_SelectMultipleOption",
+                    chsn_NoResults: "@Resources.Common.chsn_NoResults",
+                    datepicker_lang: cultureID.substr(0, 2).toLowerCase()
+                };
+                Init_AdditionalFields(LangResources);
+            });
+        });
+
+    });
+</script>

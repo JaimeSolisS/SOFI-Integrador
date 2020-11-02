@@ -1,0 +1,34 @@
+﻿@model List<Core.Entities.DemoldDefectDetail>
+<table id="defect_table" class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped">
+    <thead>
+        <tr>
+            <th>
+                <span class="defect_table_header">@Resources.Defects.gvh_DefectName</span>
+            </th>
+            <th><span class="defect_table_header">@Resources.MFG.DemoldDefects.lbl_Quantity</span> </th>
+            <th><span class="defect_table_header">@Resources.Common.gvH_UpdatedBy</span> </th>
+            <th style="width:15%">
+                <span class="defect_table_header">@Resources.Common.lbl_Options</span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr class="defect-row" data-entityid="@item.DemoldDefectTypeID">
+            <td>@item.DemoldDefectCategoryName - @item.DemoldDefectTypeName</td>
+            <td>@item.Quantity</td>
+            <td>
+                @Resources.Common.lbl_On : @item.DateLastMaintFormat
+                <br />
+                @Resources.Common.lbl_By : @item.InspectorNameDetail
+            </td>
+            <td style="width:15%; text-align:center">
+                <button class="btn btn-danger delete-defect" type="button">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

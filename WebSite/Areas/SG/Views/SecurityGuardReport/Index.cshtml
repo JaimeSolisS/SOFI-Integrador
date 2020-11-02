@@ -1,0 +1,137 @@
+﻿@model WebSite.Areas.SG.Models.SecurityGuardReport.IndexViewModel
+@using (Html.BeginForm("SecurityLogReport_Export", "SecurityGuardReport", FormMethod.Post))
+{
+    <div class="content-frame">
+        <div class="content-frame-top">
+            <div class="page-title">
+                <h2 class="margin-none">@Resources.SG.SecurityGuard.ttl_SecurityGuard</h2>
+            </div>
+            <div class="pull-right">
+                <button type="submit" class="btn btn btn-success" title="@Resources.MFG.MachineSetups.btn_New_Setup">@Resources.Common.tt_ExportToExcel</button>
+            </div>
+        </div>
+        <div class="content-frame-body content-frame-body-all">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.Common.lbl_Facility</label>
+                                <div class="input">
+                                    @Html.DropDownList("ddl_Facilities", Model.CompaniesList, new { @class = "selectpicker form-control securityLogsFilters" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.SG.SecurityGuard.lbl_PersonCheckIngType</label>
+                                <div class="input">
+                                    @Html.DropDownList("ddl_CheckInPersonTypes", Model.CheckInPersonTypesList, new { @class = "selectpicker form-control securityLogsFilters", multiple = "multiple" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.SG.SecurityGuard.lbl_PersonName</label>
+                                <div class="input">
+                                    @Html.TextBox("txt_PersonName", "", new { @class = "form-control securityLogsFilters" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 margin-bottom-none">
+                                    @Resources.Common.lbl_DatetypeFilter
+                                    @Html.CheckBox("chk_EnableDates", false)
+                                    @Html.DropDownList("ddl_DateTypes", Model.CheckInTypesList, new { @class = "pull-right dateFilters securityLogsFilters", @disabled = "true" })
+                                </div>
+                            </div>
+                            <div class='input-group date'>
+                                @Html.TextBox("txt_StartDate", Model.CurrentDate.ToString("yyyy-MM-dd"), new { @class = "form-control datepicker dateFilters securityLogsFilters text-center", @disabled = "true" })
+                                <span class="input-group-addon">
+                                    @Resources.Common.lbl_To
+                                </span>
+                                @Html.TextBox("txt_EndDate", Model.CurrentDate.ToString("yyyy-MM-dd"), new { @class = "form-control timepicker dateFilters securityLogsFilters text-center", @disabled = "true" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.HR.Kiosk.lbl_EmpNum</label>
+                                <div class="input">
+                                    @Html.TextBox("txt_EmpNum", "", new { @class = "selectpicker form-control securityLogsFilters" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.SG.SecurityGuard.lbl_Plates</label>
+                                <div class="input">
+                                    @Html.TextBox("txt_Plates", "", new { @class = "form-control securityLogsFilters" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                    <button class="btn btn-info btn-pretty" id="btnSearchSecurityLogs" type="button">@Resources.Common.btn_Search</button>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div id="divSecurityGuardLog">
+                        @Html.Partial("_Tbl_SecurityGuardLog", Model.SecurityGuardLogList)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/SG/SecurityGuard.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/SG/SecurityGuardReport/Index.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cultureID = '@(Session["CultureID"] != null ? Session["CultureID"].ToString() : "" )';
+            var LangResources = {
+                msg_PleaseIdentifyYourself: "@Html.Raw(Resources.SG.SecurityGuard.msg_PleaseIdentifyYourself)",
+                btn_Next: "@Html.Raw(Resources.Common.btn_Next)",
+                lbl_Registry: "@Html.Raw(Resources.SG.SecurityGuard.lbl_Registry)",
+                lbl_Delete: "@Html.Raw(Resources.Common.lbl_Delete)",
+                msg_EquipmentIsScanned: "@Html.Raw(Resources.SG.SecurityGuard.msg_EquipmentIsScanned)",
+                msg_EquipmentNotFound: "@Html.Raw(Resources.SG.SecurityGuard.msg_EquipmentNotFound)",
+                lbl_ToolNameMandatory: "@Html.Raw(Resources.SG.SecurityGuard.lbl_ToolNameMandatory)",
+                lbl_ToolImgMandatory: "@Html.Raw(Resources.SG.SecurityGuard.lbl_ToolImgMandatory)",
+                lbl_Warning: "@Html.Raw(Resources.Common.lbl_Warning)",
+                culture: cultureID.substr(0, 2).toLowerCase()
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

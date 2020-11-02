@@ -1,0 +1,36 @@
+﻿<div class="row">
+    <div class="col-md-3">
+        <div class="page-title">
+            <h1 style="margin-top: 0px;">
+                <span class="fa fa-shopping-cart"></span> Purchasing
+            </h1>
+        </div>
+    </div>
+    <div class="col-md-2 pull-right">
+        <!-- START WIDGET CLOCK -->
+        <div class="widget widget-info widget-padding-sm" style="min-height: 0;margin: 0px;padding:0px;">
+            <div class="widget-big-int plugin-clock">00:00</div>
+            <div class="widget-subtitle plugin-date">Loading...</div>
+        </div>
+        <!-- END WIDGET CLOCK -->
+    </div>
+</div>
+
+<div id="dynamicCharts">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/apexcharts/apexcharts.css" rel="stylesheet" />
+}
+@section scripts {
+    <script src="~/Scripts/PLUGINS/charts/Chart.min.js"></script>
+    @*<script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.min.js"></script>*@
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.js?v20200107"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-annotation.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/apexcharts/apexcharts.js"></script>
+
+    <script src="~/Scripts/PUR/Dashboard/Index.js?v20191004" charset="utf-8"></script>
+}

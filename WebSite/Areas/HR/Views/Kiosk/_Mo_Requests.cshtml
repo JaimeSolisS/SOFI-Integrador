@@ -1,0 +1,80 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskRequestAdministrator.IndexViewModel
+<div id="mo_PublicRequisitionList" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="align-content:center; width:100% !important">
+    <div class="">
+        <div class="modal-content" style="width:100% !important;">
+            <div class="modal-body padding-none">
+                <div class="row">
+                    <div class="col-xs-12" style="height:auto !important;">
+                        <div class="panel-body padding-none">
+                            <div class="content-frame">
+                                <div class="content-frame-top">
+                                    <div class="page-title">
+                                        <h2 class="margin-none">@Resources.HR.Kiosk.title_Requests</h2>
+                                        <button type="button" class="btn btn-danger pull-right" id="btn_ClosePublicRequestsView" aria-hidden="true">x</button>
+                                    </div>
+                                </div>
+                                <div class="content-frame-body content-frame-body-all">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading ui-draggable-handle">
+                                            <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                                            <ul class="panel-controls">
+                                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-xs-3 col-md-3">
+                                                    <label>@Resources.HR.Kiosk.lbl_RequestNumber</label>
+                                                    @Html.TextBox("txt_RequestNumber", "", new { @class = "form-control RequestFilters", @maxlength = "20", @list = "dtl_RequestNumbers" })
+                                                </div>
+                                                <div class="col-xs-3 col-md-3">
+                                                    <label>@Resources.HR.Kiosk.lbl_RequestType</label>
+                                                    @Html.DropDownList("ddl_RequestTypes", Model.RequestTypesList, new { @class = "form-control RequestFilters", multiple = "multiple", @title = Resources.Common.TagAll })
+                                                </div>
+                                                <div class="col-xs-3 col-md-3" id="div_RequisitionsTypes">
+                                                    <label>@Resources.Common.lbl_Date</label>
+                                                    <div class="input-daterange input-group datepicker-demo">
+                                                        <input type="text" id="txt_RequestStartDate" class="form-control customdatepicker RequestFilters" name="txt_RequestStartDate"
+                                                               placeholder="Start Date" style="text-align: center;border-radius: 4px; height:30px" value="@String.Format(" {0:yyyy-MM-dd}", Model.CurrentDate.AddDays(-(Model.RequestHistoryDays)))">
+                                                        <span class="input-group-addon">@Resources.Common.lbl_To</span>
+                                                        <input type="text" id="txt_RequestEndDate" class="form-control customdatepicker RequestFilters" name="txt_RequestEndDate"
+                                                               placeholder="Hasta" style="text-align: center;border-radius: 4px; height:30px" value="@String.Format(" {0:yyyy-MM-dd}", Model.CurrentDate)">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-3 col-md-3">
+                                                    <label>@Resources.HR.Kiosk.lbl_Department</label>
+                                                    @Html.DropDownList("ddl_RequestDepartment", Model.RequestDepartmentsList, new { @class = "form-control RequestFilters", multiple = "multiple", @title = Resources.Common.TagAll })
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-3 col-md-3">
+                                                    <label>@Resources.HR.Kiosk.lbl_Requester</label>
+                                                    @Html.TextBox("txt_RequestEmployee", "", new { @class = "form-control RequestFilters max-length", @maxlength = "100" })
+                                                </div>
+                                                <div class="col-xs-3 col-md-3">
+                                                    <label>@Resources.HR.Kiosk.lbl_Description</label>
+                                                    @Html.TextBox("txt_RequestDescription", "", new { @class = "form-control RequestFilters" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                                            <button id="btn_RequestSearch" type="button" data-ispublic="@true" class="btn btn-info">@Resources.Common.search</button>
+                                        </div>
+                                    </div>
+
+                                    <div id="div_tbl_PublicRequests">
+                                        @Html.Action("SearchRequestData")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<datalist id="dtl_RequestNumbers">
+</datalist>

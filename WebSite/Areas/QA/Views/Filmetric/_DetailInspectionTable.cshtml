@@ -1,0 +1,23 @@
+﻿@model List<Core.Entities.QA.FilmetricInspectionDetail>
+<div class="slider">
+    <table class="display table table-striped table-bordered table-condensed-xs margin-none" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>Value 1</th>
+                <th>value 2</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><input type="button" id="Coll" value="Collapse" onclick="javascript:CollapseDiv()" /></td>
+                    <td>@item.FilmName</td>
+                    <td>@item.Value</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

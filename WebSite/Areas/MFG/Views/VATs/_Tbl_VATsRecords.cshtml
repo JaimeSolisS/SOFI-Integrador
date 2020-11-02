@@ -1,0 +1,29 @@
+﻿@model List<Core.Entities.ProductionVAT>
+<div class="panel-body">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_VATs">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>@Resources.MFG.OperationRecords.lbl_Shift</th>
+                <th>@Resources.MFG.MachineSetups.lbl_ProductionLine</th>
+                <th>@Resources.MFG.VatsCatalog.lbl_VATNumber</th>
+                <th>@Resources.MFG.MachineSetups.lbl_Enabled</th>
+                <th style="width:5%">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="sortable">
+            @foreach (var item in Model)
+            {
+                <tr data-productionlineid="@item.ProductionLineID" data-shiftid="@item.ShiftID" id="@item.VATID">
+                    <td>@item.ShiftDescription</td>
+                    <td>@item.LineNumber</td>
+                    <td>@item.VATName</td>
+                    <td>@item.Enabled</td>
+                    <td style="width:10%; text-align:center">
+                        <button class="btn btn-success text-primary edit-VAT-record"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>
+                        <button class="btn btn-danger delete-vat-record"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

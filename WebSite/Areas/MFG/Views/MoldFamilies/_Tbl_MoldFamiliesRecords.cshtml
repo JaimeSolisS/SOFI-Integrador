@@ -1,0 +1,29 @@
+﻿@model List<Core.Entities.MoldFamily>
+<div class="panel-body">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_MoldFamilies">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th width="5%"></th>
+                <th>@Resources.MFG.MoldFamilies.lbl_FamilyName</th>
+                <th>@Resources.MFG.MoldFamilies.lbl_Lens</th>
+                <th>@Resources.MFG.MachineSetups.lbl_Enabled</th>
+                <th style="width:5%">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="sortable">
+            @foreach (var item in Model)
+            {
+                <tr data-entityid="@item.MoldFamilyID">
+                    <td class="details-control" width="5%"></td>
+                    <td>@item.FamilyName</td>
+                    <td>@item.Lens</td>
+                    <td>@item.Enabled</td>
+                    <td style="width:15%; text-align:center">
+                        <button class="btn btn-success text-primary edit-moldfamily-record"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>
+                        <button class="btn btn-danger delete-moldfamily-record"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

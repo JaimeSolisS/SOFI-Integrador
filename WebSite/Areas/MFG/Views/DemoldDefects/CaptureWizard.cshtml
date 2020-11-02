@@ -1,0 +1,250 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.DemoldDefects.CaptureWizardViewModel
+@{
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+
+<div id="layout_all">
+    <div class="row">
+        <ul class="x-navigation x-navigation-horizontal">
+            <li class="xn-logo">
+                <a href="#" style="width:250px;">Demold Defects</a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="fa fa-tag" style="margin-right: 0px;">
+                    </span>@Resources.MFG.VatsCatalog.lbl_VATNumber :
+                    <span id="span_vat_number"
+                          data-shiftid="@Model.DemoldDefectEntity.ShiftID"
+                          class="x-editable FilterDefects"
+                          data-identifier="vat"
+                          data-type="select"
+                          data-source="@String.Concat("/MFG/DemoldDefects/xEditableVATList?ShiftID=", Model.DemoldDefectEntity.ShiftID,"&ProductionLineID=", Model.DemoldDefectEntity.ProductionLineID)"
+                          data-value="@Model.DemoldDefectEntity.VATID"
+                          data-title="@Model.DemoldDefectEntity.VATName"
+                          style="font-weight: bold;">
+                        @Model.DemoldDefectEntity.VATName
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="fa fa-sitemap" style="margin-right: 0px;">
+                    </span>@Resources.MFG.MachineSetups.lbl_ProductionLine :
+                    <span id="span_line"
+                          data-entityid="@Model.DemoldDefectEntity.ProductionLineID"
+                          class="x-editable FilterDefects"
+                          data-identifier="line"
+                          data-type="select"
+                          data-source="@String.Concat("/MFG/DemoldDefects/xEditableProductionLinesList?ProductionProcessID=", Model.DemoldDefectEntity.ProductionProcessID)"
+                          data-value="@Model.DemoldDefectEntity.ProductionLineID"
+                          data-title="@Model.DemoldDefectEntity.ProductionLineName"
+                          style="font-weight: bold;">
+                        @Model.DemoldDefectEntity.ProductionLineName
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="fa fa-user" style="margin-right: 0px;"></span>
+                    @Resources.MFG.DemoldDefects.lbl_Inspector :
+                    <span id="span_inspector" style="font-weight: bold;"
+                          class="x-editable FilterDefects"
+                          data-type="text"
+                          data-identifier="inspector"
+                          data-value="@Model.DemoldDefectEntity.InspectorName"
+                          data-title="@Resources.MFG.DemoldDefects.lbl_Inspector">
+                        @Model.DemoldDefectEntity.InspectorName
+                    </span>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <span class="fa fa-calendar" style="margin-right: 0px;"></span>@Resources.MFG.OperationRecords.lbl_DayCode : <span id="span_daycode" style="font-weight: bold;">@Model.DayCode</span>
+                </a>
+            </li>
+            <li class="xn-icon-button pull-right">
+                <button id="btn_Back" class="btn-info btn-pretty btn-lg"><i class="fa fa-arrow-left"></i> @Resources.Common.btn_Back</button>
+            </li>
+        </ul>
+    </div>
+
+
+    @*<td data-identifier="cycletime">
+            <a href="#" class="x-editable" data-type="text"
+               data-value="@item.CycleTime"
+               data-title="@Resources.MFG.MachineSetups.lbl_CycleTimeUom">@item.CycleTime</a>
+        </td>*@
+
+    <form class="slideform-form slideform-initialized" id="form_slide" action="" novalidate="novalidate" style="background-color:white;width:100% !important;height:92vh !important;">
+        <div class="slideform-track" style="height:200vh !important">
+            <div class="slideform-wrapper" style="transform: translateY(-24%);">
+                <div class="slideform-slide active">
+                    <div class="slideform-group" style="width:100% !important;">
+                        @Html.Partial("_CaptureFase1", Model)
+                    </div>
+                </div>
+
+                <div class="slideform-slide">
+                    <div class="slideform-group" style="width:100% !important;margin-top:46%;">
+                        <div class="row ">
+                            <div class="col-xs-12">
+                                <div class="panel panel-default" style="margin-top: 5vh;">
+                                    <div class="panel-body" style="padding-bottom: 5px;padding-top: 10px;">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <h4>@Resources.MFG.DemoldDefects.lbl_Family : <span id="span_family" style="font-size:large;font-weight: bold;"></span></h4>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <h4>@Resources.MFG.MoldFamilies.lbl_LenTypes : <span id="span_lentype" style="font-size:large;font-weight: bold;"></span></h4>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <h4>@Resources.MFG.DemoldDefects.lbl_Base : <span id="span_base" style="font-size:large;font-weight: bold;"></span></h4>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <h4>@Resources.MFG.DemoldDefects.lbl_Adition : <span id="span_adition" style="font-size:large;font-weight: bold;"></span></h4>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <h4>@Resources.MFG.DemoldDefects.lbl_Side : <span id="span_side" style="font-size:large;font-weight: bold;"></span></h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <h4>@Resources.Common.lbl_Description : <span id="span_lensdesc" style="font-size:large;font-weight: bold;"></span></h4>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <h4>SKU : <span id="span_lenssku" style="font-size:large;font-weight: bold;"></span></h4>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <h4>Gasket : <span id="span_lensgasket" style="font-size:large;font-weight: bold;"></span></h4>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <h4>@Resources.MFG.DemoldDefects.lbl_LensTypeProdQty : <span id="span_plannigqty" style="font-size:large;font-weight: bold;"></span></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @Html.Partial("_CaptureFase2", Model)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="slideform-footer" style="z-index:0 !important;">
+            <div style="width:40vh;">
+                <div id="wizard_percbar_div" class="progress-bar progress-bar-striped active"
+                     aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
+                     role="progressbar" style="width: 0%;height: 3vh;border-radius: 10px;">
+                    <span id="wizard_percbar_span">0</span>% Complete
+                </div>
+            </div>
+
+            <div class="buttons" style="width:50% !important">
+                <div class="col-sm-4 pull-right" style="display:none" id="div_btn_save">
+                    <button type="button" class="slideform-btn-demold-defects btn-info" id="btn_save"><span class="fa fa-save"></span> @Resources.Common.btn_Save</button>
+                </div>
+                <div class="col-sm-4 pull-right" id="div_btn_next">
+                    <button class="slideform-btn-demold-defects" type="button" id="btn_next">@Resources.Common.btn_Next <span class="fa fa-arrow-right"></span></button>
+                </div>
+                <div class="col-sm-4 pull-right">
+                    <button class="slideform-btn-demold-defects" type="button" id="btn_prev_slideform"><span class="fa fa-arrow-left"></span> @Resources.Common.btn_Prev</button>
+                </div>
+            </div>
+            <div class="buttons" style="display:none">
+                <div class="col-sm-4">
+                    <button class="slideform-btn-next slideform-btn" type="button" id="btn_next_slideform">@Resources.Common.btn_Next <span class="fa fa-arrow-right"></span></button>
+                </div>
+                <div class="col-sm-4 pull-right">
+                    <button class="slideform-btn-prev slideform-btn-demold-defects slideform-btn" type="button"><span class="fa fa-arrow-left"></span> @Resources.Common.btn_Prev</button>
+                </div>
+            </div>
+        </footer>
+
+        @*<footer class="slideform-footer" style="z-index:0 !important;">
+                <div style="width:40vh;">
+                    <div id="wizard_percbar_div" class="progress-bar progress-bar-striped active"
+                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
+                         role="progressbar" style="width: 0%;height: 3vh;border-radius: 10px;">
+                        <span id="wizard_percbar_span">0</span>% Complete
+                    </div>
+                </div>
+
+                <div class="buttons" style="width:50% !important">
+                    <div class="col-sm-3 pull-right" style="display:none" id="div_btn_save">
+                        <button class="slideform-btn btn-info" id="btn_save"><span class="fa fa-save"></span> @Resources.Common.btn_Save</button>
+                    </div>
+                    <div class="col-sm-4 pull-right">
+                        <button class="slideform-btn slideform-btn-next" id="btn_next_slideform">@Resources.Common.btn_Next <span class="fa fa-arrow-right"></span></button>
+                    </div>
+                    <div class="col-sm-4 pull-right">
+                        <button class="slideform-btn slideform-btn-prev" id="btn_prev_slideform"><span class="fa fa-arrow-left"></span> @Resources.Common.btn_Prev</button>
+                    </div>
+                </div>
+            </footer>*@
+    </form>
+
+    @Html.Partial("_GenericMessageBox")
+
+
+    @Html.Hidden("vat_id", Model.DemoldDefectEntity.VATID)
+    @Html.Hidden("production_process_id", Model.DemoldDefectEntity.ProductionProcessID)
+    @Html.Hidden("span_defecttypeid", 0)
+    @Html.Hidden("span_familyid", 0)
+    @Html.Hidden("span_baseid", 0)
+    @Html.Hidden("span_aditionid", 0)
+    @Html.Hidden("span_sideid", 0)
+    @Html.Hidden("span_lentypeid", 0)
+    @Html.Hidden("ProductID", 0)
+    @Html.Hidden("ExceptionMessage", Model.ExceptionMessage)
+
+    @Html.Hidden("NoAddition", false)
+    @Html.Hidden("ShiftName", Model.DemoldDefectEntity.ShiftName)
+
+</div>
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/fontawesome/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Scripts/PLUGINS/CardFormWizard/scss/main.css" rel="stylesheet" />
+    <link href="~/Content/MFG/DemoldDefects/slideform.css" rel="stylesheet" />
+    <link href="~/Content/MFG/DemoldDefects/CaptureWizard.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/bootstrap-select")
+
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/slideform/jquery.slideform.js"></script>
+    <script src="~/Scripts/MFG/DemoldDefects/CaptureWizard.js?v20200317" charset="utf-8"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var LangResources = {
+                tt_Edit: "@Html.Raw(Resources.Common.tt_Edit)",
+                msg_DefectRequired: "@Html.Raw(Resources.MFG.DemoldDefects.msg_DefectRequired)",
+                msg_CombinationProductNotExists: "@Html.Raw(Resources.MFG.DemoldDefects.msg_CombinationProductNotExists)",
+                lbl_AlertMessageTitle: "@Html.Raw(Resources.MFG.DemoldDefects.lbl_AlertMessageTitle)",
+                lbl_AlertMessageText: "@Html.Raw(Resources.MFG.DemoldDefects.lbl_AlertMessageText)",
+                lbl_NoAddition: "@Html.Raw(Resources.MFG.DemoldDefects.lbl_NoAddition)",
+                lbl_Warning: "@Html.Raw(Resources.Common.lbl_Warning)",
+                btn_ShowScheduledFamilies: "@Html.Raw(Resources.MFG.DemoldDefects.btn_ShowScheduledFamilies)",
+                btn_ShowAll: "@Html.Raw(@Resources.Common.btn_ShowAll)",
+                msg_DeleteDemoldDefectConfirmMessage: "@Html.Raw(@Resources.MFG.DemoldDefectsCatalog.msg_DeleteDemoldDefectConfirmMessage)",
+                lbl_On: "@Html.Raw(@Resources.Common.lbl_On)",
+                lbl_By: "@Html.Raw(@Resources.Common.lbl_By)"
+            };
+
+            IndexInit(LangResources);
+
+        });
+    </script>
+}

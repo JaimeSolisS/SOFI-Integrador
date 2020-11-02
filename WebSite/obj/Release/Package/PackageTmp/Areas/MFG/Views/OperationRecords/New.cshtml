@@ -1,0 +1,69 @@
+﻿@{
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+@model WebSite.Areas.MFG.Models.ViewModels.OperationRecords.NewViewModel
+@Html.Partial("_Header")
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_F_Machine" style="font-size: 20px;">@Resources.MFG.OperationRecords.lbl_Machine</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_Machine", Model.MachinesList, htmlAttributes: new { @class = "form-control select applyfilters",title=Resources.Common.chsn_SelectOption })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Material" style="font-size: 20px;">@Resources.MFG.OperationRecords.lbl_Material</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_Material", Model.MaterialsList, htmlAttributes: new { @class = "form-control select applyfilters", title = Resources.Common.chsn_SelectOption })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Setup" style="font-size: 20px;">@Resources.MFG.OperationRecords.lbl_MachineSetup</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_Setup", Model.SetupsList, htmlAttributes: new { @class = "form-control select applyfilters", title = Resources.Common.chsn_SelectOption })
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <div class="input" style="text-align:center;">
+                <button type="button" id="create_operation" class="btn-success btn-pretty btn-lg"><i class="fa fa-plus"></i> @Resources.MFG.OperationRecords.btn_NewRecord</button>
+                <button type="button" id="cancel" class="btn-info btn-pretty btn-lg"><i class="fa fa-edit"></i>@Resources.MFG.OperationRecords.btn_EditRecord</button>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Hidden("OperatorNumber")
+<style>
+    .bootstrap-select > button {
+        padding-top: 10px;
+        padding-bottom: 14px;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+</style>
+@section scripts {
+    <script src="~/Scripts/MFG/OperationRecords/New.js?v20190619" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+              var LangResources = {
+                btn_New: "@Resources.Common.btn_New",
+                btn_Back: "@Resources.Common.btn_Back"
+            };
+            NewInit(LangResources);
+        });
+    </script>
+}
+

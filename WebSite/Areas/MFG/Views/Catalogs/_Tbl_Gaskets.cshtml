@@ -1,0 +1,85 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Catalogs.CatalogTableViewModel
+<div class="content-frame-body content-frame-body-all">
+    <div class="panel panel-primary">
+        <div class="panel-heading ui-draggable-handle">
+            <h3 class="panel-title">
+                @Resources.Common.lbl_Filters
+            </h3>
+            <ul class="panel-controls">
+                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+            </ul>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+                    <label>Value ID</label>
+                    @Html.TextBox("value_id", null, new { @class = "form-control ToHideTable" })
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <label>@Resources.MFG.OperationRecords.lbl_OperationProcess</label>
+                    @Html.DropDownList("parameter_value", Model.OperationProcessList, new { @class = "form-control selectpicker ToHideTable" })
+                </div>
+                <div class="col-xs-12 col-md-2 pull-right">
+                    <button class="btn btn-success" style="width:100%" id="btn_search_gaskets">@Resources.Common.search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="div_hidden">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_Gasket">
+                    <thead>
+                        <tr class="font-size-sm bg-primary">
+                            <th>@Resources.Catalog.lbl_ValueID</th>
+                            <th>@Resources.MFG.OperationRecords.lbl_OperationProcess</th>
+                            <th>@Resources.MFG.MachineSetups.lbl_Min</th>
+                            <th>@Resources.MFG.MachineSetups.lbl_Max</th>
+                            <th>@Resources.Common.lbl_Options</th>
+                        </tr>
+                    </thead>
+                    <tbody class="ui-state-default">
+                        @foreach (var item in Model.CatalogList)
+                        {
+                        <tr data-entityid="@item.CatalogDetailID">
+                            <td data-identifier="GasketValueID">
+                                <a href="#" class="x-editable editable editable-click" data-type="text"
+                                   data-value="@item.ValueID"
+                                   data-title="ValueID">@item.ValueID</a>
+                            </td>
+
+                            <td data-identifier="Param1">
+                                <a href="#" class="x-editable" data-type="select"
+                                   data-value="@item.Param1"
+                                   data-source="/MFG/Catalogs/GetOperationProcessList"
+                                   data-title="@Resources.MFG.OperationRecords.lbl_OperationProcess">@item.Param1</a>
+                            </td>
+
+                            <td data-identifier="Param2">
+                                <a href="#" class="x-editable editable editable-click" data-type="text"
+                                   data-value="@item.Param2"
+                                   data-title="@Resources.MFG.MachineSetups.lbl_Min">@item.Param2</a>
+                            </td>
+
+                            <td data-identifier="Param3">
+                                <a href="#" class="x-editable editable editable-click" data-type="text"
+                                   data-value="@item.Param3"
+                                   data-title="@Resources.MFG.MachineSetups.lbl_Max">@item.Param3</a>
+                            </td>
+
+                            <td style="width:10%">
+                                @*<button class="btn btn-success text-primary edit-gasket-record" title="@Resources.Common.lbl_Edit"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>*@
+                                <button class="btn btn-danger delete-record" title="@Resources.Common.lbl_Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("Identifier", "Gaskets")
+@Html.Hidden("Message", "Gaskets")

@@ -1,0 +1,77 @@
+﻿@model List<Core.Entities.FormatsEntity>
+<table class="table display table-condensed table-strdisplay datatable table table-striped table-bordered" id="tbl_Formats">
+    <thead class="hidden">
+        <tr class="font-size-sm bg-primary">
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="ui-state-default sortable">
+        @foreach (var item in Model)
+        {
+            <tr class="font-size-sm border-bottom-2 border-red-dark" data-formatid="@item.FormatID">
+                <td class="padding-0">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-3" style=" border-right: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Request.H_FormatName</label><br />
+                                <label class="control-label font-size-lg">@item.FormatName</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="border-right: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Request.H_Use2FA</label><br />
+                                <div class="text-left">
+                                    <button class="btn @(item.Use2FA ? "btn-success" : "btn-danger") btnyesno" type="button">@(item.Use2FA ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style=" border-right: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Request.H_UseDirectApproval</label><br />
+                                <div class="text-left">
+                                    <button class="btn @(item.DirectApproval ? "btn-success" : "btn-danger") btnyesno" type="button">@(item.DirectApproval ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style=" border-right: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Request.H_AllowAttachments</label><br />
+                                <div class="text-left">
+                                    <button class="btn @(item.HasAttachment ? "btn-success" : "btn-danger") btnyesno" type="button">@(item.HasAttachment ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style=" border-right: 1px solid grey;">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Request.H_ManageDetail</label><br />
+                                <div class="text-left">
+                                    <button class="btn @(item.HasDetail ? "btn-success" : "btn-danger") btnyesno" type="button">@(item.HasDetail ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 col-md-1">
+                            <div class="form-group">
+                                <label class="control-label" style="font-weight: bold;">@Resources.Request.H_IsEnabled</label><br />
+                                <div class="text-left">
+                                    <button class="btn @(item.Enabled ? "btn-success" : "btn-danger") btnyesno" type="button">@(item.Enabled ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12padding-left-right-5">
+                            <div class="btn-group btn-group-lg">
+                                <button class="btn btn-info border-right-1 border-white editformat" data-formatid="@item.FormatID" type="button" title="@Resources.Common.lbl_Edit"><span class="fa fa-lg fa-edit"></span></button>
+                                <button class="btn btn-info border-right-1 border-white requestedfieldsformat" data-formatid="@item.FormatID" type="button" title="@Resources.Request.lbl_RequestedFields">@Resources.Request.lbl_RequestedFields</button>
+                                <button class="btn btn-info border-right-1 border-white detailformat" data-formatid="@item.FormatID" type="button" title="@Resources.Common.lbl_Detail">@Resources.Common.lbl_Detail</button>
+                                <button class="btn btn-info border-right-1 border-white formatphases" data-formatid="@item.FormatID" type="button" title="@Resources.Request.lbl_Phase">@Resources.Request.lbl_Phase</button>
+                                <button class="btn btn-info border-right-1 border-white formataccess" data-formatid="@item.FormatID" type="button" title="@Resources.Request.lbl_UserAccess">@Resources.Request.lbl_UserAccess</button>
+                                <button class="btn btn-info border-right-1 border-white formatflow" data-formatid="@item.FormatID" type="button" title="@Resources.Request.lbl_Flows">@Resources.Request.lbl_Flows</button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

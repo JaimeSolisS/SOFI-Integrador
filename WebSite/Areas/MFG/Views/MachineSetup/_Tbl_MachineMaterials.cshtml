@@ -1,0 +1,41 @@
+﻿@model List<Core.Entities.MaterialSetup>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_edit">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.MFG.MachineSetups.lbl_Machine</th>
+            <th>@Resources.MFG.MachineSetups.lbl_Material</th>
+            <th>@Resources.MFG.OperationRecords.lbl_CycleTime</th>
+            <th>@Resources.MFG.ActionPlan.lbl_ProductionProcess</th>
+            <th style="text-align:center; width:5%">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody class="ui-state-default sortable">
+        @foreach (var item in Model)
+        {
+            <tr data-machineid="@item.MachineID" data-materialid="@item.MaterialID" data-cycletime="@item.CycleTime" data-productionprocessid="@item.ProductionProcessID" class="machine_material_row font-size-sm ">
+                <td data-identifier="machinename">
+                    <a href="#" class="x-editable" data-type="select"
+                       data-value="@item.MachineID"
+                       data-source="/MFG/MachineSetup/MachinesList" data-title="@Resources.MFG.MachineSetups.lbl_Machine">@item.MachineName</a>
+                </td>
+                <td data-identifier="materialname">
+                    <a href="#" class="x-editable" data-type="select"
+                       data-value="@item.MaterialID"
+                       data-source="/MFG/MachineSetup/MaterialsList" data-title="@Resources.MFG.MachineSetups.lbl_Material">@item.MaterialName</a>
+                </td>
+                <td data-identifier="cycletime">
+                    <a href="#" class="x-editable" data-type="text"
+                       data-value="@item.CycleTime"
+                       data-title="@Resources.MFG.MachineSetups.lbl_CycleTimeUom">@item.CycleTime</a>
+                </td>
+
+                <td data-identifier="productionprocess">
+                    <a href="#" class="x-editable" data-type="select"
+                       data-value="@item.ProductionProcessID"
+                       data-source="/MFG/MachineSetup/ProductionProcessList" data-title="@Resources.MFG.MachineSetups.lbl_Parameter">@item.ProductionProcess</a>
+                </td>
+                <td><button class="btn btn-danger delete-machine-material"><span class="glyphicon glyphicon-trash"></span></button></td>
+            </tr>
+        }
+    </tbody>
+</table>

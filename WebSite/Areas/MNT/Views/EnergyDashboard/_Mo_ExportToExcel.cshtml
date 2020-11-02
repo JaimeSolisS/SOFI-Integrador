@@ -1,0 +1,41 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergyDashboard.ChartFamiliesGaugeViewModel
+<div id="mo_ExportToExcel" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header col-sm-12">
+                <div class="">
+                    <div class="col-sm-6">
+                        <h2>@Resources.MFG.Dashboard.btn_ExportToExcel</h2>
+                    </div>
+                    <div class="col-sm-6 pull-right">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm("SensorsAlertsExportToExcel", "EnergyDashboard", FormMethod.Post))
+            {
+                <div class="modal-body col-sm-12" style="background-color:white;">
+                    <div class="col-sm-6">
+                        <label>@Resources.Common.lbl_StartDate</label>
+                        <div class="input-group">
+                            @Html.TextBox("txt_StartDate", Model.DateFormatWithTime, htmlAttributes: new { @class = "form-control datepicker" })
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    @Html.Hidden("EnergySensorID", Model.EnergySensorID)
+                    <div class="col-sm-6">
+                        <label>@Resources.Common.lbl_EndDate</label>
+                        <div class="input-group">
+                            @Html.TextBox("txt_EndDate", Model.DateFormatWithTime, htmlAttributes: new { @class = "form-control datepicker" })
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer col-sm-12">
+                    <button type="submit" class="btn btn-info">@Resources.MFG.Dashboard.btn_ExportToExcel</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

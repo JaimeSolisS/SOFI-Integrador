@@ -1,0 +1,38 @@
+﻿@model  WebSite.Areas.HR.Models.ViewModels.KioskEmployee.KioskCoursesViewModel
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_AvailableCourses">
+    <thead>
+        <tr class="font-size-lg">
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Code</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Name</th>
+            <th class="bg-primary text-white">@Resources.Common.lbl_StartDate</th>
+            <th class="bg-primary text-white">@Resources.Common.lbl_EndDate</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_StartRegistry</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_EndRegistry</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Rank</th>
+            <th class="bg-primary text-white text-center" style="width:60px;"></th>
+        </tr>
+    </thead>
+    <tbody class="sortable">
+        @foreach (var item in Model.KioskCoursesList)
+        {
+            <tr class="prepayroll_row font-size-lg">
+                <td>@item.Clave</td>
+                <td>@item.Nombre</td>
+                <td>@item.IniciaCurso.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.TerminaCurso.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.IniciaRegistro.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.TerminaRegistro.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.Grado</td>
+                <td>
+                    @if (Model.InscribePermit.permiso)
+                    {
+                        <button class="btn btn-success inscribe-to-course" title="@Resources.HR.Kiosk.lbl_Register" 
+                                data-name="@item.Nombre" data-courseid="@item.Clave">
+                            <span class="fa fa-hand-o-down"></span>
+                        </button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

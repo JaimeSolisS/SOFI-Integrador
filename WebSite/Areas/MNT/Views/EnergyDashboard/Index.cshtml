@@ -1,0 +1,95 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergySensors.EnergySensorFamiliesViewModel
+<div class="row">
+    <div class="col-md-6">
+        <div class="page-title">
+            <h1 style="margin-top: 0px;"><span class="glyphicon glyphicon-flash"></span>@Resources.MNT.EnergySensors.title_EnergyConsumtionDashboard</h1>
+        </div>
+        <div style="margin-top:0.5%;margin-left:6%">
+            <h4>
+                @Model.LastHour
+            </h4>
+        </div>
+    </div>
+
+    <div class="col-md-2 pull-right">
+        <div style="padding-top: 15px;">
+            <!-- START WIDGET CLOCK -->
+            <div class="widget widget-info widget-padding-sm" style="min-height: 0;margin: 0px;padding:0px;height: 74px;">
+                <div class="widget-big-int plugin-clock">00:00</div>
+                <div class="widget-subtitle plugin-date">Loading...</div>
+            </div>
+            <!-- END WIDGET CLOCK -->
+        </div>
+        <div>
+            <br /><br /><br /><br /><br />
+            <div class="col-sm-3">
+                <h5 for="txt_ChartDate">@Resources.Common.lbl_Date</h5>
+            </div>
+            <div class="input-group">
+                <input type="text" id="txt_ChartDate" name="txt_ChartDate" class="form-control datepicker" value="@Model.Date" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-2" style="margin-top:1%" id="total_families_gauge">
+        <div class="col-sm-12" style="text-align:center">
+            <h3>Kwh/Lens</h3>
+        </div>
+        <div class="shadow-div-effect " style="text-align: center;">
+            <canvas id="canvas-gauge-id" class="canvas-gauge" width="200" height="100"></canvas>
+        </div>
+        <div style="text-align:center;margin-top:2%">
+            <h2 id="label_total_consumption"></h2>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.MNT.EnergySensors.lbl_Families
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    @Html.Partial("_Div_EnergySensorFamilies", Model.EnergySensorFamiliesList)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="div_Mo_ChartFamiliesGauge">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/GaugeMeter/gauge.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/Chart.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-annotation.min.js"></script>
+    <script src="~/Scripts/MNT/EnergyDashboard/Index.js?v20190823" charset="utf-8"></script>
+    <script>
+        $(document).ready(function () {
+            var LangResources = {
+                asd: '@Resources.MNT.EnergySensors.lbl_Family'
+            }
+            IndexInit(LangResources);
+        });
+    </script>
+}

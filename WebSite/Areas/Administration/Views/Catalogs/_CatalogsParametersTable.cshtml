@@ -1,0 +1,30 @@
+﻿@model List<Core.Entities.CatalogParameter>
+<table class="display table table-condensed table-striped dataTable table-md" id="tb_CatalogsParameters">
+    <thead>
+        <tr class="bg-primary">
+            <th>@Resources.Catalog.lbl_ParamNumber</th>
+            <th>&nbsp;</th>
+            <th>@Resources.Catalog.lbl_ParamName</th>
+            <th>@Resources.Catalog.lbl_ParamDescription</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:center;">@item.ParamID</td>
+                <td style="text-align:center;">
+                    <label class="check">
+                        <input id="@item.ParamID" data-value="@item.Configured" class="icheckbox icheckbox-table-extended" type="checkbox" @(item.Configured ? "checked" : "" ) onchange="setCheckboxvalue(this);" >
+                    </label>
+                </td>
+                <td width="30%">
+                    <input type="text" id="ParamName" value="@item.ParamName" name="@item.ParamName" placeholder="@Resources.Catalog.lbl_ParamName" maxlength="20" class="max-lenght form-control" style="width:100%" />
+                </td>
+                <td width="66%">
+                    <input type="text" id="Description" value="@item.Description" name="@item.Description" placeholder="@Resources.Catalog.lbl_Description" maxlength="255" class="max-lenght form-control" style="width:100%" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,109 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MachineSetup.IndexViewModel
+
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.MFG.MachineSetups.lbl_Title</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn btn-success" title="@Resources.MFG.MachineSetups.btn_New_Setup" href="@Url.Action("New","MachineSetup")">
+                <span class="fa fa-plus-circle"></span>
+                @Resources.MFG.MachineSetups.btn_New_Setup
+            </a>
+        </div>
+    </div>
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_Setup</label>
+                            <div class="input">
+                                <input type="text" maxlength="100" id="txt_setup" name="txt_setup" class="form-control filterMachineSetup" data-live-search="true" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-3 col-md-3" id="div_ContainerControlProductionLine">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_Machine</label>
+                            <div class="input">
+                                <select id="dpw_machines" name="dpw_machines" class="selectpicker select form-control filterMachineSetup" data-live-search="true">
+
+                                    @foreach (var machine in Model.MachinesList)
+                                    {
+                                        <option value="@machine.Value">@machine.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_VA">@Resources.MFG.MachineSetups.lbl_Material</label>
+                            <div class="input">
+                                <select id="dpw_material" name="dpw_material" class="selectpicker select form-control filterMachineSetup" data-live-search="true">
+                                    @foreach (var material in Model.MaterialList)
+                                    {
+                                        <option value="@material.CatalogDetailID">@material.DisplayText</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                <button class="btn btn-info btn-pretty" id="btn_search">@Resources.Common.btn_Search</button>
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div id="div_boxMachineSetupInfo">
+                    @Html.Partial("_MachineInfoTable", Model.MachineSetupList)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="div_MPE" class="hidden">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/MFG/MachineSetup/Index.js?v20190911" charset="utf-8"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var LangResources = {
+
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

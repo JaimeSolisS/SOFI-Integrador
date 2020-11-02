@@ -1,0 +1,127 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.DemoldDefects.IndexViewModel
+@{
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+<br />
+<div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+        <h1 style="text-align:center;">@Resources.MFG.DemoldDefects.title_LoginRegister</h1>
+    </div>
+    <div class="col-xs-3"></div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h2 style="text-align:center;">@Resources.MFG.DemoldDefects.lbl_DemoldDefects</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Shifts" style="font-size: 20px;">@Resources.MFG.OperationRecords.lbl_Shift</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_Shifts", Model.ShiftsList, htmlAttributes: new { @class = "form-control selectpicker applyfilters", title = Resources.Common.chsn_SelectOption })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="display:none">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Lines" style="font-size: 20px;">@Resources.MFG.DemoldDefects.lbl_ProductionProcess</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_ProductionProcess", Model.ProductionProcessList, htmlAttributes: new { @class = "form-control selectpicker applyfilters", title = Resources.Common.chsn_SelectOption })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Lines" style="font-size: 20px;">@Resources.MFG.MachineSetups.lbl_ProductionLine</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_Lines", Model.LinesList, htmlAttributes: new { @class = "form-control selectpicker applyfilters", title = Resources.Common.chsn_SelectOption })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_VATs" style="font-size: 20px;">VAT</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_VATs", Model.VATList, htmlAttributes: new { @class = "form-control selectpicker applyfilters", title = Resources.Common.chsn_SelectOption })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4 ">
+        <div class="form-group">
+            <label class="control-label" for="InspectorName" style="font-size: 20px;">@Resources.MFG.Login.lbl_EmployeeNumber</label>
+            <div class="input input-group-lg">
+                @*@Html.TextBox("InspectorName", null, new { @class = "form-control control-numpad" })*@
+                <input id="InspectorName" class="form-control control-numpad onlynumbers" type="text" value="@Model.InspectorName">
+
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <div class="input" style="text-align:center;">
+                <button type="button" id="demold_defect_login" class="btn-success btn-pretty btn-lg"><i class="fa fa-sign-in"></i> @Resources.Common.title_Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("CurrentShiftID", Model.CurrentShiftID)
+@Html.Hidden("val_ProductionProcessID", Model.ProductionProcessID)
+@Html.Hidden("val_ProductionLineID", Model.ProductionLineID)
+@Html.Hidden("val_VATID", Model.VATID)
+@Html.Hidden("val_InspectorName", Model.InspectorName)
+
+
+@section Styles
+{
+    <style>
+        .bootstrap-select > button {
+            padding-top: 10px;
+            padding-bottom: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+    </style>
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/numpad/jquery.numpad.css" rel="stylesheet" />
+
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/numpad/jquery.numpad.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/MFG/DemoldDefects/Index.js?v20191211" charset="utf-8"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var LangResources = {
+                msg_SelectAllFields: "@Html.Raw(Resources.MFG.DemoldDefects.msg_SelectAllFields)",
+                chsn_SelectOption: "@Html.Raw(Resources.Common.chsn_SelectOption)",
+                lbl_Del: "@Html.Raw(Resources.Common.lbl_Del)",
+                lbl_Clear: "@Html.Raw(Resources.Common.lbl_Clear)",
+                btnCancel: "@Html.Raw(Resources.Common.btnCancel)"
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

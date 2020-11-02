@@ -1,0 +1,141 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskAdministration.GeneralSettingsViewModel
+<div class="content-frame" id="main_kiosk_general">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.HR.Kiosk.title_GeneralSettingKiosk </h2>
+        </div>
+        <div class="pull-right">
+            <button id="btn_BackToIndex" class="btn btn-default btn-pretty btn-back-main"><span class="fa fa-sa"> @Resources.Common.btn_Back </span></button>
+            <button id="btn_SaveGeneralSettings" class="btn btn-success" title="@Resources.CI.DashboardManagement.lbl_UpdateGralSettingTag" data-dashboardID="0"><span class="fa fa-sa"> @Resources.CI.DashboardManagement.lbl_UpdateGralSettingTag </span></button>
+        </div>
+    </div>
+    <div class="content-frame-body content-frame-body-all">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading ui-draggable-handle">
+                        <h3 class="panel-title">
+                            @Resources.HR.Kiosk.lbl_KioskParameters
+                        </h3>
+                        <ul class="panel-controls">
+                            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="txt_SesionTime">@Resources.HR.Kiosk.lbl_SessionTime</label>
+                                    <div class="input-group">
+                                        @Html.TextBox("txt_SessionTime", Model.SessionTime, new { @class = "form-control onlynumbers max-length", @style = "text-align:center", @maxlength = "5" })
+                                        <span class="input-group-addon">@Resources.CI.DashboardManagement.lbl_SecondsTag</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="txt_SesionTime">@Resources.HR.Kiosk.lbl_CarouselTransitionTime</label>
+                                    <div class="input-group">
+                                        @Html.TextBox("txt_CarouselTransitionTime", Model.TransitionTime, new { @class = "form-control onlynumbers max-length", @style = "text-align:center", @maxlength = "5" })
+                                        <span class="input-group-addon">@Resources.CI.DashboardManagement.lbl_SecondsTag</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row margin-bottom-5">
+            <div class="col-xs-12 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading ui-draggable-handle">
+                        <h3 class="panel-title">
+                            @Resources.CI.DashboardManagement.lbl_BackgroundImageTag
+                        </h3>
+                        <ul class="panel-controls">
+                            <li class="btn btn-danger" id="kiosk-background-delete" title="@Resources.HR.Kiosk.tooltip_RemoveItemMedia"><span class="glyphicon glyphicon-trash"></span></li>
+                            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="border-dashed-2">
+                                    <form action="~/Attachments/SaveDropzoneJsUploadedFiles" style="height:250px" class="form-dropzone form-dropzone-background needsclick dz-clickable h-150">
+                                        @Html.Hidden("ReferenceID", Model.TempAttachmentID)
+                                        @Html.Hidden("AttachmentType", "TEMPKIOSKBACKGROUND")
+                                        <div class="dz-message center-content padding-top-10">
+                                            <img id="img_BckGroundKiosk" src="~/Content/img/UploadCloud.png" />
+                                        </div>
+                                        <div class="center-content">
+                                            @Resources.Common.lbl_Dropfiles
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="div_dropzone_upload_img" data-imageurl="" class="dz-message center-content padding-top-10">
+                                    <a href="@Model.imgURL" target="_blank"><img src="@Model.imgURL" style="width:100%" /></a>
+                                </div>
+
+                                <div class="alert alert-warning alert-dismissible col-sm-12" id="alert_background_image" role="alert" style="margin-top:5%; display:none;background-color:#fe970a">
+                                    <div class="col-xs-12">
+                                        <strong>@Resources.Common.lbl_Warning</strong> @Resources.HR.Kiosk.msg_BackgroundImageAlertInfo
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading  ui-draggable-handle">
+                        <h3 class="panel-title">
+                            @Resources.HR.Kiosk.lbl_CarouselMedia
+                        </h3>
+                        <ul class="panel-controls">
+                            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row margin-bottom-5">
+                            <div class="col-xs-12 padding-0">
+                                <div class="border-dashed-2">
+                                    <form action="~/Attachments/SaveDropzoneJsUploadedFiles" class="form-dropzone form-dropzone-carouselmedia needsclick dz-clickable h-150">
+                                        @Html.Hidden("ReferenceID", Model.TempAttachmentID)
+                                        @Html.Hidden("AttachmentType", "TEMPID")
+                                        <div class="dz-message center-content padding-top-10">
+                                            <img src="~/Content/img/UploadCloud.png" />
+                                        </div>
+                                        <div class="center-content">
+                                            @Resources.Common.lbl_Dropfiles
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @*<div class="col-xs-12 padding-0" style="height:220px;overflow-y:scroll">*@
+                            <div class="col-xs-12 padding-0">
+
+                                <div id="div_boxGeneralSettingTable">
+                                    @Html.Partial("_GeneralSettingsAttachmentsTable", Model.CarouselMediaList)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hidden">
+    @Html.Hidden("KioskCarouselMediaID", Model.KioskCarouselMediaID)
+    <label id="lbl_DeleteButtonTag"> @Resources.Common.btnDeleteTag </label>
+    <label id="lbl_CancelButtonTag"> @Resources.Common.btnCancel</label>
+    <label id="lbl_TitleDeleteFileTag"> @Resources.CI.DashboardManagement.lbl_TitleDeleteFileTag</label>
+    <label id="lbl_MsgDeleteFileTag"> @Resources.CI.DashboardManagement.lbl_MsgDeleteFileTag</label>
+</div>
+
+@Html.Partial("_Mo_PreviewVideo")

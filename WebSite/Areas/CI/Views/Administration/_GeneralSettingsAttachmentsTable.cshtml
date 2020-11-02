@@ -1,0 +1,28 @@
+﻿@model List<Core.Entities.DashboardCarouselVideosTmp>
+
+<table class="display table table-condensed table-striped sortable-table" id="tbl_attachments" cellspacing="0">
+    <thead>
+        <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+            <th class="center w-100">@Resources.CI.DashboardManagement.gvh_Settings_Seq</th>
+            <th class="left">@Resources.CI.DashboardManagement.gvh_Settings_File</th>
+            <th class="left w-120">@Resources.Common.gvH_Options</th>
+        </tr>
+    </thead>
+    @if (Model.Count > 0)
+    {
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-sm" data-sequence="@item.Seq" data-neworder="@item.Seq" data-pk="@item.FileID">
+                    <td class="center w-100">@item.Seq </td>
+                    <td class="text-info">@item.FileName </td>
+                    <td class="pull-right">
+                        <button class="btn btn-info settings-play-video" data-filename="@item.FileName" data-url="@item.Path" title="@Resources.CI.DashboardManagement.tt_SettingsPlay"><span class="glyphicon glyphicon-play"></span></button>
+                        <button class="btn btn-danger settings-delete" data-fileid="@item.FileID" title="@Resources.CI.DashboardManagement.tt_DeleteDashboardAreaTag"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    }
+</table>
+

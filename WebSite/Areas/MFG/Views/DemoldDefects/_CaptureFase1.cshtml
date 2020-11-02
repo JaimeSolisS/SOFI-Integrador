@@ -1,0 +1,18 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.DemoldDefects.CaptureWizardViewModel
+<div class="row">
+    <div class="col-md-12" style="padding-top:30vh !important;">
+        @Html.Partial("_Div_FamilyCards", Model.FamiliesList)
+    </div>
+</div>
+
+<div class="row" style="padding-top:55.5vh !important;height:30vh !important">
+    <div class="col-md-4">
+        @Html.Partial("_Div_BaseCards", Model.BaseCategoriesList)
+    </div>
+    <div class="col-md-4">
+        @Html.Partial("_Div_AditionCards", Model.AditionsCategoriesList)
+    </div>
+    <div class="col-md-4">
+        @Html.Partial("_Div_SideCards", Model.SidesList)
+    </div>
+</div>

@@ -1,0 +1,164 @@
+﻿@model WebSite.Areas.CI.Models.ViewModels.Administration.GeneralSettingsViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.CI.DashboardManagement.lbl_GeneralSettingsTag </h2>
+        </div>
+        <div class="pull-right">
+            @Html.ActionLink(Resources.Common.btn_Back, "Index", "Administration", null, new { @class = "btn btn-default btn-pretty btn-back-main" })
+            <button id="btn_UpdateGeneralSettings" class="btn btn-success" title="@Resources.CI.DashboardManagement.lbl_UpdateGralSettingTag" data-dashboardID="0"><span class="fa fa-sa"> @Resources.CI.DashboardManagement.lbl_UpdateGralSettingTag </span></button>
+        </div>
+    </div>
+    <div class="content-frame-body content-frame-body-all">
+        <div class="row margin-bottom-5">
+            <div class="col-xs-12 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading ui-draggable-handle">
+                        <h3 class="panel-title">
+                            <label class="control-label" for="lbl_BackgroundImageTag">@Resources.CI.DashboardManagement.lbl_BackgroundImageTag</label>
+                        </h3>
+                        <ul class="panel-controls">
+                            <li><button id="btnBackgroudImageChange" class="btn btn-info" title="@Resources.CI.DashboardManagement.lbl_UploadImageTag"><span class="glyphicon glyphicon-upload margin-none" style="color:white"></span></button></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class='col-xs-12 resource-interspace margin-bottom-none'>
+                                <div id="div_DashBoardSettingsImage" class='resource-preview-no-borderradius-w100  @Model.imgOrientation' title='@Model.imgTitle'
+                                     style='background-image: url(@Model.imgSource);width:100%;height:260px;'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4" for="lbl_CloseWindowAfterTag">@Resources.CI.DashboardManagement.lbl_CloseWindowAfterTag</label>
+                                        <div class="input-group col-md-3">
+                                            <input type="text" maxlength="10" class="form-control onlynumbers text-right" placeholder="0" id="txt_CloseWindowAfter" name="txt_CloseWindowAfter" value="@Model.CloseWindowAfter" />
+                                            <span class="input-group-addon">@Resources.CI.DashboardManagement.lbl_SecondsTag</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-top-10">
+                            <div class="col-xs-12">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4" for="lbl_ScreenSaverTag">@Resources.CI.DashboardManagement.lbl_ScreenSaverIntervalTag</label>
+                                        <div class="input-group col-md-3">
+                                            <input type="text" maxlength="10" class="form-control onlynumbers text-right" placeholder="0" id="txt_ScreenSaverInterval" name="txt_ScreenSaverInterval" value="@Model.ScreenSaverInterval" />
+                                            <span class="input-group-addon">@Resources.CI.DashboardManagement.lbl_SecondsTag</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="col-xs-12 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading ui-draggable-handle">
+                            <h3 class="panel-title">
+                                <label class="control-label" for="lbl_ScreenSaverVideo">@Resources.CI.DashboardManagement.lbl_ScreenSaverVideoTag</label>
+                            </h3>
+                            <ul class="panel-controls">
+                                <li><button id="btnBackgroudVideoChange" class="btn btn-info" title="@Resources.CI.DashboardManagement.lbl_UploadVideoTag"><span class="glyphicon glyphicon-upload margin-none" style="color:white"></span></button></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body h-27em margin-bottom-none">
+                            <div class="row margin-bottom-5">
+                                <div class="col-xs-12">
+                                    <video id="v_video" controls="controls" class="videoDetail" style="width:100%;height:260px;">
+                                        <source id="s_video" src="@Model.videoSrc" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="form-horizontal">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading  ui-draggable-handle">
+                        <h3 class="panel-title">
+                            @Resources.CI.DashboardManagement.lbl_CarouselVideosTag
+                        </h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row margin-bottom-5">
+                            <div class="col-xs-12 padding-0">
+                                <div class="border-dashed-2">
+                                    <form action="~/CI/Administration/UploadCarouselVideo" class="dropzone form-dropzone-carousel needsclick dz-clickable">
+                                        @Html.Hidden("TransactionSettings", Model.TransactionID)
+                                        <div class="dz-message center-content padding-top-10">
+                                            <img src="~/Content/img/UploadCloud.png" />
+                                        </div>
+                                        <div class="center-content">
+                                            @Resources.CI.DashboardManagement.lbl_Dropfiles
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 padding-0">
+                                <div id="div_boxGeneralSettingTable">
+                                    @Html.Partial("_GeneralSettingsAttachmentsTable", Model.CarouselVideosList)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden">
+            <input type="hidden" id="hf_ImageUrl" value="@Model.imgURL" />
+            <input type="hidden" id="hf_VideoUrl" value="@Model.videoURL" />
+
+            <form action="~/CI/Administration/UploadDashboardSetting" class="form-dropzone-backgroundscreen dropzone">
+                @Html.Hidden("TransactionSettings", Model.TransactionID)
+            </form>
+
+            <form action="~/CI/Administration/UploadDashboardSetting" class="form-dropzone-videoscreen dropzone">
+                @Html.Hidden("TransactionSettings", Model.TransactionID)
+            </form>
+        </div>
+    </div>
+</div>
+<div class="hidden">
+    @Html.Hidden("hf_TransactionID", Model.TransactionID)
+    <label id="lbl_DeleteButtonTag"> @Resources.Common.btnDeleteTag </label>
+    <label id="lbl_CancelButtonTag"> @Resources.Common.btnCancel</label>
+    <label id="lbl_TitleDeleteFileTag"> @Resources.CI.DashboardManagement.lbl_TitleDeleteFileTag</label>
+    <label id="lbl_MsgDeleteFileTag"> @Resources.CI.DashboardManagement.lbl_MsgDeleteFileTag</label>
+</div>
+
+@Html.Partial("_Mo_PreviewVideo")
+
+@*<div id="screensaver" class=" hidden">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h4 class="panel-title"><label id="lbl_FileNameTag"></label></h4>
+                <ul class="panel-controls">
+                    <li><a href="#" class="close-preview-video"><span class="fa fa-times"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body padding-0 center-content ">
+                <video id="preview_video" loop class="FullScreenVideo" controls>
+                    <source id="spreview_video">
+                </video>
+            </div>
+        </div>
+    </div>*@
+
+

@@ -1,0 +1,152 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.Users.CreateViewModel
+
+@*OPCIONES DEL MENU*@
+<!-- START CONTENT FRAME -->
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="remove-margins"> @Resources.User.H_CreateUser</h2>
+        </div>
+        <div class="pull-right">
+            @if (Model.IsModal)
+            {
+                <button id="btn_CloseAddUserModal" class="btn btn-default btn-pretty" data-dismiss="modal" title="@Resources.User.tt_AddNewUser">@Resources.Common.btn_Close</button>
+            }
+            else
+            {
+                @Html.ActionLink(@Resources.Common.btnCancel, "Index", new { controller = "Users", area = "Administration" }, new { @class = "btn btn-default btn-pretty" })
+            }
+            <button id="btn_AddUser" class="btn btn-success searchuser" title="@Resources.User.tt_AddNewUser"><span class="fa fa-plus-circle"> @Resources.User.btn_AddUser </span></button>
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-info">
+            <div class="panel-heading  ui-draggable-handle">
+                <h3 class="panel-title">
+                    &nbsp
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form id="create-form" class="lobi-form">
+                    <fieldset>
+                        <header>
+                            @Resources.User.PH_GeneralInformation
+                        </header>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-xs-12 col-sm-3 text-right control-label" for="UserAccountID">@Resources.User.lbl_Username</label>
+                                    <div class="col-xs-12 col-sm-9">
+                                        <label class="input-group d-flex">
+                                            <span class="input-group-addon glyphicon glyphicon-star"></span>
+                                            <input type="text" id="UserAccountID" name="UserAccountID" placeholder="@Resources.User.lbl_UserAccountID" maxlength="100" class="form-control max-lenght" />
+                                            <button id="btn_SearchUser" class="btn btn-success" title="@Resources.User.tt_SearchUser"><span class="fa fa-search"></span></button>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 searchuser">
+                                <div class="form-group">
+                                    <label class="col-xs-12 col-sm-3 text-right control-label" for="eMail">@Resources.User.lbl_Email</label>
+                                    <div class="col-xs-12 col-sm-9">
+                                        <label class="input-group">
+                                            <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+                                            <input type="text" id="eMail" name="eMail" placeholder="@Resources.User.lbl_Email" maxlength="100" class="max-lenght form-control" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 searchuser">
+                                <div class="form-group">
+                                    <label class="col-xs-12 col-sm-3 text-right control-label" for="EmployeeNumber">@Resources.User.lbl_EmployeeNumber</label>
+                                    <div class="col-xs-12 col-sm-9">
+                                        <label class="input-group">
+                                            <span class="input-group-addon  glyphicon glyphicon-th-large"></span>
+                                            <input type="text" id="EmployeeNumber" name="EmployeeNumber" placeholder="@Resources.User.lbl_EmployeeNumber" maxlength="20" class="form-control max-lenght" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 searchuser">
+                                <div class="form-group">
+                                    <label class="col-xs-12 col-sm-3 text-right control-label" for="FirstName">@Resources.User.lbl_FirstName</label>
+                                    <div class="col-xs-12 col-sm-9">
+                                        <label class="input-group">
+                                            <span class="input-group-addon glyphicon glyphicon-font"></span>
+                                            <input type="text" id="FirstName" name="FirstName" placeholder="@Resources.User.lbl_FirstName" maxlength="50" class="form-control max-lenght" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 searchuser">
+                                <div class="form-group">
+                                    <label class="col-xs-12 col-sm-3 text-right control-label" for="LastName">@Resources.User.lbl_LastName</label>
+                                    <div class="col-xs-12 col-sm-9">
+                                        <label class="input-group">
+                                            <span class="input-group-addon glyphicon glyphicon-font"></span>
+                                            <input type="text" id="LastName" name="LastName" placeholder="@Resources.User.lbl_LastName" maxlength="50" class="form-control max-lenght" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 searchuser">
+                                <div class="form-group">
+                                    <label class="col-xs-12 col-sm-3 text-right control-label" for="ProfileID">@Resources.User.lbl_Profile</label>
+                                    <div class="col-xs-12 col-sm-9 margin-bottom-5">
+                                        @Html.DropDownList("ProfileID", (SelectList)Model.ProfilesList, htmlAttributes: new { @class = "form-control select", @multiple = "", @name = "ProfileID[]" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 searchuser">
+                                <div class="form-group">
+                                    <label class="col-xs-12 col-sm-3 text-right control-label" for="DepartmentID">@Resources.User.lbl_Department</label>
+                                    <div class="col-xs-12 col-sm-9 margin-bottom-5">
+                                        @Html.DropDownList("DepartmentID", (SelectList)Model.DepartmentsList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 searchuser">
+                                <div class="form-group">
+                                    <label class="col-xs-12 col-sm-3 text-right control-label" for="ShiftID">@Resources.User.lbl_Shift</label>
+                                    <div class="col-xs-12 col-sm-9 margin-bottom-5">
+                                        @Html.DropDownList("ShiftID", (SelectList)Model.ShiftsList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 searchuser">
+                                <div class="form-group">
+                                    <label class="col-xs-12 col-sm-3 text-right control-label" for="DefaultCultureID">@Resources.User.lbl_DefaultCulture</label>
+                                    <div class="col-xs-12 col-sm-9 margin-bottom-5">
+                                        @Html.DropDownList("DefaultCultureID", (SelectList)Model.CulturesList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Administration/Users/Create.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            CreateInit("");
+        });
+
+    </script>
+}
+
+@section Styles
+    {
+
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+}

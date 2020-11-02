@@ -1,0 +1,161 @@
+﻿@model WebSite.Areas.Production.Models.Goals.IndexViewModel
+
+<!-- START CONTENT FRAME -->
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.ProductionGoal.lbl_ViewHeaderTag</h2>
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-success" id="btn_AddNewProductionGoal" title="@Resources.ProductionGoal.tt_AddProductionGoal"><span class="fa fa-plus-circle">&nbsp;&nbsp;@Resources.ProductionGoal.lbl_AddGoalTag</span></button>
+        </div>
+    </div>
+
+    <!-- START CONTENT FRAME RIGHT -->
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Common.lbl_Filters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_CatalogGoal">@Resources.ProductionGoal.lbl_ProductionGoalTag</label>
+                            <div class="input">
+                                <select id="ddl_CatalogGoal" name="ddl_CatalogGoal" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var process in Model.CatalogGoalList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_ProductionProcess">@Resources.ProductionGoal.lbl_ProcessProductionTag</label>
+                            <div class="input">
+                                <select id="ddl_ProductionProcess" name="ddl_ProductionProcess" class="form-control select" data-live-search="true">
+                                    @foreach (var process in Model.ProductionProcessList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3  @Model.ClassProcessLine" id="div_ContainerControlProductionLine">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_ProductionLine">@Resources.ProductionGoal.lbl_ProcessLineTag</label>
+                            <div class="input">
+                                <select id="ddl_ProductionLine" name="ddl_ProductionLine" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var line in Model.UserProcessesLine)
+                                    {
+                                        <option value="@line.Value">@line.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_VA">@Resources.ProductionGoal.lbl_VATag</label>
+                            <div class="input">
+                                <select id="ddl_VA" name="ddl_VA" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var process in Model.VAList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_Design">@Resources.ProductionGoal.lbl_DesignTag</label>
+                            <div class="input">
+                                <select id="ddl_Design" name="ddl_Design" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var process in Model.DesignList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_Shift">@Resources.ProductionGoal.lbl_ShiftTag</label>
+                            <div class="input">
+                                <select id="ddl_Shift" name="ddl_Shift" class="form-control select applyfilters" data-live-search="true">
+                                    @foreach (var process in Model.ShiftList)
+                                    {
+                                        <option value="@process.Value">@process.Text</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*List Main Defects*@
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 margin-top-10">
+                        <div id="div_boxProductionGoalInfo">
+                            @Html.Partial("_ProductionGoalsMasterTable", Model.ProductionGoalsList)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modals*@
+<div id="div_MPE" class="hidden">
+
+</div>
+
+<div id="div_MsgText" class="hidden">
+    <span id="lbl_MsgDeleteGoalTag">@Resources.ProductionGoal.lbl_MsgDeleteGoalTag</span>
+    <span id="lbl_TitleDeleteDefectDetailTag">@Resources.Common.lbl_Warning</span>
+    <span id="lbl_DeleteButtonTag">@Resources.Common.btnDeleteTag</span>
+    <span id="lbl_CancelButtonTag">@Resources.Common.btnCancel</span>
+
+    
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/Production/Goals/Index.js?v20190322" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+                var LangResources = {
+                    chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                    chsn_SelectMultipleOption: "@Resources.Common.chsn_SelectMultipleOption",
+                    chsn_NoResults: "@Resources.Common.chsn_NoResults",
+                    ntf_SelectWarehouse: "@Resources.Catalog.ntf_SelectWarehouse",
+                    ntf_SelectVendor: "@Resources.Catalog.ntf_SelectVendor",
+                };
+
+                IndexInit(LangResources);
+        });
+    </script>
+}

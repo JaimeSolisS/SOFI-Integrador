@@ -1,0 +1,22 @@
+﻿@model List<Core.Entities.UserFacility>
+<table class="display table table-striped table-bordered table-condensed-xs margin-none" id="tbl_complants">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.User.lbl_Company</th>
+            <th>@Resources.User.lbl_BaseFacility</th>
+            <th>@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class='company-row' data-company-id="@item.CompanyID" data-facility-id="@item.FacilityID">
+                <td>@item.CompanyName</td>
+                <td>@item.FacilityName</td>
+                <td>
+                    <button class="btn btn-danger delete-row delete_facility"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

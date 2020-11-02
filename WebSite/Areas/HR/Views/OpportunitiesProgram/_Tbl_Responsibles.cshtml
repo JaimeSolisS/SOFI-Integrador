@@ -1,0 +1,34 @@
+﻿@model List<Core.Entities.OpportunitiesProgram_Responsable>
+        <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_Responsibles">
+            <thead>
+                <tr class="font-size-sm bg-primary">
+                    <th style="display:none;">@Resources.HR.Kiosk.lbl_EmpNum</th>
+                    <th>@Resources.HR.Kiosk.lbl_EmpNum</th>
+                    <th>@Resources.HR.Kiosk.lbl_Name</th>
+                    <th>@Resources.HR.Kiosk.lbl_eMail</th>
+                    <th>@Resources.HR.Kiosk.lbl_Department</th>
+                    <th>@Resources.HR.Kiosk.lbl_AdmissionDate</th>
+                    <th>@Resources.HR.Kiosk.lbl_AddedBy</th>
+                    <th>@Resources.Common.lbl_Options</th>
+                </tr>
+            </thead>
+            <tbody class="sortable responsibles_row" id="tbody_Responsibles">
+                @if (Model != null)
+                {
+                    foreach (var Responsible in Model)
+                    {
+                <tr data-responsibleid="@Responsible.OPResponsableID">
+                    <td style="display:none;">@Responsible.ResponsableID</td>
+                    <td>@Responsible.EmployeeNumber</td>
+                    <td>@Responsible.FullName</td>
+                    <td>@Responsible.eMail</td>
+                    <td>@Responsible.DepartmentName</td>
+                    <td>@Responsible.DateAddedFormat</td>
+                    <td>@Responsible.AddedBy</td>
+                    <td><button class="btn btn-danger delete-opportunity-responsible"><span class="glyphicon glyphicon-trash"></span></button></td>
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+

@@ -1,0 +1,24 @@
+﻿@model List<Core.Entities.UsersProcessLine>
+<table id="UserLinesTable" class="display table table-bordered table-striped dataTable">
+    <thead>
+        <tr>
+            <td style="text-align:center;">
+                <label class="check"><input id="check-all-lines" type="checkbox" name="name" value="" /></label>
+            </td>
+            <td>@Resources.MFG.MachineSetups.lbl_ProductionLine</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="1%" style="text-align:center;">
+                    <label class="check">
+                        <input type="checkbox" id="chk_@item.ProductionLineID" name="chk_@item.ProductionLineID" class="line-check" @(item.LineAccess == true ? "checked" : "") data-entityid="@item.ProductionLineID" data-processid="@item.ProductionProcessID" />
+                    </label>
+                </td>
+                <td>@item.ProductionLineName</td>
+            </tr>
+        }
+    </tbody>
+</table>

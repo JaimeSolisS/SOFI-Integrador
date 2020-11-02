@@ -1,0 +1,27 @@
+﻿@model List<Core.Entities.SecurityGuardTool>
+<div class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped margin-bottom-none" id="tblSecurityGuardTool">
+        <thead>
+            <tr>
+                <th class="text-white bg-info">#</th>
+                <th class="text-white bg-info"></th>
+                <th class="text-white bg-info">@Resources.SG.SecurityGuard.lbl_ToolName</th>
+            </tr>
+        </thead>
+        <tbody class="ui-state-default">
+            @{
+                var count = 1;
+                foreach (var item in Model)
+                {
+                    <tr class="font-size-lg">
+                        <td> @count </td>
+                        <td> 
+                            <img src="@item.ToolImgPath" style="height:30px"/>
+                        </td>
+                        <td> @item.ToolName </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

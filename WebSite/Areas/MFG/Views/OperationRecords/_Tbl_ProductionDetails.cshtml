@@ -1,0 +1,38 @@
+﻿@model List<Core.Entities.OperationProductionDetail>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-bordered table-striped table-actions">
+            <thead>
+                <tr>
+                    <th>@Resources.MFG.OperationRecords.lbl_Hour</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_Shots</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_ShotCounter</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_Gross</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_Defects</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_Accepteds</th>
+                    <th>@Resources.Common.lbl_Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.HourFormat</td>
+                    <td>@item.ShotNumber</td>
+                    <td>@item.ShotCounterFormat</td>
+                    <td>@item.ProducedQty</td>
+                    <td>@item.RejectsQty</td>
+                    <td>@item.Accepteds</td>                   
+                    <td>
+                        <button class="btn-pretty btn-lg btn-info edit-productiondetail" data-entityid="@item.OperationProductionDetailID" type="button" title="@Resources.Common.tt_Edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

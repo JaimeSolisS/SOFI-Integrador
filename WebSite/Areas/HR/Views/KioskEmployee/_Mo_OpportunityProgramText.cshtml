@@ -1,0 +1,16 @@
+﻿@model Core.Entities.OpportunitiesProgram
+<div id="mo_OpportunityProgramText" class="modal fade" role="dialog" style="align-content:center;width:100% !important; height: 100vh">
+    <div class="modal-content" style="width:100% !important;height: 100vh">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-danger pull-right" id="close_opportunityprogramtext_modal" aria-hidden="true">@Resources.Common.btn_Close</button>
+                </div>
+                <div class="col-xs-12" id="div_OpportunityProgramHTML">
+                    <h2>@Model.Name</h2>
+                    @Model.Description
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

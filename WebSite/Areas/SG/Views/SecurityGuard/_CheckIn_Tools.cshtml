@@ -1,0 +1,76 @@
+﻿@model WebSite.Areas.SG.Models.CheckInToolsViewModel
+<div id="mo_CheckInTools" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:5; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header">
+            <h1 class="modal-title">@Resources.SG.SecurityGuard.lbl_Tools</h1>
+            <div class="fa fa-home pull-right fa-5x bg-white padding-10 btnHomeButton"></div>
+        </div>
+        <div class="modal-body padding-none" style="height:80%; overflow-y:auto;overflow-x: hidden;">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 connectedSortable" id="selectedTools">
+                    <h2>@Resources.SG.SecurityGuard.lbl_Tools</h2>
+                    @{
+                        var count = 0;
+                        foreach (var tool in Model.SecurityGuardToolsList)
+                        {
+                            <div class="div_toolcontainer loadedTools col-sm-3 col-xs-3 col-md-3 col-lg-3 text-center border-simple" style="margin-right:40px; margin-left:40px; margin-bottom:15px">
+                                <a class="boxremove"></a>
+                                <img id="@string.Concat("div_toolpath_",@count)" class="div_toolpath" data-filename="@tool.FileName" data-newreferenceid="" data-securityguardtoolid="@tool.SecurityGuardToolID" src="@tool.ToolImgPath" style="width:100%;" />
+                                <div class="div_toolname fsize-25 text-wrap">@tool.ToolName</div>
+                                @if (tool.ToolTypeImg == "TEMP")
+                                {
+                                    <div class="div_tempTool @tool.ImgTypeClass display-none" data-temptoolname="@tool.ToolName" data-filename="@tool.FileName" data-id="@tool.SecurityGuardToolID" data-referenceid="@tool.ReferenceID"></div>
+                                }
+                            </div>
+                            count++;
+                        }
+                    }
+                </div>
+            </div>
+            <div class="row padding-10">
+                <h2>@Resources.SG.SecurityGuard.lbl_AvailableTools</h2>
+
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 connectedSortable" id="availableTools">
+                    <div data-id="0" id="div_AddMoreTools" class="col-sm-3 col-xs-3 col-md-3 col-lg-3 bgc-dodgerblue text-center" style="margin-right:40px; margin-left:40px; margin-bottom:15px">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots fsize-40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                        </svg>
+                    </div>
+                    @foreach (var tool in Model.AvailableToolsList)
+                    {
+                        <div class="div_toolcontainer col-sm-3 col-xs-3 col-md-3 col-lg-3 text-center border-simple" style="margin-right:40px; margin-left:40px; margin-bottom:15px">
+                            <a class="boxadd"></a>
+                            <img class="div_toolpath" src="@tool.ToolImgPath" data-securityguardtoolid="0"style="width:100%;" />
+                            <div class="div_toolname fsize-25 text-wrap">@tool.ToolName</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-primary pull-left btn_footer dimiss-modal"
+                    id="btnCancelTools" data-modalid="mo_CheckInTools">
+                @Resources.Common.btn_Back
+            </button>
+            @if (Model.SecurityGuardToolsList.Count > 0)
+            {
+                <button type="button" class="btn btn-success pull-right btn_footer"
+                        id="btn_RegistryCheckIn" data-personaltype="">
+                    @Resources.SG.SecurityGuard.lbl_Registry
+                </button>
+            }
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro.min.css">
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-colors.min.css">
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-rtl.min.css">
+    <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-icons.min.css">
+}
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/metro/metro.min.js"></script>
+}

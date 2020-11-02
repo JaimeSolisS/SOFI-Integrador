@@ -1,0 +1,26 @@
+﻿@model WebSite.Models.ViewModels.ChartSlider.OptionViewModel
+<div>
+    @if (Model.Option.Param1 == "SelectList")
+    {
+        @Html.DropDownList(Model.ControlName, Model.OptionSelectList, new { @class = "form-control select", data_style = "btn-success", data_entityid = Model.Chart_SetttingDetailID })
+    }
+    @if (Model.Option.Param1 == "ListBox")
+    {
+        @Html.ListBox(Model.ControlName, Model.OptionListBox, new { @class = "form-control select", multiple = "multiple", data_style = "btn-success", data_entityid = Model.Chart_SetttingDetailID })
+    }
+    @if (Model.Option.Param1 == "FilePath")
+    {
+        <div class="input-group d-flex">
+            <input type="text" class="form-control field-disabled" placeholder="url" id="@Model.ControlName" name="@Model.ControlName" disabled value="@Model.OptionValue" />
+            <button type="button" class="btn btn-info btn_BrowseFile" data-entityid="@Model.Chart_SetttingDetailID" title="@Resources.Common.tt_BrowseTag">...</button>
+        </div>
+    }
+    @if (Model.Option.Param1 == "Url")
+    {
+        <div class="input-group d-flex">
+            <input type="text" class="form-control" data-entityid="@Model.Chart_SetttingDetailID"
+                   placeholder="url" value="@Model.OptionValue" />
+        </div>
+    }
+</div>
+

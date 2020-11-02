@@ -1,0 +1,434 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskEmployee.LoginUserViewModel
+@{
+    Layout = "~/Areas/HR/Views/Shared/_FullScreenKioskLayout.cshtml";
+}
+<div class="BackImage" id="main_kiosk" style="background-image: url(@Model.BackgroundImage);">
+    <div class="container-fluid start-screen left h-100 padding-top-70 font-size-base" id="div_boxPanelLeft">
+        @if (Model.UserInfoList.Count > 0)
+        {
+            var UserEntity = Model.UserInfoList.FirstOrDefault();
+            @Html.Hidden("UserCode", UserEntity.clave)
+
+            <div class="page-title padding-5">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body profile">
+                            <div class="profile-image">
+                                <img src="~/Content/img/SmileyFace.png" style="background-color:white" />
+                            </div>
+                            <div class="profile-data">
+                                <div class="profile-data-name">@Resources.HR.Kiosk.lbl_Name</div>
+                                <div class="profile-data-title font-size-lg" id="userinfo_name">@UserEntity.nombre</div>
+                            </div>
+                            <div class="profile-controls">
+
+                            </div>
+                        </div>
+
+                        <div class="panel-body" style="height:60vh">
+                            <div class="contact-info">
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_eMail</small><br>
+                                    <span id="user_email" class="font-size-lg">@UserEntity.correo</span>
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_MaritalStatus</small>
+                                    <br>
+                                    <span class="font-size-lg">@UserEntity.civil</span>
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_Address</small><br>
+                                    <span class="font-size-lg"> @UserEntity.calle @UserEntity.colonia</span>
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_Phone</small><br>
+                                    <span class="font-size-lg"> @UserEntity.telefono</span>
+                                </p>
+                                <br>
+
+                                <div style="border:solid; border-width:1px; border-color:lightgrey; width:100%"></div><br>
+
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_AdmissionDate</small><br>
+                                    <span class="font-size-lg"> @UserEntity.altaFormatted </span>
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_NNS</small><br>
+                                    <span class="font-size-lg"> @UserEntity.nss</span>
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_CURP</small><br>
+                                    <span class="font-size-lg">  @UserEntity.curp </span>
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_RFC</small><br>
+                                    <span id="span_rfc" class="font-size-lg">@UserEntity.rfc</span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-xs-6" id="div_GetCoursesModal">
+                            <div class="tile border-1 bg-white">
+                                <div class="tile-body">
+                                    <div class="col-sm-6 padding-left-right-0">
+                                        <div class="col-sm-12 padding-left-right-0">
+                                            <h2 class="margin-top-5 margin-bottom-5" style="font-size:40px" id="AvailableCoursesCount">@Model.EmployeMovements.CoursesAvailable</h2>
+                                        </div>
+                                        <div class="col-sm-12 text-left margin-top-10 padding-left-right-0">
+                                            <h5><b>@Resources.HR.Kiosk.lbl_Courses</b></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <i style="color:royalblue" class="fa fa-users tile-icon fa-4x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" id="div_GetSuggestionModal">
+                            <div class="tile border-1 bg-white">
+                                <div class="tile-body">
+                                    <div class="col-sm-6 padding-left-right-0">
+                                        <div class="col-sm-12 padding-left-right-0">
+                                            <h2 class="margin-top-5 margin-bottom-5" style="font-size:40px"><span id="span_suggestions_count">@Model.EmployeMovements.SuggestionsCount</span></h2>
+                                        </div>
+                                        <div class="col-sm-12 text-left margin-top-10 padding-left-right-0">
+                                            <h5><b>@Resources.HR.Kiosk.title_Suggestions</b></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <i style="color:grey; font-size: 80px" class="fa fa-lightbulb-o tile-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" id="div_GetPrePayrollModal">
+                            <div class="tile bg-white no-padding" style="border-color:lawngreen">
+                                <div class="tile-body padding-top-bottom-10 row">
+                                    <div class="col-sm-6">
+                                        <div class="col-sm-12 padding-left-right-5">
+                                            <h2 class="margin-top-5">
+                                                <span style="color:springgreen;font-size:40px">@Model.PrePayRollTotalHours</span>
+                                                <span style="color:springgreen;font-size:20px">@Resources.HR.Kiosk.lbl_Hour</span>
+                                            </h2>
+
+                                        </div>
+                                        <div class="col-sm-12 text-left padding-left-right-5">
+                                            <h5><b>@Resources.HR.Kiosk.lbl_PrePayRoll</b></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <i style="color:springgreen; font-size: 60px" class="glyphicon glyphicon-time"></i>
+                                    </div>
+                                </div>
+                                <div class="row bg-green" style="margin-left:0px;margin-right:0px; height:30px">
+                                    <div class="col-sm-6 text-left" style="height:30px;margin-top:-20px">
+                                        <label style="font-size:15px; font-weight:bold; width:100%">
+                                            @Resources.Common.lbl_Detail
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6" style="height:30px;margin-top:-20px">
+                                        <span class="fa fa-chevron-circle-right pull-right" style="font-size:15px"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" id="div_GetRequestsModal">
+                            <div class="tile border-1 bg-white no-padding">
+                                <div class="tile-body padding-top-bottom-10 row">
+                                    <div class="col-sm-6">
+                                        <div class="col-sm-12 padding-left-right-5">
+                                            <h2 style="color:springgreen;font-size:40px" class="margin-top-5"><span id="span_request_count">@Model.EmployeMovements.RequestsCount</span></h2>
+                                        </div>
+                                        <div class="col-sm-12 text-left padding-left-right-5">
+                                            <h5><b>@Resources.HR.Kiosk.title_Requests</b></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <i style="color:springgreen; font-size: 80px" class="fa fa-pencil-square-o"></i>
+                                    </div>
+                                </div>
+                                <div class="row bg-gray fg-black" style="margin-left:0px;margin-right:0px; height:30px">
+                                    <div class="col-sm-6 text-left" style="height:30px;margin-top:-20px">
+                                        <label style="font-size:15px; font-weight:bold; width:100%;">
+                                            @Resources.Common.lbl_Detail
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6" style="height:30px;margin-top:-20px">
+                                        <span class="fa fa-chevron-circle-right pull-right" style="font-size:15px"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.UserAccessID == 1121 || Model.UserAccessID == 14)
+                        {
+                            <div class="col-xs-6" id="div_PaymentReceiptsEmployee">
+                                <div class="tile border-1 no-padding" style="background-color:cornflowerblue">
+                                    <div class="tile-body padding-top-bottom-10 row">
+                                        <div class="col-sm-6">
+                                            <div class="col-sm-12 padding-left-right-5">
+                                                <h2 class="margin-top-5 fg-white" style="font-size:40px">@Model.PaymentReceiptsList</h2>
+                                            </div>
+                                            <div class="col-sm-12 text-left padding-left-right-5">
+                                                <h5 class="fg-white"><b>@Resources.HR.Kiosk.lbl_PaymentReceipts</b></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+                                            <i style="color:white; font-size: 80px" class="fa fa-money fa-4x vertical-align-middle text-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="row bg-darkBlue" style="margin-left:0px;margin-right:0px; height:30px">
+                                        <div class="col-sm-6 text-left" style="height:30px;margin-top:-20px">
+                                            <label style="font-size:15px; font-weight:bold; width:100%">
+                                                @Resources.Common.lbl_Detail
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6" style="height:30px;margin-top:-20px">
+                                            <span class="fa fa-chevron-circle-right pull-right" style="font-size:15px"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-xs-6" id="div_OpportunitiesProgramEmployee">
+                            <div class="tile border-1 no-padding" style="background-color:deepskyblue;padding-right: 0em !important;">
+                                <div class="tile-body row" style="padding-bottom:10px">
+                                    <div class="col-xs-7">
+                                        <div class="col-xs-12 padding-top-10">
+                                            <h2 style="color:white;font-size:40px" class="margin-top-5"><span id="span_available_vacancies">@Model.EmployeMovements.VacanciesAvailable</span></h2>
+                                        </div>
+                                        <div class="col-xs-12 text-left padding-left-right-5" style="padding-top:0px!important;">
+                                            <h5 style="color:white"><b>@Resources.HR.Kiosk.lbl_OpportunitiesProgram</b></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-5 text-right" style="padding-right:7px">
+                                        @if (Model.NotificationsUnreaded > 0)
+                                        {
+                                            <h4 class="margin-none pull-right fg-white bg-red padding-10" title="@Resources.HR.Kiosk.lbl_UnreadedNotifications">
+                                                @Model.NotificationsUnreaded
+                                            </h4>
+                                        }
+                                        <i style="color:white; font-size: 80px; padding-right:5px" class="fa fa-star-o padding-top-10"></i>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left:0px;margin-right:0px; height:30px; background-color: dodgerblue">
+                                    <div class="col-sm-6 text-left" style="height:30px;margin-top:-20px">
+                                        <label style="font-size:15px; font-weight:bold; width:100%">
+                                            @Resources.Common.lbl_Detail
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6" style="height:30px;margin-top:-20px">
+                                        <span class="fa fa-chevron-circle-right pull-right" style="font-size:15px"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" id="div_PointsExchange">
+                            <div class="tile border-1 no-padding" style="background-color:orange;">
+                                <div class="tile-body row">
+                                    <div class="col-xs-6 padding-left-10">
+                                        <div class="col-xs-12 padding-left-right-0">
+                                            <h2 style="color:white;font-size:40px" class="margin-top-5">@Model.AvailablePoints</h2>
+                                        </div>
+                                        <div class="col-xs-12 padding-left-right-0 text-left">
+                                            <h5 style="color:white"><b>@Resources.HR.Kiosk.lbl_PointsExchange</b></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 text-right padding-right-10">
+                                        <i style="color:white; font-size: 60px" class="glyphicon glyphicon-bell padding-top-20"></i>
+                                    </div>
+                                </div>
+                                <div class="row bg-orange-dark" style="margin-left:0px;margin-right:0px; height:30px">
+                                    <div class="col-sm-6 text-left" style="height:30px;margin-top:-20px">
+                                        <label style="font-size:15px; font-weight:bold; width:100%;">
+                                            @Resources.Common.lbl_Detail
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6" style="height:30px;margin-top:-20px">
+                                        <span class="fa fa-chevron-circle-right pull-right" style="font-size:15px"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" id="div_Vacations">
+                            <div class="tile border-1" style="background-color: slategray;">
+                                <div class="tile-body">
+                                    <div class="col-xs-6 padding-left-right-0">
+                                        <div class="col-xs-12 padding-left-right-0">
+                                            <h2 style="color:white;font-size:40px" class="margin-top-5">@UserEntity.VacacionesPorTomarFormat</h2>
+                                        </div>
+                                        <div class="col-xs-12 padding-left-right-0 text-left">
+                                            <h5 style="color:white"><b>@Resources.HR.Kiosk.lbl_AvailableVacationDays</b></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <i style="color:white; font-size: 60px" class="glyphicon glyphicon-plane padding-top-20"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.UserAccessID == 1121 || Model.UserAccessID == 14)
+                        {
+                            <div class="col-xs-6" id="div_SavingsFundBalance">
+                                <div class="tile border-1" style="background-color:forestgreen;">
+                                    <div class="tile-body">
+                                        <div class="col-xs-6 padding-left-right-0">
+                                            <div class="col-xs-12 padding-left-right-0">
+                                                <h2 style="color:white;font-size:40px" class="margin-top-5">@UserEntity.SaldoAhorroFormat</h2>
+                                            </div>
+                                            <div class="col-xs-12 padding-left-right-0 text-left">
+                                                <h5 style="color:white"><b>@Resources.HR.Kiosk.lbl_SavingsFundBalance</b></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <h5 style="color:white; font-size:10px"><b>@Resources.HR.Kiosk.lbl_AccumulatedSavings</b></h5>
+                                            <h5 style="color:white; font-size:12px">@UserEntity.AhorroAcumuladoFormat</h5>
+                                            <h5 style="color:white; font-size:10px"><b>@Resources.HR.Kiosk.lbl_SavingsWithdrawn</b></h5>
+                                            <h5 style="color:white; font-size:12px">@UserEntity.AhorrioRetiradoFormat</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-xs-6" id="div_B7" data-b7justification="@UserEntity.B7Justificacion">
+                            <div class="tile border-1" style="background-color:rebeccapurple;">
+                                <div class="tile-body">
+                                    <div class="col-xs-6 padding-left-right-0">
+                                        <div class="col-xs-12 padding-left-right-0">
+                                            <h2 style="color:white;font-size:40px" class="margin-top-5">@UserEntity.B7Disponible</h2>
+                                        </div>
+                                        <div class="col-xs-12 padding-left-right-0 text-left">
+                                            <h5 style="color:white"><b>@Resources.HR.Kiosk.lbl_B7Available</b></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <i style="color:white; font-size: 60px" class="glyphicon glyphicon-info-sign padding-top-20"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <div id="pnl_Detail" class="panel panel-success hidden" style="overflow-y:hidden">
+        <div class="panel-heading ui-draggable-handle">
+            <div class="panel-title-box" style="height:60px">
+                <h1 id="h3_Name" style="margin-top:10px;padding:0px"> <span id="s_Footer"></span></h1>
+            </div>
+            <ul class="panel-controls">
+                <li><a id="a_fullscreen" href="#" class="panel-fullscreen hidden"><span class="fa fa-expand"></span></a></li>
+                <li><a href="#" class="containerpanel-remove" id="btn_ReturnToRecipe" style="height: 59px;width: 200px;border-radius: 30px;font-size: 26px;font-weight: bold;color: white;background-color: #ff4500;border-color: #ff4500;padding-top: 12px;text-decoration: none"><span>@Resources.Common.btn_Back</span></a></li>
+            </ul>
+        </div>
+        <div id="body_pnl_Detail" class="panel-body padding-0 overflow-y-no">
+            <embed id="pdf_file" src="" type="application/pdf" style="width:100%;height:100%;" />
+        </div>
+    </div>
+
+    @Html.Hidden("CloseSessionAfter", Model.SessionTime)
+    @Html.Hidden("SessionTimeWarning", Model.SessionTimeWarning)
+    @Html.Hidden("EmployeeID", Model.EmployeeID)
+    @Html.Partial("_ImageResourceModal")
+
+    @Html.Partial("_GenericMessageBox")
+
+    <div id="div_Generic_Modal">
+
+    </div>
+    <div id="div_Generic_Modal_2">
+
+    </div>
+
+    <div id="div_Mo_Suggestions">
+
+    </div>
+
+    <div id="div_Request_Modal">
+
+    </div>
+
+    <div id="div_OpportunityProgramMediaText">
+
+    </div>
+
+    @section Styles
+{
+        <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro.min.css?v20190606">
+        <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-colors.min.css">
+        <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-rtl.min.css">
+        <link rel="stylesheet" href="~/Content/PLUGINS/metro/metro-icons.min.css">
+        <link href="~/Content/PLUGINS/slick/slick-theme.css" rel="stylesheet" />
+        <link href="~/Content/PLUGINS/slick/slick.css" rel="stylesheet" />
+        <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/PLUGINS/numpad/jquery.numpad.css" rel="stylesheet" />
+        <link href="~/Content/HR/Kiosk/KioskEmployee.css?20200910" rel="stylesheet" />
+        <link href="~/Content/HR/Kiosk/slideform.css" rel="stylesheet" />
+
+        <style>
+            .slide-video {
+                background-color: black;
+            }
+
+            .carousel-img .slick-vertical .slick-slide {
+                border: none;
+            }
+        </style>
+
+    }
+
+    @section scripts {
+        <script src="~/Scripts/PLUGINS/metro/metro.min.js"></script>
+        <script src="~/Scripts/PLUGINS/slick/slick.min.js"></script>
+        <script src="~/Scripts/PLUGINS/numpad/jquery.numpad.js"></script>
+        <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+        <script src="~/Scripts/HR/Kiosk/KioskEmployee.js?v20200319" charset="utf-8"></script>
+
+        <script src="~/Scripts/PLUGINS/slideform/jquery.slideform.js"></script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var Resources = {
+                    lbl_Del: "@Html.Raw(Resources.Common.lbl_Del)",
+                    lbl_Clear: "@Html.Raw(Resources.Common.lbl_Clear)",
+                    lbl_Warning: "@Html.Raw(Resources.Common.lbl_Warning)",
+                    btnCancel: "@Html.Raw(Resources.Common.btnCancel)",
+                    msg_LogoutConfirm: "@Html.Raw(Resources.HR.Kiosk.msg_LogoutConfirm)",
+                    msg_DeleteSuggestionConfirm: "@Html.Raw(Resources.HR.Kiosk.msg_DeleteSuggestionConfirm)",
+                    msg_CancelRequestConfirmMessage: "@Html.Raw(Resources.HR.Kiosk.msg_CancelRequestConfirmMessage)",
+                    lbl_CancelledByUser: "@Html.Raw(Resources.HR.Kiosk.lbl_CancelledByUser)",
+                    msg_FinishedByUser: "@Html.Raw(Resources.HR.Kiosk.msg_FinishedByUser)",
+                    msg_ApplyVacancyConfirm: "@Html.Raw(Resources.HR.Kiosk.msg_ApplyVacancyConfirm)",
+                    lbl_EmailVerification: "@Html.Raw(Resources.HR.Kiosk.lbl_EmailVerification)",
+                    msg_IsYourEmailQuestion: "@Html.Raw(Resources.HR.Kiosk.msg_IsYourEmailQuestion)",
+                    lbl_Key: "@Html.Raw(Resources.HR.Kiosk.msg_IsYourEmailQuestion)",
+                    lbl_PointsExchangeConfirmTitle: "@Html.Raw(Resources.HR.Kiosk.lbl_PointsExchangeConfirmTitle)",
+                    lbl_PointsExchangeConfirmMessage: "@Html.Raw(Resources.HR.Kiosk.lbl_PointsExchangeConfirmMessage)",
+                    lbl_NoItemsSelected: "@Html.Raw(Resources.HR.Kiosk.lbl_NoItemsSelected)",
+                    lbl_SelectAtLeastOneReceipt: "@Html.Raw(Resources.HR.Kiosk.lbl_SelectAtLeastOneReceipt)",
+                    lbl_InsufficientPoints: "@Html.Raw(Resources.HR.Kiosk.lbl_InsufficientPoints)",
+                    lbl_CourseInscription: "@Html.Raw(Resources.HR.Kiosk.lbl_CourseInscription)",
+                    lbl_CourseInscriptionQuestion: "@Html.Raw(Resources.HR.Kiosk.lbl_CourseInscriptionQuestion)",
+                    lbl_EmailReceiptSendedSuccess: "@Html.Raw(Resources.HR.Kiosk.lbl_EmailReceiptSendedSuccess)",
+                    lbl_UserWithoutEmail: "@Html.Raw(Resources.HR.Kiosk.lbl_UserWithoutEmail)",
+                    lbl_TimeRunningOutSessionTitle: "@Html.Raw(Resources.HR.Kiosk.lbl_TimeRunningOutSessionTitle)",
+                    lbl_TimeRunningOutSessionMsg: "@Html.Raw(Resources.HR.Kiosk.lbl_TimeRunningOutSessionMsg)",
+                    lbl_Detail: "@Html.Raw(Resources.Common.lbl_Detail)",
+                    lbl_Continue: "@Html.Raw(Resources.Common.lbl_Continue)",
+                    msg_MarkRequestConfirmMessage: "@Html.Raw(Resources.HR.Kiosk.msg_MarkRequestConfirmMessage)"
+                };
+
+                KioskEmployeeInit(Resources);
+
+            });
+        </script>
+    }
+</div>

@@ -1,0 +1,28 @@
+﻿@model List<Core.Entities.Defect>
+@if (Model.Count > 0)
+{
+    <table class="display table table-condensed table-striped dataTable" id="tbl_defect" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+                <th width="5%"></th>
+                <th class="left">@Resources.Defects.gvh_DefectName</th>
+                <th class="left"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr class="font-size-sm"  data-entityid="@item.DefectID">
+                <td class="details-control" width="5%"></td>
+                <td>
+                    @item.DefectName
+                </td>
+                <td class="pull-right">
+                    <button class="btn btn-success add-defect-details" id="btn_AddDefectDetails_@item.DefectID" name="btn_AddDefectDetails_@item.DefectID" data-defectid="@item.DefectID" data-defect-name="@item.DefectName" title="@Resources.Defects.tt_AddDefect"><span class="fa fa-plus-circle">&nbsp;&nbsp;@Resources.Defects.lbl_AddDefectDetailsTag</span></button>
+                    <button class="btn btn-danger delete-defect-all-details" id="btn_DeleteDefectDetailsAll_@item.DefectID" name="btn_DeleteDefectDetailsAll@item.DefectID" data-defectid="@item.DefectID" title="@Resources.Defects.tt_DeleteAllDetails"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

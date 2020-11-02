@@ -1,0 +1,21 @@
+﻿@model List<Core.Entities.UsersProcessLine>
+<table class="display table table-striped table-bordered table-condensed-xs margin-none" id="tbl_PLines">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            @*<td><input type="checkbox" id="chk_all" /></td>*@
+            <th>Line</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr data-productionlineid="@item.ProductionLineID" data-productionprocessid="@item.ProductionProcessID">
+                    @*<td><input type="checkbox" class="chk_lines_user"/></td>*@
+                    <td>@item.LineNumber</td>
+                    <td><button class="btn btn-danger delete-row"><span class="glyphicon glyphicon-trash"></span></button></td>
+                </tr>
+            }
+    </tbody>
+</table>
+

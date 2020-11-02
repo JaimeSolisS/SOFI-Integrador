@@ -1,0 +1,30 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Formats.Tbl_Format_LoopRuleDetailModel
+<div class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped margin-bottom-none" id="tbl_FormatsLoopsRulesDetail">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th style="background-color: rgb(0, 136, 206) !important; color: whitesmoke !important;" class="text-center">#</th>
+                <th style="background-color: rgb(0, 136, 206) !important; color: whitesmoke !important;">@Resources.Request.lbl_Rule</th>
+                <th style="background-color: rgb(0, 136, 206) !important; color: whitesmoke !important;" width="230px">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._ListFormatLoopsRulesDetail_Temp)
+            {
+                <tr data-formatloopruletempid="@item.FormatLoopRuleTempID" data-seq="@item.Seq">
+                    <td>@item.Seq</td>
+                    <td>
+                        @Html.Raw(item.Description)
+                        @Html.Action("GetFormatsLoopsRulesDetailTableException", "Formats", new { FormatLoopRuleTempID = item.FormatLoopRuleTempID, TransactionID = Model.TransactionID, FormatID = Model.FormatID, Seq = item.Seq })
+                    </td>
+                    <td>
+                        <button class="tbl_btn_addNewConditionRule btn btn-info" title="@Resources.Request.lbl_AddCondition" type="button"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button class="tbl_btn_addNewExceptionRule btn btn-warning" title="@Resources.Request.lbl_AddException" type="button"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button class="tbl_btn_EditRule btn btn-success" title="@Resources.Request.lbl_EditRule" type="button"><span class="fa fa-edit"></span></button>
+                        <button class="tbl_btn_DeleteRule btn btn-danger" title="@Resources.Request.lbl_DeleteRule" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,196 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MachineSetup.ModalAddSetupParameterViewModel
+<div id="mo_AddSetupParameter" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.MFG.MachineSetups.lbl_AddSetupParameter</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="AD_Section">@Resources.MFG.MachineSetups.lbl_Section</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_section", Model.SectionsList, new { @class = "form-control select selectpicker", data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="AD_Parameter">@Resources.MFG.MachineSetups.lbl_Parameter</label>
+                            <div class="input">
+                                @Html.DropDownList("AD_Parameter", Model.ParameterList, new { @class = "form-control select selectpicker", data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div_no_list">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label" for="AD_UoM">@Resources.MFG.MachineSetups.lbl_UoM</label>
+                                @Html.DropDownList("AD_UoM", Model.UoMList, new { @class = "form-control select selectpicker", data_live_search = "true" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_Mandatory</label>
+                            <label class="switch switch-small">
+                                <input type="checkbox" id="IsMandatory" />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_IsAlert</label>
+                            <label class="switch switch-small">
+                                <input type="checkbox" id="IsAlert" />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_ValueIsFormula</label>
+                            <label class="switch switch-small">
+                                <input type="checkbox" id="ValueIsFormula" class="isFormula" />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div class="div_no_list">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label" for="AD_Min">@Resources.MFG.MachineSetups.lbl_Min</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control moldScrapValue onlydecimals" placeholder="0.00" id="AD_Min" name="AD_Min" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label" for="AD_Max">@Resources.MFG.MachineSetups.lbl_Max</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control moldScrapValue onlydecimals" placeholder="0.00" id="AD_Max" name="AD_Max" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_MinIsFormula</label>
+                            <label class="switch switch-small">
+                                <input type="checkbox" id="MinIsFormula" class="isFormula" />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="col-xs-6">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_MaxIsFormula</label>
+                            <label class="switch switch-small">
+                                <input type="checkbox" id="MaxIsFormula" class="isFormula" />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="div_MinFormula" style="display:none">
+
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label class="control-label" id="lbl_Reference" for="Reference">dato num</label>
+                                <div class="input-group col-sm-12">
+                                    <input type="text" id="datonum_min" class="form-control max-length" maxlength="255" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label class="control-label" for="formula_Parameter">@Resources.MFG.MachineSetups.lbl_Parameter</label>
+                                <div class="input">
+                                    @Html.DropDownList("formula_Parameter_min", Model.ParameterList, new { @class = "form-control select selectpicker", data_live_search = "true" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label class="control-label" for="formula_Parameter">operador</label>
+                                <div class="input">
+                                    <select id="formula_operator_min" class="form-control select selectpicker">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="*">*</option>
+                                        <option value="/">/</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <span> &nbsp;</span>
+                                <button type="button" class="btn btn-info" id="btn_addtoformula_min">add</button>
+                                <button type="button" class="btn btn-danger" id="btn_clearformula_min">clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+
+                <div id="div_MaxFormula" style="display:none">
+
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label class="control-label" id="lbl_Reference" for="Reference">dato num</label>
+                                <div class="input-group col-sm-12">
+                                    <input type="text" id="datonum_max" class="form-control max-length" maxlength="255" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label class="control-label" for="formula_Parameter">@Resources.MFG.MachineSetups.lbl_Parameter</label>
+                                <div class="input">
+                                    @Html.DropDownList("formula_Parameter_max", Model.ParameterList, new { @class = "form-control select selectpicker", data_live_search = "true" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label class="control-label" for="formula_Parameter">operador</label>
+                                <div class="input">
+                                    <select id="formula_operator_max" class="form-control select selectpicker">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="*">*</option>
+                                        <option value="/">/</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <span> &nbsp;</span>
+                                <button type="button" class="btn btn-info" id="btn_addtoformula_max">add</button>
+                                <button type="button" class="btn btn-danger" id="btn_clearformula_max">clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_AddSetupParameter" type="button" data-valueistypeformula="" data-ministypeformula="" data-maxistypeformula="" class="btn btn-info">@Resources.Common.btnAdd</button>
+            </div>
+        </div>
+    </div>
+</div>

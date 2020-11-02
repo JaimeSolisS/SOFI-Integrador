@@ -1,0 +1,40 @@
+﻿@model  WebSite.Areas.HR.Models.ViewModels.KioskEmployee.KioskCoursesViewModel
+<div id="_mo_Courses" class="modal fade" role="dialog" style="align-content:center;width:100% !important; height: 100vh; z-index:9">
+    <div class="modal-content" style="width:100% !important; height: 100vh">
+        <div class="modal-header">
+            <div class="row">
+                <div class="col-xs-11">
+                    <h1 class="modal-title">@Resources.HR.Kiosk.lbl_Courses</h1>
+                </div>
+                <div class="col-xs-1" style="padding-right:15px">
+                    <button type="button" id="btn_CloseCoursesModal" class="btn btn-danger HeaderModalButtons" style="width:100%;" aria-hidden="true">@Resources.Common.btn_Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            @if (!(Model.InscribePermit.permiso))
+            {
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alert alert-danger alert-dismissible col-xs-12" id="alert_background_image" role="alert">
+                            <div class="col-xs-12" style="text-align:center;">
+                                <h3 class="fg-white margin-bottom-none">@Model.InscribePermit.descripcion</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <h2>@Resources.HR.Kiosk.lbl_AvailableCourses</h2>
+            <div id="div_tbl_AvailableCourses">
+                @Html.Partial("_Tbl_AvailableCourses", Model)
+            </div>
+
+            <h2>@Resources.HR.Kiosk.lbl_InscribedCourses</h2>
+            <div id="div_tbl_InscribedCourses">
+                @Html.Partial("_Tbl_InscribedCourses", Model)
+            </div>
+
+        </div>
+    </div>
+</div>

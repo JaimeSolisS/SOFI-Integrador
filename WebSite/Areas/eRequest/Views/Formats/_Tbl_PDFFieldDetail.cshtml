@@ -1,0 +1,69 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Formats.CreateViewModel
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_PFDFieldDetail">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.Request.lbl_Field</th>
+            <th>@Resources.Request.lbl_Font</th>
+            <th>@Resources.Request.lbl_FontSize</th>
+            <th>@Resources.Request.lbl_FontColor</th>
+            <th>@Resources.Request.lbl_HorizontalPosition</th>
+            <th>@Resources.Request.lbl_VerticalPosition</th>
+            <th width="50">@Resources.Common.lbl_Options</th>
+
+        </tr>
+    </thead>
+    <tbody id="tbody_accessusers">
+        @foreach (var item in Model._PDFDetailFields)
+        {
+            <tr data-filedetailtempid="@item.FileDetailTempID">
+                <td>@item.FieldName</td>
+                <td>
+                    <select class="form-control select QuickUpdateSelect" data-columnname="FontName">
+                        @{
+                            <option value="0">
+                                @Resources.Request.lbl_NothingSelected
+                            </option>
+                            foreach (var Font in Model._FontListFE)
+                            {
+                                <option value="@Font.ValueID" data-valuetable="@Font.ValueID" @(((item.FontName != null) ? ((item.FontName.ToUpper() == Font.ValueID) ? "selected" : "") : ""))>
+                                    @Font.DisplayText
+                                </option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    @*@Html.TextBox("txt_FontSize", @item.FontSize, new { @autocomplete = "off", @class = "form-control txt_FontSize QuickUpdateText decimal-1-places", maxlength = 19 })*@
+                    <input type="text" id="txt_FontSize" value="@item.FontSize" data-columnname="FontSize" class="form-control txt_FontSize QuickUpdateText decimal-1-places" autocomplete="off" maxlength="19">
+                </td>
+                <td>
+                    <select class="form-control select QuickUpdateSelect" data-columnname="FontColor">
+                        @{
+                            <option value="0">
+                                @Resources.Request.lbl_NothingSelected
+                            </option>
+                            foreach (var Font in Model._FontColorList)
+                            {
+                                <option value="@Font.ValueID" data-valuetable="@Font.ValueID" @(((item.FontColor != null) ? ((item.FontColor.ToUpper() == Font.ValueID) ? "selected" : "") : ""))>
+                                    @Font.DisplayText
+                                </option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    <input type="text" id="txt_PositionX" value="@item.PositionX" data-columnname="PositionX" class="form-control QuickUpdateText decimal-1-places" autocomplete="off">
+                    @*@Html.TextBox("txt_PositionX", @item.PositionX, new { @autocomplete = "off", @class = "form-control decimal-1-places" })*@
+                </td>
+                <td>
+                    <input type="text" id="txt_PositionY" value="@item.PositionY" data-columnname="PositionY" class="form-control QuickUpdateText decimal-1-places" autocomplete="off">
+                    @* @Html.TextBox("txt_PositionY", @item.PositionY, new { @autocomplete = "off", @class = "form-control decimal-1-places" })*@
+                </td>
+                <td>
+                    <button class="tbl_btn_DeleteConfigurationFieldPDF btn btn-danger" title="@Resources.Request.lbl_DeleteRule" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

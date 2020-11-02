@@ -1,0 +1,31 @@
+﻿@model List<Core.Entities.Chart_ComputerSetting>
+@foreach (var item in Model){
+<div id="chart_@item.Chart_SettingID" class="chartsdivs ChartShiftID_@item.ShiftID" data-chartsettingid="@item.Chart_SettingID">
+    <div class="row">
+        <div class="col-xs-5">
+            <h2 style="text-align:left;">@item.OptionsTitle</h2>
+        </div>
+        <div class="col-xs-6">
+            <h1 style="text-align:left;font-weight: bold;">  @item.ChartName</h1>
+        </div>
+    </div>
+       
+    @if (item.ChartID == 1)
+    {
+        <div id="ChartDiv_@item.Chart_SettingID"
+             style="position: relative;
+                 margin: auto;
+                 height: 50vh;
+                 width: 80vw;">
+            <canvas id="ChartCanvas_@item.Chart_SettingID"></canvas>
+        </div>
+    } 
+    else
+    {
+        <div class="chart-holder" id="ChartDiv_@item.Chart_SettingID"  >
+
+        </div>
+    }
+</div>
+}
+

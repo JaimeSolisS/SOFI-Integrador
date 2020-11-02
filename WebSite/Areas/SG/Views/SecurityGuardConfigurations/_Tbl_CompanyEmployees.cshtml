@@ -1,0 +1,47 @@
+﻿@model List<Core.Entities.VendorUser>
+<div class="slider">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped margin-bottom-none" id="tblCompanyEmployees">
+        <thead>
+            <tr>
+                <th class="bg-info text-white">@Resources.SG.SecurityGuard.lbl_PersonName</th>
+                <th class="bg-info text-white">@Resources.SG.SecurityGuard.lbl_Status</th>
+                <th class="bg-info text-white">@Resources.SG.SecurityGuard.lbl_ExpirationDate</th>
+                <th class="bg-info text-white w-200">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="ui-state-default">
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-lg" data-vendoruserid="@item.VendorUserID" data-vendorid="@item.VendorID">
+                    <td>@item.FullName</td>
+                    <td class="text-center font-bold text-blue-dark">
+                        @if (item.Enabled)
+                        {
+                            @Resources.SG.SecurityGuard.lbl_Active
+                        }
+                        else
+                        {
+                            @Resources.SG.SecurityGuard.lbl_Inactive
+                        }
+                    </td>
+                    <td class="text-center @item.ExpirationDateClass">@item.ExpirationDate.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        <div class="btn-group btn-group-lg">
+                            <button class="btn btn-info printLabel" data-referenceid="@item.VendorUserID"
+                                    data-referencetypeid="@item.ReferenceTypeID" title="@Resources.Common.lbl_Print">
+                                <span class="glyphicon glyphicon-print"></span>
+                            </button>
+                            <button class="btn btn-success editVendorUser" title="@Resources.Common.lbl_Edit">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </button>
+                            <button class="btn btn-danger deleteVendorUser" title="@Resources.Common.lbl_Delete">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

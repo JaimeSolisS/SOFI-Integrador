@@ -1,0 +1,243 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Request.CreateViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+
+            @if (Model.RequestID != 0)
+            {
+                if (Model.ViewReadOnly)
+                {
+                    <h2 class="remove-margins"> @Resources.Request.lbl_Folio : <span class="Format-Title">@Model.Folio</span></h2>
+                }
+                else
+                {
+                    <h2 class="remove-margins"> @Resources.Request.lbl_EditFolio : <span class="Format-Title">@Model.Folio</span></h2>
+                }
+
+            }
+            else
+            {
+                <h2 class="remove-margins"> @Resources.Request.H_CreateRequest : <span class="Format-Title">@Model.EntityFormat.FormatName</span> <span class="Format-Title">@Model.Folio</span> </h2>
+            }
+        </div>
+        <div class="pull-right">
+            @if (Model.ViewReadOnly)
+            {
+                <button class="btn btn-primary btn-cancel-back" id="btnBack" title="@Resources.Common.btn_Back"><span class="fa fa-arrow-left"></span>@Resources.Common.btn_Back</button>
+            }
+            else
+            {
+                <button class="btn btn-danger btn-cancel-back" id="btnCancel" title="@Resources.Common.btnCancel"><span class="fa fa-ban"></span>@Resources.Common.btnCancel</button>
+                if (Model.RequestID != 0)
+                {
+                    <button id="btn_SaveRequest" class="btn btn-success @Model.Btn_Save_ID" title="@Resources.Common.lbl_Edit"><span class="fa fa-floppy-o"></span>@Resources.Common.lbl_Edit</button>
+                }
+                else
+                {
+                    <button id="btn_SaveRequest" class="btn btn-success @Model.Btn_Save_ID" title="@Resources.Common.btn_Create"><span class="fa fa-plus-circle"></span>@Resources.Common.btn_Create </button>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h2 class="panel-title">
+                    @Resources.Request.lbl_General
+                </h2>
+            </div>
+
+            <div class="panel-body">
+                <form id="create-form" class="lobi-form">
+                    <fieldset>
+                        <div class="row">
+                            @if (Model.EntityFields != null && Model.EntityFields.FirstOrDefault(w => w.ValueID == "Facility").IsVisible)
+                            {
+                                <div class="col-xs-12 col-sm-4 col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="MaterialOwned">@(Model.EntityFields.FirstOrDefault(w => w.ValueID == "Facility").FieldName)</label>
+                                        @Html.DropDownList("MaterialOwned", Model.FacilityList, htmlAttributes: new { @class = "form-control select", @Model.disabled })
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.EntityFields != null && Model.EntityFields.FirstOrDefault(w => w.ValueID == "RequestDate").IsVisible)
+                            {
+                                <div class="col-xs-12 col-sm-4 col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="txt_RequestDate">@(Model.EntityFields.FirstOrDefault(w => w.ValueID == "RequestDate").FieldName)</label>
+                                        <input type="text" id="txt_RequestDate" class="form-control customdatepicker datetimepicker" name="txt_RequestDate"
+                                               style="text-align: center;border-radius: 4px;" value="@Model.RequestDate" disabled>
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.EntityFields != null && Model.EntityFields.FirstOrDefault(w => w.ValueID == "Department").IsVisible)
+                            {
+                                <div class="col-xs-12 col-sm-4 col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="DepeartmentID">@(Model.EntityFields.FirstOrDefault(w => w.ValueID == "Department").FieldName)</label>
+                                        @Html.DropDownList("DepeartmentID", Model.DepartmentList, htmlAttributes: new { @class = "form-control select", title = Resources.Common.chsn_SelectOption })
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.EntityFields != null && Model.EntityFields.FirstOrDefault(w => w.ValueID == "Format").IsVisible)
+                            {
+                                <div class="col-xs-12 col-sm-4 col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label" for="DepeartmentID">@(Model.EntityFields.FirstOrDefault(w => w.ValueID == "Format").FieldName)</label>
+                                        @Html.DropDownList("FormatID", Model.FormatList, htmlAttributes: new { @class = "form-control select", @Model.disabled, title = Resources.Common.chsn_SelectOption })
+                                    </div>
+                                </div>
+                            }
+
+                            @Html.Action("GetConfiguration", "AdditionalFields", new { Area = "", ReferenceID = Model.RequestID, FormatID = Model.FormatID, ModuleName = "Requests", ViewReadOnly = @Model.ViewReadOnly })
+
+                            @if (Model.EntityFields != null && Model.EntityFields.FirstOrDefault(w => w.ValueID == "Concept").IsVisible)
+                            {
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="Justification">@(Model.EntityFields.FirstOrDefault(w => w.ValueID == "Concept").FieldName)</label>
+                                        <textarea type="text" id="Justification" name="Justification" maxlength="500" rows="3" class="max-lenght form-control" style="resize: none; @Model.disabled" @Model.disabled>@Model.ConceptValue</textarea>
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.EntityFields != null && Model.EntityFields.FirstOrDefault(w => w.ValueID == "Specification").IsVisible)
+                            {
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="Specification">@(Model.EntityFields.FirstOrDefault(w => w.ValueID == "Specification").FieldName)</label>
+                                        <textarea type="text" id="Specification" name="Specification" maxlength="500" rows="3" class="max-lenght form-control" style="resize: none;" @Model.disabled>@Model.SpecificationValue</textarea>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+
+        @if (Model.EntityFormat.HasDetail)
+        {
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h2 class="panel-title">
+                        @Resources.Request.lbl_Detail
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <form id="create-form" class="lobi-form">
+                        <fieldset>
+                            <div class="row">
+                            @Html.Action("GetDetail", "Request", new { Area = "", RequestID = Model.RequestID, FormatID = Model.FormatID, ViewReadOnly = @Model.ViewReadOnly })
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        }
+        @if (Model.EntityFormat.HasAttachment)
+        {
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h2 class="panel-title">
+                        @Resources.Request.lbl_Attachments
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    @if (!Model.ViewReadOnly)
+                    {
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="border-dashed-2">
+                                    <form action="~/Attachments/SaveDropzoneJsUploadedFiles" class="form-dropzone form-dropzone-Opportunity needsclick dz-clickable h-150">
+                                        @Html.Hidden("ReferenceID", Model.TempAttachmentID)
+                                        @Html.Hidden("AttachmentType", "TEMPID")
+                                        <div class="dz-message center-content padding-top-10">
+                                            <img src="~/Content/img/UploadCloud.png" />
+                                        </div>
+                                        <div class="center-content">
+                                            @Resources.Common.lbl_Dropfiles
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="div_AttachmentsTable">
+                                @Html.Partial("_AttachmentsTable", Model.FormatMediaList)
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        }
+        <div class="pull-right">
+            @if (Model.ViewReadOnly)
+            {
+                <button class="btn btn-primary btn-cancel-back" title="@Resources.Common.btn_Back"><span class="fa fa-arrow-left"> @Resources.Common.btn_Back </span></button>
+            }
+            else
+            {
+                <button class="btn btn-danger btn-cancel-back" title="@Resources.Common.btnCancel"><span class="fa fa-ban"> @Resources.Common.btnCancel </span></button>
+                if (Model.RequestID != 0)
+                {
+                    <button class="btn btn-success @Model.Btn_Save_ID" title="@Resources.Common.lbl_Edit"><span class="fa fa-floppy-o"> @Resources.Common.lbl_Edit </span></button>
+                }
+                else
+                {
+                    <button class="btn btn-success @Model.Btn_Save_ID" title="@Resources.Common.btn_Create"><span class="fa fa-plus-circle"> @Resources.Common.btn_Create </span></button>
+                }
+            }
+            <br />
+            <br />
+        </div>
+    </div>
+    @Html.Hidden("NewEdit_RequestID", Model.RequestID)
+
+</div>
+
+@Html.Partial("_ImageResourceModal")
+
+
+@section Styles
+    {
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js" charset="utf-8"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/summernote/summernote.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/eRequest/Request/Index.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Scripts/eRequest/Request/Create.js?v20200908"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+
+            var LangResources = {
+                msg_CancelReqCreate: "@Html.Raw(Resources.Request.msg_CancelReqCreate)",
+                chsn_SelectOption: "@Html.Raw(Resources.Common.chsn_SelectOption)",
+                msg_CreateReqConfirmation: "@Html.Raw(Resources.Request.msg_CreateReqConfirmation)",
+            };
+
+            CreateInit(LangResources);
+        });
+    </script>
+}
+
+

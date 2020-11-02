@@ -1,0 +1,27 @@
+﻿@model List<Core.Entities.KioskExchangeableItem>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_AvailableItems">
+    <thead>
+        <tr>
+            <th colspan="3" class="bg-red HeaderTableStyle">@Resources.HR.Kiosk.lbl_AvailableItems</th>
+        </tr>
+        <tr class="font-size-sm bg-primary">
+            <th class="fa-2x">@Resources.HR.Kiosk.lbl_Concept</th>
+            <th>@Resources.HR.Kiosk.lbl_Points</th>
+            <th style="width:162px">@Resources.HR.Kiosk.lbl_Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="row-available-items" data-entityid="@item.ID">
+                <td class="h4">@item.Articulo</td>
+                <td class="text-center h4 ItemCostList">@item.Costo</td>
+                <td class="h5" style="align-content:center">
+                    <span class="btn btn-danger StandardUserButton RemoveItemToList padding-10">-</span>
+                    <span class="btn StandardUserButton QtyItemOfList padding-10">0</span>
+                    <span class="btn btn-success StandardUserButton AddItemToList padding-10">+</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

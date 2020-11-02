@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="BtnOK_Messages" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="btn_Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="btn_ConfirmNO" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="btn_ConfirmYES" xml:space="preserve">
+    <value>SI</value>
+  </data>
+  <data name="gvH_DateAdded" xml:space="preserve">
+    <value>Creado En</value>
+  </data>
+  <data name="gvH_DateLastMaint" xml:space="preserve">
+    <value>Última actualización</value>
+  </data>
+  <data name="gvH_Enabled" xml:space="preserve">
+    <value>Habilitado</value>
+  </data>
+  <data name="gvH_Options" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
+  <data name="gvH_UpdatedBy" xml:space="preserve">
+    <value>Actualizado por</value>
+  </data>
+  <data name="gvH_UserName" xml:space="preserve">
+    <value>Nombre de usuario</value>
+  </data>
+  <data name="lbl_AttachFiles" xml:space="preserve">
+    <value>Arrastre archivos, o buscar</value>
+  </data>
+  <data name="lbl_CurrentPage" xml:space="preserve">
+    <value>Página {0} de {1}</value>
+  </data>
+  <data name="lbl_Filters" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="lbl_SearchByAll" xml:space="preserve">
+    <value>Buscar ...</value>
+  </data>
+  <data name="lbl_TotalRecords" xml:space="preserve">
+    <value>Registros</value>
+  </data>
+  <data name="title_Success" xml:space="preserve">
+    <value>¡Éxito!</value>
+  </data>
+  <data name="title_warning" xml:space="preserve">
+    <value>Advertencia!</value>
+  </data>
+  <data name="tt_AddNew" xml:space="preserve">
+    <value>Agregar nuevo</value>
+  </data>
+  <data name="tt_Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="tt_DeleteItem" xml:space="preserve">
+    <value>Eliminar este elemento</value>
+  </data>
+  <data name="tt_DisableRecord" xml:space="preserve">
+    <value>Deshabilitar este registro</value>
+  </data>
+  <data name="tt_DobleClickEdit" xml:space="preserve">
+    <value>Doble clic para editar el campo</value>
+  </data>
+  <data name="tt_Edit" xml:space="preserve">
+    <value>Edita esta fila</value>
+  </data>
+  <data name="tt_ExportToExcel" xml:space="preserve">
+    <value>Exportar información a excel</value>
+  </data>
+  <data name="tt_GoHome" xml:space="preserve">
+    <value>Ir a la página de inicio</value>
+  </data>
+  <data name="tt_ReturnToList" xml:space="preserve">
+    <value>Regresar a la lista</value>
+  </data>
+  <data name="tt_Save" xml:space="preserve">
+    <value>Guardar información</value>
+  </data>
+  <data name="tt_UpdateInformation" xml:space="preserve">
+    <value>Actualizar Información</value>
+  </data>
+  <data name="btnAdd" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="title_SpecialAccess" xml:space="preserve">
+    <value>Acceso especial requerido</value>
+  </data>
+  <data name="btn_UpdateDownTime" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="lbl_Department" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="lbl_DocumentType" xml:space="preserve">
+    <value>Tipo de documento</value>
+  </data>
+  <data name="lbl_Seq" xml:space="preserve">
+    <value>Secuencia</value>
+  </data>
+  <data name="lbl_Status" xml:space="preserve">
+    <value>Estatus</value>
+  </data>
+  <data name="lbl_ChangeRequest" xml:space="preserve">
+    <value>Cambiar solicitud</value>
+  </data>
+  <data name="lbl_Options" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
+  <data name="btn_Search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="title_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="btn_Approve" xml:space="preserve">
+    <value>Aprobar</value>
+  </data>
+  <data name="btn_Reject" xml:space="preserve">
+    <value>Rechazar</value>
+  </data>
+  <data name="btn_Submit" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="btn_Back" xml:space="preserve">
+    <value>Regresar</value>
+  </data>
+  <data name="btn_Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="tt_ChangeStatus" xml:space="preserve">
+    <value>Cambiar estatus</value>
+  </data>
+  <data name="lbl_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="lbl_ErrorMessage" xml:space="preserve">
+    <value>Lo sentimos...</value>
+  </data>
+  <data name="lbl_ErrorMessage2" xml:space="preserve">
+    <value>Se produjo un error inesperado en nuestro sitio web. El administrador del sitio web ha sido notificado.</value>
+  </data>
+  <data name="gvH_File" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="lbl_Createdby" xml:space="preserve">
+    <value>Actualizado por</value>
+  </data>
+  <data name="lbl_CreatedOn" xml:space="preserve">
+    <value>Creado en</value>
+  </data>
+  <data name="lbl_FileName" xml:space="preserve">
+    <value>Nombre de archivo</value>
+  </data>
+  <data name="title_Resource" xml:space="preserve">
+    <value>Recurso</value>
+  </data>
+  <data name="lbl_Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="lbl_Update" xml:space="preserve">
+    <value>Actualización</value>
+  </data>
+  <data name="tt_Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="btn_New" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="btn_Accept" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="gvH_Select" xml:space="preserve">
+    <value>Seleccionar</value>
+  </data>
+  <data name="btn_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="btn_Select" xml:space="preserve">
+    <value>Seleccionar</value>
+  </data>
+  <data name="tt_TestSMS" xml:space="preserve">
+    <value>Prueba SMS</value>
+  </data>
+  <data name="lbl_English" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="lbl_Spanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="lbl_Search" xml:space="preserve">
+    <value>Buscar...</value>
+  </data>
+  <data name="lbl_Loading" xml:space="preserve">
+    <value>Cargando...</value>
+  </data>
+  <data name="lbl_ChangeLanguage" xml:space="preserve">
+    <value>Cambiar Idioma</value>
+  </data>
+  <data name="ProfileName" xml:space="preserve">
+    <value>Nombre del perfil</value>
+  </data>
+  <data name="lbl_Delete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="dtatbl_info" xml:space="preserve">
+    <value>Mostrando la página _PAGE_ de _PAGES_</value>
+  </data>
+  <data name="dtatbl_LengthMenu" xml:space="preserve">
+    <value>Mostrar _MENU_ registros por página</value>
+  </data>
+  <data name="dtatbl_sFirst" xml:space="preserve">
+    <value>Primero</value>
+  </data>
+  <data name="dtatbl_sLast" xml:space="preserve">
+    <value>Último</value>
+  </data>
+  <data name="dtatbl_sNext" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="dtatbl_sPrevious" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="dtatbl_sSearch" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="lbl_ChangeFacility" xml:space="preserve">
+    <value>Cambiar Edificio</value>
+  </data>
+  <data name="title_ConfirmDelete" xml:space="preserve">
+    <value>Confirmar borrar</value>
+  </data>
+  <data name="tt_Reload" xml:space="preserve">
+    <value>Recargar</value>
+  </data>
+  <data name="lbl_Menus" xml:space="preserve">
+    <value>Menús</value>
+  </data>
+  <data name="btn_Create" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="dtatbl_sEmptyTable" xml:space="preserve">
+    <value>Ningún dato disponible en esta tabla</value>
+  </data>
+  <data name="dtatbl_sInfoEmpty" xml:space="preserve">
+    <value>Mostrando registros del 0 al 0 de un total de 0 registros</value>
+  </data>
+  <data name="dtatbl_sInfoFiltered" xml:space="preserve">
+    <value>(filtrado de un total de _MAX_ registros)</value>
+  </data>
+  <data name="dtatbl_sLoadingRecords" xml:space="preserve">
+    <value>Cargando...</value>
+  </data>
+  <data name="dtatbl_sProcessing" xml:space="preserve">
+    <value>Procesando...</value>
+  </data>
+  <data name="dtatbl_sSortAsc" xml:space="preserve">
+    <value>: Activar para ordenar la columna de manera ascendente</value>
+  </data>
+  <data name="dtatbl_sSortDesc" xml:space="preserve">
+    <value>: Activar para ordenar la columna de manera descendente</value>
+  </data>
+  <data name="dtatbl_sZeroRecords" xml:space="preserve">
+    <value>No se encontraron resultados</value>
+  </data>
+  <data name="chsn_NoResults" xml:space="preserve">
+    <value>No hay datos</value>
+  </data>
+  <data name="chsn_SelectOption" xml:space="preserve">
+    <value>Seleccione una opción</value>
+  </data>
+  <data name="chsn_SelectMultipleOption" xml:space="preserve">
+    <value>Seleccione algunas opciones</value>
+  </data>
+  <data name="lbl_Detail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="lbl_Reprint" xml:space="preserve">
+    <value>Re imprimir</value>
+  </data>
+  <data name="lbl_To" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <data name="lbl_EndDate" xml:space="preserve">
+    <value>Fecha final</value>
+  </data>
+  <data name="lbl_StartDate" xml:space="preserve">
+    <value>Fecha de inicio</value>
+  </data>
+  <data name="lbl_InvalidAccess" xml:space="preserve">
+    <value>Acceso no valido a esta opción</value>
+  </data>
+  <data name="lbl_Disable" xml:space="preserve">
+    <value>Deshabilitar</value>
+  </data>
+  <data name="lbl_Updatedby" xml:space="preserve">
+    <value>Actualizado por</value>
+  </data>
+  <data name="gvH_Print" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="tt_Back" xml:space="preserve">
+    <value>Regresar</value>
+  </data>
+  <data name="lbl_Facility" xml:space="preserve">
+    <value>Planta</value>
+  </data>
+  <data name="TagAll" xml:space="preserve">
+    <value>(Todos)</value>
+  </data>
+  <data name="lbl_Dropfiles" xml:space="preserve">
+    <value>Arrastre los archivos para adjuntar o busque los archivos</value>
+  </data>
+  <data name="lbl_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="lbl_Culture" xml:space="preserve">
+    <value>Cultura</value>
+  </data>
+  <data name="gvH_UpdatedOn" xml:space="preserve">
+    <value>Actualizado en</value>
+  </data>
+  <data name="ntf_Nofile" xml:space="preserve">
+    <value>No se encontro el archivo</value>
+  </data>
+  <data name="btn_SaveChanges" xml:space="preserve">
+    <value>Guardar cambios</value>
+  </data>
+  <data name="lbl_Disabled" xml:space="preserve">
+    <value>Deshabilitada</value>
+  </data>
+  <data name="lbl_Enabled" xml:space="preserve">
+    <value>Habilitada</value>
+  </data>
+  <data name="lbl_NO" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="lbl_Yes" xml:space="preserve">
+    <value>Si</value>
+  </data>
+  <data name="lbl_PrintReport" xml:space="preserve">
+    <value>Imprimir reporte</value>
+  </data>
+  <data name="lbl_language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="ntf_DeleteAttachment" xml:space="preserve">
+    <value>¿Está seguro que desea eliminar este archivo adjunto?</value>
+  </data>
+  <data name="noneSelected" xml:space="preserve">
+    <value>Ninguno seleccionado</value>
+  </data>
+  <data name="placeholder" xml:space="preserve">
+    <value>Seleccionar opciones</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="selectAll" xml:space="preserve">
+    <value>Seleccionar todos</value>
+  </data>
+  <data name="selectedOptions" xml:space="preserve">
+    <value>Seleccionado</value>
+  </data>
+  <data name="unselectAll" xml:space="preserve">
+    <value>Deseleccionar todos</value>
+  </data>
+  <data name="lbl_Print" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="lbl_View" xml:space="preserve">
+    <value>Ver</value>
+  </data>
+  <data name="lbl_Filterbydate" xml:space="preserve">
+    <value>Filtrar por fecha</value>
+  </data>
+  <data name="lbl_DatetypeFilter" xml:space="preserve">
+    <value>Tipo de filtro fecha</value>
+  </data>
+  <data name="lbl_Processing" xml:space="preserve">
+    <value>Procesando ...</value>
+  </data>
+  <data name="lbl_ViewAttachments" xml:space="preserve">
+    <value>Ver archivos adjuntos</value>
+  </data>
+  <data name="lbl_ViewDetails" xml:space="preserve">
+    <value>Ver detalles</value>
+  </data>
+  <data name="btn_Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="tilte_login" xml:space="preserve">
+    <value>Iniciar sesión en CEMA</value>
+  </data>
+  <data name="lbl_BuildBy" xml:space="preserve">
+    <value>Desarrollado por</value>
+  </data>
+  <data name="lbl_Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="nft_FileNotExists" xml:space="preserve">
+    <value>el archivo no existe</value>
+  </data>
+  <data name="lbl_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="gvH_RowNumber" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="lbl_By" xml:space="preserve">
+    <value>Por</value>
+  </data>
+  <data name="lbl_On" xml:space="preserve">
+    <value>En</value>
+  </data>
+  <data name="lbl_False" xml:space="preserve">
+    <value>Falso</value>
+  </data>
+  <data name="lbl_True" xml:space="preserve">
+    <value>Cierto</value>
+  </data>
+  <data name="ntf_DeleteItem" xml:space="preserve">
+    <value>¿Está seguro que desea eliminar este registro?</value>
+  </data>
+  <data name="lbl_Create" xml:space="preserve">
+    <value>Crear nuevo</value>
+  </data>
+  <data name="ntf_ExpiredSession" xml:space="preserve">
+    <value>Session Expirada</value>
+  </data>
+  <data name="lbl_Warning" xml:space="preserve">
+    <value>¡Atención!</value>
+  </data>
+  <data name="lbl_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="lbl_Modifiedby" xml:space="preserve">
+    <value>Modificado por</value>
+  </data>
+  <data name="btn_Clone" xml:space="preserve">
+    <value>Clonar</value>
+  </data>
+  <data name="btnDeleteTag" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="tt_BrowseTag" xml:space="preserve">
+    <value>Explorar ..</value>
+  </data>
+  <data name="nft_FileUploaded" xml:space="preserve">
+    <value>{0} fue cargado correctamente</value>
+  </data>
+  <data name="lbl_Clear" xml:space="preserve">
+    <value>Limpiar</value>
+  </data>
+  <data name="lbl_Del" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="ntf_InValidUser" xml:space="preserve">
+    <value>Usuario invalido</value>
+  </data>
+  <data name="ntf_ValidUser" xml:space="preserve">
+    <value>Usuario valido</value>
+  </data>
+  <data name="lbl_FileType" xml:space="preserve">
+    <value>Tipo de Archivo</value>
+  </data>
+  <data name="lbl_Refresh" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="lbl_Exit" xml:space="preserve">
+    <value>Salir</value>
+  </data>
+  <data name="lbl_CopyAs" xml:space="preserve">
+    <value>Copiar Como</value>
+  </data>
+  <data name="btn_Next" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="btn_Prev" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="btn_ShowAll" xml:space="preserve">
+    <value>Mostrar Todo</value>
+  </data>
+  <data name="lbl_Domain" xml:space="preserve">
+    <value>Dominio</value>
+  </data>
+  <data name="lbl_Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="lbl_User" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="lbl_Access" xml:space="preserve">
+    <value>Acceso</value>
+  </data>
+  <data name="lbl_UserAndPassword" xml:space="preserve">
+    <value>Usuario y contraseña</value>
+  </data>
+  <data name="lbl_Message" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="lbl_Title" xml:space="preserve">
+    <value>Titulo</value>
+  </data>
+  <data name="lbl_Week" xml:space="preserve">
+    <value>Semana</value>
+  </data>
+  <data name="lbl_Year" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="lbl_Continue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="lbl_Help" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
+  <data name="lbl_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lbl_Enable" xml:space="preserve">
+    <value>Habilitar</value>
+  </data>
+  <data name="lbl_Enable1" xml:space="preserve">
+    <value>Habilitar</value>
+  </data>
+  <data name="lbl_DropzoneClickToTake" xml:space="preserve">
+    <value>Click aquí para tomar una foto de la identificación</value>
+  </data>
+</root>

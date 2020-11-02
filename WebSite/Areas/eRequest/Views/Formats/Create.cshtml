@@ -1,0 +1,464 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Formats.CreateViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="remove-margins"> @Resources.Request.H_Format: <span class="Format-Title">@Model.EntityFormat.FormatName</span></h2>
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-danger btn-cancel-back" title="@Resources.Common.btnCancel"><span class="fa fa-ban"> @Resources.Common.btnCancel </span></button>
+            <button id="btn_SaveFormat" class="btn btn-success" type="button" title="@Resources.Common.btn_Save"><span class="fa fa-save"> @Resources.Common.btn_Save </span></button>
+        </div>
+    </div>
+    <div class="panel panel-default tabs">
+        <ul class="nav nav-tabs nav-justified">
+            <li class="panel panel-info" id="generic_tab">
+                <a>@Resources.Request.lbl_General</a>
+            </li>
+            <li id="rules_tab">
+                <a>@Resources.Request.lbl_RuleConfiguration</a>
+            </li>
+            <li id="formatPDF_tab">
+                <a>@Resources.Request.lbl_SetUpPDF</a>
+            </li>
+        </ul>
+        <div id="div_tab_Generic">
+            <div class="content-frame">
+                <div class="content-frame-body content-frame-body-all div_tab_Generic div_tab_hide padding-top-0">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading  ui-draggable-handle">
+                            <header>
+                                <h2 class="panel-title">@Resources.Request.lbl_General</h2>
+                            </header>
+                        </div>
+                        <div class="panel-body">
+                            <form id="create-form" class="lobi-form">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4 col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label" for="txt_name">@Resources.Request.lbl_Name:</label>
+                                                @Html.TextBox("txt_name", Model.EntityFormat.FormatName, new { @class = "form-control max-length", @autocomplete = "off", @maxlength = "100" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">@Resources.Request.lbl_2FA:</label>
+                                                <br />
+                                                <div class="btn-group">
+                                                    <button id="btn_Y2fa" class="btn @(Model.EntityFormat.Use2FA ? "btn-success fa" : "btn-default")" type="button">@Resources.Common.lbl_Yes</button>
+                                                    <button id="btn_N2fa" class="btn  @(Model.EntityFormat.Use2FA ? "btn-default" : "btn-danger fa")" type="button">@Resources.Common.lbl_NO</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label" for="directapproval">@Resources.Request.lbl_DirectApproval:</label>
+                                                <br />
+                                                <div class="btn-group">
+                                                    <button id="btn_YDirectA" class="btn @(Model.EntityFormat.DirectApproval ? "btn-success fa" : "btn-default")" type="button">@Resources.Common.lbl_Yes</button>
+                                                    <button id="btn_NDirectA" class="btn  @(Model.EntityFormat.DirectApproval ? "btn-default" : "btn-danger fa")" type="button">@Resources.Common.lbl_NO</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label" for="allowattachments">@Resources.Request.lbl_AllowAttachments:</label>
+                                                <br />
+                                                <div class="btn-group">
+                                                    <button id="btn_YAA" class="btn @(Model.EntityFormat.HasAttachment ? "btn-success fa" : "btn-default")" type="button">@Resources.Common.lbl_Yes</button>
+                                                    <button id="btn_NAA" class="btn  @(Model.EntityFormat.HasAttachment ? "btn-default" : "btn-danger fa")" type="button">@Resources.Common.lbl_NO</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading  ui-draggable-handle">
+                            <header>
+                                <h2 class="panel-title">@Resources.Request.lbl_FormatFields</h2>
+                                <ul class="panel-controls">
+                                    <li class="label-control"><button id="btn_AddField" class="btn btn-success" title="@Resources.Common.btnAdd"><span class="fa fa-plus-circle"> @Resources.Common.btnAdd </span></button></li>
+                                </ul>
+
+                            </header>
+
+                        </div>
+                        <div class="panel-body">
+                            <div id="div_tbl_additional_field">
+                                <form id="create-form-tbl-formatsfields" class="lobi-form">
+                                    <fieldset>
+                                        <div id="div_tbl_formatfields">
+                                            @Html.Partial("_Tbl_FormatsFields", Model._CustomFieldsList)
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading  ui-draggable-handle">
+                            <header>
+                                <h2 class="panel-title">@Resources.Request.lbl_DetailFields</h2>
+                                <div class="btn-group" style="padding-left:10px;">
+                                    <button id="btn_YHD" class="btn @(Model.EntityFormat.HasDetail ? "btn-success fa" : "btn-default")" type="button">@Resources.Common.lbl_Yes</button>
+                                    <button id="btn_NHD" class="btn @(Model.EntityFormat.HasDetail ? "btn-default" : "btn-danger fa")" type="button">@Resources.Common.lbl_NO</button>
+                                </div>
+                                <ul class="panel-controls">
+                                    <li class="label-control yes-no-detail" @(Model.EntityFormat.HasDetail ? "" : "style=display:none;")><button id="btn_AddDetail" class="btn btn-success" title="@Resources.Common.btnAdd"><span class="fa fa-plus-circle"> @Resources.Common.btnAdd </span></button></li>
+                                </ul>
+                            </header>
+                        </div>
+                        <div class="panel-body yes-no-detail" @(Model.EntityFormat.HasDetail ? "" : "style=display:none;")>
+                            <form id="create-form-tbl-detailfields" class="lobi-form">
+                                <fieldset>
+                                    <div id="div_tbl_formatDetail">
+                                        @Html.Partial("_Tbl_DetailFields", Model._FormatGenericDetail)
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading  ui-draggable-handle">
+                            <header>
+                                <h2 class="panel-title">@Resources.Request.lbl_ApprovalPhases</h2>
+                            </header>
+                        </div>
+                        <div class="panel-body">
+                            <form id="form-tbl-approvalphase" class="lobi-form">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4 col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label" for="txt_name">@Resources.Request.lbl_Phase:</label>
+                                                @Html.TextBox("txt_PhaseName", "", new { @class = "form-control max-length", @autocomplete = "off", @maxlength = "100" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3">
+                                            <button id="btn_addphase" class="btn btn-lg btn-success" type="button" style="margin-top:10px;"><span class="fa fa-plus-circle"> @Resources.Common.btnAdd </span></button>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div id="div_tbl_CatalogsDetail">
+                                        @Html.Partial("_CatalogsDetailTable", Model._CatalogPhase)
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading  ui-draggable-handle">
+                            <header>
+                                <h2 class="panel-title">@Resources.Request.lbl_AccessFormat</h2>
+                                <ul class="panel-controls">
+                                    <li class="label-control"><button id="btn_showmodal_accessformat" class="btn btn-success" type="button"><span class="fa fa-plus-circle"> @Resources.Common.btnAdd </span></button></li>
+                                </ul>
+                            </header>
+                        </div>
+                        <div class="panel-body">
+                            <form id="form-tbl-accessformat" class="lobi-form">
+                                <fieldset>
+                                    @*<div class="row">
+                                            <div class="col-xs-12 col-sm-4 col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="txt_name">@Resources.Common.lbl_User:</label>
+                                                    <select id="txt_AssignResponsibleFormat" class="form-control select" data-live-search="true">
+                                                        <option value="0">@Resources.Common.chsn_SelectOption</option>
+                                                        <option value="new">-- @Resources.Common.tt_AddNew --</option>
+                                                        @foreach (var user in Model._UserList)
+                                                        {
+                                                            <option value="@user.ID" data-department="@user.DepartmentName" data-employeenumber="@user.EmployeeNumber">@user.FullName</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4 col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="txt_name">@Resources.Common.lbl_Facility:</label>
+                                                    <select id="txt_AssignFacilityFormat" class="form-control select" data-live-search="true">
+                                                        <option value="0">@Resources.Common.chsn_SelectOption</option>
+                                                        <option value="new">@Resources.Common.selectAll</option>
+                                                        @foreach (var facility in Model.FacilityList)
+                                                        {
+                                                            <option value="@facility.FacilityID">@facility.FacilityName</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4 col-md-3">
+
+                                            </div>
+                                        </div>
+                                        <br />*@
+                                    <div id="div_tbl_accessformat">
+                                        @Html.Partial("_Tbl_FormatAccess", Model._FormatAccessTemp)
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="div_tab_Rules">
+            <div class="content-frame">
+                <div class="content-frame-body content-frame-body-all div_tab_Rules div_tab_hide padding-top-0" style="display:none;">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading  ui-draggable-handle">
+                            <header>
+                                <h2 class="panel-title">@Resources.Request.lbl_RuleConfiguration</h2>
+                            </header>
+                        </div>
+                        <div class="panel-body">
+                            <form id="create-form" class="lobi-form">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4 col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label" for="FacilityListRuleID">@Resources.Common.lbl_Facility:</label>
+                                                @Html.DropDownList("FacilityListRuleID", (SelectList)Model.FacilityList, htmlAttributes: new { @class = "form-control select" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button id="btn_addrule" class="btn btn-success" type="button" title="@Resources.Common.btn_Save"><span class="fa fa-plus-circle"> @Resources.Common.btnAdd </span></button>
+                                    </div>
+                                    <div id="div_tbl_FormatsLoopRules">
+                                        @Html.Partial("_Tbl_FormatsLoopRules", Model._FormatsLoopsRulesTemp)
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="div_tab_FormatPDF">
+            <div class="content-frame">
+                <div class="content-frame-body content-frame-body-all div_tab_FormatPDF div_tab_hide padding-top-0" style="display:none;">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading  ui-draggable-handle">
+                            <header>
+                            </header>
+                        </div>
+                        <div class="panel-body">
+                            <form id="create-form" class="lobi-form">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label class="control-label"><b>@Resources.Request.H_Format:</b></label>
+                                                <label class="control-label" id="txt_filenameupload">@((Model.PDFFile != null) ? Model.PDFFile.FileName + ".PDF" : Resources.Request.lbl_NothingSelected)</label>
+                                                @if (@Model.PDFFile != null)
+                                                {
+                                                    <button id="btn_addFile" class="btn btn-success btn_addFile" type="button" title="@Resources.Request.lbl_ChangeFile">@Resources.Request.lbl_ChangeFile</button>
+                                                }
+                                                else
+                                                {
+                                                    <button id="btn_addFile" class="btn btn-success btn_addFile" type="button" title="@Resources.Request.lbl_AddFile">@Resources.Request.lbl_AddFile</button>
+                                                }
+
+                                                <button id="btn_ShowPDF" class="btn btn-success" type="button" data-fileurl="@Model.PDFFile.FullPath" title="@Resources.Common.lbl_View">@Resources.Common.lbl_View</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <br />
+                                        <div class="col-xs-5">
+                                            <div class="form-group">
+                                                <select id="ListFieldActiveToPDF" class="select form-control" title="@Resources.Request.lbl_NothingSelected"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="form-group">
+                                                <button id="btn_addPDFFieldConfiguration" class="btn btn-success" type="button" title="@Resources.Common.btnAdd"><span class="fa fa-plus-circle"> @Resources.Common.btnAdd </span></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4 pull-right">
+                                            <button id="btn_PrintPdf" class="btn btn-success  pull-right" type="button" title="@Resources.Common.btnAdd"><span class="fa fa-plus-circle"> @Resources.Common.lbl_Print </span></button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <div id="div_tbl_PDFFieldConfiguration">
+                                                    @Html.Partial("_Tbl_PDFFieldConfiguration", Model)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading  ui-draggable-handle">
+                            <header>
+                                <h2 class="panel-title">@Resources.Request.lbl_Detail</h2>
+                                <ul class="panel-controls">
+                                    <li class="label-control"><button id="btn_AddFieldDetailConfiguration" class="btn btn-success" title="@Resources.Common.btnAdd"><span class="fa fa-plus-circle"> @Resources.Common.btnAdd </span></button></li>
+                                </ul>
+                            </header>
+                        </div>
+                        <div class="panel-body">
+                            <div id="div_tbl_additional_field">
+                                <form id="create-form-tbl-formatsfields" class="lobi-form">
+                                    <fieldset>
+                                        <div id="div_tbl_PDFFieldDetail">
+                                            @Html.Partial("_Tbl_PDFFieldDetail", Model)
+                                        </div>
+                                        <div class="row">
+                                            <br />
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="txt_initial_horizontal_position">@Resources.Request.lbl_InitialHorizontalPosition:</label>
+                                                    @Html.TextBox("txt_initial_horizontal_position", "", new { @class = "form-control max-length decimal-1-places", @autocomplete = "off", @maxlength = "100" })
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="txt_maximum_number_of_details">@Resources.Request.lbl_MaximumNumberDetails:</label>
+                                                    @Html.TextBox("txt_maximum_number_of_details", "", new { @class = "form-control max-length decimal-1-places", @autocomplete = "off", @maxlength = "100" })
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="txt_line_spacing">@Resources.Request.lbl_LineSpacing:</label>
+                                                    @Html.TextBox("txt_line_spacing", "", new { @class = "form-control max-length decimal-1-places", @autocomplete = "off", @maxlength = "100" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading  ui-draggable-handle">
+                            <header>
+                                <h2 class="panel-title">@Resources.Request.lbl_SignatureConfiguration</h2>
+                                <ul class="panel-controls">
+                                    <li class="label-control"><button id="btn_AddPDFSignature" class="btn btn-success" title="@Resources.Common.btnAdd"><span class="fa fa-plus-circle"> @Resources.Common.btnAdd </span></button></li>
+                                </ul>
+                            </header>
+                        </div>
+                        <div class="panel-body">
+                            <div id="div_tbl_additional_field">
+                                <form id="create-form-tbl-formatsfields" class="lobi-form">
+                                    <fieldset>
+                                        <div id="div_tbl_PDFFieldSignature">
+                                            @Html.Partial("_Tbl_PDFConfigurationSignature", Model)
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row hidden">
+    <div class="col-xs-12">
+        <form action="~/eRequest/Formats/UploadFilesTemp?TransactionID=@Model.TransactionID" class="dropzone-uploadfile-filetemp needsclick dz-clickable h-150">
+        </form>
+    </div>
+</div>
+
+
+<div id="div_mo_EditDetail">
+
+</div>
+<div id="div_add_new_user">
+
+</div>
+<div id="div_add_access_user">
+
+</div>
+<div id="div_mo_new_rule">
+
+</div>
+<div id="div_mo_new_PDFField_DetailConfiguration">
+
+</div>
+<div id="div_mo_new_PDFField_SignatureConfiguration">
+
+</div>
+<div id="div_mo_new_approver">
+
+</div>
+<div id="div_search_user">
+
+</div>
+<div id="div_Mo_Create_Rule">
+
+</div>
+@Html.Partial("_m_EditCultures")
+@*@Html.Partial("_Mo_NewAccessFormat")*@
+
+<div id="div_Mo_NewField"></div>
+<div id="div_Mo_NewDetailField"></div>
+@Html.Hidden("SelectFormatID", Model.FormatID)
+@Html.Hidden("FormatGenericDetailIDVal")
+@Html.Hidden("TransactionID", Model.TransactionID)
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js" charset="utf-8"></script>
+    <script src="~/Scripts/PLUGINS/numpad/jquery.numpad.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/PLUGINS/summernote/summernote.js"></script>
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/PLUGINS/slideform/jquery.slideform.js"></script>
+    <script src="~/Scripts/PLUGINS/numeric/jquery.numeric.js"></script>
+    <script type="text/javascript" src="~/Scripts/eRequest/Formats/Create.js?20200904v249"></script>
+
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            var cultureID = '@(Session["CultureID"] != null ? Session["CultureID"].ToString() : "" )';
+            var LangResources = {
+                PrecitionLengthInvalid: "@Html.Raw(Resources.MFG.MachineSetups.msg_PrecitionLengthInvalid)",
+                NameMandatory: '@Html.Raw(Resources.MFG.MachineSetups.msg_NameMandatory)',
+                NameMandatoryES: '@Html.Raw(Resources.Request.msg_NameES)',
+                NameMandatoryEN: '@Html.Raw(Resources.Request.msg_NameEN)',
+                TypeMandatory: '@Html.Raw(Resources.Request.msg_TypeMandatory)',
+                lbl_yes: '@Html.Raw(Resources.Common.lbl_Yes)',
+                lbl_no: '@Html.Raw(Resources.Common.lbl_NO)',
+                msg_ErrorLength: '@Html.Raw(Resources.Request.msg_ErrorLength)',
+                msg_ErrorPrecision: '@Html.Raw(Resources.Request.msg_ErrorPrecision)',
+                msg_Delete_Confirm: '@Html.Raw(Resources.Request.msg_Delete_Confirm)',
+                msg_CancelFormatCreate: '@Html.Raw(Resources.Request.msg_CancelFormatCreate)',
+                msg_SaveChanges: '@Html.Raw(Resources.Request.msg_SaveChanges)',
+                msg_SaveChangesQ: '@Html.Raw(Resources.Request.msg_SaveChangesQ)',
+                msg_SelectFieldFormat: '@Html.Raw(Resources.Request.msg_SelectFieldFormat)',
+                msg_SelectDatePart: '@Html.Raw(Resources.Request.msg_SelectDatePart)',
+                msg_ThisFieldCanNotUse:  '@Html.Raw(Resources.Request.msg_ThisFieldCanNotUse)',
+                culture: cultureID.substr(0, 2).toLowerCase()
+            };
+
+            CreateInit(LangResources);
+        });
+    </script>
+}
+
+@section Styles
+    {
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+}

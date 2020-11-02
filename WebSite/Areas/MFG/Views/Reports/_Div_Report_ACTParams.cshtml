@@ -1,0 +1,108 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Reports.ACTParamsViewModel
+<div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Machines</label>
+            <div class="input">
+                @Html.ListBox("ddl_Machines_ACT", Model.MachinesList, new { @class = "multiple-select form-control", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Setups</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Setups_ACT", Model.SetupsList, new { @class = "form-control multiple-select selectpicker", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Materials</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Materials_ACT", Model.MaterialsList, new { @class = "form-control multiple-select selectpicker", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Process</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Process_ACT", Model.ProcessList, new { @class = "form-control multiple-select selectpicker", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Shifts</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Shifts_ACT", Model.ShiftsList, new { @class = "form-control multiple-select selectpicker", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Status</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Status_ACT", Model.StatusList, new { @class = "form-control multiple-select selectpicker", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Responsibles</label>
+            <div class="input">
+                @Html.DropDownList("ddl_Responsibles_ACT", Model.ResponsiblesList, new { @class = "form-control multiple-select selectpicker", multiple = "multiple", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_Attendant</label>
+            <div class='input'>
+                @Html.TextBox("txt_Attendant_ACT", "", htmlAttributes: new { @class = "form-control " })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_DateType</label>
+            <div class="input">
+                @Html.DropDownList("ddl_DateType_ACT", Model.TypeOfDateList, new { @class = "form-control select selectpicker DateDisable" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_StartDatetime</label>
+            <div class='input-group date'>
+                @Html.TextBox("txt_StartDatetime_ACT", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), htmlAttributes: new { @class = "form-control datetimepicker" })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3">
+        <div class="form-group">
+            <label class="control-label">@Resources.MFG.Reports.lbl_EndDatetime</label>
+            <div class='input-group date'>
+                @Html.TextBox("txt_EndDatetime_ACT", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), htmlAttributes: new { @class = "form-control datetimepicker" })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>

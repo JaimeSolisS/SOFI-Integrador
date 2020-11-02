@@ -1,0 +1,49 @@
+﻿@model List<Core.Entities.OpportunitiesProgram>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="opportunity_notifications_table">
+    <thead>
+        <tr class="font-size-lg">
+            <th class="bg-primary text-white" style="width:35px;"></th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_VacantNumber</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_VacantName</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Department</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_ExpirationDate</th>
+            <th class="bg-primary text-white">@Resources.MFG.OperationRecords.lbl_Shift</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Grade</th>
+            <th class="bg-primary text-white" style="width:120px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-opportunityprogramid="@item.OpportunityProgramID" data-departmentid="@item.DepartmentID"
+                data-descriptiontypeid="@item.DescriptionTypeID" data-descriptiontypevalueid="@item.DescriptionTypeValueID"
+                class="private-opportunityprogram-record font-size-lg">
+                <td class="details-control details-control-oppotunityprogram"></td>
+                <td class="tag-serial">
+                    @item.OpportunityNumber
+                    @if (item.NotificationsQty > 0)
+                    {
+                        <span class="btn bg-red fg-white pull-right span_NotificationsQty" title="@Resources.HR.Kiosk.lbl_UnreadedNotifications">@item.NotificationsQty</span>
+                    }
+                </td>
+                <td>@item.Name</td>
+                <td>@item.DepartmentName</td>
+                <td>@item.ExpirationDateFormatted</td>
+                <td>@item.ShiftDescription</td>
+                <td>@item.GradeName</td>
+                <td class="text-center">
+                    <button class="btn btn-info opportunity-details-info StandardUserButton text-center" style="padding-left:12px" title="@Resources.CI.DashboardManagement.tt_SettingsPlay">
+                        <span style="padding-top:0px; font-size:20px; padding-left:0px" class="glyphicon glyphicon-play"></span>
+                    </button>
+                    @if (item.EnableToApply)
+                    {
+                        <button class="btn btn-success opportunity-apply-vacancy StandardUserButton" style="padding-left:12px" title="@Resources.HR.Kiosk.lbl_ApplyVacancy">
+                            <span style="padding-top:0px; font-size:20px; padding-left:0px" class="glyphicon glyphicon-hand-down"></span>
+                        </button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

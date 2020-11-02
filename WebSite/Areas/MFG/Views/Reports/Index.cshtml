@@ -1,0 +1,83 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Reports.IndexViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="margin-none">@Resources.MFG.Reports.title_Reports</h2>
+            </div>
+            <div class="col-md-6">
+                <select id="report_list" class="form-control select pull-right">
+                    @foreach (var item in Model.ReportsList)
+                    {
+                        <option value="@item.CatalogDetailID">@item.DisplayText</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        @foreach (var item in Model.ReportsList)
+        {
+            if (item.CatalogDetailID != 0)
+            {
+                <div id="params_report_@item.CatalogDetailID" class="panel panel-primary params_panel" style="display:none;">
+                    @using (Html.BeginForm("GetReport_" + item.ValueID, "Reports", FormMethod.Post))
+                    {
+                        <div class="panel-heading ui-draggable-handle">
+                            <h3 class="panel-title">
+                                @Resources.MFG.Reports.lbl_ParametersFor @item.DisplayText
+                            </h3>
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-body">
+                            @*filtros especificaos del reporte, basados en el ValueID del report*@
+                            @Html.Action("GetParams_" + item.ValueID)
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                            <button class="btn btn-info btn-pretty btn_export" data-entityid="@item.CatalogDetailID">@Resources.MFG.Reports.lbl_Export</button>
+                        </div>
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>
+
+</style>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Scripts/PLUGINS/bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/jquery/jquery-ui.min.css" rel="stylesheet" />
+
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/jquery/jquery-ui.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Scripts/MFG/Reports/Index.js?v20200519" charset="utf-8"></script>
+    <script>
+        $(document).ready(function () {
+            var LangResources = {
+                SelectMachine: '@Resources.MFG.MachineSetups.lbl_SelectMachine',
+                SelectMaterial: '@Resources.MFG.MachineSetups.lbl_SelectMaterial',
+                TagAll: "@Resources.Common.TagAll",
+                noneSelected: "@Resources.Common.noneSelected"
+            }
+            IndexInit(LangResources);
+        });
+    </script>
+}
+
+
+

@@ -1,0 +1,46 @@
+﻿@model List<Core.Entities.Badge>
+<div id="mo_PrintBadgesLabel" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:1; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header">
+            <h1 class="modal-title">@Resources.SG.SecurityGuard.ttl_SecurityGuard</h1>
+        </div>
+        <div class="modal-body padding-none" style="height:80%; overflow-y:auto">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <h1>@Resources.SG.SecurityGuard.lbl_ReprintAccessLabels</h1>
+                </div>
+            </div>
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="divVendorUsersTable">
+                    <table id="vendorUsersTable" class="display table table-striped table-bordered table-condensed-xs margin-none">
+                        <thead>
+                            <tr class="bg-primary">
+                                <th class="fsize-25">@Resources.Common.lbl_Name</th>
+                                <th class="fsize-25">@Resources.HR.Kiosk.lbl_Type</th>
+                                <th class="fsize-25"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var label in Model)
+                            {
+                                <tr class="row_label">
+                                    <td class="fsize-25">@label.BadgeNumber</td>
+                                    <td class="fsize-25">@label.BadgeTypeName</td>
+                                    <td class="fsize-25" title="@Resources.SG.SecurityGuard.lbl_PrintLabel">
+                                        <button class="btn btn-info printLabel btn_footer width-100p" data-labelname="@label.BadgeNumber"
+                                                data-referenceid="@label.BadgeID" data-referencetypeid="@label.ReferenceTypeID">
+                                            <span class="glyphicon glyphicon-print fsize-25"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-danger pull-left btn_footer fa-2x dimiss-modal" data-modalid="mo_PrintBadgesLabel">@Resources.Common.lbl_Exit</button>
+        </div>
+    </div>
+</div>

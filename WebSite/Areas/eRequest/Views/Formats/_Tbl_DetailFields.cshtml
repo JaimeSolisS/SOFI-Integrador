@@ -1,0 +1,44 @@
+﻿@model List<Core.Entities.FormatGenericDetailTemp>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_formatsdetailfields">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>#</th>
+            <th>@Resources.Request.lbl_Field</th>
+            <th>@Resources.Request.lbl_Type</th>
+            <th>@Resources.Request.lbl_Length</th>
+            <th>@Resources.Request.lbl_Listed</th>
+            <th>@Resources.Request.lbl_Mandatory</th>
+            <th>@Resources.Request.lbl_IsEnabled</th>
+            <th width="114px">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+
+    <tbody class="ui-state-default sortable">
+        @{int count = 1;}
+        @foreach (var item in Model)
+        {
+
+            <tr class="font-size-sm " data-id="@item.FormatGenericDetailID" data-tempid="@item.FormatGenericDetailTempID" data-columname="@item.ColumnName">
+                <td>@count</td>
+                <td>@item.ShowAs</td>
+                <td>
+                    @item.DataTypeName
+                    @if (item.CatalogNameSelect != "")
+                    {
+                        <br />
+                        <i><b>@(Resources.Request.lbl_ListName + " : ")</b>@item.CatalogNameSelect</i>
+                    }
+                </td>
+                <td class="text-center">@(item.FieldLength > 0? item.FieldLength.ToString() + " " + (item.FieldPrecision > 0? Resources.Request.lbl_WithDecimals + " " + item.FieldPrecision.ToString() + " " + Resources.Request.lbl_Decimals : "") : "")</td>
+                <td class="text-center">@(item.IsList == 1 ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</td>
+                <td class="text-center">@(item.IsMandatory ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</td>
+                <td class="text-center">@(item.Enabled ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</td>
+                <td>
+                    <button type="button" class="btn btn-success edit-formatdetail" title="@Resources.Common.lbl_Edit"><span class="fa fa-lg fa-edit"></span></button>
+                    <button type="button" class="btn btn-danger delete-formatdetail" title="@Resources.Common.lbl_Delete"><span class="fa fa-lg fa-trash-o"></span></button>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>

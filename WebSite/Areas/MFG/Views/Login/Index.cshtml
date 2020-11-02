@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+@Html.Partial("_Header")
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4 ">
+        <div class="form-group" style="text-align:center;">
+            <label class="control-label" for="EmployeNumber" style="font-size: 20px;">@Resources.MFG.Login.lbl_EmployeeNumber</label>
+            <div class="input input-group-lg">
+                @Html.TextBox("EmployeNumber", null, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <div class="input" style="text-align:center;">
+                <button type="button" id="enter" class="btn-success btn-lg">@Resources.MFG.Login.btn_Enter</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles{
+    <link href="~/Content/PLUGINS/numpad/jquery.numpad.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/numpad/jquery.numpad.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+
+            SetupOnlyNumbers();
+
+            // These defaults will be applied to all NumPads within this document!
+            $.fn.numpad.defaults.gridTpl = '<table class="table modal-content"></table>';
+            $.fn.numpad.defaults.backgroundTpl = '<div class="modal-backdrop in"></div>';
+            $.fn.numpad.defaults.displayTpl = '<input type="text" class="form-control  input-lg" />';
+            $.fn.numpad.defaults.buttonNumberTpl = '<button type="button" class="btn-info btn-lg"></button>';
+            $.fn.numpad.defaults.buttonFunctionTpl = '<button type="button" class="btn-lg" style="width: 100%;"></button>';
+            $.fn.numpad.defaults.decimalSeparator = '.';
+            $.fn.numpad.defaults.onKeypadCreate = function () { $(this).find('.done').addClass('btn-success'); };
+            $.fn.numpad.defaults.textDone = 'OK';
+            $.fn.numpad.defaults.textDelete ='@Resources.Common.lbl_Del';
+            $.fn.numpad.defaults.textClear = '@Resources.Common.lbl_Clear';
+            $.fn.numpad.defaults.textCancel = '@Resources.Common.btnCancel';
+            $('#EmployeNumber').numpad();
+
+            $('#enter').on('click', function () {
+                var EmployeNumber = $('#EmployeNumber').val();
+                $('.loading-process-div').show();
+                $.post("/MFG/Login/Index", { EmployeNumber }).done(function (data) {                    
+                    if (data.ErrorCode !== 0) {
+                        $('.loading-process-div').hide();
+                        notification("", data.ErrorMessage, "error");
+                    } else {
+                        localStorage.setItem('MFG_OperationRecords_EmployeeNumber', EmployeNumber);
+                        //window.location = "/MFG/OperationRecords/List";
+                        window.location = "/MFG/OperationRecords/New";
+                    }
+                });
+            });
+
+            $(document).on('click', '.done', function (e) {
+                e.stopPropagation();
+                $('#enter').click();
+            });
+
+            $('#btn_exit').on('click', function () {
+                window.close();
+            });
+
+        });
+    </script>
+}
+

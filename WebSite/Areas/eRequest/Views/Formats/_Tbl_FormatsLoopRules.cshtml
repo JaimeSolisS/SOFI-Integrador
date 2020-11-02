@@ -1,0 +1,34 @@
+﻿@model List<Core.Entities.FormatsLoopsRulesTemp>
+<table class="display table table-condensed table-striped datatable" id="tbl_formatslooprules" cellspacing="0">
+    <thead>
+        <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+            <th width="3%"></th>
+            <th class="left">#</th>
+            <th class="left">@Resources.Request.lbl_Rule</th>
+            <th width="170px" class="left">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int count = 1;}
+        @foreach (var item in Model)
+        {
+            <tr class="font-size-sm" data-id="@item.FormatLoopRuleTempID">
+                <td width="3%" class="details-control format-loop-rules-detail"></td>
+                <td>@count</td>
+                <td>@item.Description</td>
+                <td>
+                    <button class="btn btn-info btn-add-rule" type="button" title="@Resources.Request.lbl_AddRule">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    <button class="btn btn-success btn-add-phase" type="button" title="@Resources.Request.lbl_AddPhase">
+                        <span class="fa fa-edit"></span>
+                    </button>
+                    <button class="btn btn-danger btn-delete-rule" type="button" title="@Resources.Common.btnDeleteTag">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>

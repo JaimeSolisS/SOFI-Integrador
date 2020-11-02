@@ -1,0 +1,27 @@
+﻿@model List<Core.Entities.KioskUserPendingPointsExchange>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_AvailableItems">
+    <thead>
+        <tr>
+            <th colspan="5" class="bg-gray HeaderTableStyle">@Resources.HR.Kiosk.lbl_Petitions</th>
+        </tr>
+        <tr class="font-size-sm bg-primary">
+            <th># @Resources.HR.Kiosk.lbl_Petition</th>
+            <th>@Resources.HR.Kiosk.lbl_Code</th>
+            <th>@Resources.HR.Kiosk.lbl_RFC</th>
+            <th>@Resources.HR.Kiosk.lbl_Points</th>
+            <th>@Resources.HR.Kiosk.lbl_Request</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr class="">
+            <td class="h4">@item.ID</td>
+            <td class="h4">@item.Clave</td>
+            <td class="h4">@item.RFC</td>
+            <td class="h4">@item.Puntos</td>
+            <td class="h4">@item.Solicitud</td>
+        </tr>
+        }
+    </tbody>
+</table>

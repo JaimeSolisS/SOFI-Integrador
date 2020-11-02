@@ -1,0 +1,202 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.OpportunitiesProgram.NewEditOpportunityViewModel
+
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Model.Title</h2>
+        </div>
+        <div class="pull-right">
+            <a id="btn_CancelNewOportunity" href="@Url.Action("Index","OpportunitiesProgram")" type="button" class="btn btn btn-danger" title=" @Resources.Common.btnCancel">
+                @Resources.Common.btnCancel
+            </a>
+            <button id="@Model.Btn_Save_ID" type="button" class="btn btn btn-success" title="@Resources.HR.Kiosk.btn_CreateNewOpportunity">
+                <span class="fa fa-plus-circle"></span>
+                @Resources.Common.btn_Save
+            </button>
+        </div>
+    </div>
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">@Resources.HR.Kiosk.lbl_AlertNewOpportunity</h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-xs-4 col-md-4">
+                                <div class="form-group">
+                                    <label>@Resources.HR.Kiosk.lbl_Facility</label>
+                                    @Html.DropDownList("ddl_FacilitiesList", Model.FacilitiesList, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4">
+                                <div class="form-group">
+                                    <label>@Resources.HR.Kiosk.lbl_Department</label>
+                                    @Html.DropDownList("ddl_DepartmentsList", Model.DepartmentsList, new { @class = "form-control", data_live_search = "true" })
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4">
+                                <div class="form-group">
+                                    <label>@Resources.HR.Kiosk.lbl_ExpirationDate</label>
+                                    @Html.TextBox("txt_OpportunityExpirationDate", Model.ExpirationDate, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-md-8">
+                                <div class="form-group">
+                                    <label>@Resources.HR.Kiosk.lbl_Name</label>
+                                    @Html.TextBox("txt_OpportunityProgramName", Model.VacantName, new { @class = "form-control max-length", @maxlength = "100", autocomplete = "off" })
+                                </div>
+                            </div>
+                            <div class="col-xs-2 col-md-2">
+                                <div class="form-group">
+                                    <label>@Resources.MFG.OperationRecords.lbl_Shift</label>
+                                    @Html.DropDownList("ddl_ShiftsList", Model.ShiftsList, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-xs-2 col-md-2">
+                                <div class="form-group">
+                                    <label>@Resources.HR.Kiosk.lbl_Grade</label>
+                                    @Html.DropDownList("ddl_GradesList", Model.GradesList, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="align-content:center">
+                        <b>@Resources.HR.Kiosk.lbl_PublicationType</b><br />
+                        @foreach (var DescriptionType in Model.DescriptionTypesList.OrderBy(x => x.CatalogDetailID))
+                        {
+                            @String.Concat(DescriptionType.DisplayText, ":") <input type="radio" name="PublicationType" id="@DescriptionType.ValueID" data-descriptiontypeid="@DescriptionType.CatalogDetailID"
+                                                                                    @(DescriptionType.CatalogDetailID == Model.DescriptionTypeID ? "checked" : "") />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-success">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">@Resources.HR.Kiosk.lbl_Responsibles</h3>
+                @*<ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>*@
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        @Resources.HR.Kiosk.lbl_ResponsibleFiltersSearch
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5 col-md-5">
+                        @*@Html.TextBox("txt_search_by_text", "", new { @class = "form-control", @list = "datalist-responsibles" })*@
+                        <select id="txt_AssignResponsible" class="form-control" data-live-search="true">
+                        </select>
+                    </div>
+                    <div class="col-xs-2 col-md-2">
+                        <button type="button" id="btn_AddResponsible" class="btn btn-success">@Resources.HR.Kiosk.title_AssignResponsible</button>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        @Html.Partial("_Tbl_Responsibles", Model.ResponsibleList)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">@Resources.HR.Kiosk.lbl_NewOpportunityInfo</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    @*Editor de texto*@
+                    <div id="rdio_option_free_text">
+                        @Html.Partial("_FormTextEditor")
+                    </div>
+
+                    @*Imagenes*@
+                    <div id="rdio_option_img" style="display:none">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="border-dashed-2">
+                                <form action="~/Attachments/SaveDropzoneJsUploadedFiles" class="form-dropzone form-dropzone-Opportunity needsclick dz-clickable h-150">
+                                    @Html.Hidden("ReferenceID", Model.TempAttachmentID)
+                                    @Html.Hidden("AttachmentType", "TEMPID")
+                                    <div class="dz-message center-content padding-top-10">
+                                        <img src="~/Content/img/UploadCloud.png" />
+                                    </div>
+                                    <div class="center-content">
+                                        @Resources.Common.lbl_Dropfiles
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        @*<div class="col-xs-12 padding-0" style="height:220px;overflow-y:scroll">*@
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <div id="div_AttachmentsTable">
+                                    @Html.Partial("_AttachmentsTable", Model.OpportunityMediaList)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<datalist id="datalist-responsibles" hidden>
+</datalist>
+<div id="div_Modal">
+
+</div>
+
+@Html.Hidden("NewEdit_OpportunityProgramID", Model.OpportunityProgramID)
+@Html.Hidden("NewEdit_NotificationTypeID", Model.NotificationTypeID)
+@Html.Hidden("NewEdit_CurrentUserName", Model.CurrentUserName)
+@Html.Hidden("OpportunityProgramDescription", Model.Comments)
+@Html.Partial("_ImageResourceModal")
+@Html.Partial("_Mo_PreviewVideo")
+@Html.Hidden("CultureID", Session["CultureID"])
+
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/HR/Kiosk/Kiosk.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js?v20200127" charset="utf-8"></script>
+    <script src="~/Scripts/PLUGINS/summernote/summernote.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/HR/OpportunitiesProgram/NewOpportunity.js?v20200212" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+
+            var LangResources = {
+
+            };
+
+            NewOpportunity(LangResources);
+        });
+    </script>
+}

@@ -1,0 +1,33 @@
+﻿@model Core.Entities.Chart_ComputerSetting
+<tr class="ChartsArray sortable-tr SettingShiftID_@Model.ShiftID" 
+    data-entityid="@Model.Chart_SettingID" data-chartid="@Model.ChartID" 
+    data-order="0" data-neworder="0">
+    <td style="vertical-align:top;">@Model.Seq</td>
+    <td style="vertical-align:top;">@Model.ChartName</td>
+    <td>
+        <div class="col-xs-4">
+            @Html.TextBox("RefreshChart_" + Model.Chart_SettingID, "10", new { @class = "form-control", type = "number" })
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-12">
+                <table>
+                    <tr id="options_row_chart_@Model.Chart_SettingID" style="display:none;">
+                        <td colspan=4>
+                            @Html.Action("ShowChartOptions", new { Chart_SettingID = Model.Chart_SettingID })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </td>
+    <td style="vertical-align:top;">
+        @if (Model.Options.Any())
+        {
+            <span data-entityid="@Model.Chart_SettingID" class="glyphicon glyphicon-cog btn btn-primary config-chart-row"></span>
+        }
+        <span data-entityid="@Model.Chart_SettingID" class="glyphicon glyphicon-remove  btn btn-danger delete-chart-row"></span>
+    </td>
+</tr>
+
+

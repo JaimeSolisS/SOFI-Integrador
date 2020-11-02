@@ -1,0 +1,40 @@
+﻿@model List<Core.Entities.GenericChartsFilters>
+<div class="panel-body">
+
+    <button class="btn btn-success pull-right" style="margin-bottom:1%" id="btn_NewFilter">
+        @Resources.GenericCharts.btn_NewFilter
+    </button>
+
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_Filters">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>#</th>
+                <th>@Resources.GenericCharts.lbl_ChartName</th>
+                <th>@Resources.GenericCharts.lbl_Type</th>
+                <th>@Resources.GenericCharts.lbl_Catalog</th>
+                <th>@Resources.GenericCharts.lbl_DefaultValue</th>
+                <th>@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="ui-state-default">
+            @{
+                var i = 1;
+                foreach (var item in Model)
+                {
+                    <tr data-filtertypeid="@item.FilterTypeID" data-entityid="@item.GenericChartFilterID" data-filterlistid="@item.FilterListID" data-defaultvalue="@item.DefaultValue" class="chart-filter-row" data-filterenabled="@item.Enabled">
+                        <td>@i</td>
+                        <td>@item.FilterName</td>
+                        <td>@item.FilterTypeName.ToUpper()</td>
+                        <td>@item.FilterListName</td>
+                        <td>@item.DefaultValueText</td>
+                        <td style="width:15%; text-align:center">
+                            <button class="btn btn-success text-primary edit-filter-record"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>
+                            <button class="btn btn-danger delete-filter-record"><span class="glyphicon glyphicon-trash"></span></button>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,32 @@
+﻿@model List<Core.Entities.FormatsLoopsFlow_TEMP>
+<div class="slider">
+    <table class="table accesstable display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_FormatLoopFlow">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th width="3%"></th>
+                <th width="40px">#</th>
+                <th width="130">@Resources.Request.th_ApprovalSequence</th>
+                <th>@Resources.Request.lbl_Phase</th>
+                <th width="115px">@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+
+        <tbody class="ui-state-default sortable">
+            @{int count = 1;}
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-sm " data-id="@item.FormatLoopFlowID" data-tempid="@item.FormatLoopFlowTempID">
+                    <td width="3%" class="details-control detail-tbl-formatloopflow"></td>
+                    <td class="text-center">@count</td>
+                    <td class="text-center">@item.Seq</td>
+                    <td>@item.PhaseName</td>
+                    <td>
+                        <button type="button" class="btn btn-warning adddepurty-FormatsLoopsFlow" title="@Resources.Request.t_AddApprover"><span class="fa fa-plus"></span></button>
+                        <button type="button" class="btn btn-danger delete-FormatsLoopsFlow" title="@Resources.Common.lbl_Delete"><span class="fa fa-lg fa-trash-o"></span></button>
+                    </td>
+                </tr>
+                count++;
+            }
+        </tbody>
+    </table>
+</div>

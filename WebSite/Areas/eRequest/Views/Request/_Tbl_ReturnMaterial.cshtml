@@ -1,0 +1,31 @@
+﻿@model List<Core.Entities.RequestsGenericDetail>
+
+
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped margin-bottom-none">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th></th>
+            <th>@Resources.Request.lbl_Concept</th>
+            <th>@Resources.Request.lbl_ReturnBy</th>
+            <th>@Resources.Request.lbl_ReturnDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.DateReturn == null)
+                {
+                    <td>@Html.CheckBox("chkRequest_" + item.RequestGenericDetailID, false, new { @class = "chkMaterialToReturn", style = "width:100%; heigth:100%;", data_requestgenericdetailid = item.RequestGenericDetailID })</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>@item.Concept</td>
+                <td>@item.ReturnByName</td>
+                <td>@item.DateReturn</td>
+            </tr>
+        }
+    </tbody>
+</table>

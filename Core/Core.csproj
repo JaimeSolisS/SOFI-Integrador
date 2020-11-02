@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F7BF226-B0DD-47E5-B9AB-504AF24CAD14}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Administration\PDFFileRepository.cs" />
+    <Compile Include="Data\CheckListRepository.cs" />
+    <Compile Include="Data\eRequest\FormatsRepository.cs" />
+    <Compile Include="Data\eRequest\RequestRepository.cs" />
+    <Compile Include="Data\eRequest\RequestsGenericDetailRepository.cs" />
+    <Compile Include="Data\HR\KioskAreaDetailRepository.cs" />
+    <Compile Include="Data\HR\KioskAreaRepository.cs" />
+    <Compile Include="Data\HR\KioskEmployeeRepository.cs" />
+    <Compile Include="Data\HR\KioskMediaRepository.cs" />
+    <Compile Include="Data\HR\KioskNotificationsDetailRepository.cs" />
+    <Compile Include="Data\HR\KioskNotificationsRepository.cs" />
+    <Compile Include="Data\HR\KioskRequestAdministratorRepository.cs" />
+    <Compile Include="Data\HR\KioskSuggestionsAdministratorRepository.cs" />
+    <Compile Include="Data\HR\OpportunitiesProgramCandidatesRepository.cs" />
+    <Compile Include="Data\HR\OpportunitiesProgramRepository.cs" />
+    <Compile Include="Data\HR\OpportunitiesProgramResponsibleRepository.cs" />
+    <Compile Include="Data\MFG\DemoldDefectAlertsRepository.cs" />
+    <Compile Include="Data\MFG\DemoldDefectChartsRepository.cs" />
+    <Compile Include="Data\MFG\DemoldDefectDetailsRepository.cs" />
+    <Compile Include="Data\MFG\DemoldDefectsRepository.cs" />
+    <Compile Include="Data\MFG\LensTypesRepository.cs" />
+    <Compile Include="Data\MFG\MoldFamilyLensTypesRepository.cs" />
+    <Compile Include="Data\SG\BadgesRepository.cs" />
+    <Compile Include="Data\SG\EquipmentRepository.cs" />
+    <Compile Include="Data\SG\GuardsRepository.cs" />
+    <Compile Include="Data\SG\SecurityGuardRepository.cs" />
+    <Compile Include="Data\SG\SecurityGuardToolsRepository.cs" />
+    <Compile Include="Data\SG\VendorsRepository.cs" />
+    <Compile Include="Data\SG\VendorUsersRepository.cs" />
+    <Compile Include="Data\SG\VendorUsersToolsRepository.cs" />
+    <Compile Include="Data\TableAdditionalFieldsRepository.cs" />
+    <Compile Include="Data\User\AppEventProfileRepository.cs" />
+    <Compile Include="Data\Attachments\AttachmentRepository.cs" />
+    <Compile Include="Data\Catalog\CatalogDetailRepository.cs" />
+    <Compile Include="Data\Catalog\CatalogParameterRepository.cs" />
+    <Compile Include="Data\Charts\ChartRepository.cs" />
+    <Compile Include="Data\CI\CI_DashboardAreaDetailRepository.cs" />
+    <Compile Include="Data\CI\CI_DashboardAreaRepository.cs" />
+    <Compile Include="Data\CI\CI_DashboardCarouselVideosRepository.cs" />
+    <Compile Include="Data\CI\CI_DashboardCarouselVideosTmpRepository.cs" />
+    <Compile Include="Data\CI\CI_DashboardVisitRepository.cs" />
+    <Compile Include="Data\CompaniesRepository.cs" />
+    <Compile Include="Data\Charts\DashboardRepository.cs" />
+    <Compile Include="Data\Interface\DataInterfacesConnectionParametersRepository.cs" />
+    <Compile Include="Data\Interface\DataInterfacesFieldRepository.cs" />
+    <Compile Include="Data\Interface\DataInterfacesLogRepository.cs" />
+    <Compile Include="Data\Interface\DataInterfacesRepository.cs" />
+    <Compile Include="Data\Production\DefectProcessRepository.cs" />
+    <Compile Include="Data\Production\DefectRepository.cs" />
+    <Compile Include="Data\DepartmentRepository.cs" />
+    <Compile Include="Data\MFG\DownTimeRepository.cs" />
+    <Compile Include="Data\ErrorLogsRepository.cs" />
+    <Compile Include="Data\FacilityRepository.cs" />
+    <Compile Include="Data\Administration\GenericCharts\GenericChartFilterDataRepository.cs" />
+    <Compile Include="Data\Administration\GenericCharts\GenericChartDataRepository.cs" />
+    <Compile Include="Data\Administration\GenericCharts\GenericChartsAxisRepository.cs" />
+    <Compile Include="Data\Administration\GenericCharts\GenericChartsFiltersRepository.cs" />
+    <Compile Include="Data\Administration\GenericCharts\GenericChartRepository.cs" />
+    <Compile Include="Data\GenericRepository.cs" />
+    <Compile Include="Data\MFG\MachineParametersRepository.cs" />
+    <Compile Include="Data\MFG\MachineSetupParametersRepository.cs" />
+    <Compile Include="Data\MFG\MachineRepository.cs" />
+    <Compile Include="Data\MFG\MachineSetupRepository.cs" />
+    <Compile Include="Data\MFG\MaterialSetupRepository.cs" />
+    <Compile Include="Data\MFG\MFG_CatalogsRepository.cs" />
+    <Compile Include="Data\MFG\MFG_ProductionVATsRepository.cs" />
+    <Compile Include="Data\MiscellaneousRepository.cs" />
+    <Compile Include="Data\MNT\MNT_EnergySensorsFamiliesRepository.cs" />
+    <Compile Include="Data\MNT\MNT_EnergySensorsRepository.cs" />
+    <Compile Include="Data\MNT\MNT_EnergySensorValuesRepository.cs" />
+    <Compile Include="Data\Production\MoldScrapRepository.cs" />
+    <Compile Include="Data\NotificationRepository.cs" />
+    <Compile Include="Data\MFG\OperationProductionRepository.cs" />
+    <Compile Include="Data\MFG\OperationRecordRepository.cs" />
+    <Compile Include="Data\MFG\OperationSetupParametersRepository.cs" />
+    <Compile Include="Data\MFG\OperationSetupRepository.cs" />
+    <Compile Include="Data\MFG\OperationTaskDetailsRepository.cs" />
+    <Compile Include="Data\MFG\OperationTaskRepository.cs" />
+    <Compile Include="Data\OrganizationRepository.cs" />
+    <Compile Include="Data\Production\ProductionGoalDetailRepository.cs" />
+    <Compile Include="Data\Production\ProductionGoalRepository.cs" />
+    <Compile Include="Data\Production\ProductionLineRepository.cs" />
+    <Compile Include="Data\MFG\ProductionRejectRepository.cs" />
+    <Compile Include="Data\ProfileRepository.cs" />
+    <Compile Include="Data\QA\QA_FilmetricFilmLimitsRepository.cs" />
+    <Compile Include="Data\QA\QA_FilmetricInspectionRepository.cs" />
+    <Compile Include="Data\Production\ShiftRepository.cs" />
+    <Compile Include="Data\TranslationDetailRepository.cs" />
+    <Compile Include="Data\User\UserFacilityRepository.cs" />
+    <Compile Include="Data\User\UserRepository.cs" />
+    <Compile Include="Data\User\UsersPrintersSetupRepository.cs" />
+    <Compile Include="Data\User\UsersProcessesLinesRepository.cs" />
+    <Compile Include="Data\User\UsersProfiles_Repository.cs" />
+    <Compile Include="Data\Catalog\vw_CatalogRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Administration\PDFFileService.cs" />
+    <Compile Include="Service\CheckListService.cs" />
+    <Compile Include="Service\eRequest\FormatsService.cs" />
+    <Compile Include="Service\eRequest\RequestService.cs" />
+    <Compile Include="Service\eRequest\RequestsGenericDetailService.cs" />
+    <Compile Include="Service\HR\KioskAreaDetailService.cs" />
+    <Compile Include="Service\HR\KioskAreaService.cs" />
+    <Compile Include="Service\HR\KioskEmployeeService.cs" />
+    <Compile Include="Service\HR\KioskMediaService.cs" />
+    <Compile Include="Service\HR\KioskNotificationsDetailService.cs" />
+    <Compile Include="Service\HR\KioskNotificationsService.cs" />
+    <Compile Include="Service\HR\KioskRequestAdministratorService.cs" />
+    <Compile Include="Service\HR\KioskSuggestionsAdministratorService.cs" />
+    <Compile Include="Service\HR\OpportunitiesProgramCandidatesService.cs" />
+    <Compile Include="Service\HR\OpportunitiesProgramResponsibleService.cs" />
+    <Compile Include="Service\HR\OpportunitiesProgramService.cs" />
+    <Compile Include="Service\MFG\DemoldDefectAlertsService.cs" />
+    <Compile Include="Service\MFG\DemoldDefectChartssService.cs" />
+    <Compile Include="Service\MFG\DemoldDefectDetailsService.cs" />
+    <Compile Include="Service\MFG\DemoldDefectsService.cs" />
+    <Compile Include="Service\MFG\LensTypesService.cs" />
+    <Compile Include="Service\MFG\MoldFamilyLensTypesService.cs" />
+    <Compile Include="Service\SG\BadgesService.cs" />
+    <Compile Include="Service\SG\EquipmentService.cs" />
+    <Compile Include="Service\SG\GuardsService.cs" />
+    <Compile Include="Service\SG\SecurityGuardService.cs" />
+    <Compile Include="Service\SG\SecurityGuardToolsService.cs" />
+    <Compile Include="Service\SG\UsersPrintersService.cs" />
+    <Compile Include="Service\SG\VendorsService.cs" />
+    <Compile Include="Service\SG\VendorUsersService.cs" />
+    <Compile Include="Service\SG\VendorUsersToolsService.cs" />
+    <Compile Include="Service\TableAdditionalFieldService.cs" />
+    <Compile Include="Service\User\AppEventProfileService.cs" />
+    <Compile Include="Service\Attachments\AttachmentService.cs" />
+    <Compile Include="Service\Catalog\CatalogDetailService.cs" />
+    <Compile Include="Service\Catalog\CatalogParameterService.cs" />
+    <Compile Include="Service\Charts\ChartService.cs" />
+    <Compile Include="Service\CI\CI_DashboardAreaDetailService.cs" />
+    <Compile Include="Service\CI\CI_DashboardAreaService.cs" />
+    <Compile Include="Service\CI\CI_DashboardCarouselVideosService.cs" />
+    <Compile Include="Service\CI\CI_DashboardCarouselVideosTmpService.cs" />
+    <Compile Include="Service\CI\CI_DashboardVisitService.cs" />
+    <Compile Include="Service\CompaniesService.cs" />
+    <Compile Include="Service\Charts\DashboardService.cs" />
+    <Compile Include="Service\Interface\DataInterfacesConnectionParametersService.cs" />
+    <Compile Include="Service\Interface\DataInterfaceService.cs" />
+    <Compile Include="Service\Interface\DataInterfacesFieldService.cs" />
+    <Compile Include="Service\Interface\DataInterfacesLogService.cs" />
+    <Compile Include="Service\DefectProcessService.cs" />
+    <Compile Include="Service\DefectService.cs" />
+    <Compile Include="Service\DepartmentService.cs" />
+    <Compile Include="Service\MFG\DownTimeService.cs" />
+    <Compile Include="Service\ErrorLogsService.cs" />
+    <Compile Include="Service\FacilityService.cs" />
+    <Compile Include="Service\Administration\GenericCharts\GenericChartFilterDataService.cs" />
+    <Compile Include="Service\Administration\GenericCharts\GenericChartsFiltersService.cs" />
+    <Compile Include="Service\Administration\GenericCharts\GenericChartsAxisService.cs" />
+    <Compile Include="Service\Administration\GenericCharts\GenericChartsService.cs" />
+    <Compile Include="Service\Administration\GenericCharts\GenericChartDataService.cs" />
+    <Compile Include="Service\MFG\MachineParametersService.cs" />
+    <Compile Include="Service\MFG\MachineSetupParametersService.cs" />
+    <Compile Include="Service\MFG\MachineService.cs" />
+    <Compile Include="Service\MFG\MachineSetupService.cs" />
+    <Compile Include="Service\MFG\MaterialSetupService.cs" />
+    <Compile Include="Service\MFG\MFG_CatalogsService.cs" />
+    <Compile Include="Service\MFG\MFG_ProductionVATsService.cs" />
+    <Compile Include="Service\MiscellaneousService.cs" />
+    <Compile Include="Service\MNT\MNT_EnergySensorsFamiliesService.cs" />
+    <Compile Include="Service\MNT\MNT_EnergySensorsService.cs" />
+    <Compile Include="Service\MNT\MNT_EnergySensorValuesService.cs" />
+    <Compile Include="Service\Production\MoldScrapService.cs" />
+    <Compile Include="Service\NotificationService.cs" />
+    <Compile Include="Service\MFG\OperationProductionService.cs" />
+    <Compile Include="Service\MFG\OperationRecordService.cs" />
+    <Compile Include="Service\MFG\OperationSetupParametersService.cs" />
+    <Compile Include="Service\MFG\OperationSetupService.cs" />
+    <Compile Include="Service\MFG\OperationTaskDetailsService.cs" />
+    <Compile Include="Service\MFG\OperationTaskService.cs" />
+    <Compile Include="Service\OrganizationService.cs" />
+    <Compile Include="Service\Production\ProductionGoalDetailService.cs" />
+    <Compile Include="Service\Production\ProductionGoalService.cs" />
+    <Compile Include="Service\Production\ProductionLineService.cs" />
+    <Compile Include="Service\Production\ProductionRejectService.cs" />
+    <Compile Include="Service\ProfileService.cs" />
+    <Compile Include="Service\QA\QA_FilmetricFilmLimitsService.cs" />
+    <Compile Include="Service\QA\QA_FilmetricInspectionService.cs" />
+    <Compile Include="Service\Production\ShiftService.cs" />
+    <Compile Include="Service\TranslationDetailService.cs" />
+    <Compile Include="Service\User\UserFacilityService.cs" />
+    <Compile Include="Service\User\UserService.cs" />
+    <Compile Include="Service\User\UsersPrintersService.cs" />
+    <Compile Include="Service\User\UsersProcessesLinesService.cs" />
+    <Compile Include="Service\User\UsersProfilesService.cs" />
+    <Compile Include="Service\Catalog\vw_CatalogService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
+      <Project>{6ADD69B3-1763-483F-A6B6-7E55C0E2BB9C}</Project>
+      <Name>Core.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

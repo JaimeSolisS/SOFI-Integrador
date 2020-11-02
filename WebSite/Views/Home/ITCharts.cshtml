@@ -1,0 +1,214 @@
+﻿@model WebSite.Models.ViewModels.Home.ITChartsViewModel
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="page-title">
+            <h1 style="margin-top: 0px;"><span class="fa fa-laptop"></span>IT Charts</h1>
+        </div>
+    </div>
+    <div class="col-md-2 pull-right">
+        <!-- START WIDGET CLOCK -->
+        <div class="widget widget-info widget-padding-sm" style="min-height: 0;margin: 0px;padding:0px;">
+            <div class="widget-big-int plugin-clock">00:00</div>
+            <div class="widget-subtitle plugin-date">Loading...</div>
+        </div>
+        <!-- END WIDGET CLOCK -->
+    </div>
+</div>
+<div class="row">
+    @* Projects *@
+    <div class="col-md-6">
+        <div id="projects_panel" class="panel panel-default" data-updatefunc="UpdateProjectsChart" data-chartid="graficaproyectos" data-chartplugin="chart.js">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="panel-title-box">
+                            <h3>Projects</h3>
+                            <span>IT Projects</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-md-4" style="padding-top: 6px;">Year</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("proyects_year", Model.YearList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <ul class="panel-controls" style="margin-top: 2px;">
+                            <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding-0">
+                <div class="chart-holder" id="ProjectsChart" style="position: relative;height:200px;min-height: 244px;">
+                    <br />
+                    <canvas id="ChartProjects" style="position: relative;margin: auto;height: 65vh;width: 80vw;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* Services *@
+    <div class="col-md-6">
+        <div id="network_panel" class="panel panel-default" data-updatefunc="UpdateNetworkChart" data-chartid="graficanetwork">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="panel-title-box">
+                            <h3>Services Availability</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-5" style="padding: 0px;">
+                        <div class="form-group">
+                            <label class="col-md-4" style="padding-top: 6px;">Year</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("services_year", Model.YearList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3" style="padding-left: 0px;">
+                        <ul class="panel-controls" style="margin-top: 2px;">
+                            <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel-title-box">
+                            <span>Network and Servers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding-0">
+                <div class="chart-holder" id="NetworkChart" style="height: 200px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @* Tickets *@
+    <div class="col-md-6">
+        <div id="tickets_panel" class="panel panel-default" data-updatefunc="UpdateTicketsChart" data-chartid="graficatickets">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="panel-title-box">
+                            <h3>Tickets</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-5" style="padding: 0px;">
+                        <div class="form-group">
+                            <label class="col-md-4" style="padding-top: 6px;">Year</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("tickets_year", Model.YearList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3" style="padding-left: 0px;">
+                        <ul class="panel-controls" style="margin-top: 2px;">
+                            <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel-title-box">
+                            <span>Open and Closed Tickets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding-0">
+                <div class="chart-holder  chart-container" id="TicketsChart" style="position: relative;height: 200px;min-height: 216px;">
+                </div>
+            </div>
+        </div>
+    </div>
+    @* TOP Tickets *@
+    <div class="col-md-6">
+        <div id="toptickets_panel" class="panel panel-default" data-updatefunc="UpdateTopTicketsChart" data-chartid="graficatoptickets">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="panel-title-box">
+                            <h3>Top Tickets</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-7" style="padding: 0px;">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="col-md-4" style="padding-top: 6px;">Top</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("toptickets_top", Model.TopTicketsList, new { @class = "form-control select", data_style = "btn-success" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="col-md-4" style="padding-top: 6px;">Year</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("toptickets_year", Model.YearList, new { @class = "form-control select", data_style = "btn-success" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="col-md-4" style="padding-top: 6px;">Month</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("toptickets_month", Model.MonthsList, new { @class = "form-control select", data_style = "btn-success" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-xs-2" style="padding-left: 0px;">
+                        <ul class="panel-controls" style="margin-top: 2px;">
+                            <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel-title-box">
+                            <span>Top tickets types</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding-0">
+                <div class="chart-holder  chart-container" id="TopTicketsChart" style="position: relative;height: 200px;min-height: 216px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="dynamicCharts">
+
+</div>
+
+@Html.Hidden("MonthsArray", Model.MonthsArray)
+@section Styles
+{
+    <link href="~/Content/PLUGINS/apexcharts/apexcharts.css" rel="stylesheet" />
+}
+@section scripts {
+    <script src="~/Scripts/PLUGINS/charts/Chart.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-annotation.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/apexcharts/apexcharts.js"></script>
+    <script src="~/Scripts/ITCharts.js" charset="utf-8"></script>
+}

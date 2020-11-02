@@ -1,0 +1,52 @@
+﻿@model List<Core.Entities.EntityField>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_formatsfields">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.Request.lbl_Field</th>
+            <th>@Resources.Request.lbl_ShowAs</th>
+            <th width="1%">@Resources.Request.lbl_Visible</th>
+            <th width="1%">@Resources.Request.lbl_Mandatory</th>
+        </tr>
+    </thead>
+
+    <tbody class="ui-state-default sortable">
+        @{int count = 1;}
+        @foreach (var item in Model)
+        {
+
+            <tr class="font-size-sm" data-SystemModule="@item.SystemModule" data-SystemModuleTag="@item.SystemModuleTag">
+                <td>
+                    <input type="hidden" id="hf_FieldID" name="hf_VendorID" value="@item.FieldID" />
+                    @item.DefaultTranslation
+                </td>
+                <td>
+                    <input type="text" id="CustomTranslation" value="@item.CustomTranslation" name="@item.CustomTranslation" autocomplete="off" maxlength="100" class="form-control max-length" />
+                </td>
+                <td class="text-center w-16 padding-top-8 padding-left-15 padding-right-15">
+                    @*<label class="checkbox lobicheck lobicheck-rounded padding-3">
+                            <input id="@item.ID" class="item-check" data-value="@item.IsVisible" type="checkbox" @(item.IsVisible ? "checked" : "" ) @(item.IsEditable ? "" : "disabled" ) onchange="setCheckboxvalue(this);">
+                            <i class="p-relative"></i>
+                        </label>*@
+                        @*<div class="btn-group" data-toggle="buttons">
+                            <label class="btn @(item.IsVisible ? "btn-success active" : "btn-default") btn-yes">
+                                <input class="form-check-input" type="radio" name="@("options"+count)" id="prueba" autocomplete="off">
+                                @Resources.Common.lbl_Yes
+                            </label>
+                            <label class="btn @(item.IsVisible ? "btn-default" : "btn-danger active") btn-no">
+                                <input class="form-check-input" type="radio" name="@("options"+count)" autocomplete="off"> @Resources.Common.lbl_NO
+                            </label>
+                        </div>*@
+                    <button class="btn @(item.IsVisible ? "btn-success" : "btn-danger") btnyesno" type="button" id="@("visible"+count)" data-id="@item.FieldID" data-displayval="@((item.CustomTranslation != "") ? item.CustomTranslation:item.DefaultTranslation)" data-value="@(item.IsVisible ? "true" : "false")" data-valueid="@item.ValueID" @(item.IsEditable ? "" : "disabled")>@(item.IsVisible ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</button>
+                </td>
+                <td class="text-center padding-top-8 padding-left-20 padding-right-20">
+                    @*<label class="checkbox lobicheck lobicheck-rounded padding-3">
+                            <input id="@item.ID" class="item-check" data-value="@item.IsMandatory" type="checkbox" @(item.IsMandatory ? "checked" : "" ) @(item.IsEditable ? "" : "disabled" ) onchange="setCheckboxvalue(this);">
+                            <i class="p-relative"></i>
+                        </label>*@
+                    <button class="btn @(item.IsMandatory ? "btn-success" : "btn-danger") btnyesno" type="button" id="@("mandatory"+count)" data-value="@(item.IsMandatory ? "true" : "false")" @(item.IsEditable ? "" : "disabled")>@(item.IsMandatory ? Resources.Common.lbl_Yes : Resources.Common.lbl_NO)</button>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>

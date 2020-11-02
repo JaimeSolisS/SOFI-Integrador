@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btn_LogProduction" xml:space="preserve">
+    <value>Registro de Producción</value>
+  </data>
+  <data name="lbl_Cavities" xml:space="preserve">
+    <value>Cavidades</value>
+  </data>
+  <data name="lbl_Comments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="lbl_CycleTime" xml:space="preserve">
+    <value>Tiempo del ciclo</value>
+  </data>
+  <data name="lbl_Day" xml:space="preserve">
+    <value>Día</value>
+  </data>
+  <data name="lbl_DayCode" xml:space="preserve">
+    <value>Código del día</value>
+  </data>
+  <data name="lbl_Defects" xml:space="preserve">
+    <value>Defectos</value>
+  </data>
+  <data name="lbl_Department" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="lbl_DontCloseTime" xml:space="preserve">
+    <value>No cerrar el tiempo</value>
+  </data>
+  <data name="lbl_Downtimes" xml:space="preserve">
+    <value>Tiempos muertos</value>
+  </data>
+  <data name="lbl_End" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="lbl_FinalShot" xml:space="preserve">
+    <value>Tiro final</value>
+  </data>
+  <data name="lbl_Hour" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="lbl_InitialShot" xml:space="preserve">
+    <value>Disparo inicial</value>
+  </data>
+  <data name="lbl_Machine" xml:space="preserve">
+    <value>Máquina</value>
+  </data>
+  <data name="lbl_MachineSetup" xml:space="preserve">
+    <value>Configuración de la máquina</value>
+  </data>
+  <data name="lbl_Material" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="lbl_Pieces" xml:space="preserve">
+    <value>Pzs</value>
+  </data>
+  <data name="lbl_ProducedPieces" xml:space="preserve">
+    <value>Piezas producidas</value>
+  </data>
+  <data name="lbl_ProducedQty" xml:space="preserve">
+    <value>Cantidad producida</value>
+  </data>
+  <data name="lbl_Production" xml:space="preserve">
+    <value>Producción</value>
+  </data>
+  <data name="lbl_Quantity" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="lbl_Reason" xml:space="preserve">
+    <value>Razón</value>
+  </data>
+  <data name="lbl_Rejects" xml:space="preserve">
+    <value>Rechazo</value>
+  </data>
+  <data name="lbl_RejectType" xml:space="preserve">
+    <value>Tipo de rechazo</value>
+  </data>
+  <data name="lbl_Sec" xml:space="preserve">
+    <value>Segundo</value>
+  </data>
+  <data name="lbl_Setup" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="lbl_Shift" xml:space="preserve">
+    <value>Turno</value>
+  </data>
+  <data name="lbl_ShotCounter" xml:space="preserve">
+    <value>Contador de disparos</value>
+  </data>
+  <data name="lbl_Shots" xml:space="preserve">
+    <value>Disparos</value>
+  </data>
+  <data name="lbl_Start" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="lbl_Time" xml:space="preserve">
+    <value>Tiempo</value>
+  </data>
+  <data name="lbl_TotalPieces" xml:space="preserve">
+    <value>Piezas en total</value>
+  </data>
+  <data name="lbl_TotalShots" xml:space="preserve">
+    <value>Disparos totales</value>
+  </data>
+  <data name="ntf_DeleteDowntime" xml:space="preserve">
+    <value>Estas seguro de eliminar el tiempo de inactividad?</value>
+  </data>
+  <data name="ntf_MsgDeleteReject" xml:space="preserve">
+    <value>Estas seguro de eliminar rechazo?</value>
+  </data>
+  <data name="subtitle_OperationRecords" xml:space="preserve">
+    <value>Registro de operación</value>
+  </data>
+  <data name="title_Downtimes" xml:space="preserve">
+    <value>Tiempos muertos</value>
+  </data>
+  <data name="title_OperationRecords" xml:space="preserve">
+    <value>Manejo visual</value>
+  </data>
+  <data name="title_Rejects" xml:space="preserve">
+    <value>Rechazos</value>
+  </data>
+  <data name="lbl_Product" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="lbl_0Min" xml:space="preserve">
+    <value>0 minutos</value>
+  </data>
+  <data name="lbl_ActualOperator" xml:space="preserve">
+    <value>Operador Actual</value>
+  </data>
+  <data name="lbl_Totaltime" xml:space="preserve">
+    <value>Tiempo total</value>
+  </data>
+  <data name="ntf_NoInitialshot" xml:space="preserve">
+    <value>No hay valor en el disparo inicial</value>
+  </data>
+  <data name="lbl_SelectMachine" xml:space="preserve">
+    <value>Seleccione Maquina</value>
+  </data>
+  <data name="lbl_SelectMaterial" xml:space="preserve">
+    <value>Seleccione Material</value>
+  </data>
+  <data name="lbl_OperatorNumber" xml:space="preserve">
+    <value>Numero de Operador</value>
+  </data>
+  <data name="lbl_DefectType" xml:space="preserve">
+    <value>Tipo de defecto</value>
+  </data>
+  <data name="lbl_ActualShot" xml:space="preserve">
+    <value>Disparo Actual</value>
+  </data>
+  <data name="lbl_Newproduction" xml:space="preserve">
+    <value>Nueva  produccion</value>
+  </data>
+  <data name="ntf_pleasecaptureproduction" xml:space="preserve">
+    <value>Por favor captura la producción para la hora </value>
+  </data>
+  <data name="lbl_recalculatehours" xml:space="preserve">
+    <value>Recalcular Horas de producción</value>
+  </data>
+  <data name="lbl_EditProductionHour" xml:space="preserve">
+    <value>Edición de producción por hora.</value>
+  </data>
+  <data name="btn_EditRecord" xml:space="preserve">
+    <value>Editar Ultimo Registro</value>
+  </data>
+  <data name="btn_NewRecord" xml:space="preserve">
+    <value>Nuevo Registro</value>
+  </data>
+  <data name="lbl_OperationProcess" xml:space="preserve">
+    <value>Proceso de Operación</value>
+  </data>
+  <data name="lbl_Accepteds" xml:space="preserve">
+    <value>Acceptados</value>
+  </data>
+  <data name="lbl_Gross" xml:space="preserve">
+    <value>Gross</value>
+  </data>
+  <data name="lbl_CloseRecord" xml:space="preserve">
+    <value>Cerrar Registro</value>
+  </data>
+  <data name="lbl_LastShot" xml:space="preserve">
+    <value>Ultimo Disparo</value>
+  </data>
+  <data name="ntf_CloseRecord" xml:space="preserve">
+    <value>¿Quieres cerrar el registro de producción?</value>
+  </data>
+  <data name="lbl_CloseProgram" xml:space="preserve">
+    <value>Cerrar Programa</value>
+  </data>
+  <data name="btn_CloseRecord" xml:space="preserve">
+    <value>Cambiar programa</value>
+  </data>
+  <data name="btn_CloseShift" xml:space="preserve">
+    <value>Cerrar turno</value>
+  </data>
+  <data name="lbl_CloseShift" xml:space="preserve">
+    <value>Cerrar turno</value>
+  </data>
+  <data name="lbl_ChangeInserts" xml:space="preserve">
+    <value>Cambio de Insertos</value>
+  </data>
+</root>

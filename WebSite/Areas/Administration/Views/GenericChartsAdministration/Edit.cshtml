@@ -1,0 +1,125 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.GenericCharts.EditDataChartViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Model.NewEditTitle</h2>
+        </div>
+        <div class="pull-right">
+            @Html.ActionLink(@Resources.Common.btn_Back, "Index", "GenericChartsAdministration", null, new { @class = "btn btn-default " })
+            <button class="btn btn-info" id="btn_SaveChart">@Resources.Common.btn_Save</button>
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.GenericCharts.lbl_ChartOfAreas
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.GenericCharts.lbl_ChartName</label>
+                        @Html.TextBox("txt_ChartName", Model.ChartName, new { @class = "form-control max-length", @maxlength = "100" })
+                    </div>
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.GenericCharts.lbl_Area</label>
+                        @Html.DropDownList("ddl_ChartsAreas", Model.ChartAreasList, new { @class = "form-control selectpicker" })
+                    </div>
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.GenericCharts.lbl_Title</label>
+                        @Html.TextBox("txt_ChartTitle", Model.ChartTitle, new { @class = "form-control max-length", @maxlength = "100" })
+                    </div>
+                    <div class="col-xs-3" style="text-align:left">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.MachineSetups.lbl_Enable</label><br />
+                            <label class="switch switch-small">
+                                <input type="checkbox" id="chk_Enabled" checked="@(Model.Enabled ? "cheked" : "")" />
+                                <span> &nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.GenericCharts.lbl_Types</label>
+                        @Html.DropDownList("ddl_ChartsTypes", Model.ChartTypesList, new { @class = "form-control selectpicker" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.GenericCharts.lbl_DataChartFilters
+                </h3>
+            </div>
+            <div id="div_DataChartFiltersTable">
+                @Html.Partial("_Tbl_GenericChartsFilters", Model.GenericChartsFiltersList)
+            </div>
+        </div>
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.GenericCharts.lbl_DataChartAxis
+                </h3>
+            </div>
+            <div id="div_DataChartFiltersTable">
+                @Html.Partial("_Tbl_GenericChartsAxes", Model.GenericChartsAxisList)
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="div_Mo_NewEditFilter">
+
+</div>
+<div id="div_Mo_NewEditAxis">
+    @Html.Action("GetModalNewEditAxis")
+</div>
+
+@Html.Hidden("GenericChartID", Model.GenericChartID)
+@Html.Hidden("GenericChartAreaID", Model.SelectedAreaID)
+@Html.Hidden("GenericChartTypeID", Model.SelectedChartTypeID)
+@Html.Hidden("GenericChartHeaderDataID", Model.GenericChartHeaderDataID)
+
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/Administration/GenericChartsAdministration/Edit.js?v20191004" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+                var LangResources = {
+                    btn_Save: "@Resources.Common.btn_Save",
+                    TagAll: "@Resources.Common.TagAll",
+                    lbl_Options: "@Resources.Common.lbl_Options",
+                    msg_xAxisExis: "@Html.Raw(Resources.GenericCharts.msg_xAxisExist)",
+                    msg_FilterNameRequired: "@Html.Raw(Resources.GenericCharts.msg_FilterNameRequired)",
+                    msg_FilterCategoryRequired: "@Html.Raw(Resources.GenericCharts.msg_FilterCategoryRequired)",
+                    msg_FilterTypeListRequired: "@Html.Raw(Resources.GenericCharts.msg_FilterTypeListRequired)",
+                    msg_FilterFormulaRequired: "@Html.Raw(Resources.GenericCharts.msg_FilterFormulaRequired)",              
+                    msg_ConfirmDeleteFilter: "@Resources.GenericCharts.msg_ConfirmDeleteFilter",
+                    msg_ConfirmDeleteAxis: "@Resources.GenericCharts.msg_ConfirmDeleteAxis"
+                };
+
+                EditInit(LangResources);
+        });
+    </script>
+}

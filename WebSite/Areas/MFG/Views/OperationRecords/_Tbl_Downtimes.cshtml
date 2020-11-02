@@ -1,0 +1,46 @@
+﻿@model List<Core.Entities.DownTime>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-bordered table-striped table-actions">
+            <thead>
+                <tr>
+                    @*<th>@Resources.MFG.OperationRecords.lbl_Department</th>*@
+                    <th>@Resources.MFG.OperationRecords.lbl_Reason</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_Start</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_End</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_Time</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_Comments</th>
+                    @*<th>@Resources.Common.gvH_DateAdded</th>*@
+                    <th>@Resources.MFG.Login.lbl_Modifications</th>
+                    <th>@Resources.Common.lbl_Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    @*<td>@item.DepartmentName</td>*@
+                    <td>@item.ReasonName</td>
+                    <td>@item.StartDateFormat</td>
+                    <td>@item.EndDateFormat</td>
+                    <td>@item.TimeFormat</td>
+                    <td>@item.Comments</td>
+                    @*<td>@item.DateAddedFormat</td>*@
+                    <td>
+                        @Resources.Common.lbl_On: @item.DateLastMaintFormat
+                    </td>
+                    <td>
+                        <button class="btn-pretty btn-lg btn-info edit-downtime" data-entityid="@item.DownTimeID" type="button" title="@Resources.Common.tt_Edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button class="btn-pretty btn-lg btn-danger delete-downtime" data-entityid="@item.DownTimeID" type="button" title="@Resources.Common.tt_Edit">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

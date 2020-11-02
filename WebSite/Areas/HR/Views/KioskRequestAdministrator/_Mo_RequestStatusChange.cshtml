@@ -1,0 +1,76 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskRequestAdministrator.RequestStatusUpdateViewModel
+<div id="mo_RequestStatusChange" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="align-content:center;z-index:9">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="ttl_StatusChangeTitle"></h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p style="font-size:15px"><strong>@Resources.HR.Kiosk.lbl_NRequest: <span style="color:darkblue" id="span_RequestNumbers"></span></strong></p>
+                    </div>
+                </div>
+                @if (Model.StatusTypeChange != "MarkDone" && Model.StatusTypeChange != "Close")
+                {
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-success alert-dismissible" role="alert" style="text-align:justify; font-size:13px">
+                                <p><strong>@Resources.HR.Kiosk.lbl_Note: </strong><span id="span_AlertText"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (Model.StatusTypeChange == "Close")
+                {
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-success alert-dismissible" role="alert" style="text-align:justify; font-size:13px">
+                                <p>@Resources.HR.Kiosk.alert_CommentsInstructions</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <strong style="font-size:15px">@Resources.HR.Kiosk.lbl_Comments</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        @Html.TextArea("txta_Comment", "", new { @class = "form-control", @style = "height:20vh", maxlength = "500" })
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+
+                @switch (Model.StatusTypeChange.ToLower())
+                {
+                    case "reject":
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                        <button type="button" id="btn_SaveRequisitionNewStatus" data-statustype="Rejected" data-warningmessage="@Resources.HR.Kiosk.msg_RejectRequestConfirmMessage" class="btn btn-danger">@Resources.HR.Kiosk.lbl_Reject</button>
+                        break;
+                    case "cancel":
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                        <button type="button" id="btn_SaveRequisitionNewStatus" data-statustype="Cancelled" data-warningmessage="@Resources.HR.Kiosk.msg_CancelRequestConfirmMessage" class="btn btn-danger">@Resources.Common.btnCancel</button>
+                        break;
+                    case "markdone":
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                        <button type="button" id="btn_SaveRequisitionNewStatus" data-statustype="MarkDone" data-warningmessage="@Resources.HR.Kiosk.msg_MarkDoneRequestConfirmMessage" class="btn btn-success">@Resources.Common.btn_Save</button>
+                        break;
+                    case "reopen":
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                        <button type="button" id="btn_SaveRequisitionNewStatus" data-statustype="ReOpen" data-warningmessage="@Resources.HR.Kiosk.msg_ReOpenRequestConfirmMessage" class="btn btn-danger" style="background-color:orange">@Resources.HR.Kiosk.btn_ReOpen</button>
+                        break;
+                    case "close":
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">@Resources.Common.btnCancel</button>
+                        <button type="button" id="btn_SaveRequisitionNewStatus" data-statustype="Closed" data-warningmessage="@Resources.HR.Kiosk.msg_CloseRequestConfirmMessage" class="btn btn-success">@Resources.Common.btn_Close</button>
+                        break;
+                }
+            </div>
+        </div>
+    </div>
+    @Html.Hidden("Mo_AssRes_RequestID", Model.RequestID)
+</div>

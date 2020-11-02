@@ -1,0 +1,52 @@
+﻿@model WebSite.Areas.SG.Models.ViewModels.SecurityGuardConfigurations.IndexViewModel
+<div class="panel panel-primary">
+    <div class="panel-heading ui-draggable-handle">
+        <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+        <ul class="panel-controls">
+            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+        </ul>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                    <label class="control-label">@Resources.SG.SecurityGuard.lbl_Company</label>
+                    <div class="input">
+                        @Html.DropDownList("ddlVendorCompanies", Model.CompaniesSelectList, new { @class = "selectpicker form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                    <label class="control-label">@Resources.SG.SecurityGuard.lbl_Employee</label>
+                    <div class="input">
+                        @Html.TextBox("txtVendorName", "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-3 col-lg-3">
+                <div class="form-group">
+                    <label class="control-label">@Resources.SG.SecurityGuard.lbl_Status</label>
+                    <div class="input">
+                        <select id="ddlVendorStatus" class="selectpicker form-control" multiple>
+                            <option value="1">@Resources.SG.SecurityGuard.lbl_Active</option>
+                            <option value="0">@Resources.SG.SecurityGuard.lbl_Inactive</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+        <button class="btn btn-info btn-pretty" id="btnSearchSecuritySuppliers" type="button">@Resources.Common.btn_Search</button>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-body">
+        <div id="divVendorsTable">
+            @Html.Partial("_Tbl_Companies", Model.CompaniesList)
+        </div>
+    </div>
+</div>

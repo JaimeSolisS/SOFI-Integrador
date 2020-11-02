@@ -1,0 +1,168 @@
+﻿@model WebSite.Areas.QA.Models.ViewModels.Filmetric.NewViewModel
+<div style="float:left">
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Line" style="font-size: 20px;">@Resources.QA.Filmetrics.lbl_line</label>
+            <div class="input input-group-lg">
+                <a style="font-size:medium">TB1:</a> @Html.RadioButton("ddl_Line", 1)
+                <p></p>
+                <a style="font-size:medium">TB2:</a> @Html.RadioButton("ddl_Line", 2)
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Material" style="font-size: 20px;">Material</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_Material", Model.MaterialList, htmlAttributes: new { @class = "form-control select applyfilters" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Product" style="font-size: 20px;">@Resources.QA.Filmetrics.lbl_product</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_Product", Model.ProductList, htmlAttributes: new { @class = "form-control select applyfilters" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Base" style="font-size: 20px;">@Resources.QA.Filmetrics.lbl_Base</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_Base", Model.BaseList, htmlAttributes: new { @class = "form-control select applyfilters" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+            <label class="control-label" for="ddl_Substract" style="font-size: 20px;">@Resources.QA.Filmetrics.lbl_substract</label>
+            <div class="input input-group-lg">
+                @Html.DropDownList("ddl_Substract", Model.SubstractList, htmlAttributes: new { @class = "form-control select applyfilters" })
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div style="float:right">
+
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                <div class="form-group">
+                    <label class="control-label" for="ddl_Adition" style="font-size: 20px;">Adition</label>
+                    <div class="input input-group-lg">
+                        @Html.TextArea("ddl_Adition")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-xs-offset-4">
+            <div class="form-group">
+                <label class="control-label" for="ddl_EuValue" style="font-size: 20px;">EU</label>
+                <div class="input input-group-lg">
+                    @Html.TextArea("ddl_EuValue")
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4 col-xs-offset-4">
+            <div class="form-group">
+                <label class="control-label" for="ddl_HcValue" style="font-size: 20px;">HC</label>
+                <div class="input input-group-lg">
+                    @Html.TextArea("ddl_HcValue")
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4 col-xs-offset-4">
+            <div class="form-group">
+                <label class="control-label" for="ddl_PuValue" style="font-size: 20px;">PU</label>
+                <div class="input input-group-lg">
+                    @Html.TextArea("ddl_PuValue")
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                <div class="form-group">
+                    <label class="control-label" for="ddl_BcValue" style="font-size: 20px;">BC</label>
+                    <div class="input input-group-lg">
+                        @Html.TextArea("ddl_BcValue")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @*<div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                <div class="form-group">
+                    <label class="control-label" for="txt_f_day" style="font-size: 20px;">@resources.qa.filmetrics.</label>
+                    <div class="input-group input-group-lg">
+                        <input type="text" id="txt_day" name="txt_f_day" class="form-control datepicker" value="@model.dateformat" data-date="@model.dateformat" data-date-viewmode="years" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <br />
+    <br />
+        <div class="col-xs-4 col-xs-offset-4">
+            <div class="form-group">
+                <div class="input" style="text-align:center;">
+                    <button type="button" id="create_record" class="btn-success btn-pretty btn-lg"><i class="fa fa-plus"></i> @Resources.Common.btn_Create</button>
+                    <button type="button" id="cancel" class="btn-danger btn-pretty btn-lg"><i class="fa fa-times"></i> @Resources.Common.btnCancel</button>
+                </div>
+            </div>
+        </div>
+
+    <style>
+        .bootstrap-select > button {
+            padding-top: 10px;
+            padding-bottom: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+    </style>
+    @section scripts {
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function () {
+                $(".select").selectpicker({
+                    liveSearch: false
+                });
+                $('.datepicker').datepicker({
+                    autoclose: true,
+                    format: 'yyyy-mm-dd'
+                    //language: LangResources.datepicker_lang
+                });
+
+                $('#create_record').on('click', function () {
+                    var ProductID = $('#ddl_Product').val();
+                    var MaterialID = $('#ddl_Material').val();
+                    var SubstractID = $('#ddl_Substract').val();
+                    var BaseID = $('#ddl_Base').val();
+                    var AdditionID = $('#ddl_Adition').val();
+                    var LineID = $("input[name='ddl_Line']:checked").val();
+                    var HcValue = $('#ddl_HcValue').val();
+                    var BcValue = $('#ddl_BcValue').val();
+                    var PuValue = $('#ddl_PuValue').val();
+                    var EuValue = $('#ddl_EuValue').val();
+
+                    window.location = "/QA/Filmetric/Create?ProductID=" + ProductID + "&MaterialID=" + MaterialID + "&SubstractID=" + SubstractID + "&BaseID=" + BaseID + "&AdditionID=" + AdditionID + "&LineID=" + LineID + "&HcValue=" + HcValue + "&BcValue=" + BcValue + "&PuValue=" + PuValue + "&EuValue=" + EuValue ;
+                });
+
+                $('#cancel').on('click', function () {
+                    $('.loading-process-div').show();
+                    window.location = "/QA/Filmetric/Index";
+                });
+            });
+        </script>
+    }
+

@@ -1,0 +1,24 @@
+﻿@model  WebSite.Areas.HR.Models.ViewModels.KioskEmployee.KioskCoursesViewModel
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_InscribedCourses">
+    <thead>
+        <tr class="font-size-lg">
+            <th class="bg-info text-white">@Resources.HR.Kiosk.lbl_Code</th>
+            <th class="bg-info text-white">@Resources.HR.Kiosk.lbl_Name</th>
+            <th class="bg-info text-white">@Resources.Common.lbl_StartDate</th>
+            <th class="bg-info text-white">@Resources.Common.lbl_EndDate</th>
+            <th class="bg-info text-white">@Resources.HR.Kiosk.lbl_Rank</th>
+        </tr>
+    </thead>
+    <tbody class="sortable">
+        @foreach (var item in Model.KioskCoursesInscribedList)
+        {
+            <tr class="prepayroll_row font-size-lg">
+                <td>@item.Clave</td>
+                <td>@item.Nombre</td>
+                <td>@item.IniciaCurso.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.TerminaCurso.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.Grado</td>
+            </tr>
+        }
+    </tbody>
+</table>

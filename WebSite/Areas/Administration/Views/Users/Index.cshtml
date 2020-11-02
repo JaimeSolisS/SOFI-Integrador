@@ -1,0 +1,119 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.Users.IndexViewModel
+
+<!-- START CONTENT FRAME -->
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="remove-margins"> @Resources.User.H_Users</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn btn-success" title="@Resources.User.tt_AddNewUser" href="/Administration/Users/Create"><span class="fa fa-plus-circle"> @Resources.Common.tt_AddNew </span></a>
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        @*FILTROS*@
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Common.lbl_Filters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <form id="filter-form">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="ddl_F_Profile">@Resources.User.lbl_Profile</label>
+                                <div class="input">
+                                    @Html.DropDownList("ddl_F_Profile", Model.ProfilesList, htmlAttributes: new { @class = "form-control select applyfilters", @data_live_search = "true", @title = Resources.Common.chsn_SelectOption })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="txt_F_UserAccount">@Resources.User.lbl_Username</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-user"></span>
+                                    <input type="text" id="txt_F_UserAccount" name="txt_F_UserAccount" placeholder="@Resources.User.lbl_UserAccountID" maxlength="100" class="form-control max-lenght" onkeydown="ForceApplyFilters()" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="txt_F_eMail">@Resources.User.lbl_Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+                                    <input type="text" id="txt_F_eMail" name="txt_F_eMail" placeholder="@Resources.User.lbl_Email" maxlength="100" class="form-control max-lenght" onkeydown="ForceApplyFilters()" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="ddl_F_Department">@Resources.User.lbl_Department</label>
+                                <div class="input">
+                                    @Html.DropDownList("ddl_F_Department", (SelectList)Model.DepartmentsList, htmlAttributes: new { @class = "form-control select applyfilters", @data_live_search = "true", @title = Resources.Common.chsn_SelectOption })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="txt_F_EmployeeNumber">@Resources.User.lbl_EmployeeNumber</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-th-large"></span>
+                                    <input type="text" id="txt_F_EmployeeNumber" name="txt_F_EmployeeNumber" placeholder="@Resources.User.lbl_EmployeeNumber" maxlength="100" class="form-control max-lenght" onkeydown="ForceApplyFilters()" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="ddl_F_Shift">@Resources.User.lbl_Shift</label>
+                                <div class="input">
+                                    @Html.DropDownList("ddl_F_Shift", (SelectList)Model.ShiftsList, htmlAttributes: new { @class = "form-control applyfilters select", @data_live_search = "true", @title = Resources.Common.chsn_SelectOption })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer text-right">
+                <button id="btn_search" type="button" class="btn btn-info btn-pretty">@Resources.Common.btn_Search</button>
+            </div>
+
+        </div>
+
+        @*TABLA*@
+        <div id="table_Users">
+            @Html.Partial("_Tbl_Users", Model._List_Users)
+        </div>
+
+    </div>
+
+    <div id="div_MsgText" class="hidden">
+        <span id="lbl_MsgDeleteUserTag">@Resources.User.title_ConfirmDisableUser</span>
+        <span id="lbl_TitleDeleteUserTag">@Resources.Common.lbl_Warning</span>
+        <span id="lbl_DeleteButtonTag">@Resources.Common.btnDeleteTag</span>
+        <span id="lbl_CancelButtonTag">@Resources.Common.btnCancel</span>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Administration/Users/Index.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            IndexInit("");
+        });
+    </script>
+}
+
+@section Styles
+    {
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+}
+

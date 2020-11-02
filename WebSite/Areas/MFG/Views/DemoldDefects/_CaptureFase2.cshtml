@@ -1,0 +1,48 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.DemoldDefects.CaptureWizardViewModel
+<div style="text-align:center" class="col-sm-12">
+    <div class="row" style="background-color:white;width:100%;height:550px;border-radius:10px 10px">
+        <div class="col-sm-3">
+            @Html.Partial("_Div_DefectCards", Model.DefectTypes)
+        </div>
+        <div class="col-sm-3">
+            <h1>@Resources.MFG.DemoldDefects.lbl_Quantity</h1>
+            <div class="row" style="border:solid; height:120px">
+                <br />
+                <span id="defect_quantity" style="font-size:50px;">1</span>
+            </div>
+            <br />
+            <div class="row">
+                @Html.CheckBox("chk_BiggerQty", false)
+                @Resources.MFG.DemoldDefects.lbl_CheckThisManualAmount
+            </div>
+            <div class="row">
+                @Html.TextBox("txt_biggerQty", "0", new { @class = "form-control", @style = "border: solid; border-width: 1px; margin-bottom: 1%;", @placeholder = Resources.MFG.DemoldDefects.lbl_TextboxDefectQty, @disabled = true })
+            </div>
+            <div class="row">
+                <button type="button" id="remove_unit_quantity" class="btn-danger btn-lg col-sm-6" style="font-size:40px;">-</button>
+                <button type="button" id="add_unit_quantity" class="btn-success btn-lg col-sm-6" style="font-size:40px;">+</button>
+            </div>
+            <br />
+            <div class="row">
+                <button type="button" id="add_defect_quantity" class="btn-info btn-lg btn-generic col-sm-12" style="font-size:30px;">@Resources.Common.btnAdd</button>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1 class="pull-left">@Resources.MFG.OperationRecords.lbl_Defects</h1>
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="pull-right">Total: <span id="total_defects" style="font-weight: bold;">0</span></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div style="height: 400px;overflow-y:auto;">
+                        @Html.Partial("_Tbl_DemoldDefects", Model.DemoldDefectDetailsList)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

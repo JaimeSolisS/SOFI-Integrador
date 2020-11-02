@@ -1,0 +1,41 @@
+﻿@model WebSite.Areas.SG.Models.ViewModels.SecurityGuard.SuppliersViewModel
+<div id="mo_PrintSuppliersLabel" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:1; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header">
+            <h1 class="modal-title">@Resources.SG.SecurityGuard.lbl_PrintLabel</h1>
+        </div>
+        <div class="modal-body padding-none" style="height:80%; overflow-y:auto">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label fa-2x width-85p" for="ddl_PersonCheckIngTypeList">@Resources.SG.SecurityGuard.lbl_BagdeNumber</label><br />
+                        <div class="input width-100p" style="display: inline-flex;">
+                            @Html.DropDownList("ddl_VendorList", Model.VendorsList, new { @class = "input-xl width-85p" })
+                            <button id="btnAddNewCompany" class="btn btn-success refresh-button padding-none"><span class="fa fa-plus refresh-span"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <div class="input width-100p" style="display: inline-flex;">
+                            @Html.TextBox("txt_VendorUser", "", new { @class = "input-xl", style = "width:71%", autocomplete = "off" })
+                            <button id="btnClearSearchBox" class="btn bgc-orange refresh-button padding-none"><span class="fa fa-times refresh-span"></span></button>
+                            <button id="btnAddVendorUser" class="btn btn-success refresh-button padding-none"><span class="fa fa-plus refresh-span"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="divVendorUsersTable">
+                    @Html.Partial("_Tbl_VendorUsers", Model.VendorUserList)
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-danger pull-left btn_footer fa-2x dimiss-modal" data-modalid="mo_PrintSuppliersLabel">@Resources.Common.lbl_Exit</button>
+        </div>
+    </div>
+</div>

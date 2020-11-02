@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="xConnection-Web.config Connection String" description="xConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=JAMES\SQLEXPRESS;MultipleActiveResultSets=true;Initial Catalog=SOFIEnterprise;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jaime\\Desktop\\Sofi\\WebSite\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='xConnection']/@connectionString" />
+  </parameter>
+</parameters>

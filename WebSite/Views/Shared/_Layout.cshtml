@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Resources.Common.title_WebTitle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+    
+    @Styles.Render("~/Content/css/jquery")
+    @Styles.Render("~/Content/css/bootstrap")
+    @Styles.Render("~/Content/css/fontawesome")
+    <link href="~/Content/PLUGINS/animate/animate.min.css" rel="stylesheet" />
+    @RenderSection("Styles", false)
+    
+    <link rel="stylesheet" type="text/css" id="theme" href="~/Content/theme-default.css?v20190828" />
+    <link rel="stylesheet" href="~/Content/SOFI.css?v20200916_" />
+
+</head>
+<body>
+    <!-- START PAGE CONTAINER -->
+    <div class="page-container">
+        <!-- START PAGE SIDEBAR -->
+        <div class="page-sidebar">
+            <!-- START X-NAVIGATION -->
+            @Html.Action("GetMenu", "User", new { area = "" })
+            <!-- END X-NAVIGATION -->
+        </div>
+        <!-- END PAGE SIDEBAR -->
+        <!-- PAGE CONTENT -->
+        <div class="page-content">
+            <!-- START X-NAVIGATION VERTICAL -->
+            @Html.Partial("_XNavVertical")
+            <!-- END X-NAVIGATION VERTICAL -->
+            <div class="page-content-wrap">
+                @RenderBody()
+            </div>
+
+
+            </div>
+        <!-- END PAGE CONTENT -->
+    </div>
+    <!-- END PAGE CONTAINER -->
+
+    <div class="loading-process-div" style="display: none;">
+        <span id="s_LoadingProcessText" class="spinner-text">@Resources.Common.lbl_Processing</span>
+    </div>
+
+    @Html.Partial("_Logout")
+    @Html.Partial("_ConfirmBox")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @*Se deshabilito porque daba conflictos cuando habian botones de fondo *@
+    @*@Scripts.Render("~/bundles/scrolltopcontrol")*@
+
+    @Scripts.Render("~/bundles/moment")
+
+    @Scripts.Render("~/bundles/noty")
+    @RenderSection("scripts", false)
+
+    @Html.Hidden("Warning_Common_Tag", Resources.Common.lbl_Warning)
+    @Html.Hidden("Delete_Common_Tag", Resources.Common.btnDeleteTag)
+    @Html.Hidden("Cancel_Common_Tag", Resources.Common.btnCancel)
+    @Html.Hidden("title_ConfirmDelete_Common_Tag", Resources.Common.title_ConfirmDelete)
+    @Html.Hidden("Yes_Common_Tag", Resources.Common.lbl_Yes)
+    @Html.Hidden("No_Common_Tag", Resources.Common.lbl_NO)
+
+    <!-- START TEMPLATE -->
+    <script type="text/javascript" src="~/Scripts/plugins.js"></script>
+    <script type="text/javascript" src="~/Scripts/actions.js"></script>
+    <script type="text/javascript" src="~/Scripts/CoreFunctions.js?v20200107"></script>
+    <!-- END TEMPLATE -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //select default lang when change
+            var cultureID = '@(Session["CultureID"] != null ? Session["CultureID"].ToString() : "" )';
+            //var cultureID = '@(Request.Cookies["SOFI_UserInfo"].Values["CultureID"] != null ? Request.Cookies["SOFI_UserInfo"].Values["CultureID"].ToString() : "" )';
+            $('.SelectCulture_' + cultureID).addClass("active");
+            var culture_label = $('.SelectCulture_' + cultureID).find(' a').text();
+            $('#culture_label').text(culture_label);
+            var flag_img = $('.SelectCulture_' + cultureID).find(' a').find(' img').attr("src");
+            $('#flag_img').attr("src",flag_img);
+
+            var facilityID = '@(Request.Cookies["SOFI_UserInfo"] != null ? Request.Cookies["SOFI_UserInfo"].Values["BaseFacilityId"].ToString() : "" )';
+            $('.SelectFacility_' + facilityID).addClass("active");
+            var facility_label = $('.SelectFacility_' + facilityID).find('a').text().trim();
+
+            $('#facility_label').text(facility_label);
+
+            if ('@ViewBag.Exception' !== '') {
+                console.log('@ViewBag.Exception');
+                notification('', '@ViewBag.Exception', 'error');
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿@model List<Core.Entities.EnergySensorFamilies>
+
+@foreach (var item in Model)
+{
+    if (item.Enabled)
+    {
+        <div class="col-xs-4" style="width:200px;padding-top: 20px;padding-bottom:20px;">
+            <div class="shadow-div-effect @item.AlertCssClass" style="background-color: white;">
+                <div style="text-align:center;">
+                    <label style="font-size:medium">@item.FamilyName</label>
+                </div>
+
+                <a href="#" class="energy-sensor-family-image" data-energysensorfamilyid="@item.EnergySensorFamilyID">
+                    <div style="height: 150px; position: relative;padding:3px;">
+                        <img src="@item.ImagePath" style="object-fit: contain;position: absolute;height:100%;width:98%" />
+                    </div>
+                </a>
+
+                <div style="text-align:center; padding-bottom: 5px;">
+                    <h3>@item.CantOfVoltsByFamily.ToString("###,###,###.##") Kwh</h3>
+                </div>
+            </div>
+        </div>
+    }
+}

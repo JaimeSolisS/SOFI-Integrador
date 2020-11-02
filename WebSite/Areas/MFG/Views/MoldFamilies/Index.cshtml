@@ -1,0 +1,104 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.MoldFamilies.IndexViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="page-title">
+                    <h2 class="margin-none">@Resources.MFG.MoldFamilies.title_MoldFamiliesList</h2>
+                </div>
+            </div>
+
+            <div class="col-sm-5" style="text-align:right; display:none">
+                @using (Html.BeginForm("UploadExcel", "MoldFamilies", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @*<label>@Resources.MFG.MoldFamilies.btn_UpdateFromExcel:</label>*@
+                    <div class="col-sm-5">
+                        <input type="file" id="file" name="file" />
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="submit" id="submit_Excelinfo" class="btn btn btn-info" value="@Resources.MFG.MoldFamilies.btn_UpdateFromExcel" />
+                    </div>
+                }
+            </div>
+            <div class="col-sm-2">
+                <button id="btn_excel" class="btn btn btn-info pull-right">@Resources.MFG.MoldFamilies.btn_UpdateFromExcel</button>
+            </div>
+
+            <div class="col-sm-1">
+                <div class="pull-right">
+                    <button id="btn_New" class="btn btn btn-success">
+                        <span class="fa fa-plus-circle"></span>
+                        @Resources.Common.btn_New
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.MFG.MoldFamilies.lbl_FamilyName</label>
+                        @Html.DropDownList("ddl_FamilyNames", Model.MoldFamiliesNamesList, new { @class = "form-control selectpicker filters", @multiple = "multiple", @data_live_search = "true" })
+                    </div>
+                    <div class="col-xs-3 col-md-3">
+                        <label>@Resources.MFG.MoldFamilies.lbl_LenTypes</label>
+                        @Html.DropDownList("ddl_LensTypes", Model.LensTypesList, new { @class = "form-control selectpicker filters", @multiple = "multiple" ,@data_live_search="true"})
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                <button id="btn_Search" class="btn btn-info">@Resources.Common.search</button>
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div id="div_MoldFamiliesRecordsTable">
+                @Html.Partial("_Tbl_MoldFamiliesRecords", Model.MoldFamiliesRecordsList)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="_mo_NewEdit">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/MFG/MoldFamilies/Index.js?v20190924" charset="utf-8"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var LangResources = {
+                msg_SelectLensType: "@Html.Raw(Resources.MFG.MoldFamilies.msg_SelectLensType)",
+                msg_LenTypeAlreadyAssigned: "@Html.Raw(Resources.MFG.MoldFamilies.msg_LenTypeAlreadyAssigned)",
+                msg_MoldFamilyDeleted: "@Html.Raw(Resources.MFG.MoldFamilies.msg_MoldFamilyDeleted)",
+                msg_DeleteMoldFamilyRecordConfirm: "@Html.Raw(Resources.MFG.MoldFamilies.msg_DeleteMoldFamilyRecordConfirm)",
+                msg_DeleteLenTypeRecordConfirm: "@Html.Raw(Resources.MFG.MoldFamilies.msg_DeleteLenTypeRecordConfirm)",
+                msg_LenTypesRequiredInTable: "@Html.Raw(Resources.MFG.MoldFamilies.msg_LenTypesRequiredInTable)"
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}
+
+@Html.Hidden("ExcelImportMessage", Model.Message)

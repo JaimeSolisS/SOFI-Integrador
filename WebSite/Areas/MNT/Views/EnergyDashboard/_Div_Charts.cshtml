@@ -1,0 +1,97 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergySensors.EnergySensorValuesViewModel
+<div class="col-sm-12">
+    <div class="row">
+        <!--BAR CHART-->
+        <div class="col-md-6">
+            <div id="consumption_by_day_panel" class="panel panel-default" data-chartplugin="chart.js" data-chartid="graficaconsumodia" data-updatefunc="GetHourValuesByDayChartData">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel-title-box">
+                                <h3>@Resources.MNT.EnergySensors.lbl_PeriodConsumptionByDay</h3>
+                            </div>
+                            <ul class="panel-controls" style="margin-top: 2px;">
+                                <li><a href="#" id="btn_ConsumptionExcelReport" title="@Resources.MNT.EnergySensors.title_ExcelReportAlert" style="background-color:rgb(149, 183, 93); color:white"><span class="fa fa-table"></span></a></li>
+                                <li><a href="#" id="btn_SetSensorAlarm" title="@Resources.MNT.EnergySensors.lbl_Alarms" style="background-color:cornflowerblue; color:white"><span class="fa fa-bell-o"></span></a></li>
+                                <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="col-md-4" style="padding-top: 6px;">@Resources.MNT.EnergySensors.lbl_Sensor</label>
+                            @Html.DropDownList("CurrentSensor", Model.EnergySensorsList, new { @class = "form-control selectpicker", data_style = "btn-success" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="col-md-12" style="padding-top: 6px;">@Resources.Common.lbl_Date</label>
+                            <div class="input-group">
+                                <input type="text" id="txt_ChartDate" name="txt_ChartDate" class="form-control datepicker" value="@Model.DateFormat" data-date="@Model.DateFormat" data-date-viewmode="years" />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-body padding-0">
+                    <div class="chart-holder chart-container" id="_Div_ConsumptionByDay" style="position: relative;height: 400px;">
+                        <canvas id="ConsumptionByDay" style="position: relative;margin: auto;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--PIE CHART-->
+        <div class="row">
+            <div class="col-sm-6">
+                <div id="global_consumption_panel" class="panel panel-default" data-chartplugin="chart.js" data-chartid="graficaconsumoglobal" data-updatefunc="GetHourValuesGlobalChartData">
+                    <div class="row">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="panel-title-box">
+                                        <h3>@Resources.MNT.EnergySensors.lbl_GlobalConsumptionBy @Model.FamilyName</h3>
+                                    </div>
+                                    <ul class="panel-controls" style="margin-top: 2px;">
+                                        <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="col-md-12" style="padding-top: 6px;">@Resources.Common.lbl_StartDate</label>
+                                    <div class="input-group">
+                                        <input type="text" id="txt_ChartStartDate" name="txt_ChartStartDate" class="form-control datepicker" value="@Model.DateFormat" data-date="@Model.DateFormat" data-date-viewmode="years" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="col-md-12" style="padding-top: 6px;">@Resources.Common.lbl_EndDate</label>
+                                    <div class="input-group">
+                                        <input type="text" id="txt_ChartEndDate" name="txt_ChartEndDate" class="form-control datepicker" value="@Model.DateFormat" data-date="@Model.DateFormat" data-date-viewmode="years" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body padding-0">
+                        <div id="_Div_ConsumptionGlobal" class="chart-holder" style="height: 400px;">
+                            <canvas id="ConsumptionGlobal" style="position: relative;margin: auto;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

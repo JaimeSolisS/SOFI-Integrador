@@ -1,0 +1,38 @@
+﻿@model List<Core.Entities.ProductionGoal>
+@if (Model.Count > 0)
+{
+    <table class="display table table-condensed table-striped dataTable" id="tbl_productiondetails" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+                <th width="5%"></th>
+                <th class="left">@Resources.ProductionGoal.gvh_GoalNameTag</th>
+                <th class="left">@Resources.ProductionGoal.gvh_ProcessNameTag</th>
+                <th class="left">@Resources.ProductionGoal.gvh_ProcessLineTag</th>
+                <th class="left">@Resources.ProductionGoal.gvh_VATag</th>
+                <th class="left">@Resources.ProductionGoal.gvh_DesignTag</th>
+                <th class="left">@Resources.ProductionGoal.gvh_ShiftNameTag</th>
+                <th class="left">@Resources.ProductionGoal.gvh_GoalValueTag</th>
+                <th class="w-120"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-sm" data-entityid="@item.GoalID">
+                    <td class="@item.ClassNameShowDetails" width="5%"></td>
+                    <td>@item.GoalName </td>
+                    <td>@item.ProductionProcessName </td>
+                    <td>@item.ProductionLineName </td>
+                    <td>@item.VAName </td>
+                    <td>@item.DesignName </td>
+                    <td>@item.ShiftName </td>
+                    <td>@item.GoalValueFormat </td>
+                    <td class="pull-right">
+                        <button class="btn btn-info edit-production-goal" data-production-goalid="@item.GoalID" title="@Resources.ProductionGoal.tt_EditGoal"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button class="btn btn-danger delete-production-goal" data-production-goalid="@item.GoalID" title="@Resources.ProductionGoal.tt_DeleteGoal"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

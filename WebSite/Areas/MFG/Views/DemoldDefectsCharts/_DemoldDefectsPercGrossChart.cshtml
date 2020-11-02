@@ -1,0 +1,62 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.DemoldDefectsCharts.IndexViewModel
+
+<div id="bar_@ViewBag.DemoldDefectCategory" data-category="@ViewBag.DemoldDefectCategory" data-charttype="bar" class="panel panel-default DefectChartPanel">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel-title-box">
+                    <h3>@ViewBag.DemoldDefectCategory @Resources.MFG.DemoldDefectsCharts.lbl_DefectTypeVSQuantity</h3>
+                </div>
+                <ul class="panel-controls" style="margin-top: 2px;">
+                    <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                    <li><a href="#" class="panel-refresh-chart"><span class="fa fa-refresh"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-md-3">
+                <label>@Resources.MFG.MachineSetups.lbl_ProductionLine</label>
+                @Html.DropDownList("ddl_ProductionLines_bar_" + (String)ViewBag.DemoldDefectCategory, Model.ProductionLinesList,
+               new { @class = "form-control selectpicker chart_data_filter",
+                   multiple = "multiple", data_style = "btn-success" })
+            </div>
+            <div class="col-xs-3 col-md-3">
+                <label>@Resources.MFG.OperationRecords.lbl_Shift</label>
+                @Html.DropDownList("ddl_Shifts_bar_" + (String)ViewBag.DemoldDefectCategory, Model.ShiftsList,
+               new { @class = "form-control selectpicker chart_data_filter", multiple = "multiple", data_style = "btn-success" })
+            </div>
+            <div class="col-xs-3 col-md-3">
+                <label>@Resources.Common.lbl_StartDate</label>
+                <div class="input-group">
+                    @Html.TextBox("txt_StartDate_bar_" + (String)ViewBag.DemoldDefectCategory, Model.StartDate,
+                    new { @class = "form-control datepicker chart_data_filter", data_style = "btn-success" })
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+            <div class="col-xs-3 col-md-3">
+                <label>@Resources.Common.lbl_EndDate</label>
+                <div class="input-group">
+                    @Html.TextBox("txt_EndDate_bar_" + (String)ViewBag.DemoldDefectCategory, Model.EndDate,
+                   new { @class = "form-control datepicker chart_data_filter", data_style = "btn-success" })
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-md-3">
+                <label>@Resources.MFG.MoldFamilies.title_MoldFamiliesList</label>
+                @Html.DropDownList("ddl_Families_bar_" + (String)ViewBag.DemoldDefectCategory, Model.FamiliesList,
+               new { @class = "form-control selectpicker chart_data_filter", multiple = "multiple", data_style = "btn-success", data_live_search = "true" })
+            </div>
+            <div class="col-xs-3 col-md-3">
+                <label>@Resources.MFG.DemoldDefects.lbl_Design</label>
+                @Html.DropDownList("ddl_design_bar_" + (String)ViewBag.DemoldDefectCategory, Model.DesignList, new { @class = "form-control selectpicker chart_data_filter", multiple = "multiple", data_style = "btn-success", data_live_search = "true" })
+            </div>
+        </div>
+    </div>
+    <div class="panel-body padding-0">
+        <div class="chart-holder chart-container" id="_div_canvas_bar_@ViewBag.DemoldDefectCategory" style="position: relative;height: 220px;">
+            <canvas id="canvas_bar_@ViewBag.DemoldDefectCategory" style="position: relative;margin: auto;"></canvas>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{05B5C4C4-CC5E-470F-B0E8-CB40179D8954}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSite</RootNamespace>
+    <AssemblyName>WebSite</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.95.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.0-beta1\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.3.0\lib\net45\FastMember.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ZKFPEngXControl">
+      <HintPath>..\..\..\Librerias\Interop.ZKFPEngXControl.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\Librerias\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>..\..\..\Librerias\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\Catalog.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Catalog.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Catalog.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Catalog.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CI.Dashboard.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CI.Dashboard.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CI.Dashboard.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CI.Dashboard.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CI.DashboardManagement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CI.DashboardManagement.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CI.DashboardManagement.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CI.DashboardManagement.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Common.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Defects.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Defects.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Defects.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Defects.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\GenericCharts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenericCharts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\GenericCharts.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenericCharts.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\HR.Kiosk.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HR.Kiosk.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\HR.Kiosk.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HR.Kiosk.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\LoginAs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginAs.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\LoginAs.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginAs.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.ActionPlan.ES.designer.cs">
+      <DependentUpon>MFG.ActionPlan.ES.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.Dashboard.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.Dashboard.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.DemoldDefects.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.DemoldDefects.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.DemoldDefects.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.DemoldDefects.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.DemoldDefectsCatalog.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.DemoldDefectsCatalog.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.DemoldDefectsCatalog.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.DemoldDefectsCatalog.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.DemoldDefectsCharts.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.DemoldDefectsCharts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.MachineSetups.ES.designer.cs">
+      <DependentUpon>MFG.MachineSetups.ES.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.MachineSetups.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.MachineSetups.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.MoldFamilies.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.MoldFamilies.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.MoldFamilies.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.MoldFamilies.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.OperationRecords.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.OperationRecords.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.Login.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.Login.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.Reports.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.Reports.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.Reports.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.Reports.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.VatsCatalog.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.VatsCatalog.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.VatsCatalog.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.VatsCatalog.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MNT.EnergySensors.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MNT.EnergySensors.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MNT.EnergySensors.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MNT.EnergySensors.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MoldScrap.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MoldScrap.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MoldScrap.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MoldScrap.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ProductionGoal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionGoal.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ProductionGoal.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionGoal.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Profile.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Profile.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Profile.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Profile.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\MFG.ActionPlan.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MFG.ActionPlan.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Request.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Request.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Request.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Request.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\SG.SecurityGuard.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SG.SecurityGuard.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\User.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>User.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\User.ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>User.ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\CatalogsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\GenericChartsAdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\GenericChartsAxisController.cs" />
+    <Compile Include="Areas\Administration\Controllers\GenericChartsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\GenericChartsFiltersController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ProfilesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\Catalogs\IndexViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\GenericCharts\DataChartAdminViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\GenericCharts\DataChartFieldsViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\GenericCharts\DataChartFiltersViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\GenericCharts\DataChartsInfoViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\GenericCharts\EditDataChartViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\GenericCharts\NewEditDataChartAxisViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\GenericCharts\NewEditDataChartFilterViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\Profiles\EditViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\Profiles\IndexViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\Users\CreateViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\Users\EditViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\Users\IndexViewModel.cs" />
+    <Compile Include="Areas\CI\CIAreaRegistration.cs" />
+    <Compile Include="Areas\CI\Controllers\AdministrationController.cs" />
+    <Compile Include="Areas\CI\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\CI\Models\ViewModels\Administration\DashboardAreaDetailUpsertViewModel.cs" />
+    <Compile Include="Areas\CI\Models\ViewModels\Administration\DashboardAreaUpsertViewModel.cs" />
+    <Compile Include="Areas\CI\Models\ViewModels\Administration\GeneralSettingsViewModel.cs" />
+    <Compile Include="Areas\CI\Models\ViewModels\Administration\GenericCultureViewModel.cs" />
+    <Compile Include="Areas\CI\Models\ViewModels\Administration\IndexViewModel.cs" />
+    <Compile Include="Areas\CI\Models\ViewModels\Administration\ModalReorderSectionsViewModel.cs" />
+    <Compile Include="Areas\CI\Models\ViewModels\Dashboard\IndexDetailViewModel.cs" />
+    <Compile Include="Areas\CI\Models\ViewModels\Dashboard\IndexGalleryViewModel.cs" />
+    <Compile Include="Areas\CI\Models\ViewModels\Dashboard\IndexViewModel.cs" />
+    <Compile Include="Areas\eRequest\Controllers\FormatsController.cs" />
+    <Compile Include="Areas\eRequest\Controllers\RequestController.cs" />
+    <Compile Include="Areas\eRequest\eRequestAreaRegistration.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\AddNewRuleModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\CreateViewModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\IndexViewModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\ModalAddDetailFieldViewModal.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\ModalAddFieldViewModal.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\ModalAddFieldViewModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\MoNewApproverModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\MoNewRuleModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\PDFConfigurationModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Formats\Tbl_Format_LoopRuleDetailModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Request\AdditionalFieldsDescriptionViewModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Request\CreateViewModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Request\IndexViewModel.cs" />
+    <Compile Include="Areas\eRequest\Models\ViewModels\Request\MaterialReturnViewModel.cs" />
+    <Compile Include="Areas\HR\Controllers\KioskAdministrationController.cs" />
+    <Compile Include="Areas\HR\Controllers\KioskController.cs" />
+    <Compile Include="Areas\HR\Controllers\KioskEmployeeController.cs" />
+    <Compile Include="Areas\HR\Controllers\KioskRequestAdministratorController.cs" />
+    <Compile Include="Areas\HR\Controllers\KioskSuggestionsAdministratorController.cs" />
+    <Compile Include="Areas\HR\Controllers\OpportunitiesProgramController.cs" />
+    <Compile Include="Areas\HR\HRAreaRegistration.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskAdministration\GeneralSettingsViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskAdministration\IndexViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskAdministration\KioskAreaDetailUpsertViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskAdministration\KioskAreaUpsertViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskAdministration\ModalReorderSectionsViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskEmployee\EmployeePointsMovementsViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskEmployee\KioskCoursesViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskEmployee\LoginUserViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskEmployee\PaymentReceiptsViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskEmployee\WizardRequestViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskRequestAdministrator\IndexViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskRequestAdministrator\RequestAssignResponsibleViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskRequestAdministrator\RequestStatusUpdateViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskRequestAdministrator\RequestViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\KioskSuggestionsAdministrator\IndexViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\Kiosk\IndexViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\Kiosk\KioskAreaDetailsViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\Kiosk\KioskAreaViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\OpportunitiesProgram\IndexViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\OpportunitiesProgram\NewOpportunityViewModel.cs" />
+    <Compile Include="Areas\HR\Models\ViewModels\OpportunitiesProgram\NotificationsViewModel.cs" />
+    <Compile Include="Areas\LGX\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\LGX\LGXAreaRegistration.cs" />
+    <Compile Include="Areas\MFG\Controllers\ActionPlanController.cs" />
+    <Compile Include="Areas\MFG\Controllers\CatalogsController.cs" />
+    <Compile Include="Areas\MFG\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\MFG\Controllers\DemoldDefectsCatalogController.cs" />
+    <Compile Include="Areas\MFG\Controllers\DemoldDefectsChartsController.cs" />
+    <Compile Include="Areas\MFG\Controllers\DemoldDefectsController.cs" />
+    <Compile Include="Areas\MFG\Controllers\LoginController.cs" />
+    <Compile Include="Areas\MFG\Controllers\MachineSetupController.cs" />
+    <Compile Include="Areas\MFG\Controllers\MoldFamiliesController.cs" />
+    <Compile Include="Areas\MFG\Controllers\OperationRecordsController.cs" />
+    <Compile Include="Areas\MFG\Controllers\ReportsController.cs" />
+    <Compile Include="Areas\MFG\Controllers\VATsController.cs" />
+    <Compile Include="Areas\MFG\MFGAreaRegistration.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\ActionPlan\AssignTaskViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\ActionPlan\IndexViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\ActionPlan\CloseTaskViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Catalogs\CatalogEditModalViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Catalogs\CatalogModalViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Catalogs\CatalogsViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Catalogs\CatalogTableViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Catalogs\GasketModalViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Dashboard\ChartsViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Dashboard\ExportToExcelViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Dashboard\HeaderViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Dashboard\IndexViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Dashboard\ModalExportToExcelViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Dashboard\ShowViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\DemoldDefectsCatalog\AlertsViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\DemoldDefectsCatalog\IndexViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\DemoldDefectsCharts\IndexViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\DemoldDefects\CaptureWizardViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\DemoldDefects\IndexViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\MachineSetup\MachineSetupParameterViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\MachineSetup\IndexViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\MachineSetup\EditViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\MachineSetup\ModalAddSetupParameterViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\MachineSetup\ModalNewMachineViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\MachineSetup\ModalAddParameterViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\MachineSetup\ModalParametersFormulaViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\MoldFamilies\EditViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\MoldFamilies\IndexViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\OperationRecords\EditViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\OperationRecords\ListViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\OperationRecords\NewViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\OperationRecords\ParameterViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\OperationRecords\TabSetupViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Reports\ACTParamsViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Reports\EERDTLSParamsViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Reports\GSKTDIAMParamsViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Reports\IndexViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Reports\PRMSParamsViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\Reports\ReportParamViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\VATs\EditViewModel.cs" />
+    <Compile Include="Areas\MFG\Models\ViewModels\VATs\IndexViewModel.cs" />
+    <Compile Include="Areas\MNT\Controllers\EnergyDashboardController.cs" />
+    <Compile Include="Areas\MNT\Controllers\EnergySensorFamiliesController.cs" />
+    <Compile Include="Areas\MNT\Controllers\EnergySensorsController.cs" />
+    <Compile Include="Areas\MNT\MNTAreaRegistration.cs" />
+    <Compile Include="Areas\MNT\Models\ViewModels\EnergyDashboard\ChartFamiliesGaugeViewModel.cs" />
+    <Compile Include="Areas\MNT\Models\ViewModels\EnergySensors\EnergySensorDetailsViewModel.cs" />
+    <Compile Include="Areas\MNT\Models\ViewModels\EnergySensors\EnergySensorFamiliesViewModel.cs" />
+    <Compile Include="Areas\MNT\Models\ViewModels\EnergySensors\EnergySensorsAlarmsViewModel.cs" />
+    <Compile Include="Areas\MNT\Models\ViewModels\EnergySensors\EnergySensorsEditViewModel.cs" />
+    <Compile Include="Areas\MNT\Models\ViewModels\EnergySensors\EnergySensorsTableViewModel.cs" />
+    <Compile Include="Areas\MNT\Models\ViewModels\EnergySensors\EnergySensorValuesViewModel.cs" />
+    <Compile Include="Areas\Production\Controllers\ChartsController.cs" />
+    <Compile Include="Areas\Production\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Production\Controllers\DefectsController.cs" />
+    <Compile Include="Areas\Production\Controllers\GoalsController.cs" />
+    <Compile Include="Areas\Production\Controllers\MoldScrapController.cs" />
+    <Compile Include="Areas\Production\Models\Defects\IndexViewModel.cs" />
+    <Compile Include="Areas\Production\Models\Goals\IndexViewModel.cs" />
+    <Compile Include="Areas\Production\Models\Goals\TableDetailViewModel.cs" />
+    <Compile Include="Areas\Production\Models\MoldScrap\IndexViewModel.cs" />
+    <Compile Include="Areas\Production\ProductionAreaRegistration.cs" />
+    <Compile Include="Areas\PUR\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\PUR\PURAreaRegistration.cs" />
+    <Compile Include="Areas\QA\Controllers\FilmetricController.cs" />
+    <Compile Include="Areas\QA\Models\ViewModels\Filmetric\EditViewModel.cs" />
+    <Compile Include="Areas\QA\Models\ViewModels\Filmetric\IndexViewModel.cs" />
+    <Compile Include="Areas\QA\Models\ViewModels\Filmetric\NewViewModel.cs" />
+    <Compile Include="Areas\QA\QAAreaRegistration.cs" />
+    <Compile Include="Areas\SG\Controllers\SecurityGuardConfigurationsController.cs" />
+    <Compile Include="Areas\SG\Controllers\SecurityGuardController.cs" />
+    <Compile Include="Areas\SG\Controllers\SecurityGuardReportController.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuardConfigurations\BadgesViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuardConfigurations\EquipmentViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuardConfigurations\IndexViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuardConfigurations\NewEditEquipmentViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuardConfigurations\NewEditViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuardReport\IndexViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuard\CheckInToolsViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuard\CheckInVehicleViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuard\CheckInViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuard\CheckOutViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuard\FullScreenImgViewModel.cs" />
+    <Compile Include="Areas\SG\Models\ViewModels\SecurityGuard\SuppliersViewModel.cs" />
+    <Compile Include="Areas\SG\SGAreaRegistration.cs" />
+    <Compile Include="Areas\WHS\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\WHS\WHSAreaRegistration.cs" />
+    <Compile Include="BaseController.cs" />
+    <Compile Include="Controllers\AdditionalFieldsController.cs" />
+    <Compile Include="Controllers\AttachmentsController.cs" />
+    <Compile Include="Controllers\ChartsSliderController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginAnotherAccountController.cs" />
+    <Compile Include="Controllers\LoginAsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\SecurityFilter.cs" />
+    <Compile Include="Filters\SessionExpire.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaticModels.cs" />
+    <Compile Include="Models\ViewModels\AdditionalFieldsViewModel.cs" />
+    <Compile Include="Models\ViewModels\Attachments\AttachmentViewModel.cs" />
+    <Compile Include="Models\ViewModels\ChartSlider\ConfigViewModel.cs" />
+    <Compile Include="Models\ViewModels\ChartSlider\IndexViewModel.cs" />
+    <Compile Include="Models\ViewModels\ChartSlider\OptionViewModel.cs" />
+    <Compile Include="Models\ViewModels\Home\ChartsViewModel.cs" />
+    <Compile Include="Models\ViewModels\Home\ITChartsViewModel.cs" />
+    <Compile Include="Models\ViewModels\LoginAs\IndexViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\MenuViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Extensions.cs" />
+    <Compile Include="Utilities\LanguageMang.cs" />
+    <Compile Include="Utilities\LDAPMang.cs" />
+    <Compile Include="Utilities\Security.cs" />
+    <Compile Include="Utilities\Tools.cs" />
+    <Compile Include="Utilities\Wrappers.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Administration\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\_Tbl_Users.cshtml" />
+    <Content Include="Areas\MFG\Views\Login\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\Edit.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\List.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\New.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Div_TabDefects.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Div_TabDowntimes.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Div_TabProduction.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Div_TabSetup.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Filters.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_ParameterView.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Tbl_Downtimes.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Tbl_Operations.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Tbl_Rejects.cshtml" />
+    <Content Include="Areas\MFG\Views\Shared\_Header.cshtml" />
+    <Content Include="Areas\MFG\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\MFG\Views\web.config" />
+    <Content Include="Areas\MFG\Views\_ViewStart.cshtml" />
+    <Content Include="Content\assets\images\blog\post_1.jpg" />
+    <Content Include="Content\assets\images\blog\post_2.jpg" />
+    <Content Include="Content\assets\images\gallery\girls-1.jpg" />
+    <Content Include="Content\assets\images\gallery\girls-2.jpg" />
+    <Content Include="Content\assets\images\gallery\girls-3.jpg" />
+    <Content Include="Content\assets\images\gallery\music-1.jpg" />
+    <Content Include="Content\assets\images\gallery\music-2.jpg" />
+    <Content Include="Content\assets\images\gallery\music-3.jpg" />
+    <Content Include="Content\assets\images\gallery\music-4.jpg" />
+    <Content Include="Content\assets\images\gallery\music-5.jpg" />
+    <Content Include="Content\assets\images\gallery\nature-1.jpg" />
+    <Content Include="Content\assets\images\gallery\nature-2.jpg" />
+    <Content Include="Content\assets\images\gallery\nature-3.jpg" />
+    <Content Include="Content\assets\images\gallery\nature-4.jpg" />
+    <Content Include="Content\assets\images\gallery\nature-5.jpg" />
+    <Content Include="Content\assets\images\gallery\nature-6.jpg" />
+    <Content Include="Content\assets\images\gallery\nature-7.jpg" />
+    <Content Include="Content\assets\images\gallery\space-1.jpg" />
+    <Content Include="Content\assets\images\gallery\space-2.jpg" />
+    <Content Include="Content\assets\images\ocean.jpg" />
+    <Content Include="Content\assets\images\users\avatar.jpg" />
+    <Content Include="Content\assets\images\users\no-image.jpg" />
+    <Content Include="Content\assets\images\users\user.jpg" />
+    <Content Include="Content\assets\images\users\user2.jpg" />
+    <Content Include="Content\assets\images\users\user3.jpg" />
+    <Content Include="Content\assets\images\users\user4.jpg" />
+    <Content Include="Content\assets\images\users\user5.jpg" />
+    <Content Include="Content\assets\images\users\user6.jpg" />
+    <Content Include="Content\assets\images\users\user7.jpg" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\HR\Kiosk\Kiosk.css" />
+    <Content Include="Content\HR\Kiosk\KioskAdministration.css" />
+    <Content Include="Content\HR\Kiosk\KioskEmployee.css" />
+    <Content Include="Content\HR\Kiosk\KioskRequestAdministrator.css" />
+    <Content Include="Content\HR\Kiosk\slideform.css" />
+    <Content Include="Content\img\backgrounds\wall_1.jpg" />
+    <Content Include="Content\img\bg.png" />
+    <Content Include="Content\img\buttonicon\eReq-delete.png" />
+    <Content Include="Content\img\buttonicon\eReq-edit.png" />
+    <Content Include="Content\img\buttonicon\eReq-log-colapse.png" />
+    <Content Include="Content\img\buttonicon\eReq-log.png" />
+    <Content Include="Content\img\buttonicon\eReq-pdf.png" />
+    <Content Include="Content\img\buttonicon\Eye-Show-Disable.png" />
+    <Content Include="Content\img\buttonicon\Eye-Show.png" />
+    <Content Include="Content\img\buttonicon\folder_add.png" />
+    <Content Include="Content\img\buttonicon\folder_remove.png" />
+    <Content Include="Content\img\buttonicon\folder_removed.png" />
+    <Content Include="Content\img\colorpicker\alpha.png" />
+    <Content Include="Content\img\colorpicker\hue.png" />
+    <Content Include="Content\img\colorpicker\saturation.png" />
+    <Content Include="Content\img\datatables\back_disabled.png" />
+    <Content Include="Content\img\datatables\back_enabled.png" />
+    <Content Include="Content\img\datatables\back_enabled_hover.png" />
+    <Content Include="Content\img\datatables\details_close.png" />
+    <Content Include="Content\img\datatables\details_open.png" />
+    <Content Include="Content\img\datatables\forward_disabled.png" />
+    <Content Include="Content\img\datatables\forward_enabled.png" />
+    <Content Include="Content\img\datatables\forward_enabled_hover.png" />
+    <Content Include="Content\img\datatables\sort_asc.png" />
+    <Content Include="Content\img\datatables\sort_asc_disabled.png" />
+    <Content Include="Content\img\datatables\sort_both.png" />
+    <Content Include="Content\img\datatables\sort_desc.png" />
+    <Content Include="Content\img\datatables\sort_desc_disabled.png" />
+    <Content Include="Content\img\datatables\_details_close.png" />
+    <Content Include="Content\img\datatables\_details_open.png" />
+    <Content Include="Content\img\dropzone\spritemap%402x.png" />
+    <Content Include="Content\img\dropzone\spritemap.png" />
+    <Content Include="Content\img\fileinput\loading.gif" />
+    <Content Include="Content\img\fileinput\Loading2.gif" />
+    <Content Include="Content\img\fileinput\loading3.gif" />
+    <Content Include="Content\img\filetree\application.png" />
+    <Content Include="Content\img\filetree\code.png" />
+    <Content Include="Content\img\filetree\css.png" />
+    <Content Include="Content\img\filetree\db.png" />
+    <Content Include="Content\img\filetree\directory.png" />
+    <Content Include="Content\img\filetree\doc.png" />
+    <Content Include="Content\img\filetree\file.png" />
+    <Content Include="Content\img\filetree\film.png" />
+    <Content Include="Content\img\filetree\flash.png" />
+    <Content Include="Content\img\filetree\folder_open.png" />
+    <Content Include="Content\img\filetree\html.png" />
+    <Content Include="Content\img\filetree\java.png" />
+    <Content Include="Content\img\filetree\linux.png" />
+    <Content Include="Content\img\filetree\music.png" />
+    <Content Include="Content\img\filetree\pdf.png" />
+    <Content Include="Content\img\filetree\php.png" />
+    <Content Include="Content\img\filetree\picture.png" />
+    <Content Include="Content\img\filetree\ppt.png" />
+    <Content Include="Content\img\filetree\psd.png" />
+    <Content Include="Content\img\filetree\ruby.png" />
+    <Content Include="Content\img\filetree\script.png" />
+    <Content Include="Content\img\filetree\spinner.gif" />
+    <Content Include="Content\img\filetree\txt.png" />
+    <Content Include="Content\img\filetree\xls.png" />
+    <Content Include="Content\img\filetree\zip.png" />
+    <Content Include="Content\img\finger_scann.gif" />
+    <Content Include="Content\img\flags\de.png" />
+    <Content Include="Content\img\flags\en.png" />
+    <Content Include="Content\img\flags\es.png" />
+    <Content Include="Content\img\flags\fr.png" />
+    <Content Include="Content\img\flags\ge.png" />
+    <Content Include="Content\img\flags\it.png" />
+    <Content Include="Content\img\flags\link-to-flags.txt" />
+    <Content Include="Content\img\flags\ru.png" />
+    <Content Include="Content\img\flags\us.png" />
+    <Content Include="Content\img\icheck\grey.png" />
+    <Content Include="Content\img\icons\csv.png" />
+    <Content Include="Content\img\icons\json.png" />
+    <Content Include="Content\img\icons\pdf.png" />
+    <Content Include="Content\img\icons\png.png" />
+    <Content Include="Content\img\icons\ppt.png" />
+    <Content Include="Content\img\icons\sql.png" />
+    <Content Include="Content\img\icons\txt.png" />
+    <Content Include="Content\img\icons\word.png" />
+    <Content Include="Content\img\icons\xls.png" />
+    <Content Include="Content\img\icons\xml.png" />
+    <Content Include="Content\img\jquery\resize-icon.png" />
+    <Content Include="Content\img\jstree\32px.png" />
+    <Content Include="Content\img\jstree\40px.png" />
+    <Content Include="Content\img\jstree\Box.png" />
+    <Content Include="Content\img\jstree\BoxOpen.png" />
+    <Content Include="Content\img\jstree\Company.png" />
+    <Content Include="Content\img\jstree\Facility.png" />
+    <Content Include="Content\img\jstree\Organization.png" />
+    <Content Include="Content\img\jstree\Pallet.png" />
+    <Content Include="Content\img\jstree\PalletOpen.png" />
+    <Content Include="Content\img\jstree\ProductionLine.png" />
+    <Content Include="Content\img\jstree\StorageBin.png" />
+    <Content Include="Content\img\jstree\StorageLocation.png" />
+    <Content Include="Content\img\jstree\throbber.gif" />
+    <Content Include="Content\img\jstree\Unit.png" />
+    <Content Include="Content\img\jstree\UnitReject.png" />
+    <Content Include="Content\img\jstree\Warehouse.png" />
+    <Content Include="Content\img\jstree\WarehouseFacility.png" />
+    <Content Include="Content\img\jstree\WarehouseSection.png" />
+    <Content Include="Content\img\jstree\WorkOrder.png" />
+    <Content Include="Content\img\loaders\default.gif" />
+    <Content Include="Content\img\loading.html" />
+    <Content Include="Content\img\logo-small.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\logos\essilor logo.jpg" />
+    <Content Include="Content\img\logos\Hurricane1.jpg" />
+    <Content Include="Content\img\logos\IMM.JPG" />
+    <Content Include="Content\img\logos\injection-molding.jpg" />
+    <Content Include="Content\img\logos\maquina.JPG" />
+    <Content Include="Content\img\logos\mezcladora.png" />
+    <Content Include="Content\img\logos\regrain.JPG" />
+    <Content Include="Content\img\logo_big_en.png" />
+    <Content Include="Content\img\Menu\AccountPayable.png" />
+    <Content Include="Content\img\Menu\cash.png" />
+    <Content Include="Content\img\Menu\Customers.png" />
+    <Content Include="Content\img\Menu\dashboard.png" />
+    <Content Include="Content\img\Menu\facility.png" />
+    <Content Include="Content\img\Menu\HandTruck.png" />
+    <Content Include="Content\img\Menu\Hierarchy.png" />
+    <Content Include="Content\img\Menu\Inspection.png" />
+    <Content Include="Content\img\Menu\Installers.png" />
+    <Content Include="Content\img\Menu\invoice.png" />
+    <Content Include="Content\img\Menu\Invoices.png" />
+    <Content Include="Content\img\Menu\Lift.png" />
+    <Content Include="Content\img\Menu\Lists.png" />
+    <Content Include="Content\img\Menu\menu.png" />
+    <Content Include="Content\img\Menu\MFG.png" />
+    <Content Include="Content\img\Menu\mnu_Actionplan.png" />
+    <Content Include="Content\img\Menu\mnu_Catalog.png" />
+    <Content Include="Content\img\Menu\mnu_Chart.png" />
+    <Content Include="Content\img\Menu\mnu_CI.png" />
+    <Content Include="Content\img\Menu\mnu_ExcelDataChart.png" />
+    <Content Include="Content\img\Menu\mnu_Goal.png" />
+    <Content Include="Content\img\Menu\mnu_Home.png" />
+    <Content Include="Content\img\Menu\mnu_MFG.png" />
+    <Content Include="Content\img\Menu\mnu_MNT.png" />
+    <Content Include="Content\img\Menu\mnu_MoldScrap.png" />
+    <Content Include="Content\img\Menu\mnu_Presentation.png" />
+    <Content Include="Content\img\Menu\mnu_Profile.png" />
+    <Content Include="Content\img\Menu\mnu_Reports.png" />
+    <Content Include="Content\img\Menu\mnu_Setting.png" />
+    <Content Include="Content\img\Menu\mnu_SettingDefects.png" />
+    <Content Include="Content\img\Menu\mnu_Tablet.png" />
+    <Content Include="Content\img\Menu\mnu_User.png" />
+    <Content Include="Content\img\Menu\Money.png" />
+    <Content Include="Content\img\Menu\OrderHistory.png" />
+    <Content Include="Content\img\Menu\Pallet.png" />
+    <Content Include="Content\img\Menu\Parts.png" />
+    <Content Include="Content\img\Menu\Planning.png" />
+    <Content Include="Content\img\Menu\Production.png" />
+    <Content Include="Content\img\Menu\Purchase.png" />
+    <Content Include="Content\img\Menu\quality.png" />
+    <Content Include="Content\img\Menu\Rack.png" />
+    <Content Include="Content\img\Menu\reorder.png" />
+    <Content Include="Content\img\Menu\ReportInventory.png" />
+    <Content Include="Content\img\Menu\Reports.png" />
+    <Content Include="Content\img\Menu\SalesReport.png" />
+    <Content Include="Content\img\Menu\Settings.png" />
+    <Content Include="Content\img\Menu\ShoppingCart.png" />
+    <Content Include="Content\img\Menu\Stations.png" />
+    <Content Include="Content\img\Menu\thumbs-down.png" />
+    <Content Include="Content\img\Menu\thumbs-up.png" />
+    <Content Include="Content\img\Menu\Transport.png" />
+    <Content Include="Content\img\Menu\UserCard.png" />
+    <Content Include="Content\img\Menu\UserGroup.png" />
+    <Content Include="Content\img\Menu\Vendor.png" />
+    <Content Include="Content\img\Menu\WMSReport.png" />
+    <Content Include="Content\img\Menu\WMS_Receiving.png" />
+    <Content Include="Content\img\Menu\WorkOrders.png" />
+    <Content Include="Content\img\not_found.png" />
+    <Content Include="Content\img\owl\AjaxLoader.gif" />
+    <Content Include="Content\img\owl\grabbing.png" />
+    <Content Include="Content\img\SmileyFace.png" />
+    <Content Include="Content\img\themes\black.jpg" />
+    <Content Include="Content\img\themes\blue.jpg" />
+    <Content Include="Content\img\themes\brown.jpg" />
+    <Content Include="Content\img\themes\default.jpg" />
+    <Content Include="Content\img\themes\light.jpg" />
+    <Content Include="Content\img\UploadCloud.png" />
+    <Content Include="Content\MFG\CaptureWizard.css" />
+    <Content Include="Content\MFG\DemoldDefects\CaptureWizard.css" />
+    <Content Include="Content\MFG\DemoldDefects\slideform.css" />
+    <Content Include="Content\PLUGINS\animate\animate.min.css" />
+    <Content Include="Content\PLUGINS\apexcharts\apexcharts.css" />
+    <Content Include="Content\PLUGINS\blueimp\blueimp-gallery.min.css" />
+    <Content Include="Content\PLUGINS\bootstrap-datetimepicker\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\PLUGINS\bootstrap\bootstrap-timepicker.min.css" />
+    <Content Include="Content\PLUGINS\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\PLUGINS\dropzone\dropzone.css" />
+    <Content Include="Content\PLUGINS\fontawesome\font-awesome.min.css" />
+    <Content Include="Content\PLUGINS\fonts\fontawesome-webfont862f.svg" />
+    <Content Include="Content\PLUGINS\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\PLUGINS\fullcalendar\fullcalendar.css" />
+    <Content Include="Content\PLUGINS\img\blueimp\error-2.html" />
+    <Content Include="Content\PLUGINS\img\blueimp\error.html" />
+    <Content Include="Content\PLUGINS\img\blueimp\loading.html" />
+    <Content Include="Content\PLUGINS\img\blueimp\play-pause-2.html" />
+    <Content Include="Content\PLUGINS\img\blueimp\play-pause.html" />
+    <Content Include="Content\PLUGINS\img\blueimp\video-play-2.html" />
+    <Content Include="Content\PLUGINS\img\blueimp\video-play.html" />
+    <Content Include="Content\PLUGINS\img\clear.png" />
+    <Content Include="Content\PLUGINS\img\loading.gif" />
+    <Content Include="Content\PLUGINS\jquery\jquery-ui.min.css" />
+    <Content Include="Content\PLUGINS\jstree\32px.png" />
+    <Content Include="Content\PLUGINS\jstree\40px.png" />
+    <Content Include="Content\PLUGINS\jstree\style.css" />
+    <Content Include="Content\PLUGINS\jstree\throbber.gif" />
+    <Content Include="Content\PLUGINS\lobibox\lobibox.css" />
+    <Content Include="Content\PLUGINS\mcustomscrollbar\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\PLUGINS\mcustomscrollbar\mCSB_buttons.html" />
+    <Content Include="Content\PLUGINS\mediaelement\mediaelementplayer.css" />
+    <Content Include="Content\PLUGINS\mediaelement\mejs-controls.svg" />
+    <Content Include="Content\PLUGINS\metro\metro-colors.min.css" />
+    <Content Include="Content\PLUGINS\metro\metro-icons.min.css" />
+    <Content Include="Content\PLUGINS\metro\metro-rtl.min.css" />
+    <Content Include="Content\PLUGINS\metro\metro.min.css" />
+    <Content Include="Content\PLUGINS\minicolor\jquery.minicolors.css" />
+    <Content Include="Content\PLUGINS\minicolor\jquery.minicolors.png" />
+    <Content Include="Content\PLUGINS\numpad\jquery.numpad.css" />
+    <Content Include="Content\PLUGINS\owl\owl.carousel.css" />
+    <Content Include="Content\PLUGINS\owl\owl.carousel.min.css" />
+    <Content Include="Content\PLUGINS\owl\owl.theme.default.css" />
+    <Content Include="Content\PLUGINS\owl\owl.theme.default.min.css" />
+    <Content Include="Content\PLUGINS\slick\ajax-loader.gif" />
+    <Content Include="Content\PLUGINS\slick\slick-theme.css" />
+    <Content Include="Content\PLUGINS\slick\slick.css" />
+    <Content Include="Content\PLUGINS\slideform\fonts\slideform.svg" />
+    <Content Include="Content\PLUGINS\slideform\slideform.css" />
+    <Content Include="Content\PLUGINS\summernote\summernote.css" />
+    <Content Include="Content\PLUGINS\xeditable\bootstrap-editable.css" />
+    <Content Include="Content\PLUGINS\xeditable\clear.png" />
+    <Content Include="Content\PLUGINS\xeditable\loading.gif" />
+    <Content Include="Content\SG\Media\CheckIn.png" />
+    <Content Include="Content\SG\Media\CheckOut.png" />
+    <Content Include="Content\SG\Media\Printer.png" />
+    <Content Include="Content\SG\Media\Supplier.png" />
+    <Content Include="Content\SG\SecurityGuard.css" />
+    <Content Include="Content\SG\SecurityGuardConfigurations.css" />
+    <Content Include="Content\SG\TabsStyles.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\SOFI.css" />
+    <Content Include="Content\theme-black.css" />
+    <Content Include="Content\theme-blue.css" />
+    <Content Include="Content\theme-brown.css" />
+    <Content Include="Content\theme-default.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Files\CI\Background\829758.jpg" />
+    <Content Include="Files\CI\Background\bg1.jpg" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\camera-video.png" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\E1.jpg" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\E2.jpg" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\E3.jpg" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\essilor.jpg" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\Excel.png" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\LIFE.png" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\PDF.png" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\PP.png" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\Video-Camera.png" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\Video.png" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\Welcome.png" />
+    <Content Include="Files\CI\Dashboard\BackgroundImages\_Play.png" />
+    <Content Include="Files\CI\Gallery\6\E2.jpg" />
+    <Content Include="Files\CI\Gallery\6\E3.jpg" />
+    <Content Include="Files\CI\Gallery\6\essilor.jpg" />
+    <Content Include="Files\CI\Gallery\6\LIFE.png" />
+    <Content Include="Files\CI\Gallery\6\Welcome.png" />
+    <Content Include="Files\CI\Images\essilor.jpg" />
+    <Content Include="Files\CI\Videos\LaMision.wmv" />
+    <Content Include="Files\CI\Videos\MisionEssilor.mp4" />
+    <Content Include="Files\CI\Videos\Test.mp4" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\PLUGINS\fonts\fontawesome-webfont862f.eot" />
+    <Content Include="Content\PLUGINS\fonts\fontawesome-webfont862f.ttf" />
+    <Content Include="Content\PLUGINS\fonts\fontawesome-webfont862f.woff" />
+    <Content Include="Content\PLUGINS\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\PLUGINS\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\PLUGINS\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\PLUGINS\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\PLUGINS\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Scripts\actions.js" />
+    <Content Include="Scripts\Administration\Catalogs\Index.js" />
+    <Content Include="Scripts\Administration\GenericChartsAdministration\Edit.js" />
+    <Content Include="Scripts\Administration\GenericChartsAdministration\Index.js" />
+    <Content Include="Scripts\Administration\GenericCharts\Index.js" />
+    <Content Include="Scripts\Administration\Profiles\Edit.js" />
+    <Content Include="Scripts\Administration\Profiles\Index.js" />
+    <Content Include="Scripts\Administration\Users\Create.js" />
+    <Content Include="Scripts\Administration\Users\Edit.js" />
+    <Content Include="Scripts\Administration\Users\Index.js" />
+    <Content Include="Scripts\ChartsSlider.js" />
+    <Content Include="Scripts\CI\Administration\Index.js" />
+    <Content Include="Scripts\CI\Dashboard\Index.js" />
+    <Content Include="Scripts\CoreFunctions.js" />
+    <Content Include="Scripts\Charts.js" />
+    <Content Include="Scripts\eRequest\Formats\Create.js" />
+    <Content Include="Scripts\eRequest\Formats\Index.js" />
+    <Content Include="Scripts\eRequest\Request\Create.js" />
+    <Content Include="Scripts\eRequest\Request\Index.js" />
+    <Content Include="Scripts\HR\KioskAdministration\Index.js" />
+    <Content Include="Scripts\HR\KioskRequestAdministrator\Index.js" />
+    <Content Include="Scripts\HR\KioskSuggestionsAdministrator\Index.js" />
+    <Content Include="Scripts\HR\Kiosk\Index.js" />
+    <Content Include="Scripts\HR\Kiosk\KioskEmployee.js" />
+    <Content Include="Scripts\HR\OpportunitiesProgram\Index.js" />
+    <Content Include="Scripts\HR\OpportunitiesProgram\NewOpportunity.js" />
+    <Content Include="Scripts\ITCharts.js" />
+    <Content Include="Scripts\jSignature.min.js" />
+    <Content Include="Scripts\LGX\Dashboard\Index.js" />
+    <Content Include="Scripts\MFG\ActionPlan\Index.js" />
+    <Content Include="Scripts\MFG\Catalogs\Index.js" />
+    <Content Include="Scripts\MFG\Dashboard\Charts.js" />
+    <Content Include="Scripts\MFG\Dashboard\Index.js" />
+    <Content Include="Scripts\MFG\DemoldDefectsCatalog\Index.js" />
+    <Content Include="Scripts\MFG\DemoldDefectsCharts\Index.js" />
+    <Content Include="Scripts\MFG\DemoldDefects\CaptureWizard.js" />
+    <Content Include="Scripts\MFG\DemoldDefects\Index.js" />
+    <Content Include="Scripts\MFG\MachineSetup\Edit.js" />
+    <Content Include="Scripts\MFG\MachineSetup\Index.js" />
+    <Content Include="Scripts\MFG\MoldFamilies\Index.js" />
+    <Content Include="Scripts\MFG\OperationRecords\List.js" />
+    <Content Include="Scripts\MFG\OperationRecords\Edit.js" />
+    <Content Include="Scripts\MFG\OperationRecords\New.js" />
+    <Content Include="Scripts\MFG\Reports\Index.js" />
+    <Content Include="Scripts\MFG\VATs\Index.js" />
+    <Content Include="Scripts\MNT\EnergyDashboard\Charts.js" />
+    <Content Include="Scripts\MNT\EnergyDashboard\Details.js" />
+    <Content Include="Scripts\MNT\EnergyDashboard\Index.js" />
+    <Content Include="Scripts\MNT\EnergySensorFamilies\Index.js" />
+    <Content Include="Scripts\MNT\EnergySensors\Edit.js" />
+    <Content Include="Scripts\MNT\EnergySensors\Index.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\plugins.js" />
+    <Content Include="Scripts\PLUGINS\apexcharts\apexcharts.common.js" />
+    <Content Include="Scripts\PLUGINS\apexcharts\apexcharts.esm.js" />
+    <Content Include="Scripts\PLUGINS\apexcharts\apexcharts.js" />
+    <Content Include="Scripts\PLUGINS\apexcharts\apexcharts.min.js" />
+    <Content Include="Scripts\PLUGINS\blueimp\jquery.blueimp-gallery.min.js" />
+    <Content Include="Scripts\PLUGINS\bootstrap-datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\PLUGINS\bootstrap\bootstrap-colorpicker.js" />
+    <Content Include="Scripts\PLUGINS\bootstrap\bootstrap-datepicker.js" />
+    <Content Include="Scripts\PLUGINS\bootstrap\bootstrap-file-input.js" />
+    <Content Include="Scripts\PLUGINS\bootstrap\bootstrap-select.js" />
+    <Content Include="Scripts\PLUGINS\bootstrap\bootstrap-timepicker.min.js" />
+    <Content Include="Scripts\PLUGINS\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\PLUGINS\CardFormWizard\css\main.css" />
+    <Content Include="Scripts\PLUGINS\CardFormWizard\css\style.css" />
+    <Content Include="Scripts\PLUGINS\CardFormWizard\js\plugins.js" />
+    <Content Include="Scripts\PLUGINS\CardFormWizard\scss\main.css" />
+    <Content Include="Scripts\PLUGINS\charts\Chart.js" />
+    <Content Include="Scripts\PLUGINS\charts\Chart.min.js" />
+    <Content Include="Scripts\PLUGINS\charts\chartjs-plugin-annotation.js" />
+    <Content Include="Scripts\PLUGINS\charts\chartjs-plugin-annotation.min.js" />
+    <Content Include="Scripts\PLUGINS\charts\chartjs-plugin-datalabels.js" />
+    <Content Include="Scripts\PLUGINS\charts\chartjs-plugin-datalabels.min.js" />
+    <Content Include="Scripts\PLUGINS\datatables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\PLUGINS\daterangepicker\daterangepicker.js" />
+    <Content Include="Scripts\PLUGINS\dropzone\dropzone.js" />
+    <Content Include="Scripts\PLUGINS\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\PLUGINS\fileinput\fileinput.min.js" />
+    <Content Include="Scripts\PLUGINS\filetree\jqueryFileTree.js" />
+    <Content Include="Scripts\PLUGINS\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\PLUGINS\GaugeMeter\gauge.min.js" />
+    <Content Include="Scripts\PLUGINS\GaugeMeter\GaugeMeter.js" />
+    <Content Include="Scripts\PLUGINS\highlight\jquery.highlight-4.js" />
+    <Content Include="Scripts\PLUGINS\icheck\icheck.min.js" />
+    <Content Include="Scripts\PLUGINS\jquery-cookie\jquery-cookie.js" />
+    <Content Include="Scripts\PLUGINS\jquery-validation\jquery.validate.js" />
+    <Content Include="Scripts\PLUGINS\jquery\jquery-ui.min.js" />
+    <Content Include="Scripts\PLUGINS\jquery\jquery.min.js" />
+    <Content Include="Scripts\PLUGINS\jsignature\jSignature.js" />
+    <Content Include="Scripts\PLUGINS\jsignature\jSignature.min.js" />
+    <Content Include="Scripts\PLUGINS\jsignature\plugins\jSignature.CompressorBase30.js" />
+    <Content Include="Scripts\PLUGINS\jsignature\plugins\jSignature.CompressorSVG.js" />
+    <Content Include="Scripts\PLUGINS\jsignature\plugins\jSignature.UndoButton.js" />
+    <Content Include="Scripts\PLUGINS\jsignature\plugins\signhere\jSignature.SignHere.js" />
+    <Content Include="Scripts\PLUGINS\jsignature\plugins\signhere\signhere.svg" />
+    <Content Include="Scripts\PLUGINS\jstree\jstree.js" />
+    <Content Include="Scripts\PLUGINS\jstree\jstree.min.js" />
+    <Content Include="Scripts\PLUGINS\jvectormap\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Scripts\PLUGINS\jvectormap\jquery-jvectormap-europe-mill-en.js" />
+    <Content Include="Scripts\PLUGINS\jvectormap\jquery-jvectormap-us-aea-en.js" />
+    <Content Include="Scripts\PLUGINS\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Scripts\PLUGINS\knob\jquery.knob.min.js" />
+    <Content Include="Scripts\PLUGINS\lobi-plugins\lobibox.min.js" />
+    <Content Include="Scripts\PLUGINS\maskedinput\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\PLUGINS\maxlength\bootstrap-maxlength.js" />
+    <Content Include="Scripts\PLUGINS\maxlength\bootstrap-maxlength.min.js" />
+    <Content Include="Scripts\PLUGINS\mcustomscrollbar\jquery.mCustomScrollbar.min.js" />
+    <Content Include="Scripts\PLUGINS\mediaelement\mediaelement-and-player.min.js" />
+    <Content Include="Scripts\PLUGINS\metro\metro.min.js" />
+    <Content Include="Scripts\PLUGINS\minicolor\jquery.minicolors.min.js" />
+    <Content Include="Scripts\PLUGINS\moment\moment-with-locales.js" />
+    <Content Include="Scripts\PLUGINS\moment\moment-with-locales.min.js" />
+    <Content Include="Scripts\PLUGINS\moment\moment.js" />
+    <Content Include="Scripts\PLUGINS\moment\moment.min.js" />
+    <Content Include="Scripts\PLUGINS\noty\jquery.noty.js" />
+    <Content Include="Scripts\PLUGINS\noty\layouts\topCenter.js" />
+    <Content Include="Scripts\PLUGINS\noty\layouts\topLeft.js" />
+    <Content Include="Scripts\PLUGINS\noty\layouts\topRight.js" />
+    <Content Include="Scripts\PLUGINS\noty\themes\default.js" />
+    <Content Include="Scripts\PLUGINS\numeric\jquery.numeric.js" />
+    <Content Include="Scripts\PLUGINS\numpad\jquery.numpad.js" />
+    <Content Include="Scripts\PLUGINS\owl\owl.carousel.js" />
+    <Content Include="Scripts\PLUGINS\owl\owl.carousel.min.js" />
+    <Content Include="Scripts\PLUGINS\rangeslider\jQAllRangeSliders-min.js" />
+    <Content Include="Scripts\PLUGINS\scrolltotop\scrolltopcontrol.js" />
+    <Content Include="Scripts\PLUGINS\slick\slick.js" />
+    <Content Include="Scripts\PLUGINS\slick\slick.min.js" />
+    <Content Include="Scripts\PLUGINS\slideform\gulpfile.js" />
+    <Content Include="Scripts\PLUGINS\slideform\jquery.slideform.js" />
+    <Content Include="Scripts\PLUGINS\smartwizard\jquery.smartWizard-2.0.min.js" />
+    <Content Include="Scripts\PLUGINS\sparkline\jquery.sparkline.min.js" />
+    <Content Include="Scripts\PLUGINS\summernote\summernote.js" />
+    <Content Include="Scripts\PLUGINS\sweetalert\sweetalert.min.js" />
+    <Content Include="Scripts\PLUGINS\tableexport\html2canvas.js" />
+    <Content Include="Scripts\PLUGINS\tableexport\jquery.base64.js" />
+    <Content Include="Scripts\PLUGINS\tableexport\jspdf\jspdf.js" />
+    <Content Include="Scripts\PLUGINS\tableexport\jspdf\libs\base64.js" />
+    <Content Include="Scripts\PLUGINS\tableexport\jspdf\libs\sprintf.js" />
+    <Content Include="Scripts\PLUGINS\tableexport\tableExport.js" />
+    <Content Include="Scripts\PLUGINS\tagsinput\jquery.tagsinput.min.js" />
+    <Content Include="Scripts\PLUGINS\tocify\jquery.tocify.min.js" />
+    <Content Include="Scripts\PLUGINS\validationengine\jquery.validationEngine.js" />
+    <Content Include="Scripts\PLUGINS\validationengine\languages\jquery.validationEngine-en.js" />
+    <Content Include="Scripts\PLUGINS\x-frame-bypass\x-frame-bypass.js" />
+    <Content Include="Scripts\PLUGINS\xeditable\bootstrap-editable.min.js" />
+    <Content Include="Scripts\portlet.js" />
+    <Content Include="Scripts\Production\Defects\Index.js" />
+    <Content Include="Scripts\Production\Goals\Index.js" />
+    <Content Include="Scripts\Production\MoldScrap\Index.js" />
+    <Content Include="Scripts\PUR\Dashboard\Index.js" />
+    <Content Include="Scripts\QA\Filmetric\Index.js" />
+    <Content Include="Scripts\QA\Filmetric\List.js" />
+    <Content Include="Scripts\settings.js" />
+    <Content Include="Scripts\SG\SecurityGuardConfigurations\Index.js" />
+    <Content Include="Scripts\SG\SecurityGuardReport\Index.js" />
+    <Content Include="Scripts\SG\SecurityGuard\Index.js" />
+    <Content Include="Scripts\Shared\LoginAs.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\CI\Views\Shared\" />
+    <Folder Include="Areas\LGX\Models\" />
+    <Folder Include="Areas\LGX\Views\Shared\" />
+    <Folder Include="Areas\MFG\Views\GasketCharts\" />
+    <Folder Include="Areas\Production\Views\Charts\" />
+    <Folder Include="Areas\Production\Views\Dashboard\" />
+    <Folder Include="Areas\PUR\Models\" />
+    <Folder Include="Areas\WHS\Models\" />
+    <Folder Include="Areas\WHS\Views\Dashboard\" />
+    <Folder Include="Areas\WHS\Views\Shared\" />
+    <Folder Include="Reports\Scripts\PLUGINS\slideform\" />
+    <Folder Include="Reports\Scripts\Shared\" />
+    <Folder Include="Scripts\MFG\Login\" />
+    <Folder Include="Views\ErrorPage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont862f.woff" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\Profiles\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Profiles\_Tbl_Profiles.cshtml" />
+    <Content Include="Areas\Administration\Views\Profiles\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Profiles\_Mo_Create.cshtml" />
+    <Content Include="Areas\Production\Views\web.config" />
+    <Content Include="Areas\Administration\Views\Catalogs\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Catalogs\_CatalogsDetailsCultureTable.cshtml" />
+    <Content Include="Areas\Administration\Views\Catalogs\_CatalogsDetailTable.cshtml" />
+    <Content Include="Areas\Administration\Views\Catalogs\_CatalogsParametersTable.cshtml" />
+    <Content Include="Areas\Administration\Views\Catalogs\_Mo_EditCatalog.cshtml" />
+    <Content Include="Areas\Administration\Views\Catalogs\_m_Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Catalogs\_m_EditCultures.cshtml" />
+    <Content Include="Areas\Administration\Views\Catalogs\_m_EditParams.cshtml" />
+    <Content Include="Areas\Administration\Views\Catalogs\_TranslationsDetailTable.cshtml" />
+    <Content Include="Areas\Production\Views\Defects\Index.cshtml" />
+    <Content Include="Areas\Production\Views\Defects\_DefectProcessTable.cshtml" />
+    <Content Include="Areas\Production\Views\Defects\_DefectTable.cshtml" />
+    <Content Include="Areas\Production\Views\Defects\_Mo_AddDefectDetail.cshtml" />
+    <Content Include="Areas\Production\Views\MoldScrap\Index.cshtml" />
+    <Content Include="Areas\Production\Views\MoldScrap\_MoldScrapTable.cshtml" />
+    <Content Include="Areas\Production\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Production\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Production\Views\Goals\Index.cshtml" />
+    <Content Include="Areas\Production\Views\Goals\_Mo_NewProductionGoalMaster.cshtml" />
+    <Content Include="Areas\Production\Views\Goals\_ProductionGoalsDetailTable.cshtml" />
+    <Content Include="Areas\Production\Views\Goals\_ProductionGoalsMasterTable.cshtml" />
+    <Content Include="Content\PLUGINS\slick\fonts\slick.ttf" />
+    <Content Include="Content\PLUGINS\slick\fonts\slick.woff" />
+    <Content Include="Areas\Administration\Views\Users\Index.cshtml" />
+    <Content Include="Areas\CI\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\CI\Views\Dashboard\_AreaDetail.cshtml" />
+    <Content Include="Areas\CI\Views\Dashboard\_GalleryDetail.cshtml" />
+    <Content Include="Areas\CI\Views\Dashboard\_GalleryFullDetail.cshtml" />
+    <Content Include="Areas\CI\Views\web.config" />
+    <Content Include="Areas\CI\Views\_ViewStart.cshtml" />
+    <Content Include="Files\CI\Excel\Tickets.xlsx" />
+    <Content Include="Files\CI\PDFs\BOLSuzuyo.pdf" />
+    <Content Include="Files\CI\Presentation\Seering Co.pptx" />
+    <Content Include="Areas\CI\Views\Administration\Index.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_DashboardAreaDetailTable.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_DashboardAreaTable.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_Mo_CultureList.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_Mo_DashboardAreaDetailUpsert.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_Mo_DashboardAreaUpsert.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_Mo_GeneralSettings.cshtml" />
+    <Content Include="Content\PLUGINS\mif\metro.ttf" />
+    <Content Include="Areas\Administration\Views\Users\_Tbl_UserLines.cshtml" />
+    <Content Include="App_GlobalResources\MFG.MachineSetups.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.MachineSetups.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.MachineSetups.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.MachineSetups.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.Dashboard.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.Dashboard1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.Login.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.Login.es1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.OperationRecords.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.OperationRecords.es1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.ActionPlan.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.ActionPlan.ES.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.Dashboard.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.Dashboard.es.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\GenericCharts.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>GenericCharts.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\GenericCharts.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>GenericCharts.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\HR.Kiosk.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>HR.Kiosk.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\HR.Kiosk.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>HR.Kiosk.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.DemoldDefects.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.DemoldDefects.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.DemoldDefects.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.DemoldDefects.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.DemoldDefectsCatalog.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.DemoldDefectsCatalog.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.DemoldDefectsCatalog.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.DemoldDefectsCatalog.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.DemoldDefectsCharts.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.DemoldDefectsCharts.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.MoldFamilies.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.MoldFamilies.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.MoldFamilies.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.MoldFamilies.designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="App_GlobalResources\MFG.OperationRecords.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.OperationRecords.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Areas\MFG\Views\MachineSetup\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_MachineInfoTable.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_DashboardAreaTable.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Mo_AddMachineSetupDetail.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\Edit.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_MachineMaterialTable.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Tbl_MachineMaterials.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Tbl_MachineMaterialsParameters.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Mo_AddSetupParameter.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Mo_NewMachine.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Mo_AddMachineParameter.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Mo_NewMaterial.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Mo_NewParameter.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\_Tbl_Plants.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\_Tbl_ProductionLines.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Tbl_MachineSetupSections.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Mo_NewSection.cshtml" />
+    <Content Include="Areas\MFG\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\Dashboard\Show.cshtml" />
+    <Content Include="Areas\MFG\Views\Dashboard\_Div_Machines.cshtml" />
+    <Content Include="Areas\MFG\Views\ActionPlan\Index.cshtml" />
+    <Content Include="App_GlobalResources\MFG.ActionPlan.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.ActionPlan.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\QA\Views\Filmetric\Index.cshtml" />
+    <Content Include="Areas\QA\Views\Filmetric\_Filters.cshtml" />
+    <Content Include="Areas\QA\Views\Filmetric\_Tbl_Inspections.cshtml" />
+    <Content Include="Areas\QA\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\QA\Views\web.config" />
+    <Content Include="Areas\QA\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\MFG\Views\ActionPlan\_Tbl_OperationTask.cshtml" />
+    <Content Include="Areas\MFG\Views\ActionPlan\_Tbl_OperationTaskDetails.cshtml" />
+    <Content Include="Areas\MFG\Views\ActionPlan\_Mo_AssignTask.cshtml" />
+    <Content Include="Areas\MFG\Views\ActionPlan\_Mo_CloseTask.cshtml" />
+    <Content Include="Areas\MFG\Views\ActionPlan\_Tbl_Attachments.cshtml" />
+    <Content Include="Areas\MFG\Views\ActionPlan\_Mo_Attachments.cshtml" />
+    <Content Include="Areas\Administration\Views\Profiles\_ShowEvents.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Tbl_ProductionDetails.cshtml" />
+    <Content Include="Areas\MFG\Views\OperationRecords\_Tbl_ProductionRejects.cshtml" />
+    <Content Include="Areas\QA\Views\Filmetric\New.cshtml" />
+    <Content Include="Areas\QA\Views\Filmetric\_DetailInspectionTable.cshtml" />
+    <Content Include="Areas\QA\Views\Filmetric\Dashboard.cshtml" />
+    <Content Include="Areas\QA\Views\Filmetric\_FiltersDashboard.cshtml" />
+    <Content Include="App_GlobalResources\QA.Filmetrics.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>QA.Filmetrics1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\MFG\Views\Dashboard\_Tbl_Tasks.cshtml" />
+    <Content Include="Areas\MFG\Views\MachineSetup\_Mo_SetParametersFormulas.cshtml" />
+    <Content Include="Areas\MFG\Views\Dashboard\Charts.cshtml" />
+    <Content Include="Areas\MFG\Views\Shared\_Dashboard_Header.cshtml" />
+    <Content Include="Areas\MFG\Views\Dashboard\_Mo_ExportToExcel.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\Create.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\Index.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_NewField.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_DetailFields.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatsFields.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\Create.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\Index.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_AdditionalFieldsDescriptionView.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_ApprovalSeq.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_AttachmentsTable.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_AttachmentsTableDetail.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_Mo_2FA.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_Mo_NewRequest.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_Mo_Phase_Approval.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_Mo_ShowSignature.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_Mo_Signature.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_Mo_Signature_2FA.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_tbl_RequestApprovalLog.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_tbl_RequestDetail.cshtml" />
+    <Content Include="Areas\eRequest\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\eRequest\Views\web.config" />
+    <Content Include="Areas\eRequest\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\Index.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_GeneralSettingsAttachmentsTable.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_GeneralSettingsManagement.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_KioskAreaDetailTable.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_KioskAreaNodeDivTable.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_KioskAreaNodeTable.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_KioskAreaTable.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_Mo_KioskAreaDetailUpsert.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_Mo_KioskAreaUpsert.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_Mo_PreviewVideo.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_Mo_ReorderSections.cshtml" />
+    <Content Include="Areas\HR\Views\KioskAdministration\_Tbl_NodeSections.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\Login.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_KioskEmployee.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Mo_Courses.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Mo_OpportunityProgramMedia.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Mo_OpportunityProgramText.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Mo_PaymentReceipts.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Mo_PointsExchange.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Mo_PrePayroll.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Mo_PrivateOpportunitiesProgram.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_MyRequisitions.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_NotificationsBar.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_PrivateRequests.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_PrivateSuggestions.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_RequestWizard.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Suggestions.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Tbl_AvailableCourses.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Tbl_AvailableItems.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Tbl_InscribedCourses.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Tbl_PendingPetition.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Tbl_PointsDetails.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Tbl_PrivateOpportunitiesProgram.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Tbl_PrivateOpportunitiesProgramLog.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Tbl_PrivateRequests.cshtml" />
+    <Content Include="Areas\HR\Views\KioskEmployee\_Tbl_PrivateSuggestions.cshtml" />
+    <Content Include="Areas\HR\Views\KioskRequestAdministrator\Index.cshtml" />
+    <Content Include="Areas\HR\Views\KioskRequestAdministrator\_Mo_AddNewUser.cshtml" />
+    <Content Include="Areas\HR\Views\KioskRequestAdministrator\_Mo_AssignResponsible.cshtml" />
+    <Content Include="Areas\HR\Views\KioskRequestAdministrator\_Mo_RequestStatusChange.cshtml" />
+    <Content Include="Areas\HR\Views\KioskRequestAdministrator\_MO_RequestView.cshtml" />
+    <Content Include="Areas\HR\Views\KioskRequestAdministrator\_Tbl_Requests.cshtml" />
+    <Content Include="Areas\HR\Views\KioskRequestAdministrator\_Tbl_RequestsLog.cshtml" />
+    <Content Include="Areas\HR\Views\KioskRequestAdministrator\_UnreadedNotifications.cshtml" />
+    <Content Include="Areas\HR\Views\KioskSuggestionsAdministrator\Index.cshtml" />
+    <Content Include="Areas\HR\Views\KioskSuggestionsAdministrator\_Tbl_KioskSuggestions.cshtml" />
+    <Content Include="Areas\HR\Views\Kiosk\Index.cshtml" />
+    <Content Include="Areas\HR\Views\Kiosk\_GalleryDetail.cshtml" />
+    <Content Include="Areas\HR\Views\Kiosk\_GalleryFullDetail.cshtml" />
+    <Content Include="Areas\HR\Views\Kiosk\_KioskAreaDetails.cshtml" />
+    <Content Include="Areas\HR\Views\Kiosk\_KioskAreas.cshtml" />
+    <Content Include="Areas\HR\Views\Kiosk\_Mo_LoginOptions.cshtml" />
+    <Content Include="Areas\HR\Views\Kiosk\_Mo_Requests.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\Index.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\NewEditOpportunity.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\_AttachmentsTable.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\_FormTextEditor.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\_Mo_Notification.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\_Mo_PreviewVideo.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\_Tbl_OpportunitiesProgram.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\_Tbl_OpportunitiesProgramCandidates.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\_Tbl_OpportunitiesProgramDetailsCandidates.cshtml" />
+    <Content Include="Areas\HR\Views\OpportunitiesProgram\_Tbl_Responsibles.cshtml" />
+    <Content Include="Areas\HR\Views\Shared\_FullScreenKioskLayout.cshtml" />
+    <Content Include="Areas\HR\Views\Shared\_KioskHeader.cshtml" />
+    <Content Include="Areas\HR\Views\web.config" />
+    <Content Include="Areas\HR\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\LGX\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\LGX\Views\Dashboard\LogisticLinks.cshtml" />
+    <Content Include="Areas\LGX\Views\web.config" />
+    <Content Include="Areas\LGX\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergyDashboard\Chart.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergyDashboard\Details.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergyDashboard\Index.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergyDashboard\_Div_Charts.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergyDashboard\_Div_EnergySensorFamilies.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergyDashboard\_Div_EnergySensors.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergyDashboard\_Mo_ExportToExcel.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergyDashboard\_Mo_GaugeFamiliesChart.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensorFamilies\Index.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensorFamilies\_Tbl_FamiliesEnergySensors.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensors\Edit.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensors\Index.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensors\_Mo_AddNewFamily.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensors\_Mo_AlarmsConfiguration.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensors\_Mo_Attachments.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensors\_Mo_CopyEnergySensor.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensors\_Tbl_EnergySensors.cshtml" />
+    <Content Include="Areas\MNT\Views\EnergySensors\_Tbl_ValuesForHour.cshtml" />
+    <Content Include="Areas\MNT\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\MNT\Views\web.config" />
+    <Content Include="Areas\MNT\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\PUR\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\PUR\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\PUR\Views\web.config" />
+    <Content Include="Areas\PUR\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\Index.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Mo_NewBadge.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Mo_NewCompany.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Mo_NewEditEquipment.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Mo_NewEditVendorUser.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Mo_NewGuard.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Tab_Badges.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Tab_Equipment.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Tab_Guards.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Tab_Suppliers.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Tbl_Badges.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Tbl_Companies.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Tbl_CompanyEmployees.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Tbl_Equipments.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardConfigurations\_Tbl_Guards.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardReport\Index.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardReport\_Tbl_SecurityGuardLog.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuardReport\_Tbl_SecurityGuardLogTools.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\Index.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_CheckIn_Questionnaire.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_CheckIn_Step_1.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_CheckIn_Step_2.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_CheckIn_ToolRegister.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_CheckIn_Tools.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_CheckIn_Vehicle.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_CheckOut.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_Mo_FullScreenImage.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_Mo_NewCompany.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_Mo_NewEditVendorUser.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_PrintBadgesLabels.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_PrintSuppliersLabels.cshtml" />
+    <Content Include="Areas\SG\Views\SecurityGuard\_Tbl_VendorUsers.cshtml" />
+    <Content Include="Areas\SG\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\SG\Views\web.config" />
+    <Content Include="Areas\SG\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\WHS\Views\web.config" />
+    <Content Include="Areas\Administration\Views\GenericChartsAdministration\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericChartsAdministration\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericChartsAdministration\_Mo_NewEditAxis.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericChartsAdministration\_Mo_NewEditFilter.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericChartsAdministration\_Tbl_GenericCharts.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericChartsAdministration\_Tbl_GenericChartsAxes.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericChartsAdministration\_Tbl_GenericChartsFilters.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericCharts\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericCharts\_DataChartAdminDataFields.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericCharts\_DataChartAdminFilters.cshtml" />
+    <Content Include="Areas\Administration\Views\GenericCharts\_Mo_ChartPreview.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_DashboardAreaNodeDivTable.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_DashboardAreaNodeTable.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_GeneralSettingsAttachmentsTable.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_GeneralSettingsManagement.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_Mo_PreviewVideo.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_Mo_ReorderSections.cshtml" />
+    <Content Include="Areas\CI\Views\Administration\_Tbl_NodeSections.cshtml" />
+    <Content Include="Areas\CI\Views\Dashboard\_DashboardAreas.cshtml" />
+    <Content Include="Areas\CI\Views\Dashboard\_Mo_DashboardAreaUpsert.cshtml" />
+    <Content Include="Areas\MFG\Views\Dashboard\_Mo_FiltersReportConfirmation.cshtml" />
+    <Content Include="Areas\MFG\Views\Catalogs\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\Catalogs\_Mo_EditDefects.cshtml" />
+    <Content Include="Areas\MFG\Views\Catalogs\_Mo_EditDownTimes.cshtml" />
+    <Content Include="Areas\MFG\Views\Catalogs\_Mo_EditGasket.cshtml" />
+    <Content Include="Areas\MFG\Views\Catalogs\_Tbl_Defects.cshtml" />
+    <Content Include="Areas\MFG\Views\Catalogs\_Tbl_DownTimes.cshtml" />
+    <Content Include="Areas\MFG\Views\Catalogs\_Tbl_Gaskets.cshtml" />
+    <Content Include="Areas\MFG\Views\Catalogs\_Tbl_MachineParameters.cshtml" />
+    <Content Include="Areas\MFG\Views\Catalogs\_Tbl_Machines.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefectsCatalog\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefectsCatalog\_Mo_Alerts.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefectsCatalog\_Tbl_Alerts.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefectsCatalog\_Tbl_DemoldDefectDetails.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefectsCharts\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefectsCharts\_DemoldDefectsPercGrossChart.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefectsCharts\_DemoldDefectsPieChart.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefectsCharts\_Mo_DemoldDefectsChartsHelp.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\CaptureWizard.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\_CaptureFase1.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\_CaptureFase2.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\_Div_AditionCards.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\_Div_BaseCards.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\_Div_DefectCards.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\_Div_FamilyCards.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\_Div_SideCards.cshtml" />
+    <Content Include="Areas\MFG\Views\DemoldDefects\_Tbl_DemoldDefects.cshtml" />
+    <Content Include="Areas\MFG\Views\MoldFamilies\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\MoldFamilies\_Mo_NewEdit.cshtml" />
+    <Content Include="Areas\MFG\Views\MoldFamilies\_Tbl_LenTypes.cshtml" />
+    <Content Include="Areas\MFG\Views\MoldFamilies\_Tbl_MoldFamiliesRecords.cshtml" />
+    <Content Include="Areas\MFG\Views\Reports\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\Reports\_Div_ReportParams.cshtml" />
+    <Content Include="Areas\MFG\Views\Reports\_Div_Report_ACTParams.cshtml" />
+    <Content Include="Areas\MFG\Views\Reports\_Div_Report_EERDTLSParams.cshtml" />
+    <Content Include="Areas\MFG\Views\Reports\_Div_Report_GSKTDIAMParams.cshtml" />
+    <Content Include="Areas\MFG\Views\Reports\_Div_Report_PRMSParams.cshtml" />
+    <Content Include="Areas\MFG\Views\VATs\Index.cshtml" />
+    <Content Include="Areas\MFG\Views\VATs\_Mo_NewEdit.cshtml" />
+    <Content Include="Areas\MFG\Views\VATs\_Tbl_VATsRecords.cshtml" />
+    <Content Include="Content\PLUGINS\slideform\fonts\slideform.eot" />
+    <Content Include="Content\PLUGINS\slideform\fonts\slideform.ttf" />
+    <Content Include="Content\PLUGINS\slideform\fonts\slideform.woff" />
+    <Content Include="Content\FilesTemplates\Pase_De_Salida.pdf" />
+    <Content Include="App_GlobalResources\MFG.Reports.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.Reports.es.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.Reports.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.Reports.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.VatsCatalog.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.VatsCatalog.es.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MFG.VatsCatalog.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.VatsCatalog.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MNT.EnergySensors.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MNT.EnergySensors.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MNT.EnergySensors.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MNT.EnergySensors.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Request.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Request.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Request.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Request.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\SG.SecurityGuard.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>SG.SecurityGuard.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\MNT\Views\EnergyDashboard\EnergyLinks.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_CatalogsDetailsCultureTable.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_CatalogsDetailTable.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_AddNewUser.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_NewDetailField.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_m_EditCultures.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatAccess.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_List_UsersAccess.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_NewAccessFormat.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_New_Rule.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatAccessUsers.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatsLoopRules.cshtml" />
+    <Content Include="Areas\HR\Views\KioskRequestAdministrator\_Tbl_ResponsiblesResult.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatsLoopsApprovers.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatsLoopsFlow.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_Tbl_Requests.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_SearchUser.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_ResponsiblesResult.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_RuleDetail.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_New_Approver.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_New_Format.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_Mo_ReturnMaterial.cshtml" />
+    <Content Include="Areas\eRequest\Views\Request\_Tbl_ReturnMaterial.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_Create_Rule_Step1.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_Create_Rule_Step2.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_Create_Rule_Step3.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\Ul_FormatsLoopsRulesDetail_TEMP_List4EditExceptions.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_Formats.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_Format_LoopRuleDetail.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatsLoopsRulesDetail_4EditRules.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatsLoopsRulesDetail_TEMP_4Exceptions.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatMenu.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatsFieldsOnlyRead.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_PDFConfigurationSignature.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_PDFFieldConfiguration.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_PDFFieldDetail.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_New_PDFFieldDetailConfigure.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Mo_New_PDFFieldSignatures.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_CatalogsDetailReadOnly.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_DetailFieldsReadOnly.cshtml" />
+    <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatAccessReadOnly.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shared\_Logout.cshtml" />
+    <Content Include="Views\Shared\_Tasks.cshtml" />
+    <Content Include="Views\Shared\_Messages.cshtml" />
+    <Content Include="Views\Shared\_XNavigation.cshtml" />
+    <Content Include="Views\Shared\_XNavVertical.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
+    <Content Include="Views\Home\TestGraphics.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Home\Charts.cshtml" />
+    <Content Include="Views\ChartsSlider\Index.cshtml" />
+    <Content Include="Views\ChartsSlider\_Mo_Config.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="Views\ChartsSlider\_Tbl_ChartOptions.cshtml" />
+    <Content Include="Views\ChartsSlider\_ChartOption.cshtml" />
+    <Content Include="Views\ChartsSlider\_ChartConfig.cshtml" />
+    <Content Include="Views\ChartsSlider\_ChartsDivs.cshtml" />
+    <Content Include="Views\Shared\_Facilities.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Home\ITCharts.cshtml" />
+    <Content Include="Views\Shared\_FullScreenLayout.cshtml" />
+    <Content Include="Views\Shared\_ConfirmBox.cshtml" />
+    <Content Include="Views\Shared\_MessageBox.cshtml" />
+    <Content Include="Views\Shared\_MobileLayout.cshtml" />
+    <Content Include="Views\User\LoginAs.cshtml" />
+    <Content Include="Views\Shared\_AttachmentsTable.cshtml" />
+    <Content Include="Views\Shared\_ImageResourceModal.cshtml" />
+    <Content Include="Scripts\PLUGINS\CardFormWizard\scss\main.css.map" />
+    <Content Include="Scripts\PLUGINS\CardFormWizard\scss\main.scss" />
+    <Content Include="Scripts\PLUGINS\slideform\package.json" />
+    <Content Include="Scripts\PLUGINS\slideform\scsslint.yml" />
+    <Content Include="Views\Shared\_AdditionalFieldsDescriptionView.cshtml" />
+    <Content Include="Views\Shared\_AdditionalFieldsIndexView.cshtml" />
+    <Content Include="Views\Shared\_AdditionalFieldsView.cshtml" />
+    <Content Include="Views\Shared\_AdditionalFieldView.cshtml" />
+    <Content Include="Views\Shared\_GenericChartTemplate.cshtml" />
+    <Content Include="Views\Shared\_GenericMessageBox.cshtml" />
+    <Content Include="Views\Shared\_mo_LoginAnotherAccount.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
+      <Project>{6ADD69B3-1763-483F-A6B6-7E55C0E2BB9C}</Project>
+      <Name>Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{4f7bf226-b0dd-47e5-b9ab-504af24cad14}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Common.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\User.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>User.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Catalog.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Catalog.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Catalog.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Catalog.es.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Common.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Common.ES.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\User.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>User.ES.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Defects.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Defects.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Defects.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Defects.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\LoginAs.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>LoginAs.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\LoginAs.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>LoginAs.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MoldScrap.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MoldScrap.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MoldScrap.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MoldScrap.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ProductionGoal.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ProductionGoal.ES.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ProductionGoal.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ProductionGoal.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Profile.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Profile.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Profile.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Profile.ES.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\CI.Dashboard.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CI.Dashboard.es.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\CI.Dashboard.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CI.Dashboard.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\CI.DashboardManagement.ES.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CI.DashboardManagement.ES.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\CI.DashboardManagement.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CI.DashboardManagement.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\MFG.Login.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MFG.Login.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58056</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58056/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

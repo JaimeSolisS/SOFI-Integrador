@@ -1,0 +1,13 @@
+C:\Users\Jaime\Desktop\Sofi\Core\bin\Release\Core.dll
+C:\Users\Jaime\Desktop\Sofi\Core\bin\Release\Core.pdb
+C:\Users\Jaime\Desktop\Sofi\Core\bin\Release\Core.Entities.dll
+C:\Users\Jaime\Desktop\Sofi\Core\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\Jaime\Desktop\Sofi\Core\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\Jaime\Desktop\Sofi\Core\bin\Release\Core.Entities.pdb
+C:\Users\Jaime\Desktop\Sofi\Core\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\Jaime\Desktop\Sofi\Core\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\Jaime\Desktop\Sofi\Core\obj\Release\Core.csprojAssemblyReference.cache
+C:\Users\Jaime\Desktop\Sofi\Core\obj\Release\Core.csproj.CoreCompileInputs.cache
+C:\Users\Jaime\Desktop\Sofi\Core\obj\Release\Core.csproj.CopyComplete
+C:\Users\Jaime\Desktop\Sofi\Core\obj\Release\Core.dll
+C:\Users\Jaime\Desktop\Sofi\Core\obj\Release\Core.pdb

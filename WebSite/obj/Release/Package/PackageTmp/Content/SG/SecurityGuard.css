@@ -1,0 +1,291 @@
+﻿.header_view {
+    background-color: black;
+    color: white;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.border-simple {
+    border: solid;
+    border-width: 2px;
+}
+
+.margin-5 {
+    margin: 5px 5px 5px 5px;
+}
+
+.border-top-nothing {
+    border-top: none;
+}
+
+.bgc-white {
+    background-color: white;
+}
+
+.bgc-orange {
+    background-color: orange !important;
+}
+
+bgc-dodgerblue {
+    background-color: dodgerblue;
+}
+
+.bgc-dodgerblue {
+    background-color: dodgerblue;
+}
+
+.h-7vh {
+    height: 7vh;
+}
+
+.fsize-200 {
+    font-size: 200px;
+}
+
+.fsize-180 {
+    font-size: 180px;
+}
+
+.fsize-25 {
+    font-size: 25px !important;
+}
+
+.fsize-40 {
+    font-size: 40px !important;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+.width-100p {
+    width: 100% !important;
+}
+
+.width-85p {
+    width: 85% !important;
+}
+
+.width-70p {
+    width: 70% !important;
+}
+
+.width-50p {
+    width: 50% !important;
+}
+
+.width-40p {
+    width: 40% !important;
+}
+
+.width-30p {
+    width: 30% !important;
+}
+
+.width-20p {
+    width: 20% !important;
+}
+
+.width-10p {
+    width: 10% !important;
+}
+.btn-tool-movement {
+    width: 14% !important;
+    background-color: cornflowerblue;
+    color: white;
+    height: 56px;
+    line-height: 56px;
+    font-size: 25px !important;
+}
+
+.refresh-button {
+    width: 14% !important;
+    background-color: cornflowerblue;
+    color: black;
+    height: 56px;
+    line-height: 56px;
+    font-size: 25px;
+}
+
+.refresh-span {
+    font-size: 25px !important;
+    padding: 0px 0px 0px 0px !important;
+}
+
+.disabled-style {
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.font-color-white {
+    color: white;
+}
+
+.modal-header {
+    height: 10%;
+    background-color: black !important;
+    border-radius: 0px 0px !important;
+}
+
+.modal-title {
+    color: white;
+}
+
+.form-group-xl .form-control, .input-xl {
+    height: 56px;
+    padding: 10px 20px;
+    font-size: 28px;
+    line-height: 1.1;
+    border-radius: 2px
+}
+
+select.form-group-xl .form-control, select.input-xl {
+    height: 56px;
+    line-height: 56px;
+    font-size: 25px;
+}
+
+select[multiple].form-group-xl .form-control, select[multiple].input-xl, textarea.form-group-xl .form-control, textarea.input-xl {
+    height: auto
+}
+
+.chk_xxl {
+    height: 30px;
+    width: 30px;
+    padding-top: 10px;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn_footer {
+    height: 7vh;
+    width: 20%;
+    font-size: 25px !important;
+}
+
+.modal-header {
+    display: table;
+    width: 100%;
+}
+
+    .modal-header h1 {
+        display: table-cell;
+        vertical-align: middle
+    }
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.container-fluid {
+    padding: 0px 0px 0px 0px !important;
+}
+
+.message-box-success {
+    background-color: forestgreen;
+    color: white
+}
+
+.message-box-danger {
+    background-color: red;
+    color: white
+}
+
+.active.option-no {
+    background-color: red !important;
+    color: white !important;
+    padding: 20px 10px 10px 10px !important;
+    height: 70px;
+}
+
+.active.option-yes {
+    background-color: springgreen !important;
+    color: white !important;
+    padding: 20px 10px 10px 10px !important;
+    height: 70px;
+}
+
+.unselectRadioLabel {
+    background-color: lightgray !important;
+    color: black !important;
+    padding: 20px 10px 10px 10px !important;
+    height: 70px;
+}
+
+.vendor-user-inactive {
+    background-color: yellow !important;
+    font-weight: bold !important;
+}
+
+/*@keyframes tool-marked {
+    0% {
+        box-shadow: 0 0 -15px #FFE633;
+    }
+
+    40% {
+        box-shadow: 0 0 25px #FFE633;
+    }
+
+    60% {
+        box-shadow: 0 0 25px #FFE633;
+    }
+
+    100% {
+        box-shadow: 0 0 -15px #FFE633;
+    }
+}
+
+.tool-marked-animation {
+    animation: tool-marked 1500ms infinite;
+}*/
+a.boxremove {
+    float: right;
+    margin-top: -10px;
+    margin-right: -30px;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    background-color: red;
+    font-size: 30px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 15px 3px;
+}
+
+a.boxadd {
+    float: right;
+    margin-top: -10px;
+    margin-right: -30px;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    background-color: green;
+    font-size: 30px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 15px 3px;
+}
+
+.div_toolcontainer{
+    height: 135px !important;
+    width: 150px !important;
+}
+
+.boxremove:before {
+    content: "v";
+}
+
+.boxadd:before {
+    content: "^";
+}

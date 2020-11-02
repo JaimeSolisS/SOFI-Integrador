@@ -1,0 +1,98 @@
+﻿@model List<Core.Entities.CatalogDetail>
+@if (Model.Count > 0)
+{
+    <table class="display datatable table table-condensed table-striped" cellspacing="0">
+        <thead>
+            <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+                <th style="text-align: left;">@Resources.Catalog.gvH_ID</th>
+                <th style="text-align: left;">@Resources.Catalog.gvH_ValueID</th>
+
+                @if (@Model.FirstOrDefault().Param1_IsConfigured)
+                {
+                    <th style="text-align: left;">@Model.FirstOrDefault().Param1_Name</th>
+                }
+                @if (@Model.FirstOrDefault().Param2_IsConfigured)
+                {
+                    <th style="text-align: left;">@Model.FirstOrDefault().Param2_Name</th>
+                }
+
+                @if (@Model.FirstOrDefault().Param3_IsConfigured)
+                {
+                    <th style="text-align: left;">@Model.FirstOrDefault().Param3_Name</th>
+                }
+                @if (@Model.FirstOrDefault().Param4_IsConfigured)
+                {
+                    <th style="text-align: left;">@Model.FirstOrDefault().Param4_Name</th>
+                }
+                <th style="text-align: left;">@Resources.Common.gvH_UpdatedBy</th>
+                <th style="text-align: left;">@Resources.Common.gvH_DateLastMaint</th>
+
+                @if (@Model.FirstOrDefault().UserHasAccess)
+                {
+                    <th style="text-align: right;" class="w-100"></th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+                <tr class="font-size-sm">
+                    <td>
+                        @m.CatalogDetailID
+                    </td>
+                    <td>
+                        <div>
+                            <a id="ValueID" data-type="text" data-pk="@m.CatalogDetailID" class="@m.classeditable" data-url="/Administration/Catalogs/UpdateEditable" data-value="@m.ValueID">@m.ValueID</a>
+                        </div>
+                        <label class="control-label">@m.ValueTranslation</label>
+                    </td>
+                    @if (@m.Param1_IsConfigured)
+                    {
+                        <td id="gvH_Param1_">
+                            <a id="Param1" data-type="text" data-pk="@m.CatalogDetailID" class="@m.classeditable" data-url="/Administration/Catalogs/UpdateEditable" data-value="@m.Param1">@m.Param1</a>
+                        </td>
+                    }
+                    @if (@m.Param2_IsConfigured)
+                    {
+                        <td id="gvH_Param2_">
+                            <a id="Param2" data-type="text" data-pk="@m.CatalogDetailID" class="@m.classeditable" data-url="/Administration/Catalogs/UpdateEditable" data-value="@m.Param2">@m.Param2</a>
+                        </td>
+                    }
+                    @if (@m.Param3_IsConfigured)
+                    {
+                        <td id="gvH_Param3_">
+                            <a id="Param3" data-type="text" data-pk="@m.CatalogDetailID" class="@m.classeditable" data-url="/Administration/Catalogs/UpdateEditable" data-value="@m.Param3">@m.Param3</a>
+                        </td>
+                    }
+                    @if (@m.Param4_IsConfigured)
+                    {
+                        <td id="gvH_Param4_">
+                            <a id="Param4" data-type="text" data-pk="@m.CatalogDetailID" class="@m.classeditable" data-url="/Administration/Catalogs/UpdateEditable" data-value="@m.Param4">@m.Param4</a>
+                        </td>
+                    }
+                    <td>@m.UserFullName</td>
+                    <td>@m.DateLastMaintFormat</td>
+
+                    @if (@m.UserHasAccess)
+                    {
+                    <td width="5%" style="text-align:center">
+                        <div class="btn-group btn-group-md dropup">
+                            <button type="button" class="btn btn-md btn-info btn-pretty dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li class="edit-cultures" data-entityid="@m.CatalogDetailID" data-description="@m.ValueID">
+                                    <a href="#"><i class="fa fa-lg fa-edit text-primary"></i> @Resources.Common.lbl_Edit</a>
+                                </li>
+                                <li class="delete-detail" data-entityid="@m.CatalogDetailID">
+                                    <a href="#"><i class="glyphicon glyphicon-trash text-danger"></i> @Resources.Common.lbl_Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

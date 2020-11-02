@@ -1,0 +1,273 @@
+﻿@model WebSite.Areas.QA.Models.ViewModels.Filmetric.IndexViewModel
+
+
+<head>
+    <script>
+        $('#button').click(function () {
+            $('#Records').width($(window).width());
+            $('#Records').height($(window).height());
+        });
+
+    </script>
+    <script>
+    window.onload = function () {
+
+
+        var recordsChart = new CanvasJS.Chart("Records", {
+            exportEnabled: true,
+	animationEnabled: true,
+    title: {
+        text: "Registros Eu, Hc, Pu, Bc"
+	},
+	axisY: {
+		includeZero: false
+	},
+	toolTip: {
+		shared: true
+	},
+	data: [{
+        type: "line",
+		name: "Eu Values",
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.Eu)
+	},{
+		type: "line",
+		name: "Pu Values",
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.Pu)
+	}, {
+		type: "line",
+		name: "Bc Values",
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.Bc)
+	},
+    {
+		type: "line",
+		name: "Hc Values",
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.Hc)
+	}]
+        });
+
+
+var EuChart = new CanvasJS.Chart("EuContainer", {
+    animationEnabled: true,
+    exportEnabled: true,
+    title: {
+        text: "EU"
+	},
+    axisY: {
+
+		includeZero: false
+	},
+	toolTip: {
+		shared: true
+	},
+	data: [{
+		type: "line",
+		name: "Eu Values",
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.Eu)
+	},{
+		type: "line",
+            name: "Limite superior", lineColor: "red", markerSize: 0,
+            markerSize: 0,
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.EuMax)
+	}, {
+            type: "line",
+            name: "Limite inferior", indexLabelFontColor: "red", lineColor: "red", markerSize: 0,
+
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.EuMin)
+	}]
+        });
+
+
+var PuChart = new CanvasJS.Chart("PuContainer", {
+    animationEnabled: true,
+    exportEnabled: true,
+    title: {
+        text: "PU"
+	},
+	axisY: {
+		includeZero: false
+	},
+	toolTip: {
+		shared: true
+	},
+	data: [{
+		type: "line",
+		name: "Pu Values",
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.Pu)
+	},{
+		type: "line",
+		name: "Limite superior",  lineColor: "red", markerSize: 0,
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.PuMax)
+	}, {
+		type: "line",
+		name: "Limite inferior",  lineColor: "red", markerSize: 0,
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.PuMin)
+	}]
+        });
+
+        var BcChart = new CanvasJS.Chart("BcContainer", {
+            animationEnabled: true,
+            exportEnabled: true,
+    title: {
+        text: "BC"
+	},
+	axisY: {
+		includeZero: false
+	},
+	toolTip: {
+		shared: true
+	},
+	data: [{
+		type: "line",
+		name: "Bc Values",
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.Bc)
+	},{
+		type: "line",
+		name: "Limite superior",  lineColor: "red", markerSize: 0,
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.BcMax)
+	}, {
+		type: "line",
+		name: "Limite inferior",  lineColor: "red", markerSize: 0,
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.BcMin)
+	}]
+        });
+
+
+
+
+        var HcChart = new CanvasJS.Chart("HcContainer", {
+            animationEnabled: true,
+            exportEnabled: true,
+    title: {
+        text: "HC"
+	},
+	axisY: {
+		includeZero: false
+	},
+	toolTip: {
+		shared: true
+	},
+	data: [{
+		type: "line",
+		name: "Hc Values",
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.Hc)
+	},{
+		type: "line",
+		name: "Limite superior",  lineColor: "red", markerSize: 0,
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.HcMax)
+	}, {
+		type: "line",
+		name: "Limite inferior",  lineColor: "red", markerSize: 0,
+		showInLegend: true,
+		dataPoints: @Html.Raw(ViewBag.HcMin)
+	}]
+});
+        HcChart.render();
+        BcChart.render();
+        PuChart.render();
+        EuChart.render();
+        recordsChart.render();
+        }
+
+    </script>
+
+
+
+</head>
+<button type="button" id="return" class="btn-success btn-pretty btn-lg pull-right"> Regresar</button>
+
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        @Html.Partial("_FiltersDashboard", Model)
+    </div>
+</div>
+<body>
+
+    <br />
+    <div id="Records" style="height: 370px; width: 100%"><button>Maximizar</button></div>
+
+    <div id="EuContainer" style="height: 370px; width: 50%; float:left"></div>
+
+    <div id="PuContainer" style="height: 370px; width: 50%; float:right"></div>
+
+    <div id="BcContainer" style="height: 370px; width: 50%; float:left"></div>
+
+    <div id="HcContainer" style="height: 370px; width: 50%; float:right"></div>
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/QA/Filmetric/Index.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var LangResources = {
+                chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                chsn_SelectMultipleOption: "@Resources.Common.chsn_SelectMultipleOption",
+                chsn_NoResults: "@Resources.Common.chsn_NoResults",
+                ntf_SelectWarehouse: "@Resources.Catalog.ntf_SelectWarehouse",
+                ntf_SelectVendor: "@Resources.Catalog.ntf_SelectVendor",
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {        
+            $('#search').on('click', function () {
+                var ProductID = $('#ddl_Product').val();
+                var SubstractID = $('#ddl_Substract').val();
+                var BaseID = $('#ddl_Base').val();
+                var MaterialID = $('#ddl_Material').val();
+                var txt_F_StartDay = $('#txt_F_StartDay').val();
+                var txt_F_EndDay = $('#txt_F_EndtDay').val();
+                
+                window.location = "/QA/Filmetric/Dashboard?ProductID=" + ProductID;
+            });
+
+            $('#cancel').on('click', function () {
+                $('.loading-process-div').show();
+                window.location = "/QA/Filmetric/Index";
+            });
+        });
+    </script>
+
+
+}

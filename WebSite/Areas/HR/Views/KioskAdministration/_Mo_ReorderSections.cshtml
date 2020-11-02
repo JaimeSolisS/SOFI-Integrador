@@ -1,0 +1,31 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskAdministration.ModalReorderSectionsViewModel
+<div id="mo_ReorderSections" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" style="z-index:9">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.CI.DashboardManagement.tt_ReorderSections</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6>@Resources.HR.Kiosk.lbl_Node: <span id="lbl_nodename" style="font-weight: bold;"></span></h6>
+                    </div>
+                    <div class="col-sm-6">
+                        <button id="btn_AddNodeSection" class="btn btn-success pull-right" title="@Resources.Common.tt_AddNew">
+                        <span class="fa fa-plus-circle"> @Resources.Common.btn_New</span></button>
+                    </div>
+                </div>
+                <div class="row">
+                    @*div de la tabla con la secciones*@
+                    <div class="col-sm-12" id="div_table_nodesections">
+                        @Html.Partial("~/Areas/HR/Views/KioskAdministration/_Tbl_NodeSections.cshtml",Model.SectionList)
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Close</button>                
+            </div>
+        </div>
+    </div>
+</div>

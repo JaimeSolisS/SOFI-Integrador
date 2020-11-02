@@ -1,0 +1,36 @@
+﻿@model List<Core.Entities.KioskUserRequest>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_Requests">
+    <thead>
+        <tr class="font-size-lg">
+            <th class="bg-primary text-white"></th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_RequestNumber</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_RequestType</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Description</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_Responsible</th>
+            <th class="bg-primary text-white">@Resources.HR.Kiosk.lbl_RequestStatus</th>
+            <th class="bg-primary text-white">@Resources.Common.gvH_DateLastMaint</th>
+            <th class="bg-primary text-white"></th>
+        </tr>
+    </thead>
+    <tbody class="sortable">
+        @foreach (var item in Model)
+        {
+            <tr class="request_row font-size-lg" data-departmentid="@item.DepartmentID" data-shiftid="@item.ShiftID" data-requesttypeid="@item.RequestTypeID" data-requestid="@item.RequestID" data-requestnumber="@item.RequestNumber">
+                <td class="details-control details-control-private-request" width="3%"></td>
+                <td class="text-center text-bold">@item.RequestNumber</td>
+                <td>@item.RequestTypeName</td>
+                <td>@item.Description</td>
+                <td>@item.ResponsibleName</td>
+                <td class="text-bold fg-blue">@item.RequestStatusName</td>
+                <td>@item.DateLastMaintFormat</td>
+                <td style="width:40px; text-align:center">
+                    @if (item.StatusValueID == "Open" || item.StatusValueID == "Assigned")
+                    {
+                        <button type="button" data-requestid="@item.RequestID" class="btn btn-success btn-lg btn_TblFinishRequest" title="@Resources.HR.Kiosk.bth_MarkDone"><span class="fa fa-check"></span></button>
+                        <button type="button" data-requestid="@item.RequestID" class="btn btn-danger btn-lg btn_TblCancelRequest" title="@Resources.Common.btnCancel"><span class="fa fa-ban"></span></button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

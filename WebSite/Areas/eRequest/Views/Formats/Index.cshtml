@@ -1,0 +1,85 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Formats.IndexViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="remove-margins">@Resources.Request.H_Formats</h2>
+        </div>
+        <div class="pull-right">
+            <button id="btn_new_Format" class="btn btn-success"><span class="fa fa-plus-circle"></span>@Resources.Common.btn_New</button>
+        </div>
+    </div>
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <label>@Resources.Request.lbl_FormatName</label>
+                        @Html.TextBox("txt_Filter_FormatName", "", new { @autocomplete = "off", @class = "form-control FormatFilters", maxlength = 100 })
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <label>@Resources.Request.lbl_Approver</label>
+                        @Html.TextBox("txt_Filter_Approver", "", new { @autocomplete = "off", @class = "form-control FormatFilters", maxlength = 100 })
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                <button id="btn_FormatSearch" type="button" class="btn btn-info">@Resources.Common.search</button>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-body" id="divTblFormats">
+                @Html.Partial("_Tbl_Formats", Model.FormatList)
+            </div>
+        </div>
+    </div>
+
+
+    <div id="div_mo_new_create_format">
+
+    </div>
+
+</div>
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js" charset="utf-8"></script>
+    <script src="~/Scripts/PLUGINS/numpad/jquery.numpad.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/PLUGINS/summernote/summernote.js"></script>
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/PLUGINS/slideform/jquery.slideform.js"></script>
+    <script src="~/Scripts/PLUGINS/numeric/jquery.numeric.js"></script>
+    <script type="text/javascript" src="~/Scripts/eRequest/Formats/Index.js?20200924"></script>
+
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+
+            var LangResources = {
+                PrecitionLengthInvalid: "@Html.Raw(Resources.MFG.MachineSetups.msg_PrecitionLengthInvalid)",
+                NameMandatory: '@Html.Raw(Resources.MFG.MachineSetups.msg_NameMandatory)',
+                NameMandatoryES: '@Html.Raw(Resources.Request.msg_NameES)',
+                NameMandatoryEN: '@Html.Raw(Resources.Request.msg_NameEN)',
+                TypeMandatory: '@Html.Raw(Resources.Request.msg_TypeMandatory)',
+                lbl_yes: '@Html.Raw(Resources.Common.lbl_Yes)',
+                lbl_no: '@Html.Raw(Resources.Common.lbl_NO)',
+                msg_ErrorLength: '@Html.Raw(Resources.Request.msg_ErrorLength)',
+                msg_ErrorPrecision: '@Html.Raw(Resources.Request.msg_ErrorPrecision)',
+                msg_Delete_Confirm: '@Html.Raw(Resources.Request.msg_Delete_Confirm)'
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

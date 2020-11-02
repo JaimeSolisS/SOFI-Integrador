@@ -1,0 +1,27 @@
+﻿@model List<Core.Entities.GenericChart>
+<div class="panel-body">
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_Machines">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>@Resources.GenericCharts.lbl_ChartName</th>
+                <th>@Resources.GenericCharts.lbl_ChartArea</th>
+                <th>@Resources.GenericCharts.lbl_ChartType</th>
+                <th>@Resources.Common.lbl_Options</th>
+            </tr>
+        </thead>
+        <tbody class="ui-state-default">
+            @foreach (var item in Model)
+            {
+                <tr data-entityid="@item.GenericChartID" data-areaid="@item.ChartAreaID" data-charttype="@item.ChartTypeID">
+                    <td>@item.ChartName</td>
+                    <td>@item.ChartAreaName</td>
+                    <td>@item.ChartTypeText</td>
+                    <td style="width:15%; text-align:center">
+                        <button class="btn btn-success text-primary edit-record" title="@Resources.GenericCharts.tooltip_EditChart"><span class="fa fa-lg fa-edit" style="color:white !important"></span></button>
+                        <button class="btn btn-danger delete-record" title="@Resources.GenericCharts.tooltip_DeleteChart"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

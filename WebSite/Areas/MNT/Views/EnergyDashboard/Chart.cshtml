@@ -1,0 +1,59 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergySensors.EnergySensorValuesViewModel
+<div class="row" style="margin-top:0.5%">
+    <div class="col-md-12">
+        <div class="col-md-10">
+            <h1 style="margin-top: 0px;">@Model.FamilyName @Resources.MNT.EnergySensors.lbl_Consumption</h1>
+        </div>
+        <div class="col-md-2" style="text-align:right;">
+            <button class="btn-info btn-pretty pull-right btn-lg" type="button">
+                <a href="@Url.Action("Details", "EnergyDashboard", new { EnergySensorFamilyID = Model.EnergySensorFamilyID } )" style="text-decoration:none;color:white;" onclick="ShowProgressBar()">
+                    @Resources.Common.btn_Back
+                </a>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="div_machineslist" class="col-md-12">
+            @Html.Partial("_Div_Charts", Model)
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("EnergySensorID", Model.EnergySensorID);
+@Html.Hidden("EnergySensorFamilyID", Model.EnergySensorFamilyID);
+
+
+<div id="div_Mo_AlarmConfiguration">
+
+</div>
+
+<div id="div_Mo_ExportToExcel">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/charts/Chart.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-annotation.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/MNT/EnergyDashboard/Charts.js?v20190815" charset="utf-8"></script>
+    <script>
+        $(document).ready(function () {
+            var LangResources = {
+                msg_SetConfigurationValuesForAlarm: '@Resources.MNT.EnergySensors.msg_SetConfigurationValuesForAlarm',
+            }
+            ChartInit(LangResources);
+        });
+    </script>
+}

@@ -1,0 +1,51 @@
+﻿@model List<Core.Entities.OpportunitiesProgram>
+<div id="mo_PrivateOpportunitiesProgram" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="align-content:center; width:100% !important; z-index:9">
+    <div class="">
+        <div class="modal-content" style="width:100% !important;">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-11">
+                        <h1 class="modal-title">@Resources.HR.Kiosk.lbl_OpportunitiesProgram</h1>
+                    </div>
+                    <div class="col-xs-1" style="padding-right:15px">
+                        <button type="button" id="btn_CloseOpportunitiesProgramModal" class="btn btn-danger HeaderModalButtons" style="width:100%;" aria-hidden="true">@Resources.Common.btn_Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alert alert-info alert-dismissible col-xs-12" id="alert_background_image" role="alert">
+                            <div class="col-xs-12" style="text-align:center;">
+                                <h3 class="fg-white margin-bottom-none">@Resources.HR.Kiosk.alert_PrivateOpportunitiesProgram</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="col-xs-2">
+                            <label class="form-control no-border bg-transparent font-size-lg" style="padding-left: 0em;">@Resources.HR.Kiosk.lbl_VacantNumber</label>
+                        </div>
+                        <div class="col-xs-2">
+                            @Html.TextBox("Mo_VacantNumberFilter", "", new { @class = "form-control input-lg" })
+                        </div>
+                        <div class="col-xs-2">
+                            <button type="button" class="btn btn-success btn-lg" 
+                                    style="margin-top: 3px; height:100% !important; background-color:dodgerblue; border-color:dodgerblue;" 
+                                    id="btn_mo_SearchVacantNumber">@Resources.Common.btn_Search</button>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12" id="div_tbl_opportunitiesprogram" style="overflow-y:auto; height:67vh">
+                        @Html.Partial("~/Areas/HR/Views/KioskEmployee/_Tbl_PrivateOpportunitiesProgram.cshtml", Model)
+                    </div>
+                </div>
+            </div>
+            @*<div class="modal-footer">
+                </div>*@
+        </div>
+    </div>
+</div>

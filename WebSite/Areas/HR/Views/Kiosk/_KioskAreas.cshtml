@@ -1,0 +1,17 @@
+﻿@*@model List<Core.Entities.KioskArea>*@
+@model WebSite.Areas.HR.Models.ViewModels.Kiosk.KioskAreaViewModel
+
+@if (Model.ParentID != 0)
+{
+    <div id="div_FilterAlert" class="alert alert-success" role="alert" style="width:100%">
+        <button type="button" style="margin-right:1%" class="btn-lg close pull-left" onclick="return ResetDashboardAreas(@Model.BackKioskAreaID, @Model.BackParentID)" data-toggle="tooltip" data-placement="top" title="@Resources.CI.Dashboard.tt_RemoveFilter"><span aria-hidden="true"><span class="fa fa-arrow-left"></span></span><span class="sr-only">Close</span></button>
+        <h3 id="s_filterText" class="margin-bottom-none">@Model.KioskAreasList.FirstOrDefault().NavPathTitle</h3>
+    </div>
+}
+
+@foreach (var area in Model.KioskAreasList)
+{
+    <div class="tiles-grid tiles-group @area.SizeClass fg-black" data-group-title="@area.Title">
+        @Html.Action("GetAreaDetail", new { area.KioskAreaID, area.ParentID })
+    </div>
+}

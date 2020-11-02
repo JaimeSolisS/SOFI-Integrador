@@ -1,0 +1,129 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Check Box*/
+.lobicheck {
+    position: relative;
+    cursor: pointer;
+    font-weight: 400;
+    margin-top: 5px;
+    padding-left: 30px;
+    margin-bottom: 8px
+}
+
+    .lobicheck i {
+        position: absolute;
+        left: 0;
+        outline: 0;
+        display: block;
+        border-style: solid;
+        background: #fff;
+        border-color: #777;
+        -webkit-transition: all .1s;
+        -o-transition: all .1s;
+        transition: all .1s
+    }
+
+    .lobicheck input[type=checkbox] {
+        position: absolute;
+        left: -10000px
+    }
+
+        .lobicheck input[type=checkbox]:checked + i:after {
+            left: 0;
+            position: absolute;
+            font-style: normal;
+            text-align: center;
+            font-weight: 400;
+            content: "\f00c";
+            font-family: FontAwesome;
+            line-height: 19px
+        }
+
+    .lobicheck i {
+        color: #004484
+    }
+
+    .lobicheck input[type=checkbox]:checked + i {
+        border-color: #004484
+    }
+
+    .lobicheck:hover input[type=checkbox]:checked + i {
+        border-color: #004484;
+        color: #004484
+    }
+
+    .lobicheck:hover i {
+        border-color: #004484
+    }
+
+    .lobicheck.lobicheck-inversed i {
+        color: #fff
+    }
+
+    .lobicheck.lobicheck-inversed input[type=checkbox]:checked + i {
+        background-color: #004484
+    }
+
+    .lobicheck.lobicheck-inversed:hover input[type=checkbox]:checked + i {
+        border-color: #002a51;
+        background-color: #002a51;
+        color: #fff
+    }
+
+    .lobicheck i {
+        width: 18px;
+        height: 18px;
+        border-width: 1px;
+        top: 0
+    }
+
+    .lobicheck input[type=checkbox]:checked + i:after {
+        font-size: 16px;
+        top: -1px;
+        width: 15px;
+        height: 15px
+    }
+
+    .lobicheck.lobicheck-rounded i {
+        border-radius: 4.5px
+    }
+
+    .lobicheck:hover i {
+        -webkit-box-shadow: inset 0 -1px 1px rgba(0,0,0,.1);
+        box-shadow: inset 0 -1px 1px rgba(0,0,0,.1)
+    }
+
+    .lobicheck:active i {
+        -webkit-box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
+        box-shadow: inset 2px 2px 5px rgba(0,0,0,.2);
+        background-color: #f4f4f4
+    }
+
+.margin-top-10{
+    margin-top:10px;
+}
+
+.wd-98prc
+{
+    width:98%;
+}
+
+.remove-margins{
+    margin: 0px 0px 0px 0px !important;
+}

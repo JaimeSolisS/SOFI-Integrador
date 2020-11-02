@@ -1,0 +1,79 @@
+﻿@model WebSite.Areas.QA.Models.ViewModels.Filmetric.IndexViewModel
+<div class="panel panel-primary">
+    <div class="panel-heading ui-draggable-handle">
+        <h2 class="panel-title">
+            @Resources.MFG.Login.lbl_Filters
+        </h2>
+        <ul class="panel-controls">
+            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+        </ul>
+    </div>
+    <div id="filter-body" class="panel-body">
+        <div class="row">
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <label class="control-label" for="ddl_F_Product">@Resources.QA.Filmetrics.lbl_product</label>
+                    <div class="input">
+                        @Html.DropDownList("ddl_F_Product", Model.ProductList, htmlAttributes: new { @class = "form-control select applyfilters" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <label class="control-label" for="ddl_F_Substract">@Resources.QA.Filmetrics.lbl_substract</label>
+                    <div class="input">
+                        @Html.DropDownList("ddl_F_Substract", Model.SubstractList, htmlAttributes: new { @class = "form-control select applyfilters" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <label class="control-label" for="ddl_F_Base">@Resources.QA.Filmetrics.lbl_Base</label>
+                    <div class="input">
+                        @Html.DropDownList("ddl_F_Base", Model.BaseList, htmlAttributes: new { @class = "form-control select applyfilters" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <label class="control-label" for="ddl_F_Material">Material</label>
+                    <div class="input">
+                        @Html.DropDownList("ddl_F_Material", Model.MaterialList, htmlAttributes: new { @class = "form-control select applyfilters" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+
+                <div class="form-group">
+                    <label class="control-label" for="txt_F_StartDay">@Resources.Common.lbl_StartDate</label>
+                    <div class="input-group">
+                        <input type="text" id="txt_F_StartDay" name="txt_F_StartDay" class="form-control datepicker" value="@Model.DateFormat" data-date="@Model.DateFormat" data-date-viewmode="years" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <label class="control-label" for="txt_F_EndDay">@Resources.Common.lbl_EndDate</label>
+                    <div class="input-group">
+                        <input type="text" id="txt_F_EndDay" name="txt_F_EndDay" class="form-control datepicker" value="@Model.DateFormat" data-date="@Model.DateFormat" data-date-viewmode="years" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+                <div class="form-group">
+
+                    <label class="control-label" for="btn_F_Search">&nbsp;</label>
+                    <button type="button" id="btn_F_Search" class="btn-info btn-pretty btn-lg"  ><i class="fa fa-search"></i> @Resources.Common.lbl_Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

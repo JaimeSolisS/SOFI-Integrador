@@ -1,0 +1,91 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskEmployee.LoginUserViewModel
+
+<div class="BackImage" id="main_kiosk" style="background-image: url(@Model.BackgroundImage);height: 100vh; width: 100%; background-position: top; background-size: cover;">
+    @if (Model.UserInfoList.Count > 0)
+    {
+        var UserEntity = Model.UserInfoList.FirstOrDefault();
+        @Html.Hidden("UserCode", UserEntity.clave)
+
+        <div class="page-title padding-5">
+            <div style="margin-top:5%;">
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body profile">
+                            <div class="profile-image">
+                                <img src="~/Content/img/SmileyFace.png" style="background-color:white" />
+                            </div>
+                            <div class="profile-data">
+                                <div class="profile-data-name">@Resources.HR.Kiosk.lbl_Name</div>
+                                <div class="profile-data-title" id="userinfo_name">@UserEntity.nombre</div>
+                            </div>
+                            <div class="profile-controls">
+                                @*<a class="profile-control-left" href="#">
+                                        <span class="fa fa-info"></span>
+                                    </a>
+                                    <a class="profile-control-right" href="#">
+                                        <span class="fa fa-phone"></span>
+                                    </a>*@
+                            </div>
+                        </div>
+
+                        <div class="panel-body" style="height:60vh">
+                            <div class="contact-info">
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_eMail</small><br>
+                                    @UserEntity.correo
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_MaritalStatus</small><br>
+                                    @UserEntity.civil
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_Address</small><br>
+                                    @UserEntity.direccion
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_Phone</small><br>
+                                    @UserEntity.telefono
+                                </p>
+                                <p>
+                                    <small></small><br>
+
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_AdmissionDate</small><br>
+                                    @UserEntity.altaFormatted
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_NNS</small><br>
+                                    @UserEntity.nss
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_CURP</small><br>
+                                    @UserEntity.curp
+                                </p>
+                                <p>
+                                    <small>@Resources.HR.Kiosk.lbl_RFC</small><br>
+                                    @UserEntity.rfc
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="tab" id="LoginOptionTabs">
+                        <button type="button" class="tablinks KioskEmployeLogedActiveTabBorder" data-identifiertab="MyRequisitions" data-ispublic="@false" onclick="ChangeTabs(event, 'MyRequisitions')">@Resources.HR.Kiosk.lbl_PrivateRequestsList</button>
+                    </div>
+
+                    <div id="MyRequisitions" class="tabcontent" style="height:66vh;">
+                        @Html.Action("GetModalRequisitions", new { IsPublic = false, ClaveEmpleado = UserEntity.clave })
+                    </div>
+
+                    @*<div id="PrivateRequestsList" class="tabcontent">
+                            @Html.Action("SearchRequestData", new { IsPublic = false })
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    }
+</div>

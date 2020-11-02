@@ -1,0 +1,127 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Formats.ModalAddDetailFieldViewModal
+<div id="mo_NewDetailField" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" style="width: 500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label class="control-label" for="Name">@Resources.Request.lbl_Name</label>
+                        <div class="form-group">
+                            <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_traductiondetail">
+                                <thead>
+                                    <tr class="font-size-sm bg-primary">
+                                        <th>@Resources.Request.lbl_Languague</th>
+                                        <th>@Resources.Request.lbl_Name</th>
+                                    </tr>
+                                </thead>
+                                <tr class="font-size-sm">
+                                    <td>@Resources.Common.lbl_English</td>
+                                    <td>
+                                        <input type="text" id="DetailTranslationEN" value="@Model.EnglishName" maxlength="100" class="form-control max-lenght" />
+                                    </td>
+                                </tr>
+                                <tr class="font-size-sm">
+                                    <td>@Resources.Common.lbl_Spanish</td>
+                                    <td>
+                                        <input type="text" id="DetailTranslationES" value="@Model.SpanishName" maxlength="100" class="form-control max-lenght" />
+                                    </td>
+                                </tr>
+                                <tbody class="ui-state-default sortable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row hidden">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.Common.lbl_Detail</label>
+                            @Html.TextArea("txt_detail_description", Model.FormatDetail.Description, new { @class = "form-control max-length", @autocomplete = "off", @maxlength = "255", @rows = "5" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.Request.lbl_Type</label>
+                            @Html.DropDownList("ddl_DetailType", Model.ParameterList, new { @class = "form-control select selectpicker" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="div_detaillength" @((Model.ParameterValueID == "TEXT" || Model.ParameterValueID == "DECIMAL" || Model.ParameterValueID == "NUMERIC") ? "" : "style=display:none;")>
+                        <div class="col-xs-5">
+                            <div class="form-group">
+                                <br />
+                                <label class="control-label" for="Length">@Resources.Request.lbl_Length</label>
+                                <div class="input-group">
+                                    <input type="text" id="DetailLength" class="form-control positive max-length text-center" maxlength="5" value="@Model.FormatDetail.FieldLength" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_detailprecition" @((Model.ParameterValueID == "DECIMAL") ? "" : "style=display:none;")>
+                        <div class="col-xs-7">
+                            <div class="form-group">
+                                <br />
+                                <label class="control-label" for="Precition">@Resources.Request.lbl_Precition</label>
+                                <input type="text" id="detailPrecition" class="form-control positive max-length text-center" maxlength="5" value="@Model.FormatDetail.FieldPrecision" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_detailcatalog" @((Model.ParameterValueID == "LIST") ? "" : "style=display:none;")>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <br />
+                                <label class="control-label" for="ddl_list">@Resources.Request.lbl_CatalogList</label>
+                                @Html.DropDownList("ddl_detaillist", Model.CatalogsList, new { @class = "form-control select" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <br />
+                            <label class="control-label">@Resources.Request.lbl_Mandatory</label>
+                            <br />
+                            <div class="btn-group">
+                                <button id="btn_YdMandatory" class="btn @(Model.FormatDetail.IsMandatory ? "btn-success sel" : "btn-default")" type="button">@Resources.Common.lbl_Yes</button>
+                                <button id="btn_NdMandatory" class="btn @(Model.FormatDetail.IsMandatory ? "btn-default" : "btn-danger sel")" type="button">@Resources.Common.lbl_NO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <br />
+                            <label class="control-label" for="ddl_list">@Resources.Request.lbl_IsEnabled</label>
+                            <br />
+                            <div class="btn-group">
+                                <button id="btn_YdEnable" class="btn @(Model.FormatDetail.Enabled ? "btn-success sel" : "btn-default")" type="button">@Resources.Common.lbl_Yes</button>
+                                <button id="btn_NdEnable" class="btn @(Model.FormatDetail.Enabled ? "btn-default" : "btn-danger sel")" type="button">@Resources.Common.lbl_NO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                @if (Model.FormatDetail.FormatGenericDetailID == 0)
+                {
+                    <button id="btn_ModalAddNewDetail" type="button" class="btn btn-info">@Resources.Common.btnAdd</button>
+                }
+                else
+                {
+                    <button id="btn_ModalAddNewDetail" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

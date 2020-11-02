@@ -1,0 +1,46 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Catalogs.CatalogEditModalViewModel
+<div id="mo_EditCatalog" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Model.Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <label class="control-label">@Resources.Catalog.gvH_ValueID</label>
+                        </div>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control moldScrapValue max-length" maxlength="100" id="ValueID" value="@Model.ValueID" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <label class="control-label">backgroundcolor</label>
+                        </div>
+                        <div class="col-sm-12">
+                            @*<input type="text" class="form-control moldScrapValue max-length" maxlength="100" id="BackgroundColor" value="@Model.Param1" />*@
+                            <input type="hidden" class="mini-color" id="BackgroundColorDefects" value="@Model.Param1" name="BackgroundColorDefects" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                @if (Model.Type == "Edit")
+                {
+                    <button id="btn_SaveCatalogDefects" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+                else
+                {
+                    <button id="btn_SaveNewCatalogDefects" type="button" class="btn btn-info">@Resources.Common.btn_Save</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("CatalogDetailID", Model.CatalogDetailID)

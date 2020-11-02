@@ -1,0 +1,53 @@
+﻿@model List<Core.Entities.Guard>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tblGuards">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_GuardNumber</th>
+            <th class="text-white bg-primary">@Resources.SG.SecurityGuard.lbl_GuardName</th>
+            <th class="text-white bg-primary">@Resources.Common.lbl_Enabled</th>
+            <th class="text-white bg-primary w-150">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody class="ui-state-default sortable">
+        @foreach (var item in Model)
+        {
+            <tr class="font-size-lg" data-guardid="@item.GuardID">
+                <td class="font-bold">@item.UniqueNumber</td>
+                <td>
+                    <a href="#" id="aGuardName" class="x-editable" data-type="text" data-pk="@item.GuardID" data-url="/SG/SecurityGuardConfigurations/UpdateGuardName" data-title="@Resources.SG.SecurityGuard.lbl_NewName">@item.GuardName</a>
+                </td>
+                <td class="text-center font-bold font-italic">
+                    @if (item.Enabled)
+                    {
+                        @Resources.Common.lbl_Yes
+                    }
+                    else
+                    {
+                        @Resources.Common.lbl_NO
+                    }
+                </td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-lg">
+                        <button class="btn btn-info printGuardLabel printLabel" data-referenceid="@item.GuardID"
+                                data-referencetypeid="@item.ReferenceTypeID" title="@Resources.Common.lbl_Print">
+                            <span class="glyphicon glyphicon-print"></span>
+                        </button>
+                        @if (item.Enabled)
+                        {
+                            <button class="btn btn-danger disableGuard" title="@Resources.Common.lbl_Disable">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-success enableGuard" title="@Resources.Common.lbl_Enable">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        }
+                        
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

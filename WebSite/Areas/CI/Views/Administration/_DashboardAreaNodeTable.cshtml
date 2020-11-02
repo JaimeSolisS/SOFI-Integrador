@@ -1,0 +1,96 @@
+﻿@model List<Core.Entities.DashboardAreaNode>
+@if (Model.Count > 0)
+{
+    <table class="display table table-condensed table-striped datatable tbl_node_master" cellspacing="0"
+           data-parentarea="@(Model.FirstOrDefault().ParentDashboardAreaDetailID ?? 0)">
+        <thead>
+            <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+                <th width="3%"></th>
+                <th class="center">#</th>
+                <th class="left">@Resources.CI.DashboardManagement.gvh_AreaTag</th>
+                <th class="left">@Resources.CI.DashboardManagement.gvh_DetailNameTag</th>
+                <th class="left">@Resources.CI.DashboardManagement.gvh_FileTypeTag</th>
+                <th class="left">@Resources.CI.DashboardManagement.gvh_DetailSizeTag</th>
+                <th class="left">@Resources.CI.DashboardManagement.gvh_IconTag</th>
+                <th class="left">@Resources.CI.DashboardManagement.gvh_FooterTag</th>
+                <th class="left">@Resources.CI.DashboardManagement.gvh_BackColorTag</th>
+                <th class="left">@Resources.CI.DashboardManagement.gvh_FontColorTag</th>
+                <th class="left">@Resources.Common.gvH_UpdatedBy</th>
+                <th class="left w-120">@Resources.Common.gvH_Options</th>
+            </tr>
+        </thead>
+        <tbody id="tbodysortable_@(Model.FirstOrDefault().ParentDashboardAreaDetailID ?? 0)">
+            @foreach (var item in Model)
+            {
+                <tr class="font-size-sm node_section_@item.SectionSeq sortnode_@(Model.FirstOrDefault().ParentDashboardAreaDetailID ?? 0)" data-entityid="@item.DashboardAreaID"
+                    data-dashboardareadetailid="@item.DashboardAreaDetailID"
+                    data-sectionseq="@item.SectionSeq"
+                    data-seq="@item.SectionSeq"
+                    data-rowseq="@item.Seq">
+                    <td width="3%" class="@(item.HasChildren ? "details-control":"")"></td>
+                    <td class="center">@item.SeqNumber</td>
+                    <td>@item.SectionName</td>
+                    <td>@item.Name</td>
+                    <td>@item.FileType</td>
+                    <td> @item.SizeClass</td>
+                    <td> @item.Icon</td>
+                    <td> @item.Footer</td>
+                    <td>
+                        <input type="hidden" class="mini-color" value="@item.BackColorHex" disabled="disabled" />
+                    </td>
+                    <td>
+                        <input type="hidden" class="mini-color" value="@item.FontColorHex" disabled="disabled" />
+                    </td>
+                    <td>
+                        @Resources.Common.lbl_On : @item.DateLastMaintFormat
+                        <br />
+                        @Resources.Common.lbl_By : @item.UserFullName
+                    </td>
+                    <td style="width:20%; text-align:center">
+                        <div class="btn-group dropup">
+                            <button class="btn btn-warning reorder-sections"
+                                    data-dashboardarea-id="@item.DashboardAreaID"
+                                    data-dashboardareadetailid="@item.DashboardAreaDetailID"
+                                    data-nodename="@item.Name"
+                                    title="@Resources.CI.DashboardManagement.tt_ReorderSections">
+                                <span class="fa fa-sort-amount-desc"></span>
+                            </button>
+                            <button class="btn btn-info add-node"
+                                    data-dashboardareaid="@item.DashboardAreaID"
+                                    data-dashboardareadetailid="@item.DashboardAreaDetailID"
+                                    title="@Resources.Common.btnAdd">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                            <button class="btn btn-success edit-node"
+                                    data-dashboardareaid="@item.DashboardAreaID"
+                                    data-dashboardareadetailid="@item.DashboardAreaDetailID"
+                                    title="@Resources.Common.lbl_Edit">
+                                <span class="fa fa-edit"></span>
+                            </button>
+                            <button class="btn btn-danger delete-node"
+                                    data-dashboardareaid="@item.DashboardAreaID"
+                                    data-dashboardareadetailid="@item.DashboardAreaDetailID"
+                                    title="@Resources.Common.btnDeleteTag">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr  data-sectionseq="@(Model.FirstOrDefault().SectionSeq )" style="height: 30px;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+}

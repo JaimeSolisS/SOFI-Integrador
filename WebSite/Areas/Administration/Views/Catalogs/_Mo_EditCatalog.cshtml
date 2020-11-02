@@ -1,0 +1,91 @@
+﻿@*@model WebSite.Areas.Administration.Models.ViewModels.Catalogs.IndexViewModel*@
+<div id="_mo_EditCatalog" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Catalog.title_EditCatalog</h4>
+            </div>
+            <div class="modal-body">
+                <form id="edit-form" class="lobi-form">
+                    <fieldset class="no-padding">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="E_C_OrganizationID">@Resources.Catalog.lbl_Organization</label>
+                                    <div class="input">
+                                        @Html.DropDownList("E_C_OrganizationID", (SelectList)Model.OrganizationsList, htmlAttributes: new { @class = "form-control select", @data_live_search = "true" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="E_C_FacilityID">@Resources.Catalog.lbl_Facility</label>
+                                    <div class="input">
+                                        <select id="E_C_FacilityID" name="E_C_FacilityID" class="form-control select" data-live-search="true"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 ">
+                                <div class="form-group">
+                                    <label class="control-label" for="l_E_C_CatalogTag">@Resources.Catalog.lbl_CatalogTag</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                        <input type="text" id="l_E_C_CatalogTag" name="l_E_C_CatalogTag" readonly placeholder="@Resources.Catalog.lbl_CatalogTag" maxlength="30" class="form-control max-lenght" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="E_C_CatalogName">@Resources.Catalog.lbl_CatalogName</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                        <input type="text" id="E_C_CatalogName" name="E_C_CatalogName" placeholder="@Resources.Catalog.lbl_CatalogName" maxlength="100" class="form-control max-lenght" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="E_C_CatalogDescription">@Resources.Catalog.lbl_CatalogDescription</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                        <input type="text" id="E_C_CatalogDescription" name="E_C_CatalogDescription" placeholder="@Resources.Catalog.lbl_CatalogDescription" maxlength="255" class="form-control max-lenght" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input type="hidden" id="hf_E_C_IsSystemValue" name="hf_E_C_IsSystemValue" value="false" />
+                                <label class="check">
+                                    <input id="chk_E_C_IsSystemValue" name="chk_E_C_IsSystemValue" class="icheckbox" type="checkbox" style="position: absolute;opacity: 0;" />
+                                    @Resources.Catalog.lbl_IsSystemValue
+                                </label>
+                            </div>
+                            <input type="hidden" id="hf_E_C_CatalogID" name="hf_E_C_CatalogID" />
+                        </div>
+                    </fieldset>
+                    <div style="padding-top:10px">
+                        <header>
+                            <h4 class="page-header-solid">@Resources.Catalog.title_ConfigureParameters </h4>
+                        </header>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="table_CatalogsParameters">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_EditCatalog" type="button" class="btn btn-primary">@Resources.Common.btn_Accept</button>
+            </div>
+        </div>
+    </div>
+</div>

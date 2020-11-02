@@ -1,0 +1,86 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Catalogs.CatalogsViewModel
+
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.Catalog.title_Catalog</h2>
+        </div>
+    </div>
+
+    <!-- START CONTENT FRAME RIGHT -->
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Catalog.lbl_Catalog
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <select class="form-control selectpicker" id="ddl_Catalogs">
+                            @foreach (var item in Model.CatalogsList)
+                            {
+                                <option id="@item.CatalogID" data-referenceid="@item.ReferenceID">@item.CatalogName</option>
+                            }
+                        </select>
+
+                    </div>
+                    <div class="col-xs-12 col-md-2 pull-right">
+                        <button class="btn btn-success" style="width:100%" id="btn_NewCatalogRecord">@Resources.MFG.OperationRecords.btn_NewRecord</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none" id="div_show_tables">
+            <div id="tablesCatalogs">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="div_modal_edit">
+
+</div>
+
+@section Styles
+{
+
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/MFG/Catalogs/Index.js?v20190911" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+                var LangResources = {
+                    btn_Save: "@Resources.Common.btn_Save",
+                    PrecitionLengthInvalid: "@Resources.MFG.MachineSetups.msg_PrecitionLengthInvalid",
+                    PrecitionLengthValidation: "@Resources.MFG.MachineSetups.msg_PrecitionLengthValidation",
+                    NameMandatory: "@Resources.MFG.MachineSetups.msg_NameMandatory",
+                    msg_ConfirmToDeleteMachine: "@Resources.MFG.MachineSetups.msg_ConfirmToDeleteMachine",
+                    msg_ConfirmToDeleteMachineParameter: "@Resources.MFG.MachineSetups.msg_ConfirmToDeleteMachineParameter",
+                    msg_ConfirmToDeleteGasket: "@Resources.MFG.MachineSetups.msg_ConfirmToDeleteGasket",
+                    msg_ConfirmToDeleteDowntime: "@Resources.MFG.MachineSetups.msg_ConfirmToDeleteDowntime",
+                    msg_ConfirmToDeleteDefect: "@Resources.MFG.MachineSetups.msg_ConfirmToDeleteDefect",
+                    msg_SuccessSaveParameter: "@Resources.MFG.MachineSetups.msg_SuccessSaveParameter"
+                };
+
+                IndexInit(LangResources);
+        });
+    </script>
+}

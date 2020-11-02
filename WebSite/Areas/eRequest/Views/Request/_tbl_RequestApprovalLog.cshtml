@@ -1,0 +1,25 @@
+﻿@model List<Core.Entities.RequestApprovalLog>
+<div class="slider" style="width:100%;">
+
+    <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped margin-bottom-none">
+        <thead>
+            <tr class="font-size-sm bg-primary">
+                <th>Tipo de movimiento</th>
+                <th>Comentario</th>
+                <th>@Resources.Common.gvH_UpdatedBy</th>
+                <th>@Resources.Common.lbl_Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.ApprovedStatusName</td>
+                <td>@item.Commets</td>
+                <td>@item.UserFullName</td>
+                <td>@item.DateAddedFormat</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,115 @@
+﻿@model int?
+@{
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+
+<div id="title_view">
+    <div class="row header_view">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 modal-header">
+            <h1 class="font-color-white">@Resources.SG.SecurityGuard.ttl_SecurityGuard</h1>
+        </div>
+    </div>
+    <div class="row padding-top-10">
+        <div class="col-sm-6 col-xs-12 col-md-4 col-lg-3 text-center" id="div_CheckIn">
+            <div class="row padding-10">
+                <div class="col-xs-12 border-simple bgc-white margin-bottom-none">
+                    <img src="~/Content/SG/Media/CheckIn.png" style="width:100%" />
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 border-simple border-top-nothing bgc-dodgerblue padding-10">
+                    <span class="fa-2x font-color-white">@Resources.SG.SecurityGuard.lbl_CheckIn</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 col-md-4 col-lg-3 text-center" id="div_CheckOut">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 border-simple bgc-white margin-bottom-none">
+                    <img src="~/Content/SG/Media/CheckOut.png" style="width:100%" />
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 border-simple border-top-nothing bgc-dodgerblue padding-10">
+                    <span class="fa-2x font-color-white">@Resources.SG.SecurityGuard.lbl_CheckOut</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 col-md-4 col-lg-3 text-center" id="div_PrintBadgesLabels">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 border-simple bgc-white margin-bottom-none">
+                    <img src="~/Content/SG/Media/Printer.png" style="width:100%" />
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 border-simple border-top-nothing bgc-dodgerblue padding-10">
+                    <span class="fa-2x font-color-white">@Resources.SG.SecurityGuard.lbl_PrintLabel</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 col-md-4 col-lg-3 text-center" id="div_PrintSuppliersLabels">
+            <div class="row padding-10">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 border-simple bgc-white margin-bottom-none">
+                    <img src="~/Content/SG/Media/Supplier.png" style="width:100%" />
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 border-simple border-top-nothing bgc-dodgerblue padding-10">
+                    <span class="fa-2x font-color-white">@Resources.SG.SecurityGuard.lbl_Suppliers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="div_GenericModal_1"></div>
+<div id="div_GenericModal_2"></div>
+<div id="div_GenericModal_3"></div>
+<div id="div_GenericModal_Vehicle"></div>
+<div id="div_GenericModal_Tools"></div>
+<div id="div_GenericModal_ToolsList"></div>
+<div id="div_GenericModal_Questionnaire"></div>
+<div id="div_FullScreenImgModal"></div>
+
+@Html.Partial("_GenericMessageBox")
+@Html.Hidden("VisitorTypeID", Model)
+
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/SG/SecurityGuard.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/SG/SecurityGuard/Index.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cultureID = '@(Session["CultureID"] != null ? Session["CultureID"].ToString() : "" )';
+            var LangResources = {
+                msg_PleaseIdentifyYourself: "@Html.Raw(Resources.SG.SecurityGuard.msg_PleaseIdentifyYourself)",
+                btn_Next: "@Html.Raw(Resources.Common.btn_Next)",
+                lbl_Registry: "@Html.Raw(Resources.SG.SecurityGuard.lbl_Registry)",
+                lbl_Delete: "@Html.Raw(Resources.Common.lbl_Delete)",
+                msg_EquipmentIsScanned: "@Html.Raw(Resources.SG.SecurityGuard.msg_EquipmentIsScanned)",
+                msg_EquipmentNotFound: "@Html.Raw(Resources.SG.SecurityGuard.msg_EquipmentNotFound)",
+                lbl_ToolNameMandatory: "@Html.Raw(Resources.SG.SecurityGuard.lbl_ToolNameMandatory)",
+                lbl_ToolImgMandatory: "@Html.Raw(Resources.SG.SecurityGuard.lbl_ToolImgMandatory)",
+                lbl_Warning: "@Html.Raw(Resources.Common.lbl_Warning)",
+                msg_CheckInSessionStarted: "@Html.Raw(Resources.SG.SecurityGuard.msg_CheckInSessionStarted)",
+                msg_ExpirationDate: "@Html.Raw(Resources.SG.SecurityGuard.msg_ExpirationDate)",
+                msg_UserNotInSystem: "@Html.Raw(Resources.SG.SecurityGuard.msg_UserNotInSystem)",
+                lbl_Success: "@Html.Raw(Resources.HR.Kiosk.lbl_Success)",
+                lbl_Error: "@Html.Raw(Resources.HR.Kiosk.lbl_Error)",
+                msg_PrintLabelConfirm: "@Html.Raw(Resources.SG.SecurityGuard.msg_PrintLabelConfirm)",
+                msg_ConfirmDeleteVendorUser: "@Html.Raw(Resources.SG.SecurityGuard.msg_ConfirmDeleteVendorUser)",
+                msg_CovidAlertQuestion: "@Html.Raw(Resources.SG.SecurityGuard.msg_CovidAlertQuestion)",
+                msg_DisableMissingGuard: "@Html.Raw(Resources.SG.SecurityGuard.msg_DisableMissingGuard)",
+                msg_EquipmentRowDeleteConfirm: "@Html.Raw(Resources.SG.SecurityGuard.msg_EquipmentRowDeleteConfirm)",
+                msg_HomeLinkConfirmation: "@Html.Raw(Resources.SG.SecurityGuard.msg_HomeLinkConfirmation)",
+                msg_ToolMandatory: "@Html.Raw(Resources.SG.SecurityGuard.msg_ToolMandatory)",
+                culture: cultureID.substr(0, 2).toLowerCase()
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

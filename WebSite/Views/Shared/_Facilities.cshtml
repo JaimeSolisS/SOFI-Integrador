@@ -1,0 +1,12 @@
+﻿@model List<Core.Entities.Facility>
+
+<ul class="dropdown-menu" id="Facilitielist">
+    @foreach (var item in Model)
+    {
+        <li class="SelectFacility_@item.FacilityID">
+            <a href="@Url.Action("ChangeFacility","Base",new {area="", FacilityID=item.FacilityID})">
+                @item.FacilityName
+            </a>
+        </li>
+    }
+</ul>

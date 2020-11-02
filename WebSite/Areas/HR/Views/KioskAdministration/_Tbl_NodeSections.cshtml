@@ -1,0 +1,51 @@
+﻿@model List<Core.Entities.KioskArea>
+<table class="display table table-condensed table-striped datatable" id="tbl_NodeSections" cellspacing="0">
+    <thead>
+        <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+            <th width="3%">#</th>
+            <th class="left">@Resources.CI.DashboardManagement.gvh_AreaTag</th>
+            <th class="left">@Resources.CI.DashboardManagement.gvh_SizeTag</th>
+            <th class="left">@Resources.Common.gvH_UpdatedBy</th>
+            <th class="w-120" style="text-align: right;">@Resources.Common.gvH_Options</th>
+        </tr>
+    </thead>
+    <tbody class="sectionsortable">
+        @foreach (var item in Model)
+        {
+            <tr class="font-size-sm row-section" newseq="0" seq ="@item.Seq" data-entityid="@item.KioskAreaID">
+                <td class="center">
+                     @item.Seq                 
+                </td>
+                <td>
+                    <a class="edit-fieldculture editable-click x-editable" data-entityid="@item.KioskAreaID"
+                       data-pk="@item.KioskAreaID" data-name="Title" data-value="@item.Title"
+                       data-url="/HR/KioskAdministration/UpdateQuickEditable" data-title="@Resources.CI.DashboardManagement.gvh_AreaTag"
+                       data-updatenodesection="true" data-parentid="@item.ParentID">
+                        @item.Title
+                    </a>
+                </td>
+                <td>
+                    <a class="x-editable" data-type="select" data-title="@Resources.CI.DashboardManagement.gvh_SizeTag"
+                       data-source="/CI/Administration/SizeList" data-pk="@item.KioskAreaID" 
+                       data-url="/HR/KioskAdministration/UpdateQuickEditable" data-value="@item.SizeID" 
+                       data-name="SizeID" data-tpl="<select class='form-control select x-editable-select'>">
+                        @item.SizeText
+                    </a>
+                </td>
+                <td>
+                   <span style="font-weight: bold;">@Resources.Common.lbl_On:</span> @item.DateLastMaintFormat
+                    <br />
+                    <span style="font-weight: bold;">@Resources.Common.lbl_By:</span> @item.UserFullName
+                </td>
+                <td style="width:120px; text-align:right">
+                    <div class="btn-group dropup">
+                        <button class="btn btn-danger delete-nodesection" 
+                                data-KioskAreaID="@item.KioskAreaID"
+                                data-parentid="@item.ParentID"
+                                title="@Resources.CI.DashboardManagement.tt_DeleteDashboardAreaTag"><span class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

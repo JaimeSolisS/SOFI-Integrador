@@ -1,0 +1,145 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.OpportunitiesProgram.IndexViewModel
+
+@using (Html.BeginForm("OpportunitiesExportToExcel", "OpportunitiesProgram", FormMethod.Post))
+{
+    <div class="content-frame">
+        <div class="content-frame-top">
+            <div class="page-title">
+                <h2 class="margin-none">@Resources.HR.Kiosk.title_OpportunitiesPrograms</h2>
+            </div>
+            <div class="pull-right">
+                <button id="btn_New" type="submit" class="btn btn btn-success" style="background-color:forestgreen" title="@Resources.HR.Kiosk.lbl_ExportRequestExcel">
+                    <span class="fa fa-table"></span>
+                    @Resources.HR.Kiosk.btn_Excel
+                </button>
+                @if (Model.AllowNewVacant || Model.AllowFullAccess)
+                {
+                    <a id="btn_NewOpportunity" type="button" class="btn btn btn-success" title="@Resources.HR.Kiosk.btn_CreateNewOpportunity" href="@Url.Action("NewEditOpportunity", "OpportunitiesProgram")">
+                        <span class="fa fa-plus-circle"></span>
+                        @Resources.HR.Kiosk.btn_CreateNewOpportunity
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="content-frame-body content-frame-body-all">
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3">
+                            <div class="form-group">
+                                <label>@Resources.HR.Kiosk.lbl_VacantNumber</label>
+                                @Html.TextBox("txt_NumVacant", "", new { @class = " form-control OpportunitiesProgramFilters", maxlength = 20, autocomplete = "off" })
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <div class="form-group">
+                                <label>@Resources.HR.Kiosk.lbl_Department</label>
+                                @Html.DropDownList("ddl_Departments", Model.DepartmentsList, new { @class = " form-control OpportunitiesProgramFilters" })
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <div class="form-group">
+                                <label>@Resources.MFG.OperationRecords.lbl_Shift</label>
+                                @Html.DropDownList("ddl_Shifts", Model.ShiftsList, new { @class = " form-control OpportunitiesProgramFilters", multiple = "multiple", title = Resources.Common.chsn_SelectOption, data_actions_box = "true" })
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-md-3" style="margin-top:-0.6% !important">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="check">
+                                        <div class="icheckbox_minimal-grey" style="position: relative;">
+                                            <input type="checkbox" class="check-range-date preserve-settings OpportunitiesProgramFilters" id="checkbox_filter_date" style="position: absolute; opacity: 0;">
+                                            <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                        </div> @Resources.Common.lbl_Date
+                                    </label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <div>
+                                        @Html.DropDownList("ddl_DateTypes", Model.DateTypesList, new { @class = "form-control OpportunitiesProgramFilters" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        @*<label class="control-label">Range picker</label>*@
+                                        <div class="input-daterange input-group datepicker-demo">
+                                            <input type="text" id="txt_OpportunitiesProgramStartDate" class="form-control customdatepicker OpportunitiesProgramFilters" name="txt_OpportunitiesProgramStartDate"
+                                                   placeholder="Start Date" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:yyyy-MM-dd}", DateTime.Now.AddDays(-7))">
+                                            <span class="input-group-addon">@Resources.Common.lbl_To</span>
+                                            <input type="text" id="txt_OpportunitiesProgramEndDate" class="form-control customdatepicker OpportunitiesProgramFilters" name="txt_OpportunitiesProgramEndDate"
+                                                   placeholder="Hasta" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:yyyy-MM-dd}", DateTime.Now)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <div class="form-group">
+                                <label>@Resources.HR.Kiosk.lbl_Grade</label>
+                                @Html.DropDownList("ddl_Grades", Model.GradesList, new { @class = " form-control OpportunitiesProgramFilters", multiple = "multiple", title = Resources.Common.chsn_SelectOption, data_actions_box = "true" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                    <button id="btn_OpportunitiesProgramSearch" type="button" class="btn btn-info">@Resources.Common.search</button>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div class="row" id="div_Tbl_KioskOpportunitiesPrograms">
+                        @Html.Partial("_Tbl_OpportunitiesProgram", Model)
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@Html.Hidden("NotificationTypeID", Model.NotificationTypeID)
+
+<div id="div_modal">
+
+</div>
+
+@Html.Hidden("CultureID", Session["CultureID"])
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/HR/Kiosk/Kiosk.css" rel="stylesheet" />*@
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js?v20200127" charset="utf-8"></script>
+    <script src="~/Scripts/HR/OpportunitiesProgram/Index.js?v20200212" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+
+            var LangResources = {
+                msg_DisableVacantConfirm: "@Html.Raw(Resources.HR.Kiosk.msg_DisableVacantConfirm)",
+                msg_EnableVacantConfirm: "@Html.Raw(Resources.HR.Kiosk.msg_EnableVacantConfirm)",
+                msg_SendNotificationConfirm: "@Html.Raw(Resources.HR.Kiosk.msg_SendNotificationConfirm)",
+                msg_ThereNotCandidatesToNotify: "@Html.Raw(Resources.HR.Kiosk.msg_ThereNotCandidatesToNotify)",
+                lbl_Warning: "@Html.Raw(Resources.Common.lbl_Warning)"
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

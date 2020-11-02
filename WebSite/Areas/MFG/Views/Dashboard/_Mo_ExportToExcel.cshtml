@@ -1,0 +1,84 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Dashboard.ExportToExcelViewModel
+<div id="mo_ExportToExcel" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:30%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.MFG.Dashboard.btn_ExportToExcel</h4>
+            </div>
+            @using (Html.BeginForm("ExportToExcel", "Dashboard", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="row">
+                        <div>
+                            <label>@Resources.MFG.ActionPlan.lbl_Shifts</label>
+                            @Html.DropDownList("ddl_ExcelShifts", Model.ShiftsList, new { @class = "form-control selectpicker" })
+                        </div>
+                        <br />
+                        <div>
+                            <label>@Resources.MFG.ActionPlan.lbl_Machines</label>
+                            @Html.DropDownList("ddl_ExcelMachines", Model.MachinesList, new { @class = "form-control selectpicker" })
+                        </div>
+
+                        <br /><br />
+
+                        <label class="control-label">From: </label>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                                <label class="control-label">Start Date: </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="control-label">Start Time: </label>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class='input-group date'>
+                                @Html.TextBox("txt_StartDateExcel", Model.StartDate, htmlAttributes: new { @class = "form-control datepickerr" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                                @Html.TextBox("txt_StartTimeExcel", Model.StartTime.ToString("HH:mm"), htmlAttributes: new { @class = "form-control timepicker" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <br /><br />
+                        <label class="control-label">To: </label>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                                <label class="control-label">End Date: </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="control-label">End Time: </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class='input-group date'>
+                                @Html.TextBox("txt_EndDateExcel", Model.EndDate, htmlAttributes: new { @class = "form-control datepickerr" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                                @Html.TextBox("txt_EndTimeExcel", Model.EndTime.ToString("HH:mm"), htmlAttributes: new { @class = "form-control timepicker" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                            <button id="btn_MoExportToExcel" type="submit" class="btn btn-info">@Resources.MFG.Dashboard.btn_ExportToExcel</button>
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("CultureIDExcel", Model.CultureID)

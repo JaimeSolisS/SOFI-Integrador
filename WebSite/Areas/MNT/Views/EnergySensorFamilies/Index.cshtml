@@ -1,0 +1,100 @@
+﻿@model WebSite.Areas.MNT.Models.ViewModels.EnergySensors.EnergySensorFamiliesViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.MNT.EnergySensors.title_EnergyFamilySensors</h2>
+        </div>
+        <div class="pull-right">
+            <button id="btn_NewFamily" class="btn btn-success"><span class="fa fa-plus-circle"></span>@Resources.MNT.EnergySensors.lbl_NewFamily</button>
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div class="content-frame-body-all">
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">
+                        @Resources.Common.lbl_Filters
+                    </h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.MNT.EnergySensors.lbl_FamilyName</label>
+                                <div class="input">
+                                    @Html.TextBox("txt_FamilyName", "", new { @class = "form-control max-length", maxlength = "100" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                    <button class="btn btn-info btn-pretty" id="btn_search">@Resources.Common.btn_Search</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="div_FamiliesEnergySensorsDataPanel">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div id="div_Tbl_FamiliesEnergySensors">
+                        @Html.Partial("_Tbl_FamiliesEnergySensors", Model.EnergySensorFamiliesList)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div id="div_Mo_CopyEnergySensor">
+
+</div>
+
+<div id="div_Mo_AddNewFamily">
+
+</div>
+
+<div id="div_MO_Attachments">
+
+</div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/jquery/jquery-ui.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/MNT/EnergySensorFamilies/Index.js?v20190823" charset="utf-8"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var LangResources = {
+
+                msg_ConfirmDeleteFamily: '@Resources.MNT.EnergySensors.msg_ConfirmDeleteFamily',
+                msg_EditedFamilySaved: '@Resources.MNT.EnergySensors.msg_EditedFamilySaved',
+                msg_NewFamilyAdded: '@Resources.MNT.EnergySensors.msg_NewFamilyAdded',
+                msg_FamilyDeleted: '@Resources.MNT.EnergySensors.msg_FamilyDeleted'
+
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

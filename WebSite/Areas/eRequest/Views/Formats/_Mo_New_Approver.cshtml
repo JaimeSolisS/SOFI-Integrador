@@ -1,0 +1,150 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Formats.MoNewApproverModel
+<div id="mo_NewApprover" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-2" data-dismiss="modal" aria-hidden="true">x</button>
+                @if (Model.IsEdit)
+                {
+                    <h4 class="modal-title">@Resources.Request.lbl_EditApprover</h4>
+                }
+                else
+                {
+                    <h4 class="modal-title">@Resources.Request.lbl_AddNewApprover</h4>
+                }
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.Request.msg_IfTheFormatIs</label>
+                            @Html.DropDownList("DepartmentForRuleID", Model._SelectListDepartments, htmlAttributes: new { @class = "form-control select" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row hidden">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label"> <b>@Resources.Request.msg_PersonalApproves</b> </label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.Request.msg_SelectHowYouWant</label>
+                            @Html.DropDownList("SelectConfigurationRule", Model._SelectListConfiguracion, htmlAttributes: new { @class = "form-control select", @Title = Resources.Request.lbl_NothingSelected })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div id="case_P" class="hide_configuration" style="display:none">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.Request.lbl_Position</label>
+                                @Html.DropDownList("SelectOnlyPositionRule", Model._SelectListPosition, htmlAttributes: new { @class = "form-control select", @Title = Resources.Request.lbl_NothingSelected })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div id="case_D" class="hide_configuration" style="display:none">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.Request.lbl_Department</label>
+                                @Html.DropDownList("SelectOnlyDepartment", Model._SelectListDepartments, htmlAttributes: new { @class = "form-control select" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div id="case_PD" class="hide_configuration" style="display:none">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.Request.lbl_Position</label>
+                                @Html.DropDownList("SelectPositionRule", Model._SelectListPosition, htmlAttributes: new { @class = "form-control select", @Title = Resources.Request.lbl_NothingSelected })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.Request.lbl_Department</label>
+                                @Html.DropDownList("SelectDepartmentRule", Model._SelectListDepartments, htmlAttributes: new { @class = "form-control select" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div id="case_U" class="hide_configuration" style="display:none">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <div class="form-group">
+                                <label class="control-label">@Resources.Common.lbl_User</label>
+                                @Html.TextBox("SelectUserRule", "", htmlAttributes: new { @class = "form-control", @placeholder = "Nombre / Apellido / Correo" })
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <button id="btn_AddUserApprover" type="button" class="btn btn-success" style="margin-top: 21px;"><span class="fa fa-plus"></span></button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="table_usersrule">
+                                <thead>
+                                    <tr class="font-size-sm bg-primary">
+                                        <th style="display:none;"></th>
+                                        <th>@Resources.Request.lbl_Name</th>
+                                        <th width="50px">@Resources.Common.lbl_Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_usersrule">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="checkbox lobicheck lobicheck-rounded">
+                                <input id="check_ApproverAfter" class="item-check" type="checkbox">
+                                <i class="p-relative"></i>@Resources.Request.lbl_YouCanApproveAfter:
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            @Html.TextBox("SelectNumberUoMApporver", "", htmlAttributes: new { @class = "form-control positive max-length text-center", @maxlength = "3"})
+                        </div>
+                    </div> 
+                    <div class="col-xs-9">
+                        <div class="form-group">
+                            @Html.DropDownList("SelectUoMApporver", Model._SelectListUoM, htmlAttributes: new { @class = "form-control select", @Title = Resources.Request.lbl_NothingSelected })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_back" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                @if (Model.IsEdit)
+                {
+                    <button id="btn_ModalSaveAprover" type="button" class="btn btn-success" data-id="">@Resources.Common.btn_Save</button>
+
+                }
+                else
+                {
+                    <button id="btn_ModalAddNewAprover" type="button" data-FormatLoopFlowTempID="@Model.FormatLoopFlowTempID" class="btn btn-success">@Resources.Common.btnAdd</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+﻿@model WebSite.Areas.HR.Models.ViewModels.KioskSuggestionsAdministrator.IndexViewModel
+@using (Html.BeginForm("SuggestionsExportToExcel", "KioskSuggestionsAdministrator", FormMethod.Post))
+{
+    <div class="content-frame">
+        <div class="content-frame-top">
+            <div class="page-title">
+                <h2 class="margin-none">@Resources.HR.Kiosk.title_Suggestions</h2>
+            </div>
+            <div class="pull-right">
+                <button id="btn_ExportExcelReport" type="submit" class="btn btn btn-success" style="background-color:forestgreen" title="@Resources.HR.Kiosk.lbl_ExportRequestExcel">
+                    <span class="fa fa-table"></span>
+                    @Resources.HR.Kiosk.btn_Excel
+                </button>
+            </div>
+        </div>
+        <div class="content-frame-body content-frame-body-all">
+            <div class="panel panel-primary">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">@Resources.Common.lbl_Filters</h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3">
+                            <div class="form-group">
+                                <label>@Resources.HR.Kiosk.lbl_Category</label>
+                                @Html.DropDownList("ddl_CommentsCategories", Model.CategoriesList, new { @class = " form-control SuggestionFilters" })
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <div class="form-group">
+                                <label>@Resources.HR.Kiosk.lbl_Facility</label>
+                                @Html.DropDownList("ddl_Facilities", Model.FacilitiesList, new { @class = " form-control SuggestionFilters", multiple = "multiple", title = Resources.Common.chsn_SelectOption })
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-md-3">
+                            <label class="checkbox margin-top-no margin-bottom-2">
+                                <div class="icheckbox_minimal-grey" style="position: relative;">
+                                    <input type="checkbox" checked="checked" class="check-range-date preserve-settings SuggestionFilters" id="checkbox-filter-date" style="position: absolute; opacity: 0;">
+                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>
+                                </div> @Resources.Common.lbl_Date
+                            </label>
+
+                            <div class="form-group">
+                                @*<label class="control-label">Range picker</label>*@
+                                <div class="input-daterange input-group datepicker-demo">
+                                    <input type="text" id="txt_SuggestionStartDate" class="form-control customdatepicker SuggestionFilters" name="txt_SuggestionStartDate"
+                                           placeholder="@Resources.Common.lbl_StartDate" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:yyyy-MM-dd}", DateTime.Now.AddDays(Model.SugestionsHistoryDays * -1))">
+                                    <span class="input-group-addon">@Resources.Common.lbl_To</span>
+                                    <input type="text" id="txt_SuggestionEndDate" class="form-control customdatepicker SuggestionFilters" name="txt_SuggestionEndDate"
+                                           placeholder="@Resources.Common.lbl_EndDate" style="text-align: center;border-radius: 4px;" value="@String.Format(" {0:yyyy-MM-dd}", DateTime.Now)">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                    <button id="btn_SuggestionSearch" type="button" class="btn btn-info">@Resources.Common.search</button>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div class="row" id="div_Tbl_KioskSuggestions">
+                        @Html.Partial("_Tbl_KioskSuggestions", Model.SuggestionsList)
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/HR/Kiosk/Kiosk.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/bootstrap-select")
+    <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js?v20200127" charset="utf-8"></script>
+    <script src="~/Scripts/HR/KioskSuggestionsAdministrator/Index.js?v20200106" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+
+            var LangResources = {
+                msg_DeleteSuggestionConfirm: "@Html.Raw(Resources.HR.Kiosk.msg_DeleteSuggestionConfirm)",
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

@@ -1,0 +1,397 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Request.AdditionalFieldsDescriptionViewModel
+@if (Model.CollectionAdditionalFields != null && Model.CollectionAdditionalFields.Count > 0)
+{
+    <div id="div_boxAdditionalFieldSection" class="row" data-referenceid="@Model.ReferenceID">
+        @if (!Model.ViewReadOnly)
+        {
+            foreach (var item in Model.CollectionAdditionalFields)
+            {
+                <div class="@item.ColsBootstrapCssClass">
+                    <div class="form-group">
+
+                        @if (item.DataTypeControl.ToLower() != "date" && item.DataTypeControl.ToLower() != "checkbox")
+                        {
+                            <label class="control-label">@item.FieldName</label>
+                            if (item.DataTypeControl.ToLower() == "text")
+                            {
+                                if (item.FieldLength > 130)
+                                {
+                                    <textarea id="@item.RealName" rows="@item.TextAreaRows" maxlength="@item.FieldLength" class="additional-field form-control textarea-max-lenght @item.CssClass" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID">@item.FieldValue</textarea>
+                                }
+                                else
+                                {
+                                    <input id="@item.RealName" type="text" maxlength="@item.FieldLength" class="additional-field ad-max-lenght form-control @item.CssClass" @Model.disabled value="@item.FieldValue" data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                                }
+                            }
+                            else if (item.DataTypeControl.ToLower() == "decimal")
+                            {
+                                <input id="@item.RealName" type="text" maxlength="@item.FieldLength" class="additional-field ad-max-lenght onlydecimalsprecision @item.CssClass" @Model.disabled value="@item.FieldValue" data-precision="@item.FieldPrecision" data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                            }
+                            else if (item.DataTypeControl.ToLower() == "number")
+                            {
+                                <input id="@item.RealName" type="text" maxlength="@item.FieldLength" class="additional-field ad-max-lenght onlynumbers @item.CssClass" @Model.disabled value="@item.FieldValue" data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                            }
+                            else if (item.DataTypeControl.ToLower() == "select")
+                            {
+
+                                <select id="@item.RealName" class="additional-field form-control da-chosen-select select @item.CssClass" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID">
+                                    @foreach (var option in item.CatalogContext)
+                                    {
+                                        if (item.FieldValue.AsInt() == option.CatalogDetailID)
+                                        {
+                                            <option selected value="@(option.CatalogDetailID == 0 ? "":option.CatalogDetailID.ToString())">@option.DisplayText</option>
+                                        }
+                                        else if (option.CatalogDetailID == 0)
+                                        {
+                                            <option value="">@option.DisplayText</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@option.CatalogDetailID.ToString()">@option.DisplayText</option>
+                                        }
+                                    }
+                                </select>
+                            }
+                        }
+                        else if (item.DataTypeControl.ToLower() == "date")
+                        {
+                            <label class="control-label">@item.FieldName</label>
+                            <div id="@item.RealName" class="input-group date ad-datepicker">
+                                <span class="input-group-addon"><i class="@item.FieldIcon"></i></span>
+                                @if (string.IsNullOrEmpty(item.FieldValue))
+                                {
+                                    <input type="text" class="additional-field form-control @item.CssClass" placeholder="@item.FieldName" value="@DateTime.Now.ToString("yyyy-MM-dd")" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                                }
+                                else
+                                {
+                                    <input type="text" class="additional-field form-control @item.CssClass" placeholder="@item.FieldName" value="@item.FieldValue.AsDateTime().ToString("yyyy-MM-dd")" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" data-valueid="@item.TableAdditionalFieldValueID" />
+                                }
+                            </div>
+                        }
+                        else if (item.DataTypeControl.ToLower() == "checkbox")
+                        {
+                            <div class="form-group">
+                                <small class="help-block">
+                                    <label class="switch-inline switch-xs @item.CssClass">
+                                        <input id="@item.RealName" type="checkbox" class="additional-field" @Model.disabled data-id="@item.TableAdditionalFieldID" data-mandatory="@item.IsMandatory" data-fieldname="@item.ColumnName" @(item.FieldValue == "true" || item.FieldValue == "1" ? "checked" : "") data-valueid="@item.TableAdditionalFieldValueID" />
+                                        <i></i>
+                                    </label>
+                                    @item.ColumnName
+                                </small>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <button id="btn_Add" type="button" class="btn btn-success btn-xl btn-pretty"><span class="fa fa-plus"></span></button>
+            </div>
+        }
+
+
+        <div class="col-xs-12">
+            <br />
+            <br />
+            <div>
+                <table class="display datatable table table-condensed table-striped" cellspacing="0" id="table_Detail">
+                    <thead>
+                        <tr class="font-size-sm" style="background-color:#00519e;color:whitesmoke;opacity:0.9;">
+
+                            @if (Model.CollectionAdditionalFields.Count >= 1 && @Model.CollectionAdditionalFields[0].FieldName != "")
+                            {
+                                <th style="text-align: left;">@Model.CollectionAdditionalFields[0].ColumnName</th>
+                            }
+                            @if (Model.CollectionAdditionalFields.Count >= 2 && @Model.CollectionAdditionalFields[1].FieldName != "")
+                            {
+                                <th style="text-align: left;">@Model.CollectionAdditionalFields[1].ColumnName</th>
+                            }
+                            @if (Model.CollectionAdditionalFields.Count >= 3 && @Model.CollectionAdditionalFields[2].FieldName != "")
+                            {
+                                <th style="text-align: left;">@Model.CollectionAdditionalFields[2].ColumnName</th>
+                            }
+                            @if (Model.CollectionAdditionalFields.Count >= 4 && @Model.CollectionAdditionalFields[3].FieldName != "")
+                            {
+                                <th style="text-align: left;">@Model.CollectionAdditionalFields[3].ColumnName</th>
+                            }
+                            @if (Model.CollectionAdditionalFields.Count >= 5 && @Model.CollectionAdditionalFields[4].FieldName != "")
+                            {
+                                <th style="text-align: left;">@Model.CollectionAdditionalFields[4].ColumnName</th>
+                            }
+                            @if (Model.CollectionAdditionalFields.Count >= 6 && @Model.CollectionAdditionalFields[5].FieldName != "")
+                            {
+                                <th style="text-align: left;">@Model.CollectionAdditionalFields[5].ColumnName</th>
+                            }
+                            <th width="1%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.CollectionAdditionalFieldsTable.Count >= 1)
+                        {
+                            foreach (var item in Model.CollectionAdditionalFieldsTable)
+                            {
+                                <tr class="responsibles_row" data-requestdetailid="@item.RequestGenericDetailID">
+
+                                    @if (Model.CollectionAdditionalFields.Count >= 1 && @Model.CollectionAdditionalFields[0].FieldName != "")
+                                    {
+                                        <td class="concept">
+                                            @if (item.DataTypeControlConcept.ToLower() != "date" && item.DataTypeControlConcept.ToLower() != "checkbox")
+                                            {
+                                                if (item.DataTypeControlConcept.ToLower() == "text")
+                                                {
+                                                    <input id="@("Concept"+item.RequestLine)" type="text" class="additional-field ad-max-lenght form-control" @Model.disabled value="@item.ConceptValue" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "decimal")
+                                                {
+                                                    <input id="@("Concept"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlydecimalsprecision" @Model.disabled value="@item.ConceptValue" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "number")
+                                                {
+                                                    <input id="@("Concept"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlynumbers " @Model.disabled value="@item.ConceptValue" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "select")
+                                                {
+
+                                                    <select id="@("Concept"+item.RequestLine)" class="additional-field form-control da-chosen-select select" @Model.disabled data-id="@item.RequestGenericDetailID">
+                                                        @foreach (var option in item.CatalogContextConcept)
+                                                        {
+                                                            if (item.ConceptValue.AsInt() == option.CatalogDetailID)
+                                                            {
+                                                                <option selected value="@(option.CatalogDetailID == 0 ? "" : option.CatalogDetailID.ToString())">@option.DisplayText</option>
+                                                            }
+                                                            else if (option.CatalogDetailID == 0)
+                                                            {
+                                                                <option value="">@option.DisplayText</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@option.CatalogDetailID.ToString()">@option.DisplayText</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                }
+                                            }
+                                        </td>
+                                    }
+                                    @if (Model.CollectionAdditionalFields.Count >= 2 && @Model.CollectionAdditionalFields[1].FieldName != "")
+                                    {
+                                        <td class="reference1" id="@("ref1"+item.RequestLine)">
+                                            @if (item.DataTypeControlConcept.ToLower() != "date" && item.DataTypeControlConcept.ToLower() != "checkbox")
+                                            {
+                                                if (item.DataTypeControlConcept.ToLower() == "text")
+                                                {
+                                                    <input id="@("Reference1"+item.RequestLine)" type="text" class="additional-field ad-max-lenght form-control" @Model.disabled value="@item.Reference1Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "decimal")
+                                                {
+                                                    <input id="@("Reference1"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlydecimalsprecision" @Model.disabled value="@item.Reference1Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "number")
+                                                {
+                                                    <input id="@("Reference1"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlynumbers " @Model.disabled value="@item.Reference1Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "select")
+                                                {
+
+                                                    <select id="@("Reference1"+item.RequestLine)" class="additional-field form-control da-chosen-select select" @Model.disabled data-id="@item.RequestGenericDetailID">
+                                                        @foreach (var option in item.CatalogContextReference1)
+                                                        {
+                                                            if (item.ConceptValue.AsInt() == option.CatalogDetailID)
+                                                            {
+                                                                <option selected value="@(option.CatalogDetailID == 0 ? "" : option.CatalogDetailID.ToString())">@option.DisplayText</option>
+                                                            }
+                                                            else if (option.CatalogDetailID == 0)
+                                                            {
+                                                                <option value="">@option.DisplayText</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@option.CatalogDetailID.ToString()">@option.DisplayText</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                }
+                                            }
+                                        </td>
+                                    }
+                                    @if (Model.CollectionAdditionalFields.Count >= 3 && @Model.CollectionAdditionalFields[2].FieldName != "")
+                                    {
+                                        <td class="reference2" id="@("ref2"+item.RequestLine)">
+                                            @if (item.DataTypeControlConcept.ToLower() != "date" && item.DataTypeControlConcept.ToLower() != "checkbox")
+                                            {
+                                                if (item.DataTypeControlConcept.ToLower() == "text")
+                                                {
+                                                    <input id="@("Reference2"+item.RequestLine)" type="text" class="additional-field ad-max-lenght form-control" @Model.disabled value="@item.Reference2Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "decimal")
+                                                {
+                                                    <input id="@("Reference2"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlydecimalsprecision" @Model.disabled value="@item.Reference2Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "number")
+                                                {
+                                                    <input id="@("Reference2"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlynumbers " @Model.disabled value="@item.Reference2Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "select")
+                                                {
+
+                                                    <select id="@("Reference2"+item.RequestLine)" class="additional-field form-control da-chosen-select select" @Model.disabled data-id="@item.RequestGenericDetailID">
+                                                        @foreach (var option in item.CatalogContextReference2)
+                                                        {
+                                                            if (item.ConceptValue.AsInt() == option.CatalogDetailID)
+                                                            {
+                                                                <option selected value="@(option.CatalogDetailID == 0 ? "" : option.CatalogDetailID.ToString())">@option.DisplayText</option>
+                                                            }
+                                                            else if (option.CatalogDetailID == 0)
+                                                            {
+                                                                <option value="">@option.DisplayText</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@option.CatalogDetailID.ToString()">@option.DisplayText</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                }
+                                            }
+                                        </td>
+                                    }
+                                    @if (Model.CollectionAdditionalFields.Count >= 4 && @Model.CollectionAdditionalFields[3].FieldName != "")
+                                    {
+                                        <td class="reference3" id="@("ref3"+item.RequestLine)">
+                                            @if (item.DataTypeControlConcept.ToLower() != "date" && item.DataTypeControlConcept.ToLower() != "checkbox")
+                                            {
+                                                if (item.DataTypeControlConcept.ToLower() == "text")
+                                                {
+                                                    <input id="@("Reference3"+item.RequestLine)" type="text" class="additional-field ad-max-lenght form-control" @Model.disabled value="@item.Reference3Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "decimal")
+                                                {
+                                                    <input id="@("Reference3"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlydecimalsprecision" @Model.disabled value="@item.Reference3Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "number")
+                                                {
+                                                    <input id="@("Reference3"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlynumbers " @Model.disabled value="@item.Reference3Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "select")
+                                                {
+
+                                                    <select id="@("Reference3"+item.RequestLine)" class="additional-field form-control da-chosen-select select" @Model.disabled data-id="@item.RequestGenericDetailID">
+                                                        @foreach (var option in item.CatalogContextReference3)
+                                                        {
+                                                            if (item.ConceptValue.AsInt() == option.CatalogDetailID)
+                                                            {
+                                                                <option selected value="@(option.CatalogDetailID == 0 ? "" : option.CatalogDetailID.ToString())">@option.DisplayText</option>
+                                                            }
+                                                            else if (option.CatalogDetailID == 0)
+                                                            {
+                                                                <option value="">@option.DisplayText</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@option.CatalogDetailID.ToString()">@option.DisplayText</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                }
+                                            }
+                                        </td>
+                                    }
+                                    @if (Model.CollectionAdditionalFields.Count >= 5 && @Model.CollectionAdditionalFields[4].FieldName != "")
+                                    {
+                                        <td class="reference4" id="@("ref4"+item.RequestLine)">
+                                            @if (item.DataTypeControlConcept.ToLower() != "date" && item.DataTypeControlConcept.ToLower() != "checkbox")
+                                            {
+                                                if (item.DataTypeControlConcept.ToLower() == "text")
+                                                {
+                                                    <input id="@("Reference4"+item.RequestLine)" type="text" class="additional-field ad-max-lenght form-control" @Model.disabled value="@item.Reference4Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "decimal")
+                                                {
+                                                    <input id="@("Reference4"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlydecimalsprecision" @Model.disabled value="@item.Reference4Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "number")
+                                                {
+                                                    <input id="@("Reference4"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlynumbers " @Model.disabled value="@item.Reference4Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlConcept.ToLower() == "select")
+                                                {
+
+                                                    <select id="@("Reference4"+item.RequestLine)" class="additional-field form-control da-chosen-select select" @Model.disabled data-id="@item.RequestGenericDetailID">
+                                                        @foreach (var option in item.CatalogContextReference4)
+                                                        {
+                                                            if (item.ConceptValue.AsInt() == option.CatalogDetailID)
+                                                            {
+                                                                <option selected value="@(option.CatalogDetailID == 0 ? "" : option.CatalogDetailID.ToString())">@option.DisplayText</option>
+                                                            }
+                                                            else if (option.CatalogDetailID == 0)
+                                                            {
+                                                                <option value="">@option.DisplayText</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@option.CatalogDetailID.ToString()">@option.DisplayText</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                }
+                                            }
+                                        </td>
+                                    }
+                                    @if (Model.CollectionAdditionalFields.Count >= 6 && @Model.CollectionAdditionalFields[5].FieldName != "")
+                                    {
+                                        <td class="reference5" id="@("ref5"+item.RequestLine)">
+                                            @if (item.DataTypeControlReference5.ToLower() != "date" && item.DataTypeControlReference5.ToLower() != "checkbox")
+                                            {
+                                                if (item.DataTypeControlReference5.ToLower() == "text")
+                                                {
+                                                    <input id="@("Reference5"+item.RequestLine)" type="text" class="additional-field ad-max-lenght form-control" @Model.disabled value="@item.Reference5Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlReference5.ToLower() == "decimal")
+                                                {
+                                                    <input id="@("Reference5"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlydecimalsprecision" @Model.disabled value="@item.Reference5Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlReference5.ToLower() == "number")
+                                                {
+                                                    <input id="@("Reference5"+item.RequestLine)" type="text" class="additional-field ad-max-lenght onlynumbers " @Model.disabled value="@item.Reference5Value" data-id="@item.RequestGenericDetailID" />
+                                                }
+                                                else if (item.DataTypeControlReference5.ToLower() == "select")
+                                                {
+
+                                                    <select id="@("Reference5"+item.RequestLine)" class="additional-field form-control da-chosen-select select" @Model.disabled data-id="@item.RequestGenericDetailID">
+                                                        @foreach (var option in item.CatalogContextReference5)
+                                                        {
+                                                            if (item.Reference5Value.AsInt() == option.CatalogDetailID)
+                                                            {
+                                                                <option selected value="@(option.CatalogDetailID == 0 ? "" : option.CatalogDetailID.ToString())">@option.DisplayText</option>
+                                                            }
+                                                            else if (option.CatalogDetailID == 0)
+                                                            {
+                                                                <option value="">@option.DisplayText</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@option.CatalogDetailID.ToString()">@option.DisplayText</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                }
+                                            }
+                                        </td>
+                                    }
+                                    @if (!Model.ViewReadOnly)
+                                    {
+                                        <td><button class="btn btn-danger delete-detail"><span class="glyphicon glyphicon-trash"></span></button></td>
+                                    }
+                                </tr>
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+}
+

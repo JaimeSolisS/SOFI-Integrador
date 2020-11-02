@@ -1,0 +1,80 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.DemoldDefectsCharts.IndexViewModel
+<div class="content-frame">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="page-title">
+                <h1 class="margin-none"><span class="fa fa-bar-chart-o"></span> @Resources.MFG.DemoldDefectsCharts.title_DemoldDefectsCharts</h1>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="row" style="padding-top: 6px;">
+                <div class="col-sm-6" style="text-align:right">
+                    <h4 style="padding-top: 6px;">@Resources.MFG.DemoldDefects.lbl_DefectType</h4>
+                </div>
+                <div class="col-sm-6">
+                    @Html.DropDownList("ddl_DefectCategories", Model.DemoldDefectsCategoriesList, new { @class = "form-control selectpicker filters", data_style = "btn-success" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="row" style="padding-top: 6px;">
+                <div class="col-sm-12">
+                    <button id="btn_DemoldDefectsChartsHelp" class="btn btn-info">
+                        <span class="fa fa-question-circle"></span>@Resources.Common.lbl_Help
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 pull-right">
+            <!-- START WIDGET CLOCK -->
+            <div class="widget widget-info widget-padding-sm" style="min-height: 0;margin: 0px;padding:0px;">
+                <div class="widget-big-int plugin-clock">00:00</div>
+                <div class="widget-subtitle plugin-date">Loading...</div>
+            </div>
+            <!-- END WIDGET CLOCK -->
+        </div>
+    </div>
+
+    @foreach (var item in Model.DemoldDefectsCategoriesList)
+    {
+        if (item.Text != Resources.Common.TagAll)
+        {
+            <div class="row defect_charts_div" data-defectcategory="@item.Text">
+                <div class="col-md-6 ">
+                    @Html.Action("PercGrossChartPanel", new { DemoldDefectCategory = item.Text })
+                </div>
+                <div class="col-md-6">
+                    @Html.Action("PieChartPanel", new { DemoldDefectCategory = item.Text })
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<div id="div_Modal"></div>
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/fontawesome/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+
+}
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/charts/Chart.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-annotation.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/MFG/DemoldDefectsCharts/Index.js?v20200117"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            var LangResources = {
+                chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                TagAll: "@Resources.Common.TagAll"
+            };
+            IndexInit(LangResources);
+        });
+    </script>
+}

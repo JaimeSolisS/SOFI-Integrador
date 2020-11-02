@@ -1,0 +1,252 @@
+﻿@model WebSite.Models.ViewModels.Home.ChartsViewModel
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="page-title">
+            <h1 style="margin-top: 0px;"><span class="fa fa-search"></span> @Model.ProcessName</h1>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row" style="padding-top: 6px;">
+            <div class="col-xs-1" style="display:@(Model.UseLines ? "block":"none");">
+                <h4 style="padding-top: 6px;">Line</h4>
+            </div>
+            <div class="col-xs-2" style="display:@(Model.UseLines ? "block":"none");">
+                @Html.DropDownList("Line", Model.LinesList, new { @class = "form-control select", data_style = "btn-success" })
+            </div>
+            <div class="col-xs-1">
+                <h4 style="padding-top: 6px;">Shift</h4>
+            </div>
+            <div class="col-xs-3">
+                @Html.DropDownList("ShiftID", Model.ShiftList, new { @class = "form-control select", data_style = "btn-success" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 pull-right">
+        <!-- START WIDGET CLOCK -->
+        <div class="widget widget-info widget-padding-sm" style="min-height: 0;margin: 0px;padding:0px;">
+            <div class="widget-big-int plugin-clock">00:00</div>
+            <div class="widget-subtitle plugin-date">Loading...</div>
+        </div>
+        <!-- END WIDGET CLOCK -->
+    </div>
+</div>
+<div class="row">
+    @* Yield vs defects *@
+    <div class="col-md-6">
+        <div id="yield_panel" class="panel panel-default" data-updatefunc="UpdateYieldDefectsChart" data-chartplugin="chart.js" data-chartid="graficadeyield">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel-title-box">
+                            <h3>@Model.ProcessName - Yield vs Defects</h3>
+                            <span>Top Defects</span>
+                        </div>
+                        <ul class="panel-controls" style="margin-top: 2px;">
+                            <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-3" style="padding-top: 6px;">Top</label>
+                            <div class="col-md-9">
+                                @Html.DropDownList("yieldchart_top", Model.TopDefectList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-2" style="padding-top: 6px;">VA</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("yieldchart_va", Model.VAList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4" style="padding-top: 6px;">Design</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("yieldchart_Design", Model.DesignList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding-0">
+                <div class="chart-holder chart-container" id="YieldDefectsChart" style="position: relative;height: 200px;">
+                    <canvas id="ChartYieldDefects" style="position: relative;margin: auto;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* defects *@
+    <div class="col-md-6">
+        <div id="defect_panel" class="panel panel-default" data-updatefunc="UpdateTopDefectsChart" data-chartid="graficadedefectos">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel-title-box">
+                            <h3>@Model.ProcessName - Defects</h3>
+                            <span>Casting Defects</span>
+                        </div>
+                        <ul class="panel-controls" style="margin-top: 2px;">
+                            <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="col-md-3" style="padding-top: 6px;">Defects</label>
+                            <div class="col-md-9">
+                                @*@Html.ListBoxFor(m => m.SelectedDefects, Model.DefectsList, new { @class = "form-control select", multiple = "multiple", data_style = "btn-success" })*@
+                                @Html.ListBox("SelectedDefects", Model.DefectsList, new { @class = "form-control select", multiple = "multiple", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" style="padding-top: 6px;">VA</label>
+                            <div class="col-md-9">
+                                @Html.DropDownList("topdefects_va", Model.VAList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-5" style="padding-top: 6px;">Design</label>
+                            <div class="col-md-7">
+                                @Html.DropDownList("topdefects_Design", Model.DesignList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding-0">
+                <div id="TopDefectsChart" class="chart-holder" style="height: 200px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @* ASN *@
+    <div class="col-md-4">
+        <div id="asn_panel" class="panel panel-default" data-updatefunc="UpdateASNchart" data-chartid="graficadeasn">
+            <div class="panel-heading">
+                <div class="panel-title-box">
+                    <h3>@Model.ProcessName - ASN</h3>
+                    <span>Pallet Summary</span>
+                </div>
+                <ul class="panel-controls" style="margin-top: 2px;">
+                    <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                    <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body padding-0">
+                <div class="chart-holder" id="ASNChart" style="height: 200px;"></div>
+            </div>
+        </div>
+    </div>
+    @* mold scrap *@
+    <div class="col-md-4" >
+        <div id="scrap_panel" class="panel panel-default" data-updatefunc="UpdateScrapChart" data-chartid="graficascrap">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-5 padding-0">
+                        <div class="panel-title-box">
+                            <h3>@Model.ProcessName - Mold Scrap</h3>
+                            <span>Scrap Goal(Hour)</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 padding-0">
+                        <div class="form-group">
+                            <label class="col-md-4" style="padding-top: 6px;">Design</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("scrapchart_Design", Model.DesignList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 padding-0">
+                        <ul class="panel-controls" style="margin-top: 2px;">
+                            <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding-0">
+                <div class="chart-holder" id="ScrapChart" style="height: 200px;"></div>
+            </div>
+        </div>
+    </div>
+    @* production rate *@
+    <div class="col-md-4">
+        <div id="prod_panel" class="panel panel-default" data-updatefunc="UpdateProductionchart" data-chartid="graficadeproduccion">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-5 padding-0">
+                        <div class="panel-title-box">
+                            <h3>@Model.ProcessName - Production Rate</h3>
+                            <span>Attainment</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 padding-0">
+                        <div class="form-group">
+                            <label class="col-md-4" style="padding-top: 6px;">Design</label>
+                            <div class="col-md-8">
+                                @Html.DropDownList("production_Design", Model.DesignList, new { @class = "form-control select", data_style = "btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 padding-0">
+                        <ul class="panel-controls" style="margin-top: 2px;">
+                            <li><a href="#" class="panel-fullscreen-chart"><span class="fa fa-expand"></span></a></li>
+                            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding-0">
+                <div class="chart-holder" id="Productionchart" style="height: 200px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="onedefect_panel" class="panel panel-default" style="display:none;" data-chartid="graficadefecto">
+    <div class="panel-heading">
+        <div class="panel-title-box">
+            <h3>@Model.ProcessName - Defect </h3>
+            <h3 id="defect-name"></h3>
+        </div>
+        <ul class="panel-controls" style="margin-top: 2px;">
+            <li><a href="#" class="panel-unfullscreen-chart"><span class="fa fa-expand"></span></a></li>
+            <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+        </ul>
+    </div>
+    <div class="panel-body padding-0">
+        <div id="DefectChart" class="chart-holder" style="height: 600px;"></div>
+    </div>
+</div>
+
+@Html.Hidden("HoursArray", Model.HoursArray)
+@Html.Hidden("ProductionProcessID", Model.ProductionProcessID)
+@Html.Hidden("DashboardSelectedDefects", Model.DashboardSelectedDefects)
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/apexcharts/apexcharts.css" rel="stylesheet" />
+}
+@section scripts {
+    <script src="~/Scripts/PLUGINS/charts/Chart.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-annotation.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+    <script src="~/Scripts/PLUGINS/apexcharts/apexcharts.js"></script>
+    <script src="~/Scripts/Charts.js" charset="utf-8"></script>
+}

@@ -1,0 +1,57 @@
+﻿@model List<Core.Entities.DemoldDefectDetail>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tbl_edit">
+    <thead>
+        <tr class="font-size-sm bg-primary">
+            <th>@Resources.MFG.OperationRecords.lbl_Shift</th>
+            <th>@Resources.MFG.VatsCatalog.lbl_VATNumber</th>
+            <th>@Resources.MFG.MachineSetups.lbl_ProductionLine</th>
+            <th>@Resources.MFG.DemoldDefects.lbl_Inspector</th>
+            <th>@Resources.MFG.DemoldDefectsCatalog.lbl_DemoldDefectInfo</th>
+            <th>@Resources.MFG.OperationRecords.lbl_Gross %</th>
+            <th>@Resources.MFG.DemoldDefects.lbl_Defect</th>
+            <th>@Resources.MFG.DemoldDefects.lbl_Quantity</th>
+            <th>@Resources.MFG.OperationRecords.lbl_DayCode</th>
+            <th>@Resources.Common.gvH_UpdatedBy</th>
+            <th style="text-align:center; width:3%">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody class="ui-state-default sortable">
+        @foreach (var item in Model)
+        {
+        <tr data-demolddefectdetailid="@item.DemoldDefectDetailID" data-shiftid="@item.ShiftID" data-productionlineid="@item.ProductionLineID" data-demolddefecttypeid="@item.DemoldDefectTypeID">
+            <td>@item.ShiftDescription</td>
+            <td>@item.VATName</td>
+            <td>@item.LineNumber</td>
+            <td>@item.InspectorNameDetail</td>
+            <td>
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Resources.MFG.DemoldDefects.lbl_Family: @item.FamilyName
+                        <br />
+                        @Resources.MFG.DemoldDefects.lbl_LenType:@item.LensTypeName
+                        @Resources.MFG.DemoldDefects.lbl_Base:   @item.BaseName
+                        @Resources.MFG.DemoldDefects.lbl_Adition:@item.AdditionName
+                        @Resources.MFG.DemoldDefects.lbl_Side:   @item.SideName
+                    </div>
+                </div>
+            </td>
+            <td>@item.GrossPercentage %</td>
+            <td>@item.DemoldDefectCategoryName - @item.DemoldDefectTypeName</td>
+            <td data-identifier="quantity">
+                <a href="#" class="x-editable" data-type="text"
+                   data-value="@item.Quantity" data-tpl="<input type='text' class='onlynumbers'>"
+                   data-title="@Resources.MFG.DemoldDefects.lbl_Quantity">@item.Quantity</a>
+            </td>
+            <td>@item.DayCode</td>
+            <td>
+                @Resources.Common.lbl_On : @item.DateLastMaintFormat
+                <br />
+                @Resources.Common.lbl_By : @item.UserFullName
+            </td>
+            <td style="text-align:center; width:5%">
+                <label class="btn btn-danger delete-demolddefectdetail-parameter"><span class="glyphicon glyphicon-trash"></span></label>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

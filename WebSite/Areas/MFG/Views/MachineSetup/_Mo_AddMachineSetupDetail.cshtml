@@ -1,0 +1,87 @@
+﻿
+@model WebSite.Areas.MFG.Models.ViewModels.MachineSetup.IndexViewModel
+<div id="mo_AddMachineSetup" class="modal fade" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="ddl_AD_MachineSetupName">@Resources.MFG.MachineSetups.lbl_Title</label>
+                            <div class="input">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <div class="col-xs-3">
+                            <label class="control-label" for="ddl_AD_MachineSetupName">@Resources.MFG.MachineSetups.lbl_Name</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="col-xs-3">
+                            <label class="control-label" for="ddl_AD_MachineSetupName">@Resources.MFG.MachineSetups.lbl_Enable</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="col-xs-12" style="text-align:center">
+                            <label class="control-label" for="ddl_AD_MachineSetupName">@Resources.MFG.MachineSetups.lbl_Machine</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="col-xs-12" style="text-align:center">
+                            <label class="control-label" for="ddl_AD_MachineSetupName">@Resources.MFG.MachineSetups.lbl_Material</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <br />
+                        <button class="form-control">Add</button>
+                    </div>
+
+                    <div class="col-xs-12" style="margin-top:3%">
+                        <table>
+                            <tr>
+                                <td class="col-xs-4">@Resources.MFG.MachineSetups.lbl_Machine</td>
+                                <td class="col-xs-4">@Resources.MFG.MachineSetups.lbl_Material</td>
+                                <td class="col-xs-4">@Resources.MFG.MachineSetups.lbl_Options</td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                @*<button id="btn_AddDefectDetail" type="button" data-defectid="@Model" data-defect-processid="@Model.DefectProcessInfo.DefectProcessID" class="btn btn-info">@Model.Modal_SaveButtonTag</button>*@
+            </div>
+        </div>
+    </div>
+</div>

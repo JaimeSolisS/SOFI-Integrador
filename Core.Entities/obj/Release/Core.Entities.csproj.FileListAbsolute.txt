@@ -1,0 +1,6 @@
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\bin\Release\Core.Entities.dll
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\bin\Release\Core.Entities.pdb
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\obj\Release\Core.Entities.csprojAssemblyReference.cache
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\obj\Release\Core.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\obj\Release\Core.Entities.dll
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\obj\Release\Core.Entities.pdb

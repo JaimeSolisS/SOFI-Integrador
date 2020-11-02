@@ -1,0 +1,68 @@
+﻿@model WebSite.Areas.eRequest.Models.ViewModels.Request.MaterialReturnViewModel
+<div id="mo_ReturnMaterial" class="modal fade" style="z-index:9;" role="dialog">
+    <div class="modal-dialog" style="width: 800px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Request.btn_ReturnLoan</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="control-label" style="font-size:16px;">@Resources.Request.lbl_Folio: </label>
+                            <label class="control-label" style="color:blue; font-size:16px; font-weight:bold;">@Model.RequestEntity.Folio</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="control-label" style="font-size:16px;">@Resources.Request.lbl_Type: </label>
+                            <label class="control-label" style="color:red; font-size:16px; font-weight:bold;">@Model.RequestEntity.FormatName</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 ">
+                        <div class="form-group">
+                            <label class="control-label" style="font-size:16px;">@Resources.Request.lbl_Concept: </label>
+                            <label id="moTxtConcept" class="control-label" style="font-size:16px; font-weight:bold;">@Model.RequestEntity.Concept</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 ">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_coment_approval" style="font-size:16px;">@Resources.Request.lbl_Comments:</label>
+                            @Html.TextArea("txtCommentsApproval", "", new { @class = "form-control max-length", @autocomplete = "off", @maxlength = "255", @rows = "5" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margin-top-10">
+                    <div class="col-xs-12">
+                        <div class="alert alert-info alert-dismissible padding-10" id="alert_background_image" role="alert">
+                            <div class="col-sx-12">
+                                <div class="col-xs-12" style="text-align:left;">
+                                    @Resources.Request.alert_ReturnMaterialInstruction
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margin-top-10">
+                    <div class="col-xs-12" id="tbl_ReturnMaterial">
+                        @if (Model.RequestDetailList.Count > 0)
+                        {
+                            @Html.Partial("_Tbl_ReturnMaterial", Model.RequestDetailList)
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btnCancel</button>
+                <button id="btnSaveMaterialReturned" data-requestid="@Model.RequestEntity.RequestID" type="button" class="btn btn-success">@Resources.Common.btn_Save</button>
+            </div>
+        </div>
+    </div>
+</div>

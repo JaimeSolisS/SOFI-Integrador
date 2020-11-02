@@ -1,0 +1,92 @@
+﻿@model WebSite.Areas.SG.Models.ViewModels.SecurityGuardConfigurations.NewEditViewModel
+<div id="mo_NewEditVendorUser" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" style="z-index:10; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h4 class="modal-title">@Model.ModalTitle</h4>
+        </div>
+        <div class="modal-body" style="height:80%; overflow-y:auto">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label fa-2x tag-serial" for="lblCompanyID">@Resources.SG.SecurityGuard.lbl_Company</label>
+                        <div class="input-group col-xs-12">
+                            <label id="lblMoCompanyID" class="fa-2x" data-vendorid="@Model.VendorEntity.VendorID">@Model.VendorEntity.VendorName</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label fa-2x tag-serial" for="txtVendorUserName">@Resources.SG.SecurityGuard.lbl_PersonName</label>
+                        <div class="input-group col-xs-12">
+                            @Html.TextBox("txtMoVendorUserName", Model.VendorUserEntity.FullName, new { @class = "input-xl width-100p max-length", autocomplete = "off", maxlength = 150 })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label fa-2x tag-serial" for="txtVendorUserAccessCode">@Resources.SG.SecurityGuard.lbl_ScannBox</label>
+                        <div class="input">
+                            @Html.TextBox("txtMoVendorUserAccessCode", Model.VendorUserEntity.AccessCode, new { @class = "input-xl width-100p max-length", autocomplete = "off", maxlength = 20 })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label fa-2x tag-serial" for="txtVendorUserInsuranceNumber">@Resources.SG.SecurityGuard.lbl_InsuranceNumber</label>
+                        <div class="input">
+                            @Html.TextBox("txtMoVendorUserInsuranceNumber", Model.VendorUserEntity.InsuranceNumber, new { @class = "input-xl width-100p onlynumbers max-length", autocomplete = "off", maxlength = 30 })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label fa-2x tag-serial" for="txtVendorUserExpirationDate">@Resources.SG.SecurityGuard.lbl_ExpirationDate</label>
+                        <div class="input">
+                            @Html.TextBox("txtMoVendorUserExpirationDate", Model.VendorUserEntity.ExpirationDate.ToString("yyyy-MM-dd"), new { @class = "input-xl width-100p disabled-style-none", autocomplete = "off", @readonly = "true" });
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                    <label class="control-label fa-2x tag-serial">@Resources.SG.SecurityGuard.lbl_Active</label><br />
+                    <div class="btn-group btn-group-toggle width-100p" data-toggle="buttons">
+                        @if (Model.VendorUserEntity.Enabled)
+                        {
+                            <label class="btn fsize-25 unselectRadioLabel option-no width-40p">
+                                <input type="radio" name="options" autocomplete="off"> @Resources.Common.lbl_NO
+                            </label>
+                            <label class="btn fsize-25 unselectRadioLabel option-yes width-40p active">
+                                <input type="radio" name="options" autocomplete="off" id="btnMoVendorUserActive" checked>  @Resources.Common.lbl_Yes
+                            </label>
+                        }
+                        else
+                        {
+                            <label class="btn fsize-25 unselectRadioLabel option-no width-40p active">
+                                <input type="radio" name="options" autocomplete="off" checked> @Resources.Common.lbl_NO
+                            </label>
+                            <label class="btn fsize-25 unselectRadioLabel option-yes width-40p">
+                                <input type="radio" name="options" id="btnMoVendorUserActive" autocomplete="off">  @Resources.Common.lbl_Yes
+                            </label>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-danger btn_footer fa-2x pull-left dimiss-modal" data-modalid="mo_NewEditVendorUser" id="btn_back">@Resources.Common.btn_Back</button>
+
+            @if (Model.Type == "Edit")
+            {
+                <button id="btnSaveEditedUserVendor" type="button" class="btn btn-info btn_footer fa-2x pull-right">@Resources.Common.btn_Save</button>
+            }
+            else
+            {
+                <button id="btnSaveNewUserVendor" type="button" class="btn btn-info btn_footer fa-2x pull-right">@Resources.Common.btn_Save</button>
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("MoVendorUserID", Model.VendorUserEntity.VendorUserID)

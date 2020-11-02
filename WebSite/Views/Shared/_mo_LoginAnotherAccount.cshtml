@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SelectListItem>
+<div id="mo_LoginAccess" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:350px">
+        <div class="modal-content" style="height:auto">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Common.lbl_Access</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alert alert-info alert-dismissible padding-10" id="alert_background_image" role="alert">
+                            <div style="text-align:left;">
+                                @Resources.HR.Kiosk.lbl_LoginDomainUserPass
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>@Resources.Common.lbl_Domain</label><br />
+                        @Html.DropDownList("ddl_UsrDomain", Model, new { @class = "form-control select" })
+                    </div>
+                    <div class="col-xs-12">
+                        <label>@Resources.Common.lbl_User</label><br />
+                        @Html.TextBox("txt_UsrName", "", new { @class = "form-control max-length", @autocomplete = "off", @maxlength = "100" })
+                    </div>
+                    <div class="col-xs-12">
+                        <label>@Resources.Common.lbl_Password</label><br />
+                        @Html.Password("txt_UsrPass", "", new { @class = "form-control max-length", @autocomplete = "off", @maxlength = "100" })
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">@Resources.Common.btn_Close</button>
+                <button type="button" id="btn_ActiveDiretoryLogin" class="btn btn-success">@Resources.Common.btn_Accept</button>
+            </div>
+        </div>
+    </div>
+</div>

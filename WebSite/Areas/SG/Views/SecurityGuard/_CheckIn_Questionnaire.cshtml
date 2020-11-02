@@ -1,0 +1,47 @@
+﻿@model List<Core.Entities.CheckListTemplatesDetail>
+<div id="mo_CovidQuestionnaire" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:2; width:100%;">
+    <div class="modal-content" style="height:100%;">
+        <div class="modal-header" style="height:10%;background-color:black;border-radius:0px 0px;">
+            <h1 class="modal-title" style="color:white">@Resources.SG.SecurityGuard.lbl_CovidQuestionnaire</h1>
+            <div class="fa fa-home pull-right fa-5x bg-white padding-10 btnHomeButton"></div>
+        </div>
+        <div class="modal-body padding-none" style="height:80%; overflow-y:auto;overflow-x: hidden;">
+            <div class="row padding-10">
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                        <div class="alert alert-info alert-dismissible" role="alert">
+                            <div class="col-xs-12" style="text-align:center;">
+                                <h2 class="font-color-white fa-2x margin-bottom-none">@Resources.SG.SecurityGuard.alert_CovidQuestionnaire</h2>
+                            </div>
+                        </div>
+                    </div>
+                    @{
+                        foreach (var question in Model)
+                        {
+                            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 questions" data-seq="@question.Seq">
+                                <label class="control-label fa-2x question">@question.Question</label>
+
+                                <div class="btn-group btn-group-toggle width-100p" data-toggle="buttons">
+                                    <label class="btn fsize-25 unselectRadioLabel option-no width-20p active">
+                                        <input type="radio" name="options_@question.Seq" autocomplete="off" checked> @Resources.Common.lbl_NO
+                                    </label>
+                                    <label class="btn fsize-25 unselectRadioLabel option-yes width-20p">
+                                        <input type="radio" name="options_@question.Seq" class="answer" autocomplete="off" id="chkQuestion_@question.Seq">  @Resources.Common.lbl_Yes
+                                    </label>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer padding-top-10" style="height:10%">
+            <button type="button" class="btn btn-primary pull-left btn_footer dimiss-modal" data-modalid="mo_CovidQuestionnaire">@Resources.Common.btn_Back</button>
+            <button type="button" class="btn btn-success pull-right btn_footer"
+                    id="btnQuestionnaire" data-personaltype="" data-vendortypeid="">
+                @Resources.Common.btn_Next
+            </button>
+        </div>
+    </div>
+</div>

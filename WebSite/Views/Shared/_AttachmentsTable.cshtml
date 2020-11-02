@@ -1,0 +1,40 @@
+﻿@model WebSite.Models.ViewModels.Attachments.AttachmentViewModel
+
+<table class="table table-bordered table-condensed-xs">
+    <thead>
+        <tr class="bg-primary">
+            <th>@Resources.Common.lbl_FileName</th>
+            @if (Model.EnableFileType == true)
+            {
+                <th>@Resources.Common.lbl_FileType</th>
+            }
+            <th>@Resources.Common.lbl_Createdby</th>
+            <th>@Resources.Common.lbl_CreatedOn</th>
+            @if (Model.EnableDelete == true)
+            {
+                <th class="attachments-option-col"></th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Attachments)
+        {
+            <tr>
+                <td><a href="#" class="download-attachment" data-entityid="@item.FileID" data-attachmenttype="@item.AttachmentType" data-filepath="@item.FilePathName">@item.FileName</a></td>
+                @if (Model.EnableFileType == true)
+                {
+                    <td class="w-300" data-entityid="@item.FileID" data-attachmenttype="@item.AttachmentType">
+                        <span class="attachments-filetype-name" style="display:none;"></span>
+                        @Html.DropDownList("FileType", new SelectList(Model.FileTypeList, "CatalogDetailID", "DisplayText", item.FileType), htmlAttributes: new { @class = "form-control selectpicker attachment-file-type" })
+                    </td>
+                }
+                <td class="w-250">@item.UserFullName</td>
+                <td class="w-200">@item.DateAdded.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                @if (Model.EnableDelete == true)
+                {
+                    <td class="text-center w-32 attachments-option-col"><span data-entityid="@item.FileID" data-attachmenttype="@item.AttachmentType" class="glyphicon glyphicon-remove  btn btn-danger btn-sm delete-attachment-row" data-toggle="tooltip" data-placement="top" title="@Resources.Common.lbl_Delete"></span></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

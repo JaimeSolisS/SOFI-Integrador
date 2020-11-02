@@ -1,0 +1,38 @@
+﻿@model List<Core.Entities.EnergySensorValue>
+
+<table>
+    @{
+        int count = 0;
+        for (var i = 0; i < 6; i++)
+        {
+            <tr style="margin-top:2%">
+                <td><div style="width:90%"><label>@Resources.MNT.EnergySensors.lbl_Hour @Convert.ToInt32(i + count) - @Convert.ToInt32(i + count + 1)</label></div></td>
+                <td><div style="width:90%"><label>@Resources.MNT.EnergySensors.lbl_Hour @Convert.ToInt32(i + count + 1) - @Convert.ToInt32(i + count + 2)</label></div></td>
+                <td><div style="width:90%"><label>@Resources.MNT.EnergySensors.lbl_Hour @Convert.ToInt32(i + count + 2) - @Convert.ToInt32(i + count + 3)</label></div></td>
+                <td><div style="width:90%"><label>@Resources.MNT.EnergySensors.lbl_Hour @Convert.ToInt32(i + count + 3) - @Convert.ToInt32(i + count + 4)</label></div></td>
+            </tr>
+
+            if (Model.Count > 0)
+            {
+                <tr>
+                    <td><div style="width:90%">@Html.TextBox("txt_ValurForHour_" + @Convert.ToInt32(i + count), Model.Where(x => x.ValueHour == @Convert.ToInt32(i + count)).FirstOrDefault().MaxValue, new { @class = "form-control MaxValueByHour" })</div></td>
+                    <td><div style="width:90%">@Html.TextBox("txt_ValurForHour_" + @Convert.ToInt32(i + count + 1), Model.Where(x => x.ValueHour == @Convert.ToInt32(i + count + 1)).FirstOrDefault().MaxValue, new { @class = "form-control MaxValueByHour" })</div></td>
+                    <td><div style="width:90%">@Html.TextBox("txt_ValurForHour_" + @Convert.ToInt32(i + count + 2), Model.Where(x => x.ValueHour == @Convert.ToInt32(i + count + 2)).FirstOrDefault().MaxValue, new { @class = "form-control MaxValueByHour" })</div></td>
+                    <td><div style="width:90%">@Html.TextBox("txt_ValurForHour_" + @Convert.ToInt32(i + count + 3), Model.Where(x => x.ValueHour == @Convert.ToInt32(i + count + 3)).FirstOrDefault().MaxValue, new { @class = "form-control MaxValueByHour" })</div></td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td><div style="width:90%">@Html.TextBox("txt_ValurForHour_" + @Convert.ToInt32(i + count), "", new { @class = "form-control MaxValueByHour" })</div></td>
+                    <td><div style="width:90%">@Html.TextBox("txt_ValurForHour_" + @Convert.ToInt32(i + count + 1), "", new { @class = "form-control MaxValueByHour" })</div></td>
+                    <td><div style="width:90%">@Html.TextBox("txt_ValurForHour_" + @Convert.ToInt32(i + count + 2), "", new { @class = "form-control MaxValueByHour" })</div></td>
+                    <td><div style="width:90%">@Html.TextBox("txt_ValurForHour_" + @Convert.ToInt32(i + count + 3), "", new { @class = "form-control MaxValueByHour" })</div></td>
+                </tr>
+            }
+
+
+            count = count + 3;
+        }
+    }
+</table>

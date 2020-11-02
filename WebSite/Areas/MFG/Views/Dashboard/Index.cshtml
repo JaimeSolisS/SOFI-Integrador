@@ -1,0 +1,92 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Dashboard.IndexViewModel
+@{
+    Layout = "~/Views/Shared/_FullScreenLayout.cshtml";
+}
+<div class="row">
+    @Html.Partial("_Dashboard_Header", Model.HeaderModel)
+</div>
+<br />
+<div id="Index_div">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">
+                        @Resources.MFG.Dashboard.lbl_Machines
+                    </h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div id="div_machineslist" class="col-xs-12">
+                            @Html.Partial("_Div_Machines", Model.MachinesList)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">
+                        @Resources.MFG.Dashboard.lbl_actionplan
+                    </h3>
+                    <ul class="panel-controls">
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div id="div_taskslist" class="col-xs-12">
+                            @Html.Partial("_Tbl_Tasks", Model.TaskList)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Machine_div" style="display:none;">
+
+</div>
+
+<div id="div_MO_AssignTask">
+
+</div>
+
+<div id="div_Mo_ExportToExcel">
+
+</div>
+
+@Html.Hidden("CultureID", Model.CultureID);
+
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/GaugeMeter/gauge.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/MFG/Dashboard/Index.js?v20190619" charset="utf-8"></script>
+    <script>
+        $(document).ready(function () {
+            var LangResources = {
+                SelectMachine: '@Resources.MFG.MachineSetups.lbl_SelectMachine',
+                SelectMaterial: '@Resources.MFG.MachineSetups.lbl_SelectMaterial',
+                ActionTaskUpdateSuccess: '@Resources.MFG.ActionPlan.msg_ActionTaskUpdateSuccess'
+            }
+            IndexInit(LangResources);
+        });
+    </script>
+}

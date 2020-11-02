@@ -1,0 +1,101 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.OperationRecords.EditViewModel
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6">
+                <h1>@Resources.MFG.OperationRecords.title_Downtimes</h1>
+            </div>
+            <div class="col-xs-6" style="text-align:right;">
+                <button type="button" id="new_downtime" class="btn-success btn-pretty btn-lg"><i class="fa fa-plus"></i> @Resources.Common.btn_New</button>
+            </div>
+        </div>
+    </div>
+    <div id="downtimestable_div" class="form-group">
+        @Html.Action("DowntimesList", new { OperationRecordID = Model.Operation.OperationRecordID })
+    </div>
+
+    <div id="newdowntime_div" style="display:none;">
+        <div class="row">
+            <div class="col-xs-12">
+                <hr />
+                <h2 id="newdowntime_title">@Resources.Common.btn_New</h2>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label">@Resources.MFG.OperationRecords.lbl_Reason</label>
+                <div class="col-xs-4">
+                    @Html.DropDownList("ddl_Reasons", Model.ReasonsList, htmlAttributes: new { @class = "form-control select applyfilters", title = Resources.Common.chsn_SelectOption })
+                </div>
+                <div style="display:none" id="div_cambio_de_insertos">
+                    <div class="col-xs-2 pull">
+                        <label class="control-label pull-right">@Resources.MFG.OperationRecords.lbl_ChangeInserts</label>
+                    </div>
+                    <div class="col-xs-2 input-group-lg">
+                        <input type="text" id="txt_Cambio_de_insertos" class="form-control control-numpad col-sm-3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label" for="downtimecomments">@Resources.MFG.OperationRecords.lbl_Comments</label>
+                <div class="col-xs-10">
+                    <textarea class="form-control" rows="5" id="downtimecomments" style="font-size: 16px;"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <label class="col-xs-2 control-label">@Resources.MFG.OperationRecords.lbl_Start</label>
+                <div class="col-xs-4">
+                    <div class="input-group input-group-lg ">
+                        <input id="StartTime" type="text" class="form-control timepicker" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                </div>
+
+                <label class="col-xs-2 control-label">@Resources.MFG.OperationRecords.lbl_End</label>
+                <div class="col-xs-4">
+                    <div class="input-group input-group-lg ">
+                        <input id="Endtime" type="text" class="form-control timepicker" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="checkbox pull-left">
+                            <label><input id="closetime" type="checkbox"> @Resources.MFG.OperationRecords.lbl_DontCloseTime</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>@Resources.MFG.OperationRecords.lbl_Totaltime: <span id="totaltime" class="label label-default">@Resources.MFG.OperationRecords.lbl_0Min</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="input">
+                    <button type="button" id="save_downtimes" class="btn-success btn-pretty btn-lg pull-right"><i class="fa fa-save"></i> @Resources.Common.btn_Save</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<style>
+    .bootstrap-select > button {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+</style>

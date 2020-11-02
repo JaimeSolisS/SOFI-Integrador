@@ -1,0 +1,179 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.Dashboard.ShowViewModel
+
+<div class="row">
+    <br />
+    <div class="col-xs-10">
+        <h2>@Resources.MFG.Dashboard.lbl_SummaryMachine: @Model.DashboardMachine.MachineName , Material: @Model.MaterialName , @Resources.MFG.OperationRecords.lbl_MachineSetup: @Model.SetupName</h2>
+    </div>
+    <div class="col-xs-2">
+        <button type="button" id="btn_back" class="btn-info btn-pretty pull-right btn-lg"> @Resources.Common.btn_Back</button>
+    </div>   
+</div>
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.MFG.Dashboard.lbl_ListofParameters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="display table table-condensed ">
+                            <thead>
+                                <tr style="    font-size: x-large;font-weight: bold;">
+                                    <td>@Resources.MFG.Dashboard.lbl_Name</td>
+                                    <td>@Resources.MFG.Dashboard.lbl_Min</td>
+                                    <td>@Resources.MFG.Dashboard.lbl_Max</td>
+                                    <td>@Resources.MFG.Dashboard.lbl_Value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ParametersList)
+                                {
+                                    <tr style="font-size: x-large;" class="@(item.AlertCssClass == "glow-animation-effect" ? "danger" : "")">
+                                        @if (item.ParameterTypeValue == "LIST")
+                                        {
+                                            <td>@item.ParameterName</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>@item.ValueListValue</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item.ParameterName</td>
+                                            <td>@item.MinValueFormat</td>
+                                            <td>@item.MaxValueformat</td>
+                                            <td>@item.Value</td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.MFG.Dashboard.lbl_Parameters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <form class="form-horizontal" role="form">
+                        @foreach (var sec in Model.SectionsList)
+                        {
+                        <fieldset>
+                            <legend>@sec.DisplayText</legend>
+                            @foreach (var item in Model.ParametersList)
+                            {
+                                if (item.ParameterSectionName == sec.DisplayText)
+                                {
+                                    <div class="col-xs-2 @item.AlertCssClass ">
+                                        <div style="text-align: center;">
+                                            <label id="gauge_name_@item.OperationSetupParameterID" style="font-weight: bolder; font-size: initial;">@item.ParameterName</label>
+                                        </div>
+                                        @if (item.ParameterTypeValue != "LIST")
+                                        {
+                                            <div class="shadow-div-effect " style="text-align: center;">
+                                                <canvas id="canvas_@item.OperationSetupParameterID" class="canvas-gauge" width="200" height="100"
+                                                        data-parametername="@item.ParameterName"
+                                                        data-minvalue="@item.MinValue"
+                                                        data-maxvalue="@item.MaxValue"
+                                                        data-paramvalue="@item.Value"
+                                                        data-alert="@item.Alert"></canvas>
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <label id="gauge_value_@item.OperationSetupParameterID" style="font-weight: bolder; font-size: xx-large;">@item.Value</label>
+                                                @if (item.UseReference.Value == true && item.ReferenceTypeValue == "TEXT")
+	                                            {
+                                                    <br />
+                                                    <label style="font-weight: bolder; font-size: large;">@item.ReferenceName : @item.Reference</label>
+	                                            }
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="shadow-div-effect " style="text-align: center;">
+                                                <label style="font-weight: bolder; font-size: xx-large;">@item.ValueListValue</label>
+                                                @if (item.UseReference.Value == true && item.ReferenceTypeValue == "TEXT")
+                                                {
+                                                    <br />
+                                                    <label style="font-weight: bolder; font-size: large;">@item.ReferenceName : @item.Reference</label>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                }
+
+                            }
+                        </fieldset>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.MFG.Dashboard.lbl_actionplan
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="display table table-condensed ">
+                            <thead>
+                                <tr style="    font-size: x-large;font-weight: bold;">
+                                    <td>@Resources.Common.lbl_CreatedOn</td>
+                                    <td>@Resources.MFG.Dashboard.lbl_ProblemDescription</td>
+                                    <td>@Resources.MFG.Dashboard.lbl_Responsible</td>
+                                    <td>@Resources.MFG.Dashboard.lbl_TargetDate</td>
+                                    <td>@Resources.Common.lbl_Status</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.TaskList)
+                                {
+                                    <tr style="font-size: large;">
+                                        <td>@item.DateAddedFormat</td>
+                                        <td>@item.ProblemDescription</td>
+                                        <td>@item.ResponsibleFullName</td>
+                                        <td>@item.TargetDate</td>
+                                        <td>@item.StatusName</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

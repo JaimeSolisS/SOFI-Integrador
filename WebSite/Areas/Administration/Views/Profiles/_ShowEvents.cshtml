@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Core.Entities.AppEvents>
+<table class="table table-bordered" data-menuid="@Model.FirstOrDefault().MenuID">
+    <thead>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="4%" class="padding-right-3 padding-left-15" style="text-align:center; padding-top:7px !important">
+                    <label class="checkbox lobicheck lobicheck-rounded lobicheck-lg ">
+                        <input data-id="@item.EventID" class="profile-events Event chkEvent" type="checkbox" @(item.Enabled ? "checked" : "" )>
+                        <i></i>
+                    </label>
+                </td>
+                <td width="96%" class="valign-middle">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <span>@Html.DisplayFor(modelItem => item.EventDescription)</span>
+                        </div>
+                        <div class="col-md-7 @item.VisibleNeedAccessType">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="radio lobiradio lobiradio-info no-margin">
+                                        <input type="radio" name="AccessType_@item.EventID" class="EventAccessType ReadOnly" data-eventid="@item.EventID" data-id="@item.ReadOnlyID" @(item.IsReadOnly ? "checked" : "" )>
+                                        <i></i>@Resources.User.lbl_ReadOnly
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="radio lobiradio lobiradio-info no-margin">
+                                        <input type="radio" name="AccessType_@item.EventID" class="EventAccessType FullAccess" data-eventid="@item.EventID" data-id="@item.FullAccessID" @(item.IsFullAccess ? "checked" : "" )>
+                                        <i></i>@Resources.User.lbl_FullAccess
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

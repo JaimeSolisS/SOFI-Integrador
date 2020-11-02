@@ -1,0 +1,57 @@
+﻿@model WebSite.Models.ViewModels.ChartSlider.IndexViewModel
+@{
+    Layout = "~/Views/Shared/_FullScreenLayout.cshtml";
+}
+
+<div id="charts_panel" class="panel panel-default" style="height: 100%;">
+    <div class="panel-heading">
+        <div class="panel-title-box">
+            <h3>Charts</h3>
+            <span></span>
+        </div>
+        <ul class="panel-controls" style="margin-top: 2px;">
+            <li><a href="#" class="chartslider-home"><span class="fa fa-chevron-circle-left"></span></a></li>
+            <li><a href="#" class="chartslider-full"><span class="fa fa-expand"></span></a></li>
+            <li><a href="#" class="chartslider-pause"><span class="fa fa-pause"></span></a></li>
+            <li><a href="#" class="chartslider-config"><span class="fa fa-cog"></span></a></li>
+        </ul>
+    </div>
+    <div class="panel-body padding-0">
+        <div id="ChartSlider" style="height:100%;"></div>
+    </div>
+</div>
+
+<div id="config_modal"></div>
+
+@Html.Hidden("ComputerNameHiden", Model.ComputerName)
+@Html.Hidden("CurrentShift", Model.CurrentShift)
+@section Styles
+{
+    <link href="~/Content/PLUGINS/apexcharts/apexcharts.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/slick/slick-theme.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/slick/slick.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/dropzone/dropzone.css" rel="stylesheet" />
+}
+@section scripts {
+    <script src="~/Scripts/PLUGINS/charts/Chart.min.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-datalabels.js"></script>
+    <script src="~/Scripts/PLUGINS/charts/chartjs-plugin-annotation.min.js"></script>
+    <script src="~/Scripts/PLUGINS/apexcharts/apexcharts.js"></script>
+    <script src="~/Scripts/PLUGINS/slick/slick.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.min.js"></script>
+
+    <script src="~/Scripts/ChartsSlider.js?v20200219" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var LangResources = {
+                chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+                chsn_SelectMultipleOption: "@Resources.Common.chsn_SelectMultipleOption",
+                chsn_NoResults: "@Resources.Common.chsn_NoResults",
+                ntf_SelectWarehouse: "@Resources.Catalog.ntf_SelectWarehouse",
+                ntf_SelectVendor: "@Resources.Catalog.ntf_SelectVendor"
+            };
+            var isDebug = '@HttpContext.Current.IsDebuggingEnabled';
+            IndexInit(LangResources, isDebug);
+        });
+    </script>
+}

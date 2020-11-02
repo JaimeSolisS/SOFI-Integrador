@@ -1,0 +1,41 @@
+﻿
+<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+    <!-- TOGGLE NAVIGATION -->
+    <li class="xn-icon-button">
+        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+    </li>
+    <!-- END TOGGLE NAVIGATION -->
+    <!--Choose languages dropdown-->
+    <li class="dropdown pull-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img id="flag_img" src="" alt="flag" />
+            <span id="culture_label" class="visible-lg-inline-block visible-md-inline-block visible-sm-inline-block">@Resources.Common.lbl_ChangeLanguage</span>
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" id="langlist">
+            <li class="SelectCulture_EN-US" data-langabreviation="en">
+                <a href="@Url.Action("ChangeLanguage", "Base", new {area="", lang = "EN-US" })">
+                    <img src="~/Content/img/flags/us.png" alt="en" />
+                    @Resources.Common.lbl_English
+                </a>
+            </li>
+            <li class="SelectCulture_ES-MX" data-langabreviation="es">
+                <a href="@Url.Action("ChangeLanguage", "Base", new {area="", lang = "ES-MX" })">
+                    <img src="~/Content/img/flags/es.png" alt="en" />
+                    @Resources.Common.lbl_Spanish
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <!--Choose Facilities dropdown-->
+    <li class="dropdown pull-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img id="fac_img" src="~/Content/img/Menu/facility.png" alt="facility" />
+            <span id="facility_label" class="visible-lg-inline-block visible-md-inline-block visible-sm-inline-block">@Resources.Common.lbl_ChangeFacility</span>
+            <b class="caret"></b>
+        </a>
+        <!--Loading Facilities -->
+        @Html.Action("GetFacilities", "Base", new { area = "" })
+    </li>
+</ul>

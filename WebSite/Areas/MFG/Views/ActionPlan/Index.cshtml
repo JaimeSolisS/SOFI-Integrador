@@ -1,0 +1,186 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.ActionPlan.IndexViewModel
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="margin-none">@Resources.MFG.ActionPlan.lbl_Title</h2>
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div class="panel panel-primary">
+            <div class="panel-heading ui-draggable-handle">
+                <h3 class="panel-title">
+                    @Resources.Common.lbl_Filters
+                </h3>
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.ActionPlan.lbl_Machines</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_MachinesOpTask", Model.MachinesList, new { @class = "form-control select selectpicker" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.ActionPlan.lbl_Shifts</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_ShiftsOpTask", Model.ShiftsList, new { @class = "form-control select selectpicker" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.Common.lbl_Date</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_DateTypeOpTask", Model.TypeOfDateList, new { @class = "form-control select selectpicker DateDisable" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            @Html.Label("EnableDateFilter", @Resources.MFG.ActionPlan.lbl_EnableDateFilter, new { @class = "control-label" })
+                            <div>
+                                <label class="switch switch-small">
+                                    <input type="checkbox" id="EnabledOpTask" class="" checked />
+                                    <span> &nbsp;</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.Common.lbl_Status</label>
+                            <div class="input">
+                                @Html.DropDownList("ddl_StatusOpTask", Model.StatusList, new { @class = "form-control select selectpicker" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">@Resources.MFG.ActionPlan.lbl_Responsable</label>
+                            <div class="input">
+                                @Html.TextBox("ResponsableOpTask", null, new { @class = "form-control max-length", @maxlength = "100" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_F_StartDay">@Resources.MFG.ActionPlan.lbl_StartDate</label>
+                            <div class="input-group">                                
+                                @Html.TextBox("StartDateOpTask", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), htmlAttributes: new { @class = "form-control datetimepicker DateDisable" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="control-label" for="txt_F_StartDay">@Resources.MFG.ActionPlan.lbl_EndDate</label>
+                            <div class="input-group">                                
+                                @Html.TextBox("EndDateOpTask", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), htmlAttributes: new { @class = "form-control datetimepicker DateDisable" })
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 panel-footer text-right">
+                <button class="btn btn-info btn-pretty" id="btn_search">@Resources.Common.btn_Search</button>
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="div_Tbl_OperationTask">
+                            @Html.Partial("_Tbl_OperationTask", Model.OperationTasksList)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="div_MO_AssignTask">
+
+</div>
+
+<div id="div_MO_CloseTask">
+
+</div>
+
+<div id="div_MO_Attachments">
+
+</div>
+<style>
+    .modal-open .ui-datepicker {
+        z-index: 2000 !important
+    }
+</style>
+
+@Html.Partial("_ImageResourceModal")
+@Html.Hidden("CultureID", Model.CultureID)
+
+@section Styles
+{
+    <link href="~/Content/PLUGINS/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/minicolor/jquery.minicolors.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/jquery/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap-timepicker.min.css" />
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/PLUGINS/moment/moment.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/dropzone/dropzone.js"></script>
+    <script src="~/Scripts/PLUGINS/icheck/icheck.min.js"></script>
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/minicolor/jquery.minicolors.min.js"></script>
+    <script src="~/Scripts/MFG/ActionPlan/Index.js?v20191122" charset="utf-8"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var LangResources = {
+                ActionTaskUpdateSuccess: '@Resources.MFG.ActionPlan.msg_ActionTaskUpdateSuccess',
+                UserIsMandatory: '@Resources.MFG.ActionPlan.msg_UserIsMandatory',
+                lbl_Delete: '@Resources.Common.lbl_Delete',
+                ntf_DeleteAttachment: '@Resources.Common.ntf_DeleteAttachment',
+                btn_ConfirmYES: '@Resources.Common.btn_ConfirmYES',
+                btn_ConfirmNO: '@Resources.Common.btn_ConfirmNO',
+
+                msg_TaskUpdate: '@Resources.MFG.ActionPlan.msg_TaskUpdate',
+                msg_TaskCancelled: '@Resources.MFG.ActionPlan.msg_TaskCancelled',
+                ntf_MsgDeleteReject: "@Resources.MFG.OperationRecords.ntf_MsgDeleteReject",
+
+            };
+
+            IndexInit(LangResources);
+        });
+    </script>
+}

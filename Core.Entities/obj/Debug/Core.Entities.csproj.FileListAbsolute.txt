@@ -1,0 +1,12 @@
+D:\Code\SOFIEnterprise\Core.Entities\bin\Debug\Core.Entities.dll
+D:\Code\SOFIEnterprise\Core.Entities\bin\Debug\Core.Entities.pdb
+D:\Code\SOFIEnterprise\Core.Entities\obj\Debug\Core.Entities.csproj.CoreCompileInputs.cache
+D:\Code\SOFIEnterprise\Core.Entities\obj\Debug\Core.Entities.dll
+D:\Code\SOFIEnterprise\Core.Entities\obj\Debug\Core.Entities.pdb
+D:\Code\SOFIEnterprise\Core.Entities\obj\Debug\Core.Entities.csprojAssemblyReference.cache
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\bin\Debug\Core.Entities.dll
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\bin\Debug\Core.Entities.pdb
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\obj\Debug\Core.Entities.csprojAssemblyReference.cache
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\obj\Debug\Core.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\obj\Debug\Core.Entities.dll
+C:\Users\Jaime\Desktop\Sofi\Core.Entities\obj\Debug\Core.Entities.pdb

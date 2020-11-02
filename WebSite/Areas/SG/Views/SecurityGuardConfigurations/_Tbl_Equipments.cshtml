@@ -1,0 +1,41 @@
+﻿@model List<Core.Entities.Equipment>
+<table class="table display table-condensed table-strdisplay table table-striped table-bordered table-condensed-xs margin-noneiped" id="tblBadges">
+    <thead>
+        <tr class="">
+            <th class="bg-primary text-white">@Resources.SG.SecurityGuard.lbl_NSerie</th>
+            <th class="bg-primary text-white">@Resources.SG.SecurityGuard.lbl_EquipmentName</th>
+            <th class="bg-primary text-white">@Resources.SG.SecurityGuard.lbl_UPC</th>
+            <th class="bg-primary text-white">@Resources.SG.SecurityGuard.lbl_Mark</th>
+            <th class="bg-primary text-white">@Resources.SG.SecurityGuard.lbl_Model</th>
+            <th class="bg-primary text-white">@Resources.SG.SecurityGuard.lbl_Description</th>
+            <th class="bg-primary text-white">@Resources.SG.SecurityGuard.lbl_Use</th>
+            <th class="bg-primary text-white">@Resources.SG.SecurityGuard.lbl_Department</th>
+            <th class="bg-primary text-white w-150">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody class="ui-state-default sortable">
+        @foreach (var item in Model)
+        {
+            <tr data-equipmentid="@item.EquipmentID">
+                <td class="font-bold">@item.Serial</td>
+                <td class="font-italic">@item.EquipmentName</td>
+                <td class="font-bold font-italic">@item.UPC</td>
+                <td>@item.MarkVisitor</td>
+                <td>@item.ModelVisitor</td>
+                <td>@item.EquipmentDescription</td>
+                <td>@item.UseVisitor</td>
+                <td>@item.DepartmentName</td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-lg">
+                        <button class="btn btn-success editEquipment" title="@Resources.Common.lbl_View">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
+                        <button class="btn btn-danger deleteEquipment" title="@Resources.Common.lbl_Delete">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

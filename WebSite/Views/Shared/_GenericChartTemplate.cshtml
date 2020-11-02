@@ -1,0 +1,89 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.GenericCharts.DataChartsInfoViewModel
+@if (Model.GenericChartsList.Count > 0)
+{
+    foreach (var Chart in Model.GenericChartsList)
+    {
+        <div class="col-md-6">
+            <div id="@Chart.ChartName.Replace(" ", "_")" data-genericchartid="@Chart.GenericChartID" class="panel panel-default dynamicChartDiv" data-charttype="@Chart.ChartTypeText" data-chartplugin="chart.js" data-chartid="grafica_@Chart.ChartName.Replace(" ", "_")" data-updatefunc="LoadData_@Chart.ChartName.Replace(" ", "_")">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel-title-box">
+                                <h3>@Chart.ChartTitle</h3>
+                            </div>
+                            <ul class="panel-controls" style="margin-top: 2px;">
+                                <li><a href="#" class="panel-fullscreen-genericchart"><span class="fa fa-expand"></span></a></li>
+                                <li><a href="#" class="panel-refresh-genericchart"><span class="fa fa-refresh"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @foreach (var filter in Model.GenericChartFiltersList.Where(x => x.GenericChartID == Chart.GenericChartID))
+                        {
+                            <div class="col-md-4">
+                                <label class="col-md-4" style="padding-top: 6px">@filter.FilterName</label>
+                                @Html.DropDownList("filter_" + filter.FilterName.Replace(" ", "_") + Chart.ChartName.Replace(" ", "_"),
+                               Model.GenericChartFilterDataList.Where(x => Convert.ToInt32(x.Value) == filter.GenericChartFilterID),
+                               new { @class = "form-control selectpicker dynamic_filter_chart function_" + Chart.ChartName.Replace(" ", "_"),
+                                   data_style = "btn-success", data_function = "function_" + Chart.ChartName.Replace(" ", "_"),
+                                   data_valueid = filter.FilterListID, GenericChartFilterID = filter.GenericChartFilterID })
+                            </div>
+                        }
+                    </div>
+                    <br />
+                </div>
+                <div class="panel-body padding-0">
+                    <div class="chart-holder chart-container" id="_div_canvas_@Chart.ChartName.Replace(" ", "_")" style="position: relative;height: 400px;">
+                        <canvas id="canvas_@Chart.ChartName.Replace(" ", "_")" style="position: relative;margin: auto;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        var ModelxAxisFilter = Model.GenericChartsAxisList.Where(x => x.GenericChartID == Chart.GenericChartID && x.IsAxeX == true);
+        for (var i = 0; i < ModelxAxisFilter.ToArray().Length; i++)
+        {
+            <input type="hidden" value="@ModelxAxisFilter.ToArray()[i].AxisName" class="xAxis_class xAxis_class_@Chart.ChartName" />
+        }
+
+        foreach (var item in Model.GenericChartsAxisList.Where(x => x.GenericChartID == Chart.GenericChartID && x.IsAxeX == false))
+        {
+            <input type="hidden" value="@item.AxisName"
+                   data-color="@item.AxisColor"
+                   data-axisprefix="@item.AxisPrefix"
+                   data-axissufix="@item.AxisSufix"
+                   class="y_Axis_Properties_@Chart.ChartName.Replace(" ", "_")" />
+        }
+
+        var ModelFieldsFilter = Model.GenericChartDataList.Where(x => x.GenericChartID == Chart.GenericChartID);
+        for (var i = 0; i < ModelFieldsFilter.ToArray().Length; i++)
+        {
+            <input type="hidden"
+                   data-field1="@ModelFieldsFilter.ToArray()[i].Field1"
+                   data-field2="@ModelFieldsFilter.ToArray()[i].Field2"
+                   data-field3="@ModelFieldsFilter.ToArray()[i].Field3"
+                   data-field4="@ModelFieldsFilter.ToArray()[i].Field4"
+                   data-field5="@ModelFieldsFilter.ToArray()[i].Field5"
+                   data-field6="@ModelFieldsFilter.ToArray()[i].Field6"
+                   data-field7="@ModelFieldsFilter.ToArray()[i].Field7"
+                   data-field8="@ModelFieldsFilter.ToArray()[i].Field8"
+                   data-field9="@ModelFieldsFilter.ToArray()[i].Field9"
+                   data-field10="@ModelFieldsFilter.ToArray()[i].Field10"
+                   data-field11="@ModelFieldsFilter.ToArray()[i].Field11"
+                   data-field12="@ModelFieldsFilter.ToArray()[i].Field12"
+                   data-field13="@ModelFieldsFilter.ToArray()[i].Field13"
+                   data-field14="@ModelFieldsFilter.ToArray()[i].Field14"
+                   data-field15="@ModelFieldsFilter.ToArray()[i].Field15"
+                   data-field16="@ModelFieldsFilter.ToArray()[i].Field16"
+                   data-field17="@ModelFieldsFilter.ToArray()[i].Field17"
+                   data-field18="@ModelFieldsFilter.ToArray()[i].Field18"
+                   data-field19="@ModelFieldsFilter.ToArray()[i].Field19"
+                   data-field20="@ModelFieldsFilter.ToArray()[i].Field20"
+                   class="Fields_class_@Chart.ChartName.Replace(" ", "_")" />
+        }
+
+        @Html.Hidden("GenericChartID_" + Chart.GenericChartID, Model.GenericChartsList.FirstOrDefault().GenericChartID);
+    }
+}

@@ -1,0 +1,113 @@
+﻿<div id="m_CreateCatalog" class="modal fade" role="dialog">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">@Resources.Catalog.title_CreateCatalog</h4>
+            </div>
+            <div class="modal-body">
+                <form id="create-form" class="lobi-form">
+                    <fieldset class="no-padding">
+                        <div class="row">
+                            <div class="col-xs-6 ">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrganizationID">@Resources.Catalog.lbl_Organization</label>
+                                    <div class="input">
+                                        @Html.DropDownList("OrganizationID", (SelectList)Model.OrganizationsList, htmlAttributes: new { @class = "form-control select" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="FacilityID">@Resources.Catalog.lbl_Facility</label>
+                                    <div class="input">
+                                        <select id="FacilityID" name="FacilityID" class="form-control select"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 ">
+                                <div class="form-group">
+                                    <label class="control-label" for="CatalogTag">@Resources.Catalog.lbl_CatalogTag</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                        <input type="text" id="CatalogTag" name="CatalogTag" placeholder="@Resources.Catalog.lbl_CatalogTag" maxlength="30" class="form-control max-lenght" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 ">
+                                <div class="form-group">
+                                    <label class="control-label" for="CatalogName">@Resources.Catalog.lbl_CatalogName</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                        <input type="text" id="CatalogName" name="CatalogName" placeholder="@Resources.Catalog.lbl_CatalogName" maxlength="100" class="form-control max-lenght" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 ">
+                                <div class="form-group">
+                                    <label class="control-label" for="CatalogDescription">@Resources.Catalog.lbl_CatalogDescription</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                        <input type="text" id="CatalogDescription" name="CatalogDescription" placeholder="@Resources.Catalog.lbl_CatalogDescription" maxlength="255" class="form-control max-lenght" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 pull-right">
+                                <input type="hidden" id="hf_IsSystemValue" name="hf_IsSystemValue" value="false" />
+                                <label class="checkbox lobicheck">
+                                    <input id="chk_IsSystemValue" name="chk_IsSystemValue" type="checkbox" />
+                                    <i></i>
+                                    @Resources.Catalog.lbl_IsSystemValue
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    @*<div style="padding-top:10px">
+                        <header>
+                            <h4 class="page-header-solid">@Resources.Catalog.title_ConfigureParameters </h4>
+                        </header>
+                    </div>
+                    <div id="table_CreateCatalogsParameters">
+                        <table class="display table table-condensed table-striped dataTable table-md" id="tb_CreateCatalogsParameters">
+                            <thead>
+                                <tr class="bg-primary">
+                                    <th>@Resources.Catalog.lbl_ParamNumber</th>
+                                    <th>&nbsp;</th>
+                                    <th>@Resources.Catalog.lbl_ParamName</th>
+                                    <th>@Resources.Catalog.lbl_ParamDescription</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;">1</td>
+                                    <td style="text-align:center;">
+                                        <label class="check">
+                                            <input id="NewParamCheck1" data-value="false" class="icheckbox icheckbox-table-extended" type="checkbox"  onchange="setCheckboxvalue(this);">
+                                        </label>
+                                    </td>
+                                    <td width="30%">
+                                        <input type="text" id="NewParamName1"  name="NewParamName1" placeholder="@Resources.Catalog.lbl_ParamName" maxlength="20" class="max-lenght form-control" style="width:100%" />
+                                    </td>
+                                    <td width="66%">
+                                        <input type="text" id="NewParamDescription1"  name="NewParamDescription1" placeholder="@Resources.Catalog.lbl_Description" maxlength="255" class="max-lenght form-control" style="width:100%" />
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Common.btn_Back</button>
+                <button id="btn_Create" type="button" class="btn btn-primary">@Resources.Common.btn_Accept</button>
+            </div>
+        </div>
+    </div>
+</div>

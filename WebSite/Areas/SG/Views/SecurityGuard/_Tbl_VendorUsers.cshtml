@@ -1,0 +1,31 @@
+﻿@model List<Core.Entities.VendorUser>
+<table id="tbl_vendorUsersTable" class="display table table-striped table-bordered table-condensed-xs margin-none">
+    <thead>
+        <tr class="bg-primary">
+            <th class="fsize-25">@Resources.Common.lbl_Name</th>
+            <th class="fsize-25">@Resources.SG.SecurityGuard.lbl_ExpirationDate</th>
+            <th class="fsize-25">@Resources.Common.lbl_Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vendorUser in Model)
+        {
+            <tr class="row_supplier_label" data-vendoruserid="@vendorUser.VendorUserID">
+                <td class="fsize-25 @vendorUser.InactiveVendorUserClass">@vendorUser.FullName</td>
+                <td class="fsize-25 @vendorUser.InactiveVendorUserClass">@vendorUser.ExpirationDate.ToString("yyyy-MM-dd")</td>
+                <td class="fsize-25 text-center @vendorUser.InactiveVendorUserClass" title="@Resources.Common.lbl_Options">
+                    <button class="btn btn-success btn_footer width-30p editVendorUser" data-labelname="@vendorUser.FullName">
+                        <span class="glyphicon glyphicon-edit fsize-25"></span>
+                    </button>
+                    <button class="btn btn-danger btn_footer width-30p deleteVendorUser" data-labelname="@vendorUser.FullName">
+                        <span class="glyphicon glyphicon-trash fsize-25"></span>
+                    </button>
+                    <button class="btn btn-info printLabel btn_footer width-30p" data-labelname="@vendorUser.FullName"
+                            data-referenceid="@vendorUser.VendorUserID" data-referencetypeid="@vendorUser.ReferenceTypeID">
+                        <span class="glyphicon glyphicon-print fsize-25"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
