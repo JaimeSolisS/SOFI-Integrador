@@ -437,3 +437,4 @@ C:\Users\Jaime\Desktop\Sofi\WebSite\bin\System.Collections.Immutable.xml
 C:\Users\Jaime\Desktop\Sofi\WebSite\bin\System.Reflection.Metadata.xml
 C:\Users\Jaime\Desktop\Sofi\WebSite\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Jaime\Desktop\Sofi\WebSite\bin\System.Text.Encodings.Web.xml
+C:\Users\Jaime\Desktop\Sofi\WebSite\bin\manifest.json

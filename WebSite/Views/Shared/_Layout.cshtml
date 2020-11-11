@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" id="theme" href="~/Content/theme-default.css?v20190828" />
     <link rel="stylesheet" href="~/Content/SOFI.css?v20200916_" />
 
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="../../manifest.json">
     <meta name="theme-color" content="#2196f3" />
 
 </head>
@@ -106,7 +106,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker
-                .register('/serviceworker.js')
+                .register('../../serviceworker.js')
                 .then(function () { console.log('Service Worker Registered'); });
         }
     </script>

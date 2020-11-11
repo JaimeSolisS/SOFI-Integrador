@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44382</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -1267,6 +1267,7 @@
     <Content Include="Content\PLUGINS\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\PLUGINS\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\PLUGINS\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\actions.js" />
     <Content Include="Scripts\Administration\Catalogs\Index.js" />
     <Content Include="Scripts\Administration\GenericChartsAdministration\Edit.js" />
@@ -1955,7 +1956,9 @@
     <Content Include="Areas\eRequest\Views\Formats\_Tbl_CatalogsDetailReadOnly.cshtml" />
     <Content Include="Areas\eRequest\Views\Formats\_Tbl_DetailFieldsReadOnly.cshtml" />
     <Content Include="Areas\eRequest\Views\Formats\_Tbl_FormatAccessReadOnly.cshtml" />
-    <Content Include="manifest.json" />
+    <Content Include="manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_Logout.cshtml" />
@@ -2023,12 +2026,14 @@
     <Content Include="App_GlobalResources\Catalog.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Catalog.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Catalog.es.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Catalog.es.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -2093,6 +2098,7 @@
     <Content Include="App_GlobalResources\CI.Dashboard.es.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>CI.Dashboard.es.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

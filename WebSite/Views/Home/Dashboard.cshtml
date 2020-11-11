@@ -2,12 +2,11 @@
     <h1 class="start-screen-title">ESSILOR Dashboard</h1>
 
     <div class="tiles-area clear">
-        <div class="row">
+        
             <div class="row tiles-grid tiles-group size-2 fg-black" data-group-title="Production">
                 <a href="@Url.Action("Charts",new {controller ="Home",area="",type="2" })" data-role="tile" class="bg-indigo fg-white">
                     <span class="fa fa-cogs icon"></span>
                     <span class="branding-bar">High Index</span>
-
                 </a>
                 <div data-role="tile" class="col-xs-12 bg-indigo fg-white">
                     <a href="@Url.Action("Charts",new {controller ="Home",area="",type="18" })" data-role="tile" class="bg-indigo fg-white">
@@ -28,7 +27,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        
         <div class="tiles-grid tiles-group size-1 fg-black" data-group-title="IT">
             <a href="@Url.Action("ITCharts",new {controller ="Home",area="" })" data-role="tile" data-effect="image-set" class="bg-cyan fg-white">
                 <span class="fa fa-laptop icon"></span>
@@ -65,15 +64,15 @@
         </div>
     </div>
 
-        <div class="tiles-area clear">
-            <div class="tiles-grid tiles-group size-1 fg-black" data-group-title="Energy">
-                <a href="@Url.Action("EnergyLinks", new {controller ="EnergyDashboard", area="MNT" })" data-role="tile" class="fg-white" style="background-color:yellow">
-                    <span class="fa fa fa-lightbulb-o icon" style="color:black"></span>
-                    <span class="branding-bar" style="color:black">Energy Links</span>
-                </a>
-            </div>
+    <div class="tiles-area clear">
+        <div class="tiles-grid tiles-group size-1 fg-black" data-group-title="Energy">
+            <a href="@Url.Action("EnergyLinks", new {controller ="EnergyDashboard", area="MNT" })" data-role="tile" class="fg-white" style="background-color:yellow">
+                <span class="fa fa fa-lightbulb-o icon" style="color:black"></span>
+                <span class="branding-bar" style="color:black">Energy Links</span>
+            </a>
         </div>
     </div>
+</div>
 
 
 
