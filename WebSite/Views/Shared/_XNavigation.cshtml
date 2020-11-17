@@ -4,7 +4,7 @@
     <li class="xn-logo">
         @*<a href="#">@Resources.Common.title_Sofi</a>*@
         <div style="  width: 220px; height: 50px; position: relative;background-color: white;padding:3px;">
-            <img src="~/Content/img/logo_big_en.png" style="background-size: 60%;position: absolute;width: 210px;height: 45px;" />
+            <img src="~/Content/img/logo_big_en.png" style="background-size: 60%;position: absolute;width: 210px;height: 45px;" alt="alt" />
         </div>
         <a href="#" class="x-navigation-control"></a>
     </li>
@@ -33,7 +33,7 @@
                 @foreach (var item in items)
                 {
                     <li>
-                        <a href="@item.NavigateTo.ToString()"><img src="@item.Icon" />  @item.Description.ToString()</a>
+                        <a href="@item.NavigateTo.ToString()"><img src="@item.Icon" alt="alt" />  @item.Description.ToString()</a>
                         @BuildMenu(data, item.MenuID)
                     </li>
                 }
@@ -46,14 +46,14 @@
         if (Model.Menus.Where(f => f.ParentMenuID == p.MenuID).ToList().Count > 0)
         {
             <li class="xn-openable">
-                <a href="@p.NavigateTo.ToString()"><img src="@p.Icon.ToString()" /> <span class="xn-text">@p.Description.ToString()</span></a>
+                <a href="@p.NavigateTo.ToString()"><img src="@p.Icon.ToString()" alt="alt" /> <span class="xn-text">@p.Description.ToString()</span></a>
                 @BuildMenu(Model.Menus, p.MenuID)
             </li>
         }
         else
         {
             <li>
-                <a href="@p.NavigateTo.ToString()"><img src="@p.Icon.ToString()" /> <span class="xn-text">@p.Description.ToString()</span></a>
+                <a href="@p.NavigateTo.ToString()"><img src="@p.Icon.ToString()" alt="alt"/> <span class="xn-text">@p.Description.ToString()</span></a>
                 @BuildMenu(Model.Menus, p.MenuID)
             </li>
 
