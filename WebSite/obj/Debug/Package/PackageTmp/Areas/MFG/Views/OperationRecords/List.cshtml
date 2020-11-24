@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+@model WebSite.Areas.MFG.Models.ViewModels.OperationRecords.ListViewModel
+@Html.Partial("_Header")
+<h2 style="text-align:center;">
+    @Resources.MFG.OperationRecords.lbl_Shift:<span id="ShiftName" class="label label-default">@Model.Shift </span>
+    &emsp;
+    @Resources.MFG.OperationRecords.lbl_DayCode:<span id="JulianDay" class="label label-default">@Model.JulianDay</span>
+    &emsp;
+    @Resources.MFG.OperationRecords.lbl_ActualOperator:<span id="OperatorNumber" class="label label-default"></span>
+</h2>
+<div class="row">
+    <div class="col-xs-12 ">
+        <button type="button" id="new" class="btn-success btn-pretty btn-lg pull-right"><i class="fa fa-plus"></i> @Resources.Common.btn_New</button>
+    </div>
+</div>
+<br />
+@if (Model.AllowFilters == "1")
+{
+    <div class="row">
+        <div class="col-xs-12">
+            @Html.Partial("_Filters", Model)
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div id="Operations_Div">
+                    @Html.Partial("_Tbl_Operations", Model.Operations)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @* bug no se muestra el datepicker en listado vacio*@
+    <div class="col-xs-12 "style="height:150px;">
+    </div>
+</div>
+    @section scripts {
+        <script src="~/Scripts/PLUGINS/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-select.js"></script>
+        <script src="~/Scripts/MFG/OperationRecords/List.js?v20190619" charset="utf-8"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                ListInit("");
+            });
+        </script>
+    }
+
+    @section Styles{
+        <link href="~/Content/PLUGINS/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    }
+

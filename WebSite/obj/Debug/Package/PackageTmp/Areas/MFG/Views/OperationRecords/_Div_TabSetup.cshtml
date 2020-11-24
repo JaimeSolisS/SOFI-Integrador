@@ -1,0 +1,28 @@
+﻿@model WebSite.Areas.MFG.Models.ViewModels.OperationRecords.TabSetupViewModel
+<form class="form-horizontal" role="form">
+    @foreach (var sec in Model.SectionsList)
+    {
+    <fieldset>
+        <legend>@sec.DisplayText</legend>
+        @foreach (var item in Model.Setup.Parameters)
+        {
+            if (item.ParameterSectionName == sec.DisplayText)
+            {
+                <div class="form-group">
+                    @Html.Action("GetParameterDiv", new { item.OperationSetupParameterID })
+                </div>
+            }
+        }
+    </fieldset>
+    }
+
+
+    @Html.Hidden("OperationSetupID", Model.Setup.OperationSetupID)
+    <br />
+    <div class="form-group">
+        <div class="input" style="text-align:center;">
+            <button type="button" id="save_setup" class="btn-success btn-pretty btn-lg"><i class="fa fa-save"></i> @Resources.Common.btn_Save</button>
+            <button type="button" class="cancel-btn btn-danger btn-pretty btn-lg"><i class="fa fa-times"></i> @Resources.Common.btnCancel</button>
+        </div>
+    </div>
+</form>

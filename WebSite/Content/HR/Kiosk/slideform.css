@@ -302,11 +302,12 @@ form.slideform-form .slideform-progress-bar {
     src: url("../fonts/slideform.eot?p7vt47#iefix") format("embedded-opentype"), url("../fonts/slideform.ttf?p7vt47") format("truetype"), url("../fonts/slideform.woff?p7vt47") format("woff"), url("../fonts/slideform.svg?p7vt47#slideform") format("svg");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 [class^="icon-"], [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'slideform' !important;
+    font-family: 'slideform' !important, sans-serif;
     speak: none;
     font-style: normal;
     font-weight: normal;

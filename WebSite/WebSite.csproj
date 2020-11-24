@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44382</IISExpressSSLPort>
+    <IISExpressSSLPort>44394</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -1099,6 +1099,7 @@
     <Content Include="Content\img\logos\mezcladora.png" />
     <Content Include="Content\img\logos\regrain.JPG" />
     <Content Include="Content\img\logo_big_en.png" />
+    <Content Include="Content\img\logo_big_en_resize.png" />
     <Content Include="Content\img\Menu\AccountPayable.png" />
     <Content Include="Content\img\Menu\cash.png" />
     <Content Include="Content\img\Menu\Customers.png" />
@@ -1568,10 +1569,12 @@
     <Content Include="App_GlobalResources\HR.Kiosk.ES.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>HR.Kiosk.ES.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\HR.Kiosk.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>HR.Kiosk.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_GlobalResources\MFG.DemoldDefects.ES.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
@@ -1999,6 +2002,7 @@
     <Content Include="Views\Shared\_GenericChartTemplate.cshtml" />
     <Content Include="Views\Shared\_GenericMessageBox.cshtml" />
     <Content Include="Views\Shared\_mo_LoginAnotherAccount.cshtml" />
+    <None Include="Properties\PublishProfiles\WebSiteSofi - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.Entities\Core.Entities.csproj">
@@ -2105,6 +2109,7 @@
     <Content Include="App_GlobalResources\CI.Dashboard.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>CI.Dashboard.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

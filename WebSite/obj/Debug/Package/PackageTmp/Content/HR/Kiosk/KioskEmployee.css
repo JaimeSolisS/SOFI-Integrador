@@ -1,0 +1,125 @@
+﻿.MaxScale {
+    height: 100vh !important;
+    width: 100vh !important
+}
+
+.data-employee, row {
+    line-height: 40px;
+}
+
+.HeaderKioskButtons {
+    background-color: #0088ce !important;
+    border: 1px solid blue !important;
+    border-radius: 3px !important;
+    font-size: large !important;
+    padding: 5px !important;
+    color: whitesmoke !important;
+    height: 100% !important;
+}
+
+
+.LogoutButton {
+    background-color: red !important;
+    border: 1px solid red !important;
+    border-radius: 3px !important;
+    font-size: large !important;
+    padding: 5px !important;
+    color: whitesmoke !important;
+    height: 100% !important;
+}
+
+.HeaderKioskButtonLogin {
+    background-color: limegreen !important;
+    border: 1px solid limegreen !important;
+    border-radius: 3px !important;
+    font-size: large !important;
+    padding: 5px !important;
+    color: whitesmoke !important;
+    height: 100% !important;
+}
+
+.FooterKioskButtons {
+    background-color: #0088ce !important;
+    border: 1px solid blue !important;
+    border-radius: 3px !important;
+    font-size: large !important;
+    color: whitesmoke !important;
+}
+
+.RequestButton {
+    height: 5vh;
+    width: 100% !important;
+    font-size: 14px;
+    border-radius: 14px 14px 14px 14px;
+    color: white;
+    background-color: lightsalmon;
+}
+
+.RequestButtonActive {
+    color: white;
+    background-color: mediumspringgreen;
+}
+
+.KioskEmployeLogedActiveTabBorder {
+    border-top: solid !important;
+    border-width: 2px !important;
+}
+
+.StandardUserButton {
+    padding-top: 0px;
+    font-size: 30px !important;
+    font-weight: bold !important;
+    width: 47px;
+    height: 47px;
+}
+
+.HeaderTableStyle {
+    color: white !important;
+    font-size: 18px !important;
+    text-align: center !important;
+}
+
+.MainPointsExangeButtons {
+    font-size: 25px !important;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    height: 75px;
+}
+
+.HeaderModalButtons {
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+    font-size: 20px !important;
+    padding: 0px 0px 0px 0px !important;
+}
+
+.padding-top-bottom-10 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.padding-left-right-5 {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.padding-left-right-0 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+#txta_Comment {
+    height: 30vh;
+    font-size: 25px;
+}
+
+.RequestButton {
+    height: 50px;
+    font-size: 25px;
+}
+
+.h-100v {
+    height: 100vh;
+}

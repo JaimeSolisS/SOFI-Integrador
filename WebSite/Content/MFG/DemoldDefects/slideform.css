@@ -166,7 +166,7 @@ form.slideform-form .options-list input[type=checkbox], form.slideform-form .opt
         }
 
         form.slideform-form .options-list input[type=checkbox] + span:after, form.slideform-form .options-list input[type=radio] + span:after {
-            font-family: 'slideform' !important;
+            font-family: 'slideform' !important, sans-serif;
             display: inline-block;
             content: '\f00c';
             font-size: 22px;
@@ -296,11 +296,12 @@ form.slideform-form .slideform-progress-bar {
     src: url('../../../../../Content/PLUGINS/slideform/fonts/slideform.eot') format('embedded-opentype'), url('../../../../../Content/PLUGINS/slideform/fonts/slideform.svg') format('svg'), url('../../../../../Content/PLUGINS/slideform/fonts/slideform.woff') format('woff'), url('../../../../../Content/PLUGINS/slideform/fonts/slideform.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 [class^="icon-"], [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'slideform' !important;
+    font-family: 'slideform' !important, sans-serif;
     speak: none;
     font-style: normal;
     font-weight: normal;
