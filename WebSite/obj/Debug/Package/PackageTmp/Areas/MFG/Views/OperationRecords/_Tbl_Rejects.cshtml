@@ -1,0 +1,44 @@
+﻿@model List<Core.Entities.ProductionReject>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-bordered table-striped table-actions">
+            <thead>
+                <tr>
+                    <th>@Resources.MFG.OperationRecords.lbl_DefectType</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_Quantity</th>
+                    <th>@Resources.MFG.OperationRecords.lbl_Hour</th>
+                    <th>@Resources.Common.gvH_DateAdded</th>
+                    <th>@Resources.MFG.Login.lbl_Modifications</th>
+                    <th class="rejects-options">@Resources.Common.lbl_Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.RejectTypeName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Hour</td>
+                    <td>
+                        @item.DateAddedFormat
+                    </td>
+                    <td>
+                        @Resources.Common.lbl_By: @item.UserFullName
+                        <br />
+                        @Resources.Common.lbl_On: @item.DateLastMaintFormat
+                    </td>
+                    <td  class="rejects-options">
+                        <button class="btn-pretty btn-lg btn-info edit-reject" data-entityid="@item.ProductionRejectID" type="button" title="@Resources.Common.tt_Edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button class="btn-pretty btn-lg btn-danger delete-reject" data-entityid="@item.ProductionRejectID" type="button" title="@Resources.Common.tt_Edit">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

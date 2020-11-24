@@ -1,0 +1,298 @@
+﻿@model WebSite.Areas.Administration.Models.ViewModels.Users.EditViewModel
+
+@*OPCIONES DEL MENU*@
+<div class="content-frame">
+    <div class="content-frame-top">
+        <div class="page-title">
+            <h2 class="remove-margins"> @Resources.User.H_EditUser : <span class="tag-id"> @Model._User.UserAccountID </span></h2>
+        </div>
+        <div class="pull-right">
+            @Html.ActionLink(@Resources.Common.btnCancel, "Index", new { controller = "Users", area = "Administration" }, new { @class = "btn btn-default btn-pretty" })
+            <button id="btn_AddUser" class="btn btn-success searchuser" title="@Resources.User.tt_AddNewUser"><span class="fa fa-plus-circle"> @Resources.User.btn_AddUser </span></button>
+        </div>
+    </div>
+
+    <div class="content-frame-body content-frame-body-all">
+        <div id="lobitab-Edit">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active">
+                    <a class="lobitab-GI-link" href="#lobitab-Edit .GeneralInformation" role="tab" data-toggle="tab" data-load-url="">
+                        <i class="fa fa-info-circle fa-1x text-blue"></i> <span class="lobitab-title">@Resources.User.TabH_GeneralInformation</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="lobitab-useraccess-link" href="#lobitab-Edit .UserAccess" role="tab" data-toggle="tab" data-load-url="">
+                        <i class="fa fa-globe fa-1x text-blue"></i> <span class="lobitab-title">@Resources.User.TabH_Access</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content bg-white">
+                <div class="tab-pane active GeneralInformation">
+                    <div class="panel ">
+                        <br />
+                        <form id="GeneralInformation-form" class="lobi-form">
+                            <fieldset class="no-padding">
+                                <div id="alert_user_disabled" class="alert alert-warning" role="alert" style="display:@(Model._User.Enabled == true ? "none" : "block");">
+                                    <strong>@Resources.Common.lbl_Warning</strong> @Resources.User.ntf_UserDisabled
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="eMail">@Resources.User.lbl_Email</label>
+                                            <label class="input">
+                                                <a href="#" id="eMail" class="x-editable" data-type="text" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.eMail" data-title="@Resources.User.lbl_Email">@Model._User.eMail</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="UserAccountID">@Resources.User.lbl_UserAccountID</label>
+                                            <label class="input">
+                                                <a href="#" id="UserAccountID" class="x-editable" data-type="text" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.UserAccountID" data-title="@Resources.User.lbl_UserAccountID">@Model._User.UserAccountID</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="FirstName">@Resources.User.lbl_FirstName</label>
+                                            <label class="input">
+                                                <a href="#" id="FirstName" class="x-editable" data-type="text" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.FirstName" data-title="@Resources.User.lbl_FirstName">@Model._User.FirstName</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="LastName">@Resources.User.lbl_LastName</label>
+                                            <label class="input">
+                                                <a href="#" id="LastName" class="x-editable" data-type="text" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.LastName" data-title="@Resources.User.lbl_LastName">@Model._User.LastName</a>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="EmployeeNumber">@Resources.User.lbl_EmployeeNumber</label>
+                                            <label class="input">
+                                                <a href="#" id="EmployeeNumber" class="x-editable" data-type="text" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.EmployeeNumber" data-title="@Resources.User.lbl_EmployeeNumber">@Model._User.EmployeeNumber</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="ShiftID">@Resources.User.lbl_Shift</label>
+                                            <label class="input">
+                                                <a href="#" id="ShiftID" class="x-editable" data-type="select" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.ShiftID" data-source="/Administration/Users/ShitftsList" data-title="@Resources.User.lbl_Shift">@Model._User.ShiftDescription</a>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="DefaultCultureID">@Resources.User.lbl_DefaultCulture</label>
+                                            <label class="input">
+                                                <a href="#" id="DefaultCultureID" class="x-editable" data-type="select" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.DefaultCultureID" data-source="/Administration/Users/CulturesList" data-title="@Resources.User.lbl_DefaultCulture">@Model._User.DefaultCultureID</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="DefaultCultureID">@Resources.User.lbl_BaseFacility</label>
+                                            <label class="input">
+                                                <a href="#" id="BaseFacilityID" class="x-editable" data-type="select" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.BaseFacilityID" data-source="/Administration/Users/FacilitiesList" data-title="@Resources.User.lbl_BaseFacility">@Model._User.FacilityName</a>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <label class="switch switch-small">
+                                            <input id="chk_Enabled" name="chk_Enabled" type="checkbox" @(Model._User.Enabled == true ? "checked" : "") />
+                                            <span> &nbsp;</span>
+                                        </label>
+                                        <label class="control-label" for="DefaultCultureID">@Resources.Common.lbl_Enabled</label>
+                                    </div>
+                                    @*<div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="ProfileID">@Resources.User.lbl_Profile</label>
+                                            <label class="input">
+                                                @Html.ListBoxFor(m => m.SelectedProfiles, Model.ProfilesList, new { @class = "form-control select", multiple = "multiple" })
+                                            </label>
+                                        </div>
+                                    </div>*@
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="SelectedProfiles">@Resources.User.lbl_Profile</label>
+                                            <label class="input">
+                                                <a href="#" id="SelectedProfiles" data-type="checklist" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditableArray" data-value="@Model._User.ProfileArrayIds" data-source="/Administration/Users/ProfilesList" data-title="@Resources.User.lbl_Profile">@Model._User.ProfileArrayNames</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="ProfileID">@Resources.User.lbl_Department</label>
+                                            <label class="input">
+                                                <a href="#" id="DepartmentID" class="x-editable" data-type="select" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.DepartmentID" data-source="/Administration/Users/DepartmentsList" data-title="@Resources.User.lbl_Department">@Model._User.DepartmentName</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label" for="ProfileID">Posicion de Trabajo</label>
+                                            <label class="input">
+                                                <a href="#" id="JobPositionID" class="x-editable" data-type="select" data-pk="@Model._User.ID"
+                                                   data-url="/Administration/Users/UpdateEditable" data-value="@Model._User.JobPositionID" data-source="/Administration/Users/JobsPositionList" data-title="@Resources.User.lbl_BaseFacility">@Model._User.JobPositionName</a>
+                                            </label>
+                                        </div>
+                                    </div>
+</fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane UserAccess">
+                    <div class="panel ">
+
+
+                        <div class="panel panel-info">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <h3>Plants</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">@Resources.User.lbl_Company</label>
+                                            <select class="form-control" id="Companies">
+                                                @foreach (var item in Model.CompaniesList)
+                                                {
+                                                    <option value="@item.Value">@item.Text</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">@Resources.User.lbl_BaseFacility</label>
+                                            <select class="form-control" id="Plants">
+                                                
+                                                @*@foreach (var item in Model._List_UserFacilities)
+                                                {
+                                                    <option value="@item.FacilityID">@item.FacilityName</option>
+                                                }*@
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <br />
+                                        <button class="btn btn-success" id="add_CompanyPlant">@Resources.Common.btnAdd</button>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div id="div_machine_materials">
+                                            @Html.Partial("_Tbl_Plants", Model.CompaniesPlantsTable)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-info">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <h3>@Resources.User.lbl_Lines</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label">@Resources.User.lbl_Lines</label>
+                                            @*@Html.DropDownList("ddl_ProductionLine", Model.ProductionLinesList, new { @class="form-control select selectpicker" })*@
+                                            <select id="ddl_ProductionLine" class="form-control select selectpicker">
+                                            @foreach (var item in Model.ProductionLinesList)
+                                            {
+                                                <option value="@item.ProductionLineID" data-productionprocessid="@item.ProductionProcessID">@item.LineNumber -- @item.FacilityName</option>
+                                            }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <br />
+                                        <button class="btn btn-success" id="add_Line">@Resources.Common.btnAdd</button>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div id="div_machine_materials">
+                                            @Html.Partial("_Tbl_ProductionLines", Model.ProductionLinesUserTable)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        @*USER lines*@
+                        @*<div class="row">
+                            <div class="col-xs-12">
+                                <button id="btn_SaveUserLines" class="btn btn-success pull-right" title="Save Lines"><span class="glyphicon glyphicon-floppy-disk">Save</span></button>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div id="UserLinesDiv">
+                                    @Html.Partial("_Tbl_UserLines", Model.ProductionLinesUserTable)
+                                </div>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<input type="hidden" id="UserID" value="@Model._User.UserID" />
+
+@section Styles
+{
+<link href="~/Content/PLUGINS/xeditable/bootstrap-editable.css" rel="stylesheet" />
+}
+
+@Html.Hidden("UserID")
+@section scripts {
+    <script src="~/Scripts/PLUGINS/xeditable/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/Administration/Users/Edit.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        var LangResources = {
+            lbl_SelectEvents: "@Resources.Profile.lbl_SelectEvents",
+            chsn_SelectOption: "@Resources.Common.chsn_SelectOption",
+            AddDuplicate: "@Resources.User.msg_DuplicateFacility"
+        };
+
+        EditInit(LangResources);
+    });
+    </script>
+}
+

@@ -1,0 +1,37 @@
+﻿.expiration-date-good {
+    background-color: limegreen !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.expiration-date-regular {
+    background-color: orange !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.expiration-date-bad {
+    background-color: red !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.active.option-no {
+    background-color: red !important;
+    color: white !important;
+}
+
+.active.option-yes {
+    background-color: springgreen !important;
+    color: white !important;
+}
+
+.unselectRadioLabel {
+    background-color: lightgray !important;
+    color: black !important;
+}
+
+.disabled-style-none{
+    background-color: transparent !important;
+    color: black !important;
+}

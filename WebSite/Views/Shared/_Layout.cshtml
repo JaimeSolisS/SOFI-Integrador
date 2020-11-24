@@ -1,23 +1,29 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>@Resources.Common.title_WebTitle</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" name="description"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" name="description" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
-    
+
     @Styles.Render("~/Content/css/jquery")
     @Styles.Render("~/Content/css/bootstrap")
     @Styles.Render("~/Content/css/fontawesome")
     <link href="~/Content/PLUGINS/animate/animate.min.css" rel="stylesheet" />
     @RenderSection("Styles", false)
-    
+
     <link rel="stylesheet" type="text/css" id="theme" href="~/Content/theme-default.css?v20190828" />
     <link rel="stylesheet" href="~/Content/SOFI.css?v20200916_" />
 
+    <link rel="manifest" href="../../manifest.json">
+    <meta name="theme-color" content="#2196f3" />
+
 </head>
 <body>
+    <!--
+        <div id="loader">LOADING</div>
+     -->
     <!-- START PAGE CONTAINER -->
     <div class="page-container">
         <!-- START PAGE SIDEBAR -->
@@ -37,7 +43,7 @@
             </div>
 
 
-            </div>
+        </div>
         <!-- END PAGE CONTENT -->
     </div>
     <!-- END PAGE CONTAINER -->
@@ -99,6 +105,22 @@
         });
 
     </script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('../../serviceworker.js')
+                .then(function () { console.log('Service Worker Registered'); });
+        }
+    </script>
+
+    <!--
+         <script>
+       document.getElementById("myElement").style.display = "none";
+    </script>
+    -->
+
+
 
 </body>
 </html>

@@ -1,0 +1,184 @@
+﻿@{
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+@model WebSite.Areas.MFG.Models.ViewModels.OperationRecords.EditViewModel
+@Html.Partial("_Header")
+<div class="row">
+    <div class="col-xs-12 ">
+        <button type="button" id="btn_closerecord" class="btn-info btn-pretty btn-lg pull-right"><i class="fa fa-refresh"></i> @Resources.MFG.OperationRecords.btn_CloseRecord</button>
+
+        <button type="button" id="btn_backlist" class="btn-info btn-pretty btn-lg pull-right"><i class="fa fa-arrow-left"></i> @Resources.Common.btn_Back</button>
+    </div>
+</div>
+<br />
+<h2 style="text-align:center;">
+    @Resources.MFG.OperationRecords.lbl_Machine:<span class="label label-default">@Model.Operation.MachineName</span>
+    &emsp;
+    @Resources.MFG.OperationRecords.lbl_Shift:<span class="label label-default">@Model.Operation.ShiftName </span>
+    &emsp;
+    @Resources.MFG.OperationRecords.lbl_DayCode:<span class="label label-default">@Model.Operation.JulianDay </span>
+    &emsp;
+    @Resources.MFG.OperationRecords.lbl_ActualOperator:<span id="OperatorNumber" class="label label-default">@Model.OperatorNumber</span>
+    &emsp;
+    @Resources.MFG.OperationRecords.lbl_OperationProcess:<span id="Operation" class="label label-default">@Model.ProductionProcess</span>
+    &emsp;
+    @Resources.MFG.OperationRecords.lbl_MachineSetup:<span class="label label-default">@Model.Operation.MachineSetupName</span>
+</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- START JUSTIFIED TABS -->
+        <div class="panel panel-default tabs">
+            <ul class="nav nav-tabs ">
+                <li class="active"><a href="#setup_div" data-toggle="tab" aria-expanded="true">@Resources.MFG.OperationRecords.lbl_Setup</a></li>
+                <li class=""><a href="#production_div" data-toggle="tab" aria-expanded="false">@Resources.MFG.OperationRecords.lbl_Production</a></li>
+                <li class=""><a href="#downtimes_div" data-toggle="tab" aria-expanded="false">@Resources.MFG.OperationRecords.lbl_Downtimes</a></li>
+
+            </ul>
+            <div class="panel-body tab-content">
+                <div class="tab-pane active" id="setup_div">
+                    @Html.Partial("_Div_TabSetup", Model.TabSetup)
+                </div>
+                <div class="tab-pane" id="production_div">
+                    @Html.Partial("_Div_TabProduction", Model)
+                </div>
+                <div class="tab-pane" id="downtimes_div">
+                    @Html.Partial("_Div_TabDowntimes", Model)
+                </div>
+
+            </div>
+        </div>
+        <!-- END JUSTIFIED TABS -->
+    </div>
+</div>
+
+<style>
+    .btn-default.active {
+        background-color: #88ffa0;
+    }
+
+    label, .table > thead > tr > th, .table > tbody > tr > td {
+        font-size: 18px;
+    }
+</style>
+
+<div id="message-box-warning" class="message-box message-box-info animated fadeIn">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title" style="font-size:xx-large">
+                <span class="fa fa-warning"></span> @Resources.MFG.OperationRecords.btn_LogProduction
+            </div>
+            <div class="mb-content">
+                <p style="font-size: x-large;">@Resources.MFG.OperationRecords.ntf_pleasecaptureproduction <span id="lbl_capture_hour"></span></p>
+            </div>
+            <div class="mb-footer">
+                <button class="btn btn-default btn-lg pull-right mb-control-close">@Resources.Common.btn_OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="message-box-close" class="message-box message-box-info animated fadeIn">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title" style="font-size:xx-large">
+                <span class="fa fa-warning"></span>@Resources.MFG.OperationRecords.lbl_CloseProgram
+            </div>
+            <div class="mb-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p style="font-size: x-large;">@Resources.MFG.OperationRecords.ntf_CloseRecord</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-xs-4 control-label">@Resources.MFG.OperationRecords.lbl_LastShot</label>
+                    <div class="col-xs-6">
+                        <div class="input-group input-group-lg">
+                            <input id="LastShotNumber" class="form-control control-numpad onlynumbers" placeholder="Value" type="text" value="">
+                            <span class="input-group-addon">@Resources.MFG.OperationRecords.lbl_Shots</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <button class="btn btn-lg mb-control-yes btn-info" id="confirmbx_close"><span>@Resources.Common.lbl_Yes</span></button>
+                    <button class="btn btn-lg mb-control-close btn-default"><span>@Resources.Common.btnCancel</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="message-box-closeshift" class="message-box message-box-danger animated fadeIn">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title" style="font-size:xx-large">
+                <span class="fa fa-warning"></span>@Resources.MFG.OperationRecords.lbl_CloseShift
+            </div>
+            <div class="mb-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p style="font-size: x-large;">@Resources.MFG.OperationRecords.ntf_CloseRecord</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-xs-4 control-label">@Resources.MFG.OperationRecords.lbl_LastShot</label>
+                    <div class="col-xs-6">
+                        <div class="input-group input-group-lg">
+                            <input id="LastShiftShotNumber" class="form-control control-numpad onlynumbers" placeholder="Value" type="text" value="">
+                            <span class="input-group-addon">@Resources.MFG.OperationRecords.lbl_Shots</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <button class="btn btn-lg mb-control-yes btn-info" id="confirmbx_closeshift"><span>@Resources.Common.lbl_Yes</span></button>
+                    <button class="btn btn-lg mb-control-close btn-default"><span>@Resources.Common.btnCancel</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Partial("_GenericMessageBox")
+@Html.Hidden("OperationRecordID", Model.Operation.OperationRecordID)
+@section Styles{
+    <link href="~/Content/PLUGINS/numpad/jquery.numpad.css" rel="stylesheet" />
+    <link href="~/Content/PLUGINS/bootstrap/bootstrap-timepicker.min.css" rel="stylesheet" />
+}
+
+@section scripts {
+    <script src="~/Scripts/PLUGINS/maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/Scripts/PLUGINS/bootstrap/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/PLUGINS/numpad/jquery.numpad.js"></script>
+    <script src="~/Scripts/MFG/OperationRecords/Edit.js?v20191119" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var LangResources = {
+                ntf_MsgDeleteDowntime: "@Resources.MFG.OperationRecords.ntf_DeleteDowntime",
+                ntf_MsgDeleteReject: "@Resources.MFG.OperationRecords.ntf_MsgDeleteReject",
+                btn_New: "@Resources.Common.btn_New",
+                lbl_Newproduction :"@Resources.MFG.OperationRecords.lbl_Newproduction",
+                lbl_Edit: "@Resources.Common.lbl_Edit",
+                lbl_EditProductionHour:"@Resources.MFG.OperationRecords.lbl_EditProductionHour",
+                btn_Back: "@Resources.Common.btn_Back",
+                lbl_Del: "@Resources.Common.lbl_Del",
+                lbl_Clear: "@Resources.Common.lbl_Clear",
+                btnCancel: "@Resources.Common.btnCancel",
+                ntf_NoInitialshot:"@Resources.MFG.OperationRecords.ntf_NoInitialshot",
+                btn_LogProduction: "@Resources.MFG.OperationRecords.btn_LogProduction",
+
+                textDelete: "@Resources.Common.lbl_Del",
+                textClear: "@Resources.Common.lbl_Clear",
+                textCancel: "@Resources.Common.btnCancel",
+                lbl_Warning: "@Html.Raw(Resources.Common.lbl_Warning)"
+            };
+            EditInit(LangResources);
+        });
+    </script>
+}
